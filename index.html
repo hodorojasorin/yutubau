@@ -1951,6 +1951,9 @@
             <button class="btn" id="bell" type="button" aria-pressed="false">
               🔔 Abonează-te
             </button>
+            <button class="btn" id="dlall" type="button">
+              ⬇ Descarcă tot
+            </button>
           </div>
           <p class="toast mono" id="toast" role="status"></p>
           <div class="credits mono r" style="--i: 4">
@@ -1962,6 +1965,7 @@
       </section>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script>
       (function () {
         function goFullscreen() {
@@ -2444,6 +2448,61 @@
               },
             );
           } else say(url);
+        });
+
+        var dlall = document.getElementById("dlall");
+        var MATERIALS = [
+          "img/vlog2.mp4",
+          "img/sheet.jpg",
+          "img/pose.jpg",
+          "img/ecard1.webp",
+          "img/ecard2.webp",
+          "img/ecard3.webp",
+        ];
+        dlall.addEventListener("click", function () {
+          if (dlall.disabled) return;
+          if (typeof JSZip === "undefined") {
+            say("Nu s-a putut pregăti arhiva");
+            return;
+          }
+          dlall.disabled = true;
+          var original = dlall.textContent;
+          dlall.textContent = "Se pregătește…";
+          var zip = new JSZip();
+          Promise.all(
+            MATERIALS.map(function (path) {
+              return fetch(path)
+                .then(function (r) {
+                  return r.blob();
+                })
+                .then(function (blob) {
+                  zip.file(path.replace(/^img\//, ""), blob);
+                });
+            }),
+          )
+            .then(function () {
+              return zip.generateAsync({ type: "blob" });
+            })
+            .then(function (blob) {
+              var a = document.createElement("a");
+              var href = URL.createObjectURL(blob);
+              a.href = href;
+              a.download = "yutubau-materiale.zip";
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+              setTimeout(function () {
+                URL.revokeObjectURL(href);
+              }, 2000);
+              say("Arhiva a fost descărcată");
+            })
+            .catch(function () {
+              say("Descărcarea a eșuat");
+            })
+            .then(function () {
+              dlall.disabled = false;
+              dlall.textContent = original;
+            });
         });
       })();
     </script>
