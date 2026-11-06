@@ -37,6 +37,9 @@
   <body>
     <title>bau BAU by sorinarseni</title>
     <meta name="claude:viewport-fit-sides" content="cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1965,6 +1968,28 @@
     </main>
 
     <script>
+      (function () {
+        function goFullscreen() {
+          var el = document.documentElement;
+          var request =
+            el.requestFullscreen ||
+            el.webkitRequestFullscreen ||
+            el.mozRequestFullScreen ||
+            el.msRequestFullscreen;
+          if (!request) return;
+          var isFs =
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement;
+          if (isFs) return;
+          var p = request.call(el);
+          if (p && p.catch) p.catch(function () {});
+        }
+        ["click", "touchend", "keydown"].forEach(function (ev) {
+          document.addEventListener(ev, goFullscreen, { passive: true });
+        });
+      })();
       (function () {
         var slides = [].slice.call(document.querySelectorAll(".slide"));
         var tc = document.getElementById("tc"),
