@@ -1240,6 +1240,11 @@
             max-width: 44ch;
             font-size: 16px;
           }
+          .sr-masked {
+            font-family: "JetBrains Mono", ui-monospace, monospace;
+            color: var(--h-mute);
+            letter-spacing: 0.08em;
+          }
           .h-tags {
             display: flex;
             flex-wrap: wrap;
@@ -4939,16 +4944,20 @@
             >
               <span class="h-num mono">02</span>
               <div class="h-info">
-                <h2 class="h-name" hidden>Șase <em>roluri</em></h2>
+                <h2 class="h-name sr-gated" id="sr-title">
+                  Șase <em>roluri</em>
+                </h2>
                 <p class="h-sub mono">Scurtmetraj · Regie: Sorin Hodoroja</p>
-                <p class="h-desc" hidden>
+                <p class="h-desc sr-gated" id="sr-desc">
                   Un reality show în care „nimic nu e regizat”, până la ultima
                   scenă. Un film în film despre rolurile pe care le jucăm.
                 </p>
                 <div class="h-tags">
                   <span class="chip">21 slide-uri</span
-                  ><span class="chip" hidden>storyboard</span
-                  ><span class="chip hot" hidden>film în film</span>
+                  ><span class="chip sr-gated" id="sr-chip1">storyboard</span
+                  ><span class="chip hot sr-gated" id="sr-chip2"
+                    >film în film</span
+                  >
                 </div>
                 <span class="h-open mono"
                   >Deschide prezentarea <i aria-hidden="true">→</i></span
@@ -6746,8 +6755,8 @@
             width: 100%;
             box-sizing: border-box;
             padding: 12px;
-            font-size: 24px;
-            letter-spacing: 0.5em;
+            font-size: 20px;
+            letter-spacing: 0.2em;
             text-align: center;
             border-radius: 10px;
             border: 1px solid #3a3550;
@@ -6790,20 +6799,17 @@
         <div class="pingate" id="pingate" hidden>
           <form id="pingate-form" class="pingate-card">
             <p class="pingate-eyebrow">Proiectul 02 · acces restricționat</p>
-            <h2 class="pingate-title">Introdu PIN-ul</h2>
+            <h2 class="pingate-title">Introdu codul de acces</h2>
             <input
               id="pingate-input"
               class="pingate-input"
               type="password"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              maxlength="4"
               autocomplete="off"
-              placeholder="••••"
-              aria-label="PIN de acces"
+              placeholder="••••••••"
+              aria-label="Cod de acces"
             />
             <p class="pingate-error" id="pingate-error" role="alert" hidden>
-              PIN greșit. Mai încearcă.
+              Cod greșit. Mai încearcă.
             </p>
             <div class="pingate-actions">
               <button type="button" class="pingate-back" id="pingate-back">
@@ -8525,7 +8531,7 @@
               if (location.hash !== "#bau-bau" && location.hash !== "#pascaru")
                 root.classList.remove("in-project");
             }
-            var PIN = "1003";
+            var ACC = "anaconda";
             var gate = $("pingate"),
               gateForm = $("pingate-form"),
               gateInput = $("pingate-input"),
@@ -8543,6 +8549,28 @@
                 sessionStorage.setItem("sr-pin-ok", "1");
               } catch (e) {}
             }
+            var GATED_IDS = ["sr-title", "sr-desc", "sr-chip1", "sr-chip2"];
+            GATED_IDS.forEach(function (id) {
+              var el = $(id);
+              if (el) el.dataset.real = el.innerHTML;
+            });
+            function maskHome() {
+              GATED_IDS.forEach(function (id) {
+                var el = $(id);
+                if (!el) return;
+                el.innerHTML = "######";
+                el.classList.add("sr-masked");
+              });
+            }
+            function revealHome() {
+              GATED_IDS.forEach(function (id) {
+                var el = $(id);
+                if (!el || el.dataset.real == null) return;
+                el.innerHTML = el.dataset.real;
+                el.classList.remove("sr-masked");
+              });
+            }
+            pinOk() ? revealHome() : maskHome();
             function showGate() {
               if (!gate) return;
               gateError.hidden = true;
@@ -8558,10 +8586,12 @@
             if (gateForm) {
               gateForm.addEventListener("submit", function (e) {
                 e.preventDefault();
-                if (gateInput.value === PIN) {
+                if (gateInput.value.trim().toLowerCase() === ACC) {
                   pinUnlock();
+                  revealHome();
                   hideGate();
                   open();
+                  say("Acces permis");
                 } else {
                   gateError.hidden = false;
                   gateInput.value = "";
