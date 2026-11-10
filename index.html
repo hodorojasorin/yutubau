@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!doctype html>
 <html>
   <head>
@@ -41,7 +42,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap"
     />
     <style>
       /* Layout: pagina de acasă = index de proiecte (rânduri mari, ca un catalog de filmări); fiecare proiect se deschide pe #nume ca deck vertical.
@@ -3450,6 +3451,1244 @@
       .h-proj.sr-card:hover .h-thumb img:nth-of-type(3) {
         --x: 62%;
       }
+
+      /* ===== proiectul 03 · Pascaru Production: rebranding. Aceeași mecanică de deck, în stilul brandbook-ului: negru, un singur accent Mint Leaf, fontul Sora ===== */
+      html.pp body {
+        background: #050404;
+      }
+      #p-pascaru {
+        --black: #050404;
+        --ink: #0e0b0c;
+        --white: #f3f6f4;
+        --mute: #8f9a96;
+        --line: #272123;
+        --red: #40c9a2;
+        --pp-light: #a3f7b5;
+        --pp-frost: #e5f9e0;
+        --pp-verd: #2f9c95;
+        --pp-plum: #664147;
+        --display: "Sora", -apple-system, BlinkMacSystemFont, "Inter",
+          "Helvetica Neue", Arial, sans-serif;
+        --body: var(--display);
+        color: var(--white);
+        font-family: var(--body);
+      }
+      #p-pascaru .recbar {
+        background: linear-gradient(
+          #050404 50%,
+          color-mix(in srgb, #050404 0%, transparent)
+        );
+      }
+      #p-pascaru .dot {
+        box-shadow: 0 0 10px var(--red);
+      }
+      #p-pascaru h2 {
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        font-size: clamp(36px, 5vw, 72px);
+      }
+      #p-pascaru .eyebrow,
+      #p-pascaru .lede {
+        font-weight: 400;
+      }
+      #p-pascaru .lede {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+      #p-pascaru .hero h1 {
+        font-weight: 700;
+        font-size: clamp(52px, 9.5vw, 132px);
+        letter-spacing: -0.045em;
+        line-height: 0.9;
+      }
+      #p-pascaru .hero h1 .hl {
+        color: var(--red);
+      }
+      #p-pascaru .hero h1 .by {
+        font-size: 0.24em;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: var(--mute);
+        margin-top: 0.6em;
+      }
+      #p-pascaru .finale h2 {
+        font-size: clamp(48px, 9vw, 132px);
+        color: var(--white);
+        letter-spacing: -0.045em;
+      }
+      #p-pascaru .finale h2 em {
+        font-style: normal;
+        color: var(--red);
+      }
+      #p-pascaru .finale .plus {
+        font-weight: 400;
+        font-size: clamp(20px, 2.4vw, 30px);
+        letter-spacing: -0.01em;
+        color: var(--mute);
+        margin: 18px 0 32px;
+      }
+      #p-pascaru .btn {
+        border-radius: 999px;
+        font-size: 12px;
+      }
+      #p-pascaru .btn:hover {
+        background: var(--red);
+        border-color: var(--red);
+        color: #050404;
+      }
+      .pp-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--white);
+      }
+      .pp-label b {
+        font-weight: 500;
+      }
+
+      /* monograma: bara (stativul) + cercul (obiectivul) + punctul de REC */
+      .pp-mark {
+        display: block;
+        overflow: visible;
+      }
+      .pp-mark .st {
+        transform-box: fill-box;
+        transform-origin: 50% 100%;
+      }
+      .pp-mark .rg {
+        stroke-dasharray: 152;
+      }
+      .anim .slide.active .pp-draw .st {
+        animation: pp-stem 1s cubic-bezier(0.7, 0, 0.2, 1) 0.2s both;
+      }
+      .anim .slide.active .pp-draw .rg {
+        animation: pp-ring 1.3s cubic-bezier(0.6, 0, 0.2, 1) 0.7s both;
+      }
+      .anim .slide.active .pp-draw .dt {
+        animation: pp-dot 1.4s linear 1.8s both;
+      }
+      @keyframes pp-stem {
+        from {
+          transform: scaleY(0);
+        }
+        to {
+          transform: scaleY(1);
+        }
+      }
+      @keyframes pp-ring {
+        from {
+          stroke-dashoffset: 152;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes pp-dot {
+        0% {
+          opacity: 0;
+        }
+        15% {
+          opacity: 1;
+        }
+        30% {
+          opacity: 0.15;
+        }
+        45%,
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* 1 · titlu */
+      .pp-hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      .pp-hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 45%;
+        opacity: 0.42;
+        display: block;
+      }
+      .pp-hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, #050404 0%, rgba(5, 4, 4, 0.55) 55%, rgba(5, 4, 4, 0.2) 100%),
+          linear-gradient(0deg, #050404 0%, rgba(5, 4, 4, 0) 40%);
+      }
+      #p-pascaru .slide > .wrap {
+        position: relative;
+        z-index: 1;
+      }
+      .pp-hero-main {
+        display: flex;
+        align-items: flex-end;
+        gap: clamp(20px, 4vw, 56px);
+        flex-wrap: wrap;
+      }
+      .pp-hero-main .pp-mark {
+        width: clamp(84px, 13vw, 180px);
+        height: auto;
+        flex-shrink: 0;
+      }
+
+      /* 2 · clientul */
+      .pp-stats {
+        margin-top: clamp(28px, 5vh, 48px);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+        border-top: 1px solid var(--line);
+      }
+      .pp-stats > div {
+        padding: 22px 22px 22px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .pp-stats b {
+        display: block;
+        font-weight: 600;
+        font-size: clamp(36px, 4.4vw, 60px);
+        letter-spacing: -0.04em;
+        line-height: 1;
+        color: var(--white);
+      }
+      .pp-stats span {
+        display: block;
+        margin-top: 10px;
+        color: var(--mute);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      /* 3 · de ce */
+      .pp-two {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+        gap: clamp(28px, 5vw, 72px);
+        align-items: start;
+      }
+      .pp-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid var(--line);
+      }
+      .pp-list li {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 8px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 17px;
+        line-height: 1.5;
+      }
+      .pp-list li i {
+        font-style: normal;
+        color: var(--red);
+        font-family: var(--mono);
+        font-size: 12px;
+        padding-top: 4px;
+      }
+      .pp-note {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 22px;
+        color: var(--mute);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .pp-note b {
+        color: var(--white);
+        font-weight: 500;
+      }
+
+      /* 4 · logo */
+      .pp-logo-stage {
+        aspect-ratio: 1;
+        max-width: 440px;
+        width: 100%;
+        border-radius: 10px;
+        background: #000;
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+      }
+      .pp-logo-stage .pp-mark {
+        width: 42%;
+        height: auto;
+      }
+      .pp-vers {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .pp-vers div {
+        aspect-ratio: 1;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+      }
+      .pp-vers .pp-mark {
+        width: 42%;
+        height: auto;
+      }
+
+      /* 5 · culori */
+      .pp-sw {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        border-radius: 10px;
+        overflow: hidden;
+        min-height: clamp(220px, 38vh, 360px);
+      }
+      .pp-sw div {
+        padding: 18px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .pp-sw b {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .pp-type {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 12px 40px;
+      }
+      .pp-type .aa {
+        font-size: clamp(72px, 9vw, 120px);
+        font-weight: 600;
+        letter-spacing: -0.05em;
+        line-height: 0.85;
+      }
+      .pp-type p {
+        margin: 0;
+        color: var(--mute);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .pp-type p b {
+        color: var(--white);
+        font-weight: 500;
+      }
+      @media (max-width: 700px) {
+        .pp-sw {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .pp-sw div:first-child {
+          grid-column: 1 / -1;
+        }
+        .pp-sw div {
+          min-height: 110px;
+        }
+      }
+
+      /* fotografii */
+      .pp-ph {
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+        background: #111;
+        margin: 0;
+      }
+      .pp-ph > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .pp-cap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 44px 16px 12px;
+        background: linear-gradient(0deg, rgba(5, 4, 4, 0.85), rgba(5, 4, 4, 0));
+        display: flex;
+        gap: 10px;
+        align-items: baseline;
+        font-size: 13px;
+        color: var(--white);
+      }
+      .pp-cap i {
+        font-style: normal;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--red);
+      }
+      .pp-mosaic {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: clamp(150px, 27vh, 260px);
+        gap: 10px;
+      }
+      .pp-mosaic .w2 {
+        grid-column: span 2;
+      }
+      .pp-mosaic .h2 {
+        grid-row: span 2;
+      }
+      @media (max-width: 760px) {
+        .pp-mosaic {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-auto-rows: 170px;
+        }
+        .pp-mosaic .h2 {
+          grid-row: span 1;
+        }
+      }
+
+      /* 7 · website */
+      .pp-browser {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #0b0809;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        container-type: inline-size;
+        max-width: min(100%, 880px);
+      }
+      .pp-bar {
+        height: 30px;
+        background: #161214;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 12px;
+        position: relative;
+      }
+      .pp-bar span {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #3a3133;
+      }
+      .pp-bar em {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-style: normal;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.55);
+        background: #0b0809;
+        border-radius: 6px;
+        padding: 3px 40px;
+      }
+      .pp-site-hero {
+        position: relative;
+        aspect-ratio: 2.39 / 1;
+        overflow: hidden;
+      }
+      .pp-site-hero > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 45%;
+      }
+      .pp-site-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(5, 4, 4, 0.88), rgba(5, 4, 4, 0.3) 55%, rgba(5, 4, 4, 0.1)),
+          linear-gradient(0deg, rgba(5, 4, 4, 0.9), rgba(5, 4, 4, 0) 45%);
+      }
+      .pp-site-nav {
+        position: absolute;
+        z-index: 1;
+        left: 3.6cqw;
+        right: 3.6cqw;
+        top: 2.6cqw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: max(9px, 1.25cqw);
+      }
+      .pp-site-nav .lg {
+        display: flex;
+        align-items: center;
+        gap: 0.9cqw;
+        font-weight: 600;
+        letter-spacing: 0.32em;
+      }
+      .pp-site-nav .lg .pp-mark {
+        width: max(14px, 2.4cqw);
+        height: auto;
+      }
+      .pp-site-nav nav {
+        display: flex;
+        gap: 2.6cqw;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .pp-site-nav .ct {
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 999px;
+        padding: 0.7cqw 1.8cqw;
+      }
+      .pp-site-copy {
+        position: absolute;
+        z-index: 1;
+        left: 3.6cqw;
+        bottom: 3.6cqw;
+      }
+      .pp-site-copy .k {
+        font-size: max(8px, 1.1cqw);
+        letter-spacing: 0.3em;
+        font-weight: 600;
+        color: var(--red);
+        display: flex;
+        align-items: center;
+        gap: 0.8cqw;
+      }
+      .pp-site-copy .k::before {
+        content: "";
+        width: 0.8cqw;
+        height: 0.8cqw;
+        min-width: 6px;
+        min-height: 6px;
+        border-radius: 50%;
+        background: var(--red);
+        animation: blink 1.2s steps(2, start) infinite;
+      }
+      .pp-site-copy .t {
+        margin-top: 1.6cqw;
+        font-size: 8.4cqw;
+        font-weight: 700;
+        line-height: 0.88;
+        letter-spacing: -0.03em;
+      }
+      .pp-site-copy .pl {
+        margin-top: 2cqw;
+        display: flex;
+        align-items: center;
+        gap: 1.6cqw;
+        font-size: max(10px, 1.4cqw);
+        font-weight: 600;
+      }
+      .pp-site-copy .pl i {
+        width: 5.6cqw;
+        height: 5.6cqw;
+        min-width: 30px;
+        min-height: 30px;
+        border-radius: 50%;
+        border: 1.5px solid var(--red);
+        display: grid;
+        place-items: center;
+      }
+      .pp-site-copy .pl i::before {
+        content: "";
+        border-left: 1.4cqw solid var(--red);
+        border-top: 0.85cqw solid transparent;
+        border-bottom: 0.85cqw solid transparent;
+        margin-left: 0.4cqw;
+      }
+      .pp-mq {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+        padding: 1.2cqw 0;
+      }
+      .pp-mq div {
+        display: flex;
+        gap: 3.4cqw;
+        width: max-content;
+        white-space: nowrap;
+        font-size: max(11px, 2.2cqw);
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        animation: pp-mq 26s linear infinite;
+      }
+      .pp-mq s {
+        text-decoration: none;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
+      }
+      .pp-mq u {
+        text-decoration: none;
+        color: var(--red);
+      }
+      @keyframes pp-mq {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .pp-posters {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.4cqw;
+        padding: 2.4cqw 3.6cqw 3cqw;
+      }
+      .pp-posters .pp-ph {
+        aspect-ratio: 16 / 10;
+      }
+      .pp-posters .pp-cap {
+        flex-direction: column;
+        gap: 4px;
+        padding: 30px 1.6cqw 1.6cqw;
+        font-size: max(10px, 1.6cqw);
+        font-weight: 600;
+        line-height: 1.15;
+      }
+      .pp-posters .pp-cap i {
+        font-size: max(7px, 0.9cqw);
+        letter-spacing: 0.2em;
+      }
+      @media (max-width: 600px) {
+        .pp-site-nav nav {
+          display: none;
+        }
+        .pp-posters {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      /* 8 · online */
+      .pp-online {
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(16px, 3vw, 32px);
+        align-items: flex-start;
+      }
+      .pp-phone {
+        width: min(270px, 100%);
+        aspect-ratio: 270 / 560;
+        border-radius: 38px;
+        border: 7px solid #221c1e;
+        overflow: hidden;
+        background: #050404;
+        position: relative;
+        flex-shrink: 0;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        container-type: inline-size;
+      }
+      .pp-ig {
+        padding: 12cqw 4.6cqw 0;
+        font-size: 4.2cqw;
+      }
+      .pp-ig .hd {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 4.8cqw;
+      }
+      .pp-ig .pr {
+        margin-top: 5cqw;
+        display: flex;
+        gap: 4.6cqw;
+        align-items: center;
+      }
+      .pp-ig .av {
+        width: 22cqw;
+        height: 22cqw;
+        flex-shrink: 0;
+        border-radius: 50%;
+        border: 2px solid var(--red);
+        display: grid;
+        place-items: center;
+        background: #000;
+        box-shadow: inset 0 0 0 3px #050404;
+      }
+      .pp-ig .av .pp-mark {
+        width: 9cqw;
+        height: auto;
+      }
+      .pp-ig .bio {
+        display: flex;
+        flex-direction: column;
+        gap: 1cqw;
+        font-size: 3.5cqw;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.35;
+      }
+      .pp-ig .bio b {
+        color: var(--white);
+        font-weight: 600;
+        font-size: 4.1cqw;
+      }
+      .pp-ig .bio u {
+        text-decoration: none;
+        color: var(--red);
+      }
+      .pp-ig .bt {
+        margin-top: 4.6cqw;
+        display: flex;
+        gap: 2.4cqw;
+      }
+      .pp-ig .bt span {
+        flex: 1;
+        text-align: center;
+        padding: 2.4cqw 0;
+        border-radius: 3cqw;
+        background: #1e1a1b;
+        font-weight: 600;
+        font-size: 3.8cqw;
+      }
+      .pp-ig .bt span:first-child {
+        background: var(--red);
+        color: #050404;
+      }
+      .pp-ig .gr {
+        margin: 4.6cqw -4.6cqw 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2px;
+      }
+      .pp-ig .gr > * {
+        aspect-ratio: 1;
+        overflow: hidden;
+        position: relative;
+      }
+      .pp-ig .gr img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .pp-ig .gr .tx {
+        background: #000;
+        padding: 3.4cqw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 4cqw;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      .pp-ig .gr .tx::before {
+        content: "";
+        width: 2.4cqw;
+        height: 2.4cqw;
+        border-radius: 50%;
+        background: var(--red);
+      }
+      .pp-ig .gr .mn {
+        background: var(--red);
+        display: grid;
+        place-items: center;
+      }
+      .pp-ig .gr .mn .pp-mark {
+        width: 12cqw;
+        height: auto;
+      }
+      .pp-ig .gr small {
+        position: absolute;
+        left: 2.4cqw;
+        bottom: 2cqw;
+        font-size: 2.6cqw;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .pp-story > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 42% 40%;
+      }
+      .pp-story::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(5, 4, 4, 0.9), rgba(5, 4, 4, 0) 45%, rgba(5, 4, 4, 0) 80%, rgba(5, 4, 4, 0.6));
+      }
+      .pp-story .bars {
+        position: absolute;
+        z-index: 1;
+        left: 4.6cqw;
+        right: 4.6cqw;
+        top: 10cqw;
+        display: flex;
+        gap: 1.5cqw;
+      }
+      .pp-story .bars i {
+        flex: 1;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.4);
+      }
+      .pp-story .bars i:first-child {
+        background: #fff;
+      }
+      .pp-story .tx {
+        position: absolute;
+        z-index: 1;
+        left: 7cqw;
+        right: 7cqw;
+        bottom: 11cqw;
+        display: flex;
+        flex-direction: column;
+        gap: 3.6cqw;
+      }
+      .pp-story .tx small {
+        font-size: 3.3cqw;
+        letter-spacing: 0.3em;
+        font-weight: 600;
+        color: var(--red);
+      }
+      .pp-story .tx b {
+        font-size: 11cqw;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      .pp-story .tx span {
+        align-self: flex-start;
+        background: #fff;
+        color: #050404;
+        border-radius: 999px;
+        padding: 2.6cqw 5cqw;
+        font-size: 3.8cqw;
+        font-weight: 600;
+      }
+      .pp-rules {
+        flex: 1 1 260px;
+        min-width: 0;
+      }
+
+      /* 9 · print */
+      .pp-print {
+        display: grid;
+        grid-template-columns: 1.5fr 0.632fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .pp-print .pp-ph {
+        container-type: inline-size;
+      }
+      .pp-st {
+        aspect-ratio: 1200 / 800;
+      }
+      .pp-st .t1,
+      .pp-st .t2 {
+        position: absolute;
+        left: 50.25%;
+        line-height: 1.45;
+        color: #5e5e63;
+      }
+      .pp-st .t1 {
+        top: 27.6%;
+        font-size: 0.88cqw;
+        font-weight: 300;
+      }
+      .pp-st .t2 {
+        top: 76%;
+        font-size: 0.76cqw;
+        line-height: 1.6;
+        color: #6a6a70;
+      }
+      .pp-cl {
+        aspect-ratio: 430 / 680;
+      }
+      .pp-poster {
+        position: absolute;
+        left: 19.07%;
+        top: 11.76%;
+        width: 62.33%;
+        height: 66.91%;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 0 6.5cqw rgba(255, 255, 255, 0.28);
+      }
+      .pp-poster > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 48% 50%;
+      }
+      .pp-poster .in {
+        position: absolute;
+        inset: 0;
+        padding: 4.2cqw 3.6cqw;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) 28%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.92) 78%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+      }
+      .pp-poster .in .pp-mark {
+        width: 3.9cqw;
+        height: auto;
+        margin: 0 auto 1.5cqw;
+      }
+      .pp-poster small {
+        display: block;
+        font-size: 1.5cqw;
+        letter-spacing: 0.3em;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .pp-poster .s {
+        font-size: 1.8cqw;
+        letter-spacing: 0.35em;
+        font-weight: 600;
+        color: var(--red);
+      }
+      .pp-poster b {
+        display: block;
+        margin-top: 1.8cqw;
+        font-size: 9cqw;
+        line-height: 0.88;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      .pp-poster .f {
+        margin-top: 2.4cqw;
+        font-size: 1.8cqw;
+        letter-spacing: 0.15em;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      @media (max-width: 700px) {
+        .pp-print {
+          grid-template-columns: 1fr;
+        }
+        .pp-cl {
+          max-width: 360px;
+        }
+      }
+
+      /* 10 · în lume */
+      .pp-world {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .pp-world .w2 {
+        grid-column: span 2;
+      }
+      .pp-world .wide {
+        aspect-ratio: 16 / 9;
+        container-type: inline-size;
+      }
+      .pp-world .low {
+        height: clamp(180px, 30vh, 300px);
+      }
+      .pp-screen {
+        position: absolute;
+        left: 28.08%;
+        top: 19.85%;
+        width: 43.42%;
+        height: 36.6%;
+        background: radial-gradient(ellipse at 50% 50%, rgba(64, 201, 162, 0.08), rgba(0, 0, 0, 0) 70%), #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.6cqw;
+      }
+      .pp-screen small {
+        font-size: 0.85cqw;
+        letter-spacing: 0.5em;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .pp-screen .pp-mark {
+        width: 6.2cqw;
+        height: auto;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
+      }
+      .pp-screen b {
+        font-size: 2cqw;
+        font-weight: 500;
+        letter-spacing: 0.36em;
+        padding-left: 0.36em;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+      }
+      .pp-lt {
+        position: absolute;
+        left: 5cqw;
+        bottom: 9cqw;
+        display: flex;
+        gap: 2cqw;
+      }
+      .pp-lt::before {
+        content: "";
+        width: 0.5cqw;
+        min-width: 2px;
+        background: var(--red);
+      }
+      .pp-lt b {
+        display: block;
+        font-size: 3.4cqw;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .pp-lt small {
+        display: block;
+        margin-top: 0.9cqw;
+        font-size: 1.5cqw;
+        letter-spacing: 0.28em;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .pp-bug {
+        position: absolute;
+        top: 3cqw;
+        right: 3cqw;
+        width: 3.4cqw;
+        height: auto;
+        opacity: 0.8;
+      }
+      @media (max-width: 760px) {
+        .pp-world {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .pp-world .wide {
+          grid-column: 1 / -1;
+        }
+      }
+
+      /* 11 · intro și outro */
+      .pp-films {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+        gap: 16px;
+      }
+      .pp-film {
+        aspect-ratio: 16 / 9;
+        background: #000;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        position: relative;
+        overflow: hidden;
+        container-type: inline-size;
+      }
+      .pp-film .lbl {
+        position: absolute;
+        left: 2.4cqw;
+        bottom: 2cqw;
+        font-family: var(--mono);
+        font-size: max(9px, 1.4cqw);
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .pp-film .ctr {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .pp-film .pp-mark {
+        width: 10cqw;
+        height: auto;
+      }
+      .pp-film .wd {
+        margin-top: 3.6cqw;
+        font-size: 3cqw;
+        font-weight: 500;
+        letter-spacing: 0.34em;
+        padding-left: 0.34em;
+      }
+      .pp-film .psub {
+        margin-top: 1.2cqw;
+        font-size: 1cqw;
+        letter-spacing: 0.7em;
+        padding-left: 0.7em;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .pp-film .ln {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 1px;
+        background: var(--red);
+        transform: scaleX(0);
+      }
+      .slide.active .pp-film .ln {
+        animation: ppi-line 8s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+      }
+      .slide.active .pp-in .st {
+        animation: ppi-stem 8s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+      }
+      .slide.active .pp-in .rg {
+        animation: ppi-ring 8s cubic-bezier(0.6, 0, 0.2, 1) infinite;
+      }
+      .slide.active .pp-in .dt {
+        animation: ppi-dot 8s linear infinite;
+      }
+      .slide.active .pp-in .wd {
+        animation: ppi-word 8s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+      }
+      .slide.active .pp-in .psub {
+        animation: ppi-sub 8s ease-out infinite;
+      }
+      @keyframes ppi-line {
+        0%, 3% { transform: scaleX(0); opacity: 1; }
+        14% { transform: scaleX(1); opacity: 1; }
+        24%, 100% { transform: scaleX(1); opacity: 0; }
+      }
+      @keyframes ppi-stem {
+        0%, 18% { transform: scaleY(0); }
+        30%, 90% { transform: scaleY(1); opacity: 1; }
+        98%, 100% { transform: scaleY(1); opacity: 0; }
+      }
+      @keyframes ppi-ring {
+        0%, 24% { stroke-dashoffset: 152; opacity: 1; }
+        42%, 90% { stroke-dashoffset: 0; opacity: 1; }
+        98%, 100% { stroke-dashoffset: 0; opacity: 0; }
+      }
+      @keyframes ppi-dot {
+        0%, 42% { opacity: 0; }
+        45% { opacity: 1; }
+        48% { opacity: 0.15; }
+        51%, 90% { opacity: 1; }
+        98%, 100% { opacity: 0; }
+      }
+      @keyframes ppi-word {
+        0%, 46% { opacity: 0; letter-spacing: 0.62em; }
+        64%, 90% { opacity: 1; letter-spacing: 0.34em; }
+        98%, 100% { opacity: 0; letter-spacing: 0.34em; }
+      }
+      @keyframes ppi-sub {
+        0%, 58% { opacity: 0; }
+        70%, 90% { opacity: 1; }
+        98%, 100% { opacity: 0; }
+      }
+      .pp-out .roll {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6cqw;
+        transform: translateY(60cqw);
+      }
+      .pp-out .roll .h {
+        font-size: 3cqw;
+        font-weight: 300;
+        letter-spacing: 0.3em;
+        text-align: center;
+      }
+      .pp-out .roll .h small {
+        display: block;
+        font-size: 1.2cqw;
+        letter-spacing: 0.5em;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 1.4cqw;
+      }
+      .pp-out .roll dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 30cqw 30cqw;
+        gap: 2.4cqw 5cqw;
+      }
+      .pp-out .roll dt {
+        text-align: right;
+        font-size: 1.2cqw;
+        letter-spacing: 0.4em;
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 0.6cqw;
+      }
+      .pp-out .roll dd {
+        margin: 0;
+        font-size: 2cqw;
+        font-weight: 300;
+      }
+      .pp-out .end {
+        opacity: 0;
+      }
+      .pp-out .end .rl {
+        margin-top: 2.6cqw;
+        width: 8cqw;
+        height: 1px;
+        background: var(--red);
+      }
+      .slide.active .pp-out .roll {
+        animation: ppo-roll 12s linear infinite;
+      }
+      .slide.active .pp-out .end {
+        animation: ppo-end 12s ease-out infinite;
+      }
+      @keyframes ppo-roll {
+        0% { transform: translateY(58cqw); opacity: 1; }
+        55% { transform: translateY(-50cqw); opacity: 1; }
+        56%, 100% { transform: translateY(-50cqw); opacity: 0; }
+      }
+      @keyframes ppo-end {
+        0%, 60% { opacity: 0; transform: translateY(1cqw); }
+        70%, 94% { opacity: 1; transform: none; }
+        100% { opacity: 0; }
+      }
+
+      /* card pe pagina de acasă */
+      .h-thumb.pp-thumb {
+        background: #050404;
+      }
+      .h-thumb.pp-thumb img {
+        width: 46%;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid #272123;
+      }
+      .h-thumb.pp-thumb img:nth-of-type(1) {
+        --x: -46%;
+      }
+      .h-thumb.pp-thumb img:nth-of-type(3) {
+        --x: 46%;
+      }
+      .h-proj.pp-card:hover .h-thumb img:nth-of-type(1) {
+        --x: -62%;
+      }
+      .h-proj.pp-card:hover .h-thumb img:nth-of-type(3) {
+        --x: 62%;
+      }
+      .h-thumb .pp-chip {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #f3f6f4;
+        padding: 5px 10px;
+        border-radius: 999px;
+      }
+      .h-thumb .pp-chip i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #40c9a2;
+        box-shadow: 0 0 10px #40c9a2;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .pp-out .roll {
+          display: none;
+        }
+        .pp-out .end {
+          opacity: 1;
+        }
+        .pp-mq div {
+          animation: none;
+        }
+      }
+      .pp-list.wd li {
+        grid-template-columns: 84px minmax(0, 1fr);
+      }
+      @media (max-width: 600px) {
+        .pp-site-hero {
+          aspect-ratio: 4 / 3;
+        }
+      }
     </style>
 
     <div class="home" id="home">
@@ -3457,7 +4696,7 @@
         <span
           ><span class="dot" aria-hidden="true"></span><b>sorinarseni</b></span
         >
-        <span>Proiecte · 02</span>
+        <span>Proiecte · 03</span>
       </header>
 
       <section class="h-hero wrap">
@@ -3528,6 +4767,38 @@
             <img data-sb="2" alt="" width="394" height="219" />
             <img data-sb="7" alt="" width="394" height="219" />
             <img data-sb="5" alt="" width="394" height="219" />
+          </div>
+        </a>
+        <a
+          class="h-proj h-in pp-card"
+          style="--i: 5; --p-accent: #40c9a2; --p-on: #050404"
+          href="#pascaru"
+        >
+          <span class="h-num mono">03</span>
+          <div class="h-info">
+            <h2 class="h-name" style="font-size: clamp(44px, 6vw, 88px)">
+              Pascaru<br /><em>Production</em>
+            </h2>
+            <p class="h-sub mono">Rebranding · brandbook pentru o casă de producție</p>
+            <p class="h-desc">
+              O identitate nouă pentru una dintre cele mai mari case de
+              producție video din Moldova: logo, culori, merch, site, social
+              media, print și animații de film.
+            </p>
+            <div class="h-tags">
+              <span class="chip">12 slide-uri</span
+              ><span class="chip">brandbook</span
+              ><span class="chip hot">Every frame matters.</span>
+            </div>
+            <span class="h-open mono"
+              >Deschide prezentarea <i aria-hidden="true">→</i></span
+            >
+          </div>
+          <div class="h-thumb pp-thumb" aria-hidden="true">
+            <span class="pp-chip mono"><i></i>REBRANDING</span>
+            <img src="img/pp-camera.jpg" alt="" width="1200" height="800" />
+            <img src="img/pp-van.jpg" alt="" width="1200" height="800" />
+            <img src="img/pp-stationery.jpg" alt="" width="1200" height="800" />
           </div>
         </a>
       </section>
@@ -5169,6 +6440,381 @@
       </main>
     </div>
 
+    <div class="project" id="p-pascaru">
+      <header class="recbar">
+        <div class="wrap">
+          <div class="rec-left">
+            <button type="button" class="back mono" id="pp-back">
+              ← Proiecte
+            </button>
+            <div class="pp-label mono">
+              <span class="dot" aria-hidden="true"></span
+              ><b>Pascaru</b> · brandbook
+            </div>
+          </div>
+          <nav class="mono" aria-label="Secțiuni">
+            <a href="#pp-client">Clientul</a>
+            <a href="#pp-logo">Logo</a>
+            <a href="#pp-culori">Culori</a>
+            <a href="#pp-merch">Merch</a>
+            <a href="#pp-web">Website</a>
+            <a href="#pp-online">Online</a>
+            <a href="#pp-anim">Intro</a>
+          </nav>
+        </div>
+      </header>
+      <div class="wipe" id="pp-wipe" aria-hidden="true"></div>
+      <nav class="pager mono" id="pp-pager" aria-label="Slide-uri"></nav>
+
+      <main>
+        <!-- 1 · titlul -->
+        <section class="slide hero" id="pp-titlu" data-name="Titlu">
+          <div class="pp-hero-bg" aria-hidden="true">
+            <img src="img/pp-inelul.jpg" alt="" />
+          </div>
+          <div class="wrap">
+            <div class="hero-meta mono r" style="--i: 0">
+              <p>
+                Rebranding · ghid de identitate vizuală<br />Client: Pascaru
+                Production, Chișinău
+              </p>
+              <p>Brandbook<br />9 planșe · intro și outro</p>
+            </div>
+            <div class="pp-hero-main">
+              <svg class="pp-mark pp-draw r" style="--i: 1; color: #f3f6f4" viewBox="0 0 100 100" aria-hidden="true"><path class="st" d="M14 6h16v88H14Z" fill="currentColor"></path><path class="rg" d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle class="dt" cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg>
+              <h1>
+                <span class="fx-chars" style="--i: 1"
+                  >Pascaru<br /><span class="hl">Production</span></span
+                ><span class="by r" style="--i: 3"
+                  >rebranding de Sorin Hodoroja</span
+                >
+              </h1>
+            </div>
+            <div class="hero-foot mono r" style="--i: 5">
+              <span>Design: <b>Sorin Hodoroja · @sorinarseni</b></span>
+              <span>Slogan: <b>Every frame matters.</b></span>
+            </div>
+          </div>
+          <div class="scrollhint mono" aria-hidden="true">scroll<i></i></div>
+        </section>
+
+        <!-- 2 · clientul -->
+        <section class="slide" id="pp-client" data-name="Clientul">
+          <div class="wrap">
+            <p class="eyebrow mono r" style="--i: 0">01 · Clientul</p>
+            <h2 class="fx-chars" style="--i: 1">
+              De la scenariu <em>la ecran</em>
+            </h2>
+            <p class="lede r" style="--i: 2">
+              Pascaru Production este una dintre cele mai mari companii de
+              producție video, broadcasting și soluții media din Moldova.
+              Echipa: regizori, operatori, editori de imagine și scenariști.
+              Asistenții de platou au peste 24 000 de ore de experiență.
+            </p>
+            <div class="pp-stats r" style="--i: 3">
+              <div><b>22</b><span>filme, de la Doina la Rabbit Trap</span></div>
+              <div><b>2</b><span>seriale: Inelul de Foc 1 și 2</span></div>
+              <div><b>TV</b><span>producție TV și broadcasting</span></div>
+              <div><b>Rental</b><span>echipament de filmare de închiriat</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3 · de ce -->
+        <section class="slide" id="pp-dece" data-name="De ce">
+          <div class="wrap pp-two">
+            <div>
+              <p class="eyebrow mono r" style="--i: 0">02 · De ce rebranding</p>
+              <h2 class="fx-chars" style="--i: 1">
+                Un studio de film, o <em>identitate de film</em>
+              </h2>
+              <div class="pp-note r" style="--i: 2">
+                <b>Punctul de plecare:</b> site-ul actual e făcut în Google
+                Sites și apare în browser cu titlul generic „Production
+                House”. Brandul nu are o paletă, un font sau reguli scrise.
+              </div>
+            </div>
+            <ul class="pp-list r" style="--i: 3">
+              <li>
+                <i>01</i>O identitate sobră, cinematică, care nu concurează
+                cu filmele.
+              </li>
+              <li>
+                <i>02</i>Un simbol simplu, care se citește pe o cameră, pe o
+                dubă și într-un avatar de 40 px.
+              </li>
+              <li>
+                <i>03</i>Reguli clare pentru platou, online și print, ușor de
+                aplicat de oricine din echipă.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 4 · logo -->
+        <section class="slide" id="pp-logo" data-name="Logo">
+          <div class="wrap pp-two">
+            <div class="r" style="--i: 2">
+              <div class="pp-logo-stage">
+                <svg class="pp-mark pp-draw" style="color: #f3f6f4" viewBox="0 0 100 100" aria-hidden="true"><path class="st" d="M14 6h16v88H14Z" fill="currentColor"></path><path class="rg" d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle class="dt" cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg>
+              </div>
+              <div class="pp-vers">
+                <div style="background: #ffffff; color: #050404"><svg class="pp-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg></div>
+                <div style="background: #e5f9e0; color: #664147"><svg class="pp-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="currentColor"></circle></svg></div>
+                <div style="background: #664147; color: #40c9a2"><svg class="pp-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="#A3F7B5"></circle></svg></div>
+                <div style="background: #40c9a2; color: #050404"><svg class="pp-mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="currentColor"></circle></svg></div>
+              </div>
+            </div>
+            <div>
+              <p class="eyebrow mono r" style="--i: 0">03 · Logo</p>
+              <h2 class="fx-chars" style="--i: 1">
+                Un P din <em>stativ și obiectiv</em>
+              </h2>
+              <ul class="pp-list wd r" style="--i: 3">
+                <li><i>Bara</i>stativul camerei</li>
+                <li><i>Cercul</i>obiectivul, desenat dintr-o singură linie groasă</li>
+                <li><i>Punctul</i>lumina de REC, singurul loc unde apare Mint Leaf</li>
+              </ul>
+              <p class="lede r" style="--i: 4; margin-top: 18px">
+                Forma nu se schimbă niciodată, doar culoarea: alb pe negru,
+                negru pe alb, Chocolate Plum pe Frosted Mint, Mint Leaf pe
+                Chocolate Plum.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5 · culori și font -->
+        <section class="slide" id="pp-culori" data-name="Culori">
+          <div class="wrap">
+            <p class="eyebrow mono r" style="--i: 0">04 · Culori și font</p>
+            <h2 class="fx-chars" style="--i: 1">
+              Negru, plus <em>un singur accent</em>
+            </h2>
+            <div class="pp-sw r" style="--i: 2">
+              <div style="background: #664147; color: #ffffff"><b>Chocolate Plum</b><span>#664147<br />fundaluri, text, contrast</span></div>
+              <div style="background: #2f9c95; color: #050404"><b>Verdigris</b><span>#2F9C95<br />secundară, butoane</span></div>
+              <div style="background: #40c9a2; color: #050404"><b>Mint Leaf</b><span>#40C9A2<br />accentul principal</span></div>
+              <div style="background: #a3f7b5; color: #050404"><b>Light Green</b><span>#A3F7B5<br />evidențieri</span></div>
+              <div style="background: #e5f9e0; color: #050404"><b>Frosted Mint</b><span>#E5F9E0<br />fundaluri deschise</span></div>
+            </div>
+            <div class="pp-type r" style="--i: 3">
+              <div class="aa">Aa</div>
+              <p>
+                <b>Sora</b> · Google Fonts, cu ă, â, î, ș, ț<br />
+                Bold 700 pentru titluri · Medium 500 pentru etichete · Light
+                300 pentru generic
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6 · merch și echipamente -->
+        <section class="slide" id="pp-merch" data-name="Merch">
+          <div class="wrap">
+            <p class="eyebrow mono r" style="--i: 0">05 · Merch și echipamente</p>
+            <h2 class="fx-chars" style="--i: 1">Purtat pe <em>platou</em></h2>
+            <div class="pp-mosaic r" style="--i: 2">
+              <figure class="pp-ph w2"><img src="img/pp-camera.jpg" alt="Operator în hanorac negru CREW, filmând cu o cameră de cinema cu monograma Pascaru" loading="lazy" style="object-position: 50% 40%" /><figcaption class="pp-cap"><i>01</i>Hanorac CREW · cameră cu monogramă</figcaption></figure>
+              <figure class="pp-ph h2"><img src="img/pp-director.jpg" alt="Regizoare în hanorac negru cu clacheta Pascaru Production" loading="lazy" style="object-position: 44% 40%" /><figcaption class="pp-cap"><i>02</i>Hanorac · clachetă</figcaption></figure>
+              <figure class="pp-ph"><img src="img/pp-street.jpg" alt="Doi tineri noaptea în Chișinău, în hanorac și șapcă Pascaru, cu tote bag" loading="lazy" style="object-position: 62% 50%" /><figcaption class="pp-cap"><i>03</i>Hanorac, șapcă, tote bag</figcaption></figure>
+              <figure class="pp-ph"><img src="img/pp-cases.jpg" alt="Flight case-uri Pascaru Rental cu monogramă albă" loading="lazy" /><figcaption class="pp-cap"><i>04</i>Pascaru Rental</figcaption></figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7 · website -->
+        <section class="slide" id="pp-web" data-name="Website">
+          <div class="wrap">
+            <p class="eyebrow mono r" style="--i: 0">06 · Website</p>
+            <h2 class="fx-chars" style="--i: 1">pascaru.pro, <em>ca un film</em></h2>
+            <div class="pp-browser r" style="--i: 2">
+              <div class="pp-bar"><span></span><span></span><span></span><em>pascaru.pro</em></div>
+              <div class="pp-site-hero">
+                <img src="img/pp-inelul.jpg" alt="Hero cu un cadru din serialul Inelul de Foc 2" loading="lazy" />
+                <div class="pp-site-nav">
+                  <div class="lg"><svg class="pp-mark" style="color: #fff" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg>PASCARU</div>
+                  <nav aria-hidden="true"><span>Filme</span><span>Seriale</span><span>TV</span><span>Rental</span><span>Despre</span></nav>
+                  <div class="ct">Contact</div>
+                </div>
+                <div class="pp-site-copy">
+                  <div class="k">ACUM PE ECRAN · SERIAL</div>
+                  <div class="t">INELUL<br />DE FOC 2</div>
+                  <div class="pl"><i></i>Vezi episodul</div>
+                </div>
+              </div>
+              <div class="pp-mq" aria-hidden="true">
+                <div>
+                  <span>FILME</span><u>·</u><s>SERIALE</s><u>·</u><span>PRODUCȚIE TV</span><u>·</u><s>BROADCASTING</s><u>·</u><span>RENTAL</span><u>·</u>
+                  <span>FILME</span><u>·</u><s>SERIALE</s><u>·</u><span>PRODUCȚIE TV</span><u>·</u><s>BROADCASTING</s><u>·</u><span>RENTAL</span><u>·</u>
+                </div>
+              </div>
+              <div class="pp-posters">
+                <figure class="pp-ph"><img src="img/pp-omul.jpg" alt="Omul Fără Linia Vieții" loading="lazy" style="object-position: 32% 50%" /><figcaption class="pp-cap"><i>FILM · IMDb</i>Omul Fără Linia Vieții</figcaption></figure>
+                <figure class="pp-ph"><img src="img/pp-rabbit.jpg" alt="Rabbit Trap" loading="lazy" style="object-position: 30% 50%" /><figcaption class="pp-cap"><i>FILM</i>Rabbit Trap</figcaption></figure>
+                <figure class="pp-ph"><img src="img/pp-doina.jpg" alt="Doina" loading="lazy" style="object-position: 38% 50%" /><figcaption class="pp-cap"><i>FILM</i>Doina</figcaption></figure>
+                <figure class="pp-ph"><img src="img/pp-inima.jpg" alt="Din Inima Moldovei" loading="lazy" style="object-position: 60% 50%" /><figcaption class="pp-cap"><i>FILM</i>Din Inima Moldovei</figcaption></figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8 · online -->
+        <section class="slide" id="pp-online" data-name="Online">
+          <div class="wrap">
+            <p class="eyebrow mono r" style="--i: 0">07 · Online</p>
+            <h2 class="fx-chars" style="--i: 1">Instagram în <em>cadre de film</em></h2>
+            <div class="pp-online r" style="--i: 2">
+              <div class="pp-phone">
+                <div class="pp-ig">
+                  <div class="hd"><span>pascaru_production</span><span aria-hidden="true">≡</span></div>
+                  <div class="pr">
+                    <div class="av"><svg class="pp-mark" style="color: #fff" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg></div>
+                    <div class="bio"><b>Pascaru Production</b><span>Film · Seriale · TV · Broadcasting</span><span>Chișinău, Moldova</span><u>pascaru.pro</u></div>
+                  </div>
+                  <div class="bt"><span>Urmărește</span><span>Mesaj</span></div>
+                  <div class="gr">
+                    <div><img src="img/pp-inelul.jpg" alt="" loading="lazy" /><small>INELUL DE FOC 2</small></div>
+                    <div class="tx">Every frame matters.</div>
+                    <div><img src="img/pp-camera.jpg" alt="" loading="lazy" style="object-position: 55% 40%" /></div>
+                    <div><img src="img/pp-doina.jpg" alt="" loading="lazy" style="object-position: 35% 50%" /></div>
+                    <div class="mn"><svg class="pp-mark" style="color: #050404" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="currentColor"></circle></svg></div>
+                    <div><img src="img/pp-director.jpg" alt="" loading="lazy" style="object-position: 42% 30%" /></div>
+                    <div><img src="img/pp-rabbit.jpg" alt="" loading="lazy" style="object-position: 30% 50%" /></div>
+                    <div><img src="img/pp-cases.jpg" alt="" loading="lazy" /><small>RENTAL</small></div>
+                    <div><img src="img/pp-omul.jpg" alt="" loading="lazy" style="object-position: 30% 50%" /></div>
+                  </div>
+                </div>
+              </div>
+              <div class="pp-phone pp-story">
+                <img src="img/pp-director.jpg" alt="Story din culise cu regizoarea pe platou" loading="lazy" />
+                <div class="bars" aria-hidden="true"><i></i><i></i><i></i></div>
+                <div class="tx"><small>BEHIND THE SCENES</small><b>Ziua 1<br />pe platou.</b><span>pascaru.pro ↗</span></div>
+              </div>
+              <ul class="pp-list pp-rules">
+                <li><i>01</i>Cadru de film pe tot postul, fără fundaluri colorate.</li>
+                <li><i>02</i>Maximum un titlu și o etichetă pe imagine.</li>
+                <li><i>03</i>Mint Leaf doar pentru etichete și accente mici.</li>
+                <li><i>04</i>Monograma mică, în colț, nu în mijlocul cadrului.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9 · print -->
+        <section class="slide" id="pp-print" data-name="Print">
+          <div class="wrap">
+            <p class="eyebrow mono r" style="--i: 0">08 · Pe hârtie</p>
+            <h2 class="fx-chars" style="--i: 1">Papetărie și <em>citylight</em></h2>
+            <div class="pp-print r" style="--i: 2">
+              <figure class="pp-ph pp-st">
+                <img src="img/pp-stationery.jpg" alt="Cărți de vizită negre, foaie cu antet și plic Pascaru Production" loading="lazy" />
+                <div class="t1">Every frame<br />matters.</div>
+                <div class="t2">info@pascaru.pro<br />pascaru.pro<br />str. Alexei Mateevici 60, Chișinău</div>
+                <figcaption class="pp-cap"><i>01</i>Cărți de vizită · antet · plic</figcaption>
+              </figure>
+              <figure class="pp-ph pp-cl">
+                <img src="img/pp-citylight.jpg" alt="Citylight noaptea în Chișinău cu afișul serialului Inelul de Foc 2" loading="lazy" />
+                <div class="pp-poster">
+                  <img src="img/pp-inelul.jpg" alt="" loading="lazy" />
+                  <div class="in">
+                    <div><svg class="pp-mark" style="color: #fff" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg><small>PASCARU PRODUCTION PREZINTĂ</small></div>
+                    <div><span class="s">SERIAL</span><b>INELUL<br />DE FOC 2</b><div class="f">URMĂREȘTE PE YOUTUBE</div></div>
+                  </div>
+                </div>
+                <figcaption class="pp-cap"><i>02</i>Citylight</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10 · în lume -->
+        <section class="slide" id="pp-lume" data-name="În lume">
+          <div class="wrap">
+            <p class="eyebrow mono r" style="--i: 0">09 · Alte aplicații</p>
+            <h2 class="fx-chars" style="--i: 1">Brandul <em>în lume</em></h2>
+            <div class="pp-world r" style="--i: 2">
+              <figure class="pp-ph w2 wide">
+                <img src="img/pp-cinema.jpg" alt="Sală de cinema cu ecranul final Pascaru Production" loading="lazy" />
+                <div class="pp-screen"><small>PRODUCED BY</small><svg class="pp-mark" style="color: #fff" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg><b>PASCARU</b></div>
+                <figcaption class="pp-cap"><i>01</i>Ecran final la proiecție</figcaption>
+              </figure>
+              <figure class="pp-ph w2 wide">
+                <img src="img/pp-interview.jpg" alt="Cadru de interviu cu lower third Pascaru" loading="lazy" />
+                <svg class="pp-mark pp-bug" style="color: #fff" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg>
+                <div class="pp-lt"><div><b>[Nume Prenume]</b><small>REGIZOR · PASCARU PRODUCTION</small></div></div>
+                <figcaption class="pp-cap"><i>02</i>Lower third TV</figcaption>
+              </figure>
+              <figure class="pp-ph low"><img src="img/pp-rollup.jpg" alt="Roll-up negru Pascaru la o premieră" loading="lazy" style="object-position: 38% 45%" /><figcaption class="pp-cap"><i>03</i>Roll-up</figcaption></figure>
+              <figure class="pp-ph low w2"><img src="img/pp-van.jpg" alt="Duba de producție Pascaru pe o stradă din Chișinău" loading="lazy" style="object-position: 50% 52%" /><figcaption class="pp-cap"><i>04</i>Duba de producție</figcaption></figure>
+              <figure class="pp-ph low"><img src="img/pp-studio.jpg" alt="Intrarea în Studio 1 cu monograma luminoasă și ON AIR" loading="lazy" style="object-position: 50% 20%" /><figcaption class="pp-cap"><i>05</i>Studio 1</figcaption></figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 11 · intro și outro -->
+        <section class="slide" id="pp-anim" data-name="Intro și outro">
+          <div class="wrap">
+            <p class="eyebrow mono r" style="--i: 0">10 · Intro și outro</p>
+            <h2 class="fx-chars" style="--i: 1">Primul și <em>ultimul cadru</em></h2>
+            <div class="pp-films r" style="--i: 2">
+              <div class="pp-film pp-in" role="img" aria-label="Intro animat: o linie de lumină, apoi monograma se desenează și apare PASCARU">
+                <div class="ln"></div>
+                <div class="ctr">
+                  <svg class="pp-mark" style="color: #fff" viewBox="0 0 100 100" aria-hidden="true"><path class="st" d="M14 6h16v88H14Z" fill="currentColor"></path><path class="rg" d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle class="dt" cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg>
+                  <div class="wd">PASCARU</div>
+                  <div class="psub">PRODUCTION</div>
+                </div>
+                <div class="lbl">INTRO · 8 SEC</div>
+              </div>
+              <div class="pp-film pp-out" role="img" aria-label="Outro animat: genericul de final, apoi ecranul final cu monograma Pascaru">
+                <div class="roll" aria-hidden="true">
+                  <div class="h"><small>UN FILM DE</small>PASCARU PRODUCTION</div>
+                  <dl>
+                    <dt>REGIE</dt><dd>[Nume Prenume]</dd>
+                    <dt>IMAGINE</dt><dd>[Nume Prenume]</dd>
+                    <dt>MONTAJ</dt><dd>[Nume Prenume]</dd>
+                    <dt>ECHIPAMENT</dt><dd>Pascaru Rental</dd>
+                    <dt>LUMINI</dt><dd>LightsUP Moldova</dd>
+                  </dl>
+                </div>
+                <div class="ctr end" aria-hidden="true">
+                  <svg class="pp-mark" style="color: #fff" viewBox="0 0 100 100" aria-hidden="true"><path d="M14 6h16v88H14Z" fill="currentColor"></path><path d="M56 12a24 24 0 1 1 0 48a24 24 0 1 1 0-48Z" fill="none" stroke="currentColor" stroke-width="14"></path><circle cx="56" cy="36" r="6" fill="#40C9A2"></circle></svg>
+                  <div class="wd">PASCARU</div>
+                  <div class="rl"></div>
+                  <div class="psub" style="margin-top: 2.6cqw">PASCARU.PRO</div>
+                </div>
+                <div class="lbl">OUTRO · 12 SEC</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 12 · final -->
+        <section class="slide finale" id="pp-final" data-name="Final">
+          <div class="wrap">
+            <h2 class="fx-chars fx-bounce" style="--i: 0">
+              Every frame <em>matters.</em>
+            </h2>
+            <p class="plus r" style="--i: 2">
+              Brandbook complet pentru Pascaru Production: logo, culori, merch,
+              site, social media, print și animații.
+            </p>
+            <div class="actions r" style="--i: 3">
+              <button class="btn" id="pp-again" type="button">↺ De la început</button>
+              <button class="btn" id="pp-share" type="button">↗ Share</button>
+            </div>
+            <p class="toast mono" id="pp-toast" role="status"></p>
+            <div class="credits mono r" style="--i: 4">
+              <div>Design<b>Sorin Hodoroja · @sorinarseni</b></div>
+              <div>Client<b>Pascaru Production · pascaru.pro</b></div>
+              <div>Specialitatea<b>Producție Multimedia · USM, FJȘC</b></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
     <script>
       (function () {
         var slides = [].slice.call(
@@ -5621,7 +7267,8 @@
           }
           document.getElementById("p-bau-bau").classList.remove("open");
           // alt proiect deschis (#sase-roluri)? atunci nu ne întoarcem acasă
-          if (location.hash === "#sase-roluri") return;
+          if (location.hash === "#sase-roluri" || location.hash === "#pascaru")
+            return;
           root.classList.remove("in-project");
           scrollTo({ top: 0, behavior: "instant" });
           document.title = "Proiecte sorinarseni";
@@ -5907,7 +7554,8 @@
           stopAudio();
           P.classList.remove("open");
           root.classList.remove("sr");
-          if (location.hash !== "#bau-bau") root.classList.remove("in-project");
+          if (location.hash !== "#bau-bau" && location.hash !== "#pascaru")
+            root.classList.remove("in-project");
         }
         function route() {
           location.hash === "#sase-roluri" ? open() : close();
@@ -6405,5 +8053,180 @@
         route();
       })();
     </script>
+
+    <script>
+      // proiectul 03 · Pascaru Production (adresa #pascaru)
+      (function () {
+        var P = document.getElementById("p-pascaru");
+        if (!P) return;
+        var root = document.documentElement;
+        var $ = function (id) {
+          return document.getElementById(id);
+        };
+        var slides = [].slice.call(P.querySelectorAll(".slide"));
+        var wipe = $("pp-wipe"),
+          pager = $("pp-pager");
+        var links = [].slice.call(P.querySelectorAll(".recbar nav a"));
+        var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var cur = -1,
+          inProj = false;
+        function pad(n) {
+          return String(n).padStart(2, "0");
+        }
+        var dots = slides.map(function (s, i) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.setAttribute("aria-label", i + 1 + " · " + s.dataset.name);
+          b.addEventListener("click", function () {
+            s.scrollIntoView({ behavior: "smooth" });
+          });
+          pager.appendChild(b);
+          return b;
+        });
+        var count = document.createElement("span");
+        count.className = "count";
+        pager.appendChild(count);
+        function setActive(i) {
+          if (i === cur) return;
+          var first = cur === -1;
+          cur = i;
+          slides.forEach(function (s, j) {
+            s.classList.toggle("active", j === i);
+          });
+          dots.forEach(function (d, j) {
+            d.classList.toggle("on", j === i);
+          });
+          count.textContent = pad(i + 1) + " / " + pad(slides.length);
+          var id = slides[i].id;
+          links.forEach(function (a) {
+            a.classList.toggle("on", a.getAttribute("href") === "#" + id);
+          });
+          if (!first) {
+            wipe.classList.remove("go");
+            void wipe.offsetWidth;
+            wipe.classList.add("go");
+          }
+        }
+        function pick() {
+          var best = 0,
+            bi = 0;
+          slides.forEach(function (s, j) {
+            var r = s.getBoundingClientRect();
+            var vis = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
+            if (vis > best) {
+              best = vis;
+              bi = j;
+            }
+          });
+          setActive(bi);
+        }
+        var ticking = false;
+        addEventListener(
+          "scroll",
+          function () {
+            if (!inProj || ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () {
+              ticking = false;
+              pick();
+            });
+          },
+          { passive: true },
+        );
+        addEventListener("resize", function () {
+          if (inProj) pick();
+        });
+        addEventListener("keydown", function (e) {
+          if (!inProj) return;
+          if (e.key === "Escape") {
+            location.hash = "acasa";
+            return;
+          }
+          if (e.target.closest && e.target.closest("button,input,textarea"))
+            return;
+          var k = e.key,
+            d = 0;
+          if (k === "ArrowDown" || k === "PageDown" || k === " ") d = 1;
+          if (k === "ArrowUp" || k === "PageUp") d = -1;
+          if (!d) return;
+          var n = Math.max(0, Math.min(slides.length - 1, cur + d));
+          if (n !== cur) {
+            e.preventDefault();
+            slides[n].scrollIntoView({ behavior: "smooth" });
+          }
+        });
+        links.forEach(function (a) {
+          a.addEventListener("click", function (e) {
+            e.preventDefault();
+            var t = document.querySelector(a.getAttribute("href"));
+            if (t) t.scrollIntoView({ behavior: "smooth" });
+          });
+        });
+        function open() {
+          if (inProj) {
+            pick();
+            return;
+          }
+          inProj = true;
+          P.classList.add("open");
+          root.classList.add("in-project", "pp");
+          slides.forEach(function (s) {
+            s.classList.remove("active");
+          });
+          cur = -1;
+          scrollTo({ top: 0, behavior: "instant" });
+          document.title = "Pascaru Production · rebranding de Sorin Hodoroja";
+          requestAnimationFrame(function () {
+            requestAnimationFrame(pick);
+          });
+        }
+        function close() {
+          if (!inProj) return;
+          inProj = false;
+          P.classList.remove("open");
+          root.classList.remove("pp");
+          if (location.hash !== "#bau-bau" && location.hash !== "#sase-roluri")
+            root.classList.remove("in-project");
+        }
+        function route() {
+          location.hash === "#pascaru" ? open() : close();
+        }
+        addEventListener("hashchange", route);
+        $("pp-back").addEventListener("click", function () {
+          location.hash = "acasa";
+        });
+
+        var toast = $("pp-toast"),
+          tt;
+        function say(t) {
+          toast.textContent = t;
+          clearTimeout(tt);
+          tt = setTimeout(function () {
+            toast.textContent = "";
+          }, 2600);
+        }
+        $("pp-again").addEventListener("click", function () {
+          say("Motor!");
+          slides[0].scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+        });
+        $("pp-share").addEventListener("click", function () {
+          var url = location.href.split("#")[0] + "#pascaru";
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(
+              function () {
+                say("Linkul a fost copiat");
+              },
+              function () {
+                say(url);
+              },
+            );
+          } else say(url);
+        });
+
+        route();
+      })();
+    </script>
   </body>
 </html>
+
+</body></html>
