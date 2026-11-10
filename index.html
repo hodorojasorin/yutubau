@@ -6706,6 +6706,114 @@
           </main>
         </div>
 
+        <style>
+          .pingate {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(10, 8, 20, 0.86);
+            backdrop-filter: blur(6px);
+          }
+          .pingate-card {
+            width: 100%;
+            max-width: 320px;
+            background: #1e1b2e;
+            border: 1px solid #3a3550;
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+            color: #f1edfb;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+          }
+          .pingate-eyebrow {
+            margin: 0 0 6px;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #a79acb;
+          }
+          .pingate-title {
+            margin: 0 0 18px;
+            font-size: 22px;
+            font-weight: 700;
+          }
+          .pingate-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            font-size: 24px;
+            letter-spacing: 0.5em;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid #3a3550;
+            background: #141127;
+            color: #fff;
+          }
+          .pingate-input:focus {
+            outline: 2px solid #6d4aff;
+            outline-offset: 2px;
+          }
+          .pingate-error {
+            margin: 10px 0 0;
+            font-size: 13px;
+            color: #ff6b6b;
+          }
+          .pingate-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+          }
+          .pingate-back,
+          .pingate-submit {
+            flex: 1;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+          .pingate-back {
+            background: #2a2640;
+            color: #cfc9e6;
+          }
+          .pingate-submit {
+            background: #6d4aff;
+            color: #fff;
+          }
+        </style>
+        <div class="pingate" id="pingate" hidden>
+          <form id="pingate-form" class="pingate-card">
+            <p class="pingate-eyebrow">Proiectul 02 · acces restricționat</p>
+            <h2 class="pingate-title">Introdu PIN-ul</h2>
+            <input
+              id="pingate-input"
+              class="pingate-input"
+              type="password"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="4"
+              autocomplete="off"
+              placeholder="••••"
+              aria-label="PIN de acces"
+            />
+            <p class="pingate-error" id="pingate-error" role="alert" hidden>
+              PIN greșit. Mai încearcă.
+            </p>
+            <div class="pingate-actions">
+              <button type="button" class="pingate-back" id="pingate-back">
+                ← Înapoi
+              </button>
+              <button type="submit" class="pingate-submit">Intră</button>
+            </div>
+          </form>
+        </div>
+
         <div class="project" id="p-pascaru">
           <header class="recbar">
             <div class="wrap">
@@ -8417,11 +8525,71 @@
               if (location.hash !== "#bau-bau" && location.hash !== "#pascaru")
                 root.classList.remove("in-project");
             }
+            var PIN = "1003";
+            var gate = $("pingate"),
+              gateForm = $("pingate-form"),
+              gateInput = $("pingate-input"),
+              gateError = $("pingate-error"),
+              gateBack = $("pingate-back");
+            function pinOk() {
+              try {
+                return sessionStorage.getItem("sr-pin-ok") === "1";
+              } catch (e) {
+                return false;
+              }
+            }
+            function pinUnlock() {
+              try {
+                sessionStorage.setItem("sr-pin-ok", "1");
+              } catch (e) {}
+            }
+            function showGate() {
+              if (!gate) return;
+              gateError.hidden = true;
+              gateInput.value = "";
+              gate.hidden = false;
+              setTimeout(function () {
+                gateInput.focus();
+              }, 50);
+            }
+            function hideGate() {
+              if (gate) gate.hidden = true;
+            }
+            if (gateForm) {
+              gateForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                if (gateInput.value === PIN) {
+                  pinUnlock();
+                  hideGate();
+                  open();
+                } else {
+                  gateError.hidden = false;
+                  gateInput.value = "";
+                  gateInput.focus();
+                }
+              });
+              gateBack.addEventListener("click", function () {
+                hideGate();
+                location.hash = "acasa";
+              });
+            }
             function route() {
-              location.hash === "#sase-roluri" ? open() : close();
+              if (location.hash !== "#sase-roluri") {
+                hideGate();
+                close();
+                return;
+              }
+              if (pinOk()) {
+                hideGate();
+                open();
+              } else {
+                close();
+                showGate();
+              }
             }
             addEventListener("hashchange", route);
             $("s-back").addEventListener("click", function () {
+              hideGate();
               location.hash = "acasa";
             });
 
