@@ -6716,7 +6716,7 @@
         </div>
 
         <style>
-          .pingate {
+          .clap-screen {
             position: fixed;
             inset: 0;
             z-index: 999;
@@ -6727,7 +6727,7 @@
             background: rgba(10, 8, 20, 0.86);
             backdrop-filter: blur(6px);
           }
-          .pingate-card {
+          .clap-card {
             width: 100%;
             max-width: 320px;
             background: #1e1b2e;
@@ -6739,19 +6739,19 @@
             color: #f1edfb;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
           }
-          .pingate-eyebrow {
+          .clap-eyebrow {
             margin: 0 0 6px;
             font-size: 12px;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: #a79acb;
           }
-          .pingate-title {
+          .clap-title {
             margin: 0 0 18px;
             font-size: 22px;
             font-weight: 700;
           }
-          .pingate-input {
+          .clap-input {
             width: 100%;
             box-sizing: border-box;
             padding: 12px;
@@ -6763,22 +6763,22 @@
             background: #141127;
             color: #fff;
           }
-          .pingate-input:focus {
+          .clap-input:focus {
             outline: 2px solid #6d4aff;
             outline-offset: 2px;
           }
-          .pingate-error {
+          .clap-note {
             margin: 10px 0 0;
             font-size: 13px;
             color: #ff6b6b;
           }
-          .pingate-actions {
+          .clap-actions {
             display: flex;
             gap: 10px;
             margin-top: 18px;
           }
-          .pingate-back,
-          .pingate-submit {
+          .clap-back,
+          .clap-go {
             flex: 1;
             border: none;
             border-radius: 10px;
@@ -6787,35 +6787,35 @@
             font-weight: 600;
             cursor: pointer;
           }
-          .pingate-back {
+          .clap-back {
             background: #2a2640;
             color: #cfc9e6;
           }
-          .pingate-submit {
+          .clap-go {
             background: #6d4aff;
             color: #fff;
           }
         </style>
-        <div class="pingate" id="pingate" hidden>
-          <form id="pingate-form" class="pingate-card">
-            <p class="pingate-eyebrow">Proiectul 02 · acces restricționat</p>
-            <h2 class="pingate-title">Introdu codul de acces</h2>
+        <div class="clap-screen" id="clap-screen" hidden>
+          <form id="clap-form" class="clap-card">
+            <p class="clap-eyebrow">Proiectul 02 · acces restricționat</p>
+            <h2 class="clap-title">Introdu codul de acces</h2>
             <input
-              id="pingate-input"
-              class="pingate-input"
+              id="clap-input"
+              class="clap-input"
               type="password"
               autocomplete="off"
               placeholder="••••••••"
               aria-label="Cod de acces"
             />
-            <p class="pingate-error" id="pingate-error" role="alert" hidden>
+            <p class="clap-note" id="clap-note" role="alert" hidden>
               Cod greșit. Mai încearcă.
             </p>
-            <div class="pingate-actions">
-              <button type="button" class="pingate-back" id="pingate-back">
+            <div class="clap-actions">
+              <button type="button" class="clap-back" id="clap-back">
                 ← Înapoi
               </button>
-              <button type="submit" class="pingate-submit">Intră</button>
+              <button type="submit" class="clap-go">Intră</button>
             </div>
           </form>
         </div>
@@ -8531,31 +8531,32 @@
               if (location.hash !== "#bau-bau" && location.hash !== "#pascaru")
                 root.classList.remove("in-project");
             }
-            var ACC = "anaconda";
-            var gate = $("pingate"),
-              gateForm = $("pingate-form"),
-              gateInput = $("pingate-input"),
-              gateError = $("pingate-error"),
-              gateBack = $("pingate-back");
-            function pinOk() {
+            var PIN = "sanutefvta";
+            var TAKE = "anaconda";
+            var scr = $("clap-screen"),
+              scrForm = $("clap-form"),
+              scrInput = $("clap-input"),
+              scrNote = $("clap-note"),
+              scrBack = $("clap-back");
+            function ready() {
               try {
-                return sessionStorage.getItem("sr-pin-ok") === "1";
+                return sessionStorage.getItem("sr-take-ok") === "1";
               } catch (e) {
                 return false;
               }
             }
-            function pinUnlock() {
+            function markReady() {
               try {
-                sessionStorage.setItem("sr-pin-ok", "1");
+                sessionStorage.setItem("sr-take-ok", "1");
               } catch (e) {}
             }
-            var GATED_IDS = ["sr-title", "sr-desc", "sr-chip1", "sr-chip2"];
-            GATED_IDS.forEach(function (id) {
+            var MASKED_IDS = ["sr-title", "sr-desc", "sr-chip1", "sr-chip2"];
+            MASKED_IDS.forEach(function (id) {
               var el = $(id);
               if (el) el.dataset.real = el.innerHTML;
             });
             function maskHome() {
-              GATED_IDS.forEach(function (id) {
+              MASKED_IDS.forEach(function (id) {
                 var el = $(id);
                 if (!el) return;
                 el.innerHTML = "######";
@@ -8563,63 +8564,63 @@
               });
             }
             function revealHome() {
-              GATED_IDS.forEach(function (id) {
+              MASKED_IDS.forEach(function (id) {
                 var el = $(id);
                 if (!el || el.dataset.real == null) return;
                 el.innerHTML = el.dataset.real;
                 el.classList.remove("sr-masked");
               });
             }
-            pinOk() ? revealHome() : maskHome();
-            function showGate() {
-              if (!gate) return;
-              gateError.hidden = true;
-              gateInput.value = "";
-              gate.hidden = false;
+            ready() ? revealHome() : maskHome();
+            function showScreen() {
+              if (!scr) return;
+              scrNote.hidden = true;
+              scrInput.value = "";
+              scr.hidden = false;
               setTimeout(function () {
-                gateInput.focus();
+                scrInput.focus();
               }, 50);
             }
-            function hideGate() {
-              if (gate) gate.hidden = true;
+            function hideScreen() {
+              if (scr) scr.hidden = true;
             }
-            if (gateForm) {
-              gateForm.addEventListener("submit", function (e) {
+            if (scrForm) {
+              scrForm.addEventListener("submit", function (e) {
                 e.preventDefault();
-                if (gateInput.value.trim().toLowerCase() === ACC) {
-                  pinUnlock();
+                if (scrInput.value.trim().toLowerCase() === TAKE) {
+                  markReady();
                   revealHome();
-                  hideGate();
+                  hideScreen();
                   open();
                   say("Acces permis");
                 } else {
-                  gateError.hidden = false;
-                  gateInput.value = "";
-                  gateInput.focus();
+                  scrNote.hidden = false;
+                  scrInput.value = "";
+                  scrInput.focus();
                 }
               });
-              gateBack.addEventListener("click", function () {
-                hideGate();
+              scrBack.addEventListener("click", function () {
+                hideScreen();
                 location.hash = "acasa";
               });
             }
             function route() {
               if (location.hash !== "#sase-roluri") {
-                hideGate();
+                hideScreen();
                 close();
                 return;
               }
-              if (pinOk()) {
-                hideGate();
+              if (ready()) {
+                hideScreen();
                 open();
               } else {
                 close();
-                showGate();
+                showScreen();
               }
             }
             addEventListener("hashchange", route);
             $("s-back").addEventListener("click", function () {
-              hideGate();
+              hideScreen();
               location.hash = "acasa";
             });
 
