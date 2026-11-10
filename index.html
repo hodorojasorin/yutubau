@@ -5023,7 +5023,7 @@
                   fluture.
                 </p>
                 <div class="h-tags">
-                  <span class="chip">8 slide-uri</span
+                  <span class="chip">9 slide-uri</span
                   ><span class="chip">scenariu</span
                   ><span class="chip hot">efectul fluture</span>
                 </div>
@@ -8245,6 +8245,52 @@
             color: #141414;
           }
 
+          /* actorii */
+          .e5-cast {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(24px, 4vw, 56px);
+            margin-top: 22px;
+            max-width: 900px;
+          }
+          .e5-actor {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          }
+          .e5-actor img {
+            display: block;
+            width: min(100%, calc(52svh * 720 / 880));
+            height: auto;
+            aspect-ratio: 720 / 880;
+            box-shadow: 8px 8px 0 #141414;
+            transform: rotate(var(--rot, -1.5deg));
+          }
+          .e5-actor figcaption {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+          }
+          .e5-actor figcaption b {
+            font-family: var(--display);
+            font-weight: 400;
+            font-size: clamp(30px, 3.6vw, 46px);
+            line-height: 1;
+          }
+          .e5-actor figcaption .e5-hand {
+            font-size: 28px;
+            line-height: 1;
+          }
+          @media (max-width: 600px) {
+            .e5-cast {
+              gap: 18px;
+            }
+            .e5-actor figcaption .e5-hand {
+              font-size: 22px;
+            }
+          }
+
           /* card pe pagina de acasă */
           .h-thumb.e5-thumb {
             background: #ede6da;
@@ -8342,6 +8388,7 @@
                 </div>
               </div>
               <nav class="mono" aria-label="Secțiuni">
+                <a href="#e5-actori">Actorii</a>
                 <a href="#e5-idee">Ideea</a>
                 <a href="#e5-timp">Cronometrul</a>
                 <a href="#e5-scene1">Scenele</a>
@@ -8385,7 +8432,33 @@
               </div>
             </section>
 
-            <!-- 2 · ideea -->
+            <!-- 2 · actorii -->
+            <section class="slide" id="e5-actori" data-name="Actorii">
+              <div class="wrap">
+                <p class="eyebrow mono r" style="--i: 0">Distribuția · fără replici</p>
+                <h2 class="r" style="--i: 1">El &amp; <em>Ea</em></h2>
+                <div class="e5-cast">
+                  <figure class="e5-actor r" style="--i: 2; --rot: -2deg">
+                    <img src="img/e5-sergiu.jpg" alt="Sergiu, actorul care joacă rolul lui El" width="720" height="880" loading="lazy" />
+                    <figcaption>
+                      <span class="mono">El · etajul 4</span>
+                      <b>Sergiu</b>
+                      <span class="e5-hand">abia s-a mutat, cu o cutie FRAGIL</span>
+                    </figcaption>
+                  </figure>
+                  <figure class="e5-actor r" style="--i: 3; --rot: 2deg">
+                    <img src="img/e5-vanesa.jpg" alt="Vanesa, actrița care joacă rolul Ei" width="720" height="880" loading="lazy" />
+                    <figcaption>
+                      <span class="mono">Ea · etajul 5</span>
+                      <b>Vanesa</b>
+                      <span class="e5-hand">locuiește aici de mult, ține minte gesturile mici</span>
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </section>
+
+            <!-- 3 · ideea -->
             <section class="slide" id="e5-idee" data-name="Ideea">
               <div class="wrap e5-idea">
                 <div class="e5-postit tape r" style="--i: 0; --rot: -2.5deg">
