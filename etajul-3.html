@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ro" class="in-project">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>Etajul 3 · reclamă</title>
+    <meta name="description" content="Proiectul 04 · reclamă pe tema efectului fluture, cu parolă." />
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&family=Archivo+Black&family=Caveat:wght@600;700&display=swap" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/deck.css" />
+    <link rel="stylesheet" href="css/gate.css" />
+    <link rel="stylesheet" href="css/etajul-3.css" />
+  </head>
+  <body>
+          <div class="clap-screen" id="e5-screen" hidden>
+            <form id="e5-form" class="clap-card">
+              <p class="clap-eyebrow">Proiectul 04 · acces restricționat</p>
+              <h2 class="clap-title">Introdu parola</h2>
+              <input
+                id="e5-input"
+                class="clap-input"
+                type="password"
+                autocomplete="off"
+                placeholder="••••••"
+                aria-label="Parola"
+              />
+              <p class="clap-note" id="e5-note" role="alert" hidden>
+                Parolă greșită. Mai încearcă.
+              </p>
+              <div class="clap-actions">
+                <button type="button" class="clap-back" id="e5-gback">
+                  ← Înapoi
+                </button>
+                <button type="submit" class="clap-go">Intră</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="project" id="p-etajul-5">
+            <header class="recbar">
+              <div class="wrap">
+                <div class="rec-left">
+                  <button type="button" class="back mono" id="e5-back">
+                    ← Proiecte
+                  </button>
+                  <div class="e5-label mono">
+                    <span class="dot" aria-hidden="true"></span><b>Etajul 3</b> ·
+                    scenariu
+                  </div>
+                </div>
+                <nav class="mono" aria-label="Secțiuni">
+                  <a href="#e5-actori">Actorii</a>
+                  <a href="#e5-idee">Ideea</a>
+                  <a href="#e5-timp">Cronometrul</a>
+                  <a href="#e5-scene1">Scenele</a>
+                  <a href="#e5-oglinda">Bilețelele</a>
+                  <a href="#e5-animatic">Animaticul</a>
+                  <a href="#e5-filmare">Filmarea</a>
+                </nav>
+              </div>
+            </header>
+            <div class="wipe" id="e5-wipe" aria-hidden="true"></div>
+            <nav class="pager mono" id="e5-pager" aria-label="Slide-uri"></nav>
+
+            <main>
+              <!-- 1 · titlul -->
+              <section class="slide hero" id="e5-titlu" data-name="Titlu">
+                <div class="wrap">
+                  <div class="hero-meta mono r" style="--i: 0">
+                    <p>Scenariu · reclamă · efectul fluture<br />Client: Hamal.md</p>
+                    <p>1:06 · 16:9 · Fujifilm X-T5<br />Liftul Mediacor</p>
+                  </div>
+                  <div>
+                    <h1 class="r" style="--i: 1">ETAJUL</h1>
+                    <div class="e5-title-row">
+                      <span class="e5-five r" style="--i: 2">3</span>
+                      <div class="e5-stack r" style="--i: 3">
+                        <div class="e5-display">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5" /><path d="M5 12l7-7 7 7" /></svg>
+                          2→3
+                        </div>
+                        <div class="e5-tape-label mono">
+                          Regie · Sorin Arseni Hodoroja
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="e5-chips r" style="--i: 4">
+                    <span class="e5-chip">Fără replici</span>
+                    <span class="e5-chip">Inel compozițional</span>
+                    <span class="e5-chip">Plot twist</span>
+                    <span class="e5-chip">Best Friend · SOFI TUKKER (remix)</span>
+                    <span class="e5-chip hot">Hamal.md</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 2 · actorii -->
+              <section class="slide" id="e5-actori" data-name="Actorii">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">Distribuția · fără replici</p>
+                  <h2 class="r" style="--i: 1">El &amp; <em>Ea</em></h2>
+                  <div class="e5-cast">
+                    <figure class="e5-actor r" style="--i: 2; --rot: -2deg">
+                      <img src="img/e5-sergiu.jpg" alt="Sergiu, actorul care joacă rolul lui El" width="720" height="880" loading="lazy" />
+                      <figcaption>
+                        <span class="mono">El · etajul 2</span>
+                        <b>Sergiu</b>
+                        <span class="e5-hand">abia s-a mutat, cu o cutie FRAGIL</span>
+                      </figcaption>
+                    </figure>
+                    <figure class="e5-actor r" style="--i: 3; --rot: 2deg">
+                      <img src="img/e5-vanesa.jpg" alt="Vanesa, actrița care joacă rolul Ei" width="720" height="880" loading="lazy" />
+                      <figcaption>
+                        <span class="mono">Ea · etajul 3</span>
+                        <b>Vanesa</b>
+                        <span class="e5-hand">locuiește aici de mult, ține minte gesturile mici</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 3 · ideea -->
+              <section class="slide" id="e5-idee" data-name="Ideea">
+                <div class="wrap e5-idea">
+                  <div class="e5-postit tape r" style="--i: 0; --rot: -2.5deg">
+                    <span class="mono">Logline</span>
+                    <p>
+                      Doi vecini care nu-și vorbesc ajung, printr-o ușă de lift
+                      redeschisă în ultima secundă, să-și mute viața împreună.
+                      Literal.
+                    </p>
+                  </div>
+                  <div>
+                    <p class="eyebrow mono r" style="--i: 1">Efectul fluture</p>
+                    <h2 class="r" style="--i: 1">Un gest mic <em>schimbă tot.</em></h2>
+                    <div class="e5-chain r" style="--i: 2">
+                      <span>Un buton apăsat</span><i aria-hidden="true">→</i
+                      ><span>Bilețele</span><i aria-hidden="true">→</i
+                      ><span>Mesaje</span><i aria-hidden="true">→</i
+                      ><span>O mutare</span>
+                    </div>
+                    <p class="lede r" style="--i: 3">
+                      Publicul crede 46 de secunde că privește o poveste de
+                      dragoste. Abia la twist află că e o reclamă pentru o firmă de
+                      mutări.
+                    </p>
+                    <p class="e5-slogan r" style="--i: 4">
+                      „Am mutat mii de vieți. Unele doar un etaj mai sus.”
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 3 · cronometrul -->
+              <section class="slide" id="e5-timp" data-name="Cronometrul">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">1:06, secundă cu secundă</p>
+                  <h2 class="r" style="--i: 1">Cronometrul</h2>
+                  <p class="lede r" style="--i: 1">
+                    Fiecare bloc e o scenă, la lungimea ei reală. Povestea ține
+                    până la 0:58, apoi partea dinamică a piesei cade pe logo.
+                  </p>
+                  <div class="r" style="--i: 2">
+                    <div class="e5-bar">
+                      <div style="--f: 3; --bg: #141414; --fg: #fffdf8">1</div>
+                      <div style="--f: 5; --bg: #3a3631; --fg: #fffdf8">2</div>
+                      <div style="--f: 5; --bg: #ffe45c">3</div>
+                      <div style="--f: 15; --bg: #ffe45c">4 · bilețele</div>
+                      <div style="--f: 12; --bg: #fff1a8">5 · aproape</div>
+                      <div style="--f: 6; --bg: #b9bec3">6</div>
+                      <div style="--f: 5; --bg: #ff9ec4">7</div>
+                      <div style="--f: 3; --bg: #ff9ec4">8</div>
+                      <div style="--f: 4">9</div>
+                      <div style="--f: 5; --bg: #ff5a1f">10</div>
+                      <div style="--f: 3; --bg: #141414; --fg: #fffdf8">11</div>
+                    </div>
+                    <div class="e5-bar-ticks">
+                      <span>0:00 · hook</span><span>0:46 · twist</span
+                      ><span>0:58 · drop</span><span>1:06</span>
+                    </div>
+                  </div>
+                  <div class="e5-facts r" style="--i: 3">
+                    <div><span class="mono">Locație</span><b>Liftul Mediacor</b></div>
+                    <div><span class="mono">Actori</span><b>2, fără replici</b></div>
+                    <div><span class="mono">Filmare</span><b>Joi, 12.11</b></div>
+                    <div><span class="mono">Cameră</span><b>X-T5 · 18–55</b></div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 4 · scenele 1–4 -->
+              <section class="slide" id="e5-scene1" data-name="Scenele 1–4">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">Scenele 01–04</p>
+                  <h2 class="r" style="--i: 1">Străini <em>în lift</em></h2>
+                  <div class="e5-scenes">
+                    <article class="e5-sc r" style="--i: 2">
+                      <div class="e5-sc-top"><span class="e5-time">0:00 – 0:03</span><span class="e5-num">01</span></div>
+                      <span class="e5-kick">Hook · inel deschidere</span>
+                      <h3>Cutia FRAGIL intră prima</h3>
+                      <p>Cadru simetric din fundul liftului. Ușile se deschid, El intră cu o cutie mare pe care abia o ține. Afișajul arată P.</p>
+                    </article>
+                    <article class="e5-sc r" style="--i: 3">
+                      <div class="e5-sc-top"><span class="e5-time">0:03 – 0:08</span><span class="e5-num">02</span></div>
+                      <span class="e5-kick">Gestul fluture</span>
+                      <h3>Un buton apăsat cu cotul</h3>
+                      <p>Ușile se închid în fața Ei, se vede dezamăgirea prin deschizătură. El apasă cu cotul butonul. Ea intră repede, dă din cap a mulțumire și apasă 3.</p>
+                    </article>
+                    <article class="e5-sc r" style="--i: 4">
+                      <div class="e5-sc-top"><span class="e5-time">0:08 – 0:13</span><span class="e5-num">03</span></div>
+                      <span class="e5-kick">Primul contact</span>
+                      <h3>Bilețele lângă butoane</h3>
+                      <p>A doua zi, pe metalul de lângă butoane: „Mersi pentru ușă. – 3”. Altă zi, răspunsul dedesubt: „Oricând. – 2”.</p>
+                    </article>
+                    <article class="e5-sc r" style="--i: 5">
+                      <div class="e5-sc-top"><span class="e5-time">0:13 – 0:28</span><span class="e5-num">04</span></div>
+                      <span class="e5-kick">Montaj pe beat</span>
+                      <h3>Zi după zi, bilețel după bilețel</h3>
+                      <p>Același unghi fix pe peretele cu butoane. Bilețelele se adună, gecile se schimbă. Fiecare citește singur și zâmbește.</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 5 · scenele 5–8 -->
+              <section class="slide" id="e5-scene2" data-name="Scenele 5–8">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">Scenele 05–08</p>
+                  <h2 class="r" style="--i: 1">Aproape. <em>Apoi twist.</em></h2>
+                  <div class="e5-scenes">
+                    <article class="e5-sc r" style="--i: 2">
+                      <div class="e5-sc-top"><span class="e5-time">0:28 – 0:40</span><span class="e5-num">05</span></div>
+                      <span class="e5-kick">Apropiere</span>
+                      <h3>Tot mai aproape</h3>
+                      <p>Trec pe mesaje: „Coborâm împreună?”. În același cadru, distanța scade zi de zi. Într-o dimineață, Ea adoarme pe umărul lui.</p>
+                    </article>
+                    <article class="e5-sc r" style="--i: 3">
+                      <div class="e5-sc-top"><span class="e5-time">0:40 – 0:46</span><span class="e5-num">06</span></div>
+                      <span class="e5-kick">Pistă falsă</span>
+                      <h3>„Mă mut.”</h3>
+                      <p>Un singur bilețel pe metalul gol. Fața Ei se întunecă. Liftul pleacă gol, ușile se închid fără nimeni.</p>
+                    </article>
+                    <article class="e5-sc twist r" style="--i: 4">
+                      <div class="e5-sc-top"><span class="e5-time">0:46 – 0:51</span><span class="e5-num">07</span></div>
+                      <span class="e5-kick">Plot twist</span>
+                      <h3>Ușile se deschid la 3</h3>
+                      <p>La ușa Ei stau cutiile lui. Pe cutia FRAGIL, un bilețel: „Mă mut. La tine. (Dacă vrei.)”</p>
+                    </article>
+                    <article class="e5-sc r" style="--i: 5">
+                      <div class="e5-sc-top"><span class="e5-time">0:51 – 0:54</span><span class="e5-num">08</span></div>
+                      <span class="e5-kick">Reacția</span>
+                      <h3>Ea râde, El ridică din umeri</h3>
+                      <p>Ea își acoperă gura cu mâna. Se întoarce: El stă pe o cutie lângă perete, cu cutia FRAGIL în brațe.</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 6 · scenele 9–11 -->
+              <section class="slide" id="e5-scene3" data-name="Scenele 9–11">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">Scenele 09–11</p>
+                  <h2 class="r" style="--i: 1">Drop. <em>Inelul se închide.</em></h2>
+                  <div class="e5-scenes">
+                    <article class="e5-sc r" style="--i: 2">
+                      <div class="e5-sc-top"><span class="e5-time">0:54 – 0:58</span><span class="e5-num">09</span></div>
+                      <span class="e5-kick">Pauza</span>
+                      <h3>Liniște înainte de drop</h3>
+                      <p>Ea se uită spre El și zâmbește. Macro pe mâna Ei pe cutia FRAGIL. Muzica se oprește o clipă.</p>
+                    </article>
+                    <article class="e5-sc drop r" style="--i: 3">
+                      <div class="e5-sc-top"><span class="e5-time">0:58 – 1:03</span><span class="e5-num">10</span></div>
+                      <span class="e5-kick">Drop</span>
+                      <h3>HAMAL.MD</h3>
+                      <p>Prima apariție a firmei: logo-ul cade pe partea dinamică a remixului. Tăieturi pe beat: bandă trasă, cutii închise. Vocea lui El citește sloganul.</p>
+                    </article>
+                    <article class="e5-sc r" style="--i: 4">
+                      <div class="e5-sc-top"><span class="e5-time">1:03 – 1:06</span><span class="e5-num">11</span></div>
+                      <span class="e5-kick">Inel · final</span>
+                      <h3>2 → 3. Ușile se închid.</h3>
+                      <p>Același cadru ca la început. Cutia FRAGIL, dusă acum de amândoi. Pe ecran, contactele Hamal.md.</p>
+                    </article>
+                    <article class="e5-sc note r" style="--i: 5">
+                      <p class="e5-hand">Primul cadru = ultimul cadru.</p>
+                      <p>Diferența dintre ele e toată povestea: un om singur cu o cutie, apoi doi oameni cu aceeași cutie.</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 7 · oglinda -->
+              <section class="slide" id="e5-oglinda" data-name="Bilețelele">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">Fără replici</p>
+                  <h2 class="r" style="--i: 1">Lângă <em>butoane</em></h2>
+                  <div class="e5-legend r" style="--i: 1">
+                    <span style="background: #ffe45c">El · galben</span>
+                    <span style="background: #ff9ec4">Ea · roz</span>
+                  </div>
+                  <div class="e5-mirror r" style="--i: 2">
+                    <div class="e5-postit pink" style="--rot: -3deg"><span>Mersi pentru ușă. – 3</span><span>#1 · Ea</span></div>
+                    <div class="e5-postit" style="--rot: 2deg"><span>Oricând. – 2</span><span>#2 · El</span></div>
+                    <div class="e5-postit pink" style="--rot: -1deg"><span>Ai mutat dulapul la 2 noaptea?</span><span>#3 · Ea</span></div>
+                    <div class="e5-postit" style="--rot: 3deg"><span>Scuze. Am și cântat?</span><span>#4 · El</span></div>
+                    <div class="e5-postit pink" style="--rot: 2deg"><span>Da. Fals.</span><span>#5 · Ea</span></div>
+                    <div class="e5-postit" style="--rot: -2deg"><span>Pizza în plus. Vrei?</span><span>#6 · El</span></div>
+                    <div class="e5-postit" style="--rot: 1deg"><span>Mă mut.</span><span>#7 · El · pista falsă</span></div>
+                    <div class="e5-postit tape key" style="--rot: -3deg"><span>Mă mut. La tine. (Dacă vrei.)</span><span>#8 · El · pe cutie</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 8 · animaticul -->
+              <section class="slide" id="e5-animatic" data-name="Animaticul">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">Animatic · 34 de pași · liftul de la Mediacor</p>
+                  <h2 class="r" style="--i: 1">Cadrele <em>din lift</em></h2>
+                  <p class="lede r" style="--i: 1">Stânga: liftul văzut de sus, cu camera și actorii. Dreapta: ce vede camera. Pașii merg singuri; îi poți opri sau alege din listă.</p>
+                  <div id="e5-anim">
+                    <div class="ea-facts">
+                      <span class="ea-fact">Mediacor: <b>P · 1 · 2 · 3</b></span>
+                      <span class="ea-fact">El stă la <b>2</b>, Ea la <b>3</b></span>
+                      <span class="ea-fact">Lift spațios, pereți de <b>sticlă</b></span>
+                      <span class="ea-fact">Butoanele: în <b>stânga</b> când intri</span>
+                      <span class="ea-fact">Ușa: când intri, se închide <b>stânga → dreapta</b></span>
+                    </div>
+    <div class="ea-stage">
+      <section class="ea-panel" aria-label="Planul liftului văzut de sus">
+        <div class="ea-panel-head"><span>Plan · văzut de sus</span><span class="ea-tag" id="ea-posTag">Poziția 1</span></div>
+        <div class="ea-plan-box"><svg id="ea-plan" viewBox="-14 -12 128 176" role="img" aria-label="Planul liftului, cu poziția camerei, a actorilor și a ușii"></svg></div>
+      </section>
+      <section class="ea-panel" aria-label="Ce vede camera">
+        <div class="ea-panel-head"><span>Ce vede camera</span><span class="ea-tag" id="ea-lensTag">18 mm · 24 fps</span></div>
+        <div class="ea-frame-box"><svg id="ea-frame" viewBox="0 0 160 90" role="img" aria-label="Schița cadrului văzut prin cameră"></svg></div>
+      </section>
+    </div>
+
+    <div class="ea-sheet">
+      <section class="ea-panel ea-info" aria-live="polite">
+        <div class="ea-info-top">
+          <span class="ea-clap" id="ea-clap">SC 1 · 1A</span>
+          <span class="ea-pill" id="ea-outfit">ținuta 1</span>
+          <span class="ea-pill" id="ea-who">El</span>
+        </div>
+        <h2 id="ea-title">El intră singur cu cutia FRAGIL</h2>
+        <p id="ea-desc"></p>
+        <ul class="ea-tips" id="ea-tips"></ul>
+      </section>
+      <section class="ea-panel ea-controls">
+        <div class="ea-btns">
+          <button class="ea-btn" id="ea-prev" type="button" aria-label="Pasul anterior">← Înapoi</button>
+          <button class="ea-btn ea-primary" id="ea-play" type="button">❚❚ Pauză</button>
+          <button class="ea-btn" id="ea-next" type="button" aria-label="Pasul următor">Înainte →</button>
+        </div>
+        <div class="ea-progress" aria-hidden="true"><i id="ea-bar"></i></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+          <span class="ea-counter" id="ea-counter">Pasul 01 / 34</span>
+          <label class="ea-toggle"><input type="checkbox" id="ea-auto" checked><span>Trece singur la pasul următor</span></label>
+          <label class="ea-toggle"><input type="checkbox" id="ea-grid"><span>Grila de treimi</span></label>
+        </div>
+        <div class="ea-positions" id="ea-positions"></div>
+      </section>
+    </div>
+
+    <section class="ea-steps" aria-label="Toți pașii, în ordinea de filmare"><ol id="ea-steps"></ol></section>
+    <p class="ea-note-end">Schițele sunt orientative. Liftul are sticlă în față, în stânga și în dreapta când intri; singurul perete de metal e cel cu ușa, iar butoanele sunt pe el, în stânga când intri. Bilețelele se lipesc pe acest metal, lângă butoane. Păstrează ordinea pozițiilor: termini o poziție a camerei complet, apoi te muți și nu te mai întorci.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 9 · ordinea de filmare -->
+              <section class="slide" id="e5-filmare" data-name="Ordinea de filmare">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">Shot list · 34 de pași · 5 poziții</p>
+                  <h2 class="r" style="--i: 1">Ordinea <em>de filmare</em></h2>
+                  <p class="lede r" style="--i: 1">
+                    O poziție a camerei se termină complet, apoi te muți și nu te
+                    mai întorci. Pe clachetă scrii codul din stânga și adaugi
+                    dubla: SC 2 · 2B · D3. Ultima coloană e ținuta; actorii schimbă
+                    doar haina de deasupra.
+                  </p>
+                  <div class="e5-plan">
+                    <div class="e5-pos r" style="--i: 2">
+                      <div class="e5-pos-head">
+                        <span class="e5-pos-num">1</span>
+                        <div>
+                          <h3>Fundul liftului</h3>
+                          <p class="mono">16:00–17:30 · Trepied lipit de peretele din spate, pe centru, la 1,30 m · 18 mm · 24 fps</p>
+                        </div>
+                      </div>
+                      <ol class="e5-shots">
+                        <li><span class="e5-step mono">01</span><span class="e5-clap mono">SC 1 · 1A</span><span class="e5-what">El intră singur cu cutia FRAGIL, se întoarce cu fața spre uși</span><span class="e5-fit mono">El: 1</span></li>
+                        <li><span class="e5-step mono">02</span><span class="e5-clap mono">SC 2 · 2B</span><span class="e5-what">Ușile se închid în fața Ei, El le redeschide cu cotul, Ea intră și dă din cap</span><span class="e5-fit mono">1</span></li>
+                        <li><span class="e5-step mono">03</span><span class="e5-clap mono">SC 5 · 5B · ziua 1</span><span class="e5-what">Stau la pereți opuși, distanță maximă</span><span class="e5-fit mono">1</span></li>
+                        <li><span class="e5-step mono">04</span><span class="e5-clap mono">SC 5 · 5B · ziua 2</span><span class="e5-what">Distanță medie</span><span class="e5-fit mono">2</span></li>
+                        <li><span class="e5-step mono">05</span><span class="e5-clap mono">SC 5 · 5B · ziua 3</span><span class="e5-what">Umăr la umăr</span><span class="e5-fit mono">3</span></li>
+                        <li><span class="e5-step mono">06</span><span class="e5-clap mono">SC 5 · 5C</span><span class="e5-what">Ea adoarme pe umărul lui, El nu se mișcă</span><span class="e5-fit mono">3</span></li>
+                        <li><span class="e5-step mono">07</span><span class="e5-clap mono">SC 11 · 1A</span><span class="e5-what">Finalul: intră amândoi cu cutia FRAGIL, ușile se închid</span><span class="e5-fit mono">4</span></li>
+                        <li><span class="e5-step mono">08</span><span class="e5-clap mono">SC 6 · 6C</span><span class="e5-what">Liftul gol, ușile se închid fără nimeni</span><span class="e5-fit mono">—</span></li>
+                      </ol>
+                    </div>
+                    <div class="e5-pos r" style="--i: 3">
+                      <div class="e5-pos-head">
+                        <span class="e5-pos-num">2</span>
+                        <div>
+                          <h3>Colțul din față</h3>
+                          <p class="mono">17:30–18:45 · Trepied lângă butoane, pe diagonală · 35 mm · camera la înălțimea ochilor</p>
+                        </div>
+                      </div>
+                      <ol class="e5-shots">
+                        <li><span class="e5-step mono">09</span><span class="e5-clap mono">SC 2 · 2A</span><span class="e5-what">Cotul lui apasă butonul de deschidere (60 fps)</span><span class="e5-fit mono">1</span></li>
+                        <li><span class="e5-step mono">10</span><span class="e5-clap mono">SC 2 · 2C</span><span class="e5-what">Degetul Ei apasă 3</span><span class="e5-fit mono">1</span></li>
+                        <li><span class="e5-step mono">11</span><span class="e5-clap mono">SC 2 · 2D</span><span class="e5-what">Prim-plan El: privire în jos, zâmbet scurt</span><span class="e5-fit mono">1</span></li>
+                        <li><span class="e5-step mono">12</span><span class="e5-clap mono">SC 2 · 2E</span><span class="e5-what">Prim-plan Ea: privire spre afișaj</span><span class="e5-fit mono">1</span></li>
+                        <li><span class="e5-step mono">13</span><span class="e5-clap mono">SC 4 · 4B</span><span class="e5-what">El citește un bilețel și zâmbește</span><span class="e5-fit mono">2</span></li>
+                        <li><span class="e5-step mono">14</span><span class="e5-clap mono">SC 4 · 4C</span><span class="e5-what">Ea citește un bilețel și râde</span><span class="e5-fit mono">2</span></li>
+                        <li><span class="e5-step mono">15</span><span class="e5-clap mono">SC 4 · 4D</span><span class="e5-what">Mâna Ei lipește un post-it roz (trepied la 45° față de peretele cu butoane)</span><span class="e5-fit mono">Ea: 2</span></li>
+                        <li><span class="e5-step mono">16</span><span class="e5-clap mono">SC 6 · 6B</span><span class="e5-what">Fața Ei se întunecă la „Mă mut.”</span><span class="e5-fit mono">Ea: 4</span></li>
+                      </ol>
+                    </div>
+                    <div class="e5-pos r" style="--i: 4">
+                      <div class="e5-pos-head">
+                        <span class="e5-pos-num">3</span>
+                        <div>
+                          <h3>Bilețelele, lângă butoane</h3>
+                          <p class="mono">18:45–19:15 · Pauza actorilor · trepied la 45° față de peretele de metal cu butoane · 35 mm · același unghi</p>
+                        </div>
+                      </div>
+                      <ol class="e5-shots">
+                        <li><span class="e5-step mono">17</span><span class="e5-clap mono">SC 3 · 3A</span><span class="e5-what">Bilețelul 1: „Mersi pentru ușă. – 3”</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">18</span><span class="e5-clap mono">SC 3 · 3B</span><span class="e5-what">Se adaugă bilețelul 2: „Oricând. – 2”</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">19</span><span class="e5-clap mono">SC 4 · 4A · #3</span><span class="e5-what">Se adaugă „Ai mutat dulapul la 2 noaptea?”</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">20</span><span class="e5-clap mono">SC 4 · 4A · #4</span><span class="e5-what">Se adaugă „Scuze. Am și cântat?”</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">21</span><span class="e5-clap mono">SC 4 · 4A · #5</span><span class="e5-what">Se adaugă „Da. Fals.”</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">22</span><span class="e5-clap mono">SC 4 · 4A · #6</span><span class="e5-what">Se adaugă „Pizza în plus. Vrei?”</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">23</span><span class="e5-clap mono">SC 6 · 6A</span><span class="e5-what">Rămâne doar „Mă mut.”</span><span class="e5-fit mono">—</span></li>
+                      </ol>
+                    </div>
+                    <div class="e5-pos r" style="--i: 5">
+                      <div class="e5-pos-head">
+                        <span class="e5-pos-num">4</span>
+                        <div>
+                          <h3>Palierul etajului 3</h3>
+                          <p class="mono">19:15–20:30 · Toți în ținuta 4 · cutiile aranjate la ușă, cu bilețelul 8 pe cutia FRAGIL</p>
+                        </div>
+                      </div>
+                      <ol class="e5-shots">
+                        <li><span class="e5-step mono">24</span><span class="e5-clap mono">SC 7 · 7A</span><span class="e5-what">Din mână, 18 mm: ușile se deschid, camera iese încet spre cutii</span><span class="e5-fit mono">4</span></li>
+                        <li><span class="e5-step mono">25</span><span class="e5-clap mono">SC 7 · 7B</span><span class="e5-what">Trepied, 35 mm: bilețelul de pe cutia FRAGIL</span><span class="e5-fit mono">4</span></li>
+                        <li><span class="e5-step mono">26</span><span class="e5-clap mono">SC 8 · 8A</span><span class="e5-what">Trepied, 35 mm, 60 fps: Ea își acoperă gura și râde</span><span class="e5-fit mono">4</span></li>
+                        <li><span class="e5-step mono">27</span><span class="e5-clap mono">SC 8 · 8B</span><span class="e5-what">Din mână, 23 mm: El stă pe o cutie lângă perete, ridică din umeri</span><span class="e5-fit mono">4</span></li>
+                        <li><span class="e5-step mono">28</span><span class="e5-clap mono">SC 9 · 9A</span><span class="e5-what">Trepied, 55 mm: mâna Ei pe cutia FRAGIL</span><span class="e5-fit mono">4</span></li>
+                        <li><span class="e5-step mono">29</span><span class="e5-clap mono">SC 1 · 1C</span><span class="e5-what">Trepied, 35 mm, 60 fps: scrisul FRAGIL de pe cutie</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">30</span><span class="e5-clap mono">SC 10 · 10A</span><span class="e5-what">Din mână, 35 mm, 60 fps: bandă trasă, cutii închise, mâini care ridică</span><span class="e5-fit mono">4</span></li>
+                      </ol>
+                    </div>
+                    <div class="e5-pos r" style="--i: 6">
+                      <div class="e5-pos-head">
+                        <span class="e5-pos-num">5</span>
+                        <div>
+                          <h3>Detalii și sunet</h3>
+                          <p class="mono">20:30–21:15 · Fără actori · vocea lui El se înregistrează separat</p>
+                        </div>
+                      </div>
+                      <ol class="e5-shots">
+                        <li><span class="e5-step mono">31</span><span class="e5-clap mono">SC 1 · 1B</span><span class="e5-what">Afișajul liftului arată P (parter)</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">32</span><span class="e5-clap mono">SC 11 · 11A</span><span class="e5-what">Afișajul trece de la 2 la 3</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">33</span><span class="e5-clap mono">SC 5 · 5A</span><span class="e5-what">Ecranul telefonului: „Coborâm împreună?”</span><span class="e5-fit mono">—</span></li>
+                        <li><span class="e5-step mono">34</span><span class="e5-clap mono">SUNET</span><span class="e5-what">30 s de liniște în lift, clinchetul, ușile, butoanele, banda trasă</span><span class="e5-fit mono">—</span></li>
+                      </ol>
+                    </div>
+                  </div>
+                  <p class="e5-note-end mono r" style="--i: 7">21:15–21:45 · rezervă pentru dublele ratate · 10B (logo-ul animat) se face în Premiere Pro</p>
+                </div>
+              </section>
+
+              <!-- 9 · final -->
+              <section class="slide finale" id="e5-final" data-name="Final">
+                <div class="wrap">
+                  <p class="eyebrow mono r" style="--i: 0">Un gest mic schimbă tot</p>
+                  <h2 class="r" style="--i: 1">Am mutat mii de vieți. <em>Unele doar un etaj mai sus.</em></h2>
+                  <div class="e5-chips r" style="--i: 2">
+                    <button class="btn" id="e5-again" type="button">↺ De la capăt</button>
+                    <button class="btn" id="e5-share" type="button">Copiază linkul</button>
+                  </div>
+                  <p class="toast mono" id="e5-toast" role="status"></p>
+                  <div class="credits mono r" style="--i: 3">
+                    <div>Regie<b>Sorin Arseni Hodoroja · @sorinarseni</b></div>
+                    <div>Client<b>Hamal.md</b></div>
+                    <div>Specialitatea<b>Producție Multimedia · USM, FJȘC</b></div>
+                  </div>
+                </div>
+              </section>
+            </main>
+          </div>
+
+    <script src="js/base.js"></script>
+    <script src="js/etajul-3.js"></script>
+    <script src="js/etajul-3-animatic.js"></script>
+  </body>
+</html>

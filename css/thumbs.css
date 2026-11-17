@@ -1,0 +1,191 @@
+/* Miniaturile proiectelor (cărțile în evantai), folosite pe pagina de acasă și în colocviu */
+
+.h-thumb {
+  position: relative;
+  aspect-ratio: 16/11;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--h-thumb);
+  border: 1px solid var(--h-line);
+}
+.h-thumb img {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: 34%;
+  height: auto;
+  transform: translate(-50%, -50%) translateX(var(--x, 0))
+    rotate(var(--r, 0deg));
+  transition: transform 0.7s var(--ease);
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.55));
+}
+.h-thumb img:nth-of-type(1) {
+  --x: -58%;
+  --r: -9deg;
+}
+.h-thumb img:nth-of-type(2) {
+  z-index: 2;
+  --x: 0;
+  --r: 0deg;
+}
+.h-thumb img:nth-of-type(3) {
+  --x: 58%;
+  --r: 9deg;
+}
+.h-proj:hover .h-thumb img:nth-of-type(1) {
+  --x: -96%;
+  --r: -14deg;
+}
+.h-proj:hover .h-thumb img:nth-of-type(2) {
+  transform: translate(-50%, -56%) scale(1.06);
+}
+.h-proj:hover .h-thumb img:nth-of-type(3) {
+  --x: 96%;
+  --r: 14deg;
+}
+.h-thumb .rec-chip {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #f6f1f0;
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+.h-thumb .rec-chip .dot {
+  width: 8px;
+  height: 8px;
+}
+
+/* cardul din pagina de acasă */
+.h-thumb.sr-thumb {
+  background-color: #fff;
+  background-image: radial-gradient(#cfcfcf 1.1px, transparent 1.3px);
+  background-size: 16px 16px;
+}
+.h-thumb.sr-thumb img {
+  width: 46%;
+  aspect-ratio: 394 / 219;
+  border: 2px solid #1e1e1e;
+  background: #fff;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.25));
+}
+.h-thumb.sr-thumb img:nth-of-type(1) {
+  --x: -46%;
+}
+.h-thumb.sr-thumb img:nth-of-type(3) {
+  --x: 46%;
+}
+.h-proj.sr-card:hover .h-thumb img:nth-of-type(1) {
+  --x: -62%;
+}
+.h-proj.sr-card:hover .h-thumb img:nth-of-type(3) {
+  --x: 62%;
+}
+
+/* card pe pagina de acasă */
+.h-thumb.pp-thumb {
+  background: #050404;
+}
+.h-thumb.pp-thumb img {
+  width: 46%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #272123;
+}
+.h-thumb.pp-thumb img:nth-of-type(1) {
+  --x: -46%;
+}
+.h-thumb.pp-thumb img:nth-of-type(3) {
+  --x: 46%;
+}
+.h-proj.pp-card:hover .h-thumb img:nth-of-type(1) {
+  --x: -62%;
+}
+.h-proj.pp-card:hover .h-thumb img:nth-of-type(3) {
+  --x: 62%;
+}
+.h-thumb .pp-chip {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #f3f6f4;
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+.h-thumb .pp-chip i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #40c9a2;
+  box-shadow: 0 0 10px #40c9a2;
+}
+
+/* card pe pagina de acasă */
+.h-thumb.e5-thumb {
+  background: #ede6da;
+}
+.e5-thumb .e5-lift {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 4;
+  background: #111;
+  color: #ffb000;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+.e5-thumb .e5-pi {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34%;
+  aspect-ratio: 1;
+  padding: 12% 4% 4%;
+  box-sizing: border-box;
+  background: #ffe45c;
+  color: #141414;
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: clamp(16px, 2.2vw, 26px);
+  line-height: 1.02;
+  box-shadow: 0 14px 22px rgba(20, 20, 20, 0.25);
+  transform: translate(-50%, -50%) translateX(var(--x, 0))
+    rotate(var(--r, 0deg));
+  transition: transform 0.7s var(--ease);
+}
+.e5-thumb .e5-pi-1 {
+  background: #ff9ec4;
+  --x: -62%;
+  --r: -8deg;
+}
+.e5-thumb .e5-pi-2 {
+  z-index: 2;
+}
+.e5-thumb .e5-pi-3 {
+  --x: 62%;
+  --r: 7deg;
+  font-size: clamp(22px, 3vw, 36px);
+}
+.h-proj.e5-card:hover .e5-pi-1 {
+  --x: -98%;
+  --r: -13deg;
+}
+.h-proj.e5-card:hover .e5-pi-2 {
+  transform: translate(-50%, -56%) scale(1.06);
+}
+.h-proj.e5-card:hover .e5-pi-3 {
+  --x: 98%;
+  --r: 12deg;
+}

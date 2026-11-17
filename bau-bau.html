@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ro" class="in-project">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>bau BAU by sorinarseni</title>
+    <meta name="description" content="Proiectul 01 · YUTUBAU, un Bau Bau vlogger pentru cardurile Electric Spring." />
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&family=Archivo+Black&family=Caveat:wght@600;700&display=swap" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/deck.css" />
+    <link rel="stylesheet" href="css/bau-bau.css" />
+  </head>
+  <body>
+    <div class="project" id="p-bau-bau">
+      <header class="recbar">
+        <div class="wrap">
+          <div class="rec-left">
+            <button type="button" class="back mono" id="back">
+              ← Proiecte
+            </button>
+            <div class="rec mono" id="recbox">
+              <span class="dot" aria-hidden="true"></span
+              ><span id="reclabel">REC</span>
+              <span class="tc" id="tc">00:00:00</span>
+            </div>
+          </div>
+          <nav class="mono" aria-label="Secțiuni">
+            <a href="#aspect">Cum arată</a>
+            <a href="#yutubau" id="navname" aria-label="Numele personajului"
+              >???</a
+            >
+            <a href="#youtube">Descompunere</a>
+            <a href="#unelte">Unelte</a>
+            <a href="#cardul">Cardul</a>
+            <a href="#cadre">Cadre</a>
+            <a href="#final">Like</a>
+          </nav>
+        </div>
+      </header>
+      <div class="wipe" id="wipe" aria-hidden="true"></div>
+      <div class="vf" id="vf" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><b class="af"></b>
+      </div>
+      <div class="up" id="up" role="status" aria-live="polite" hidden>
+        <div class="up-head">
+          <span class="up-ico" aria-hidden="true"
+            ><svg viewBox="0 0 24 24" width="16" height="16">
+              <path d="M8 5.5v13l10.5-6.5z" fill="currentColor" /></svg
+          ></span>
+          <b id="upTitle">Se încarcă vlogul…</b>
+          <button type="button" class="up-x" id="upX" aria-label="Închide">
+            ✕
+          </button>
+        </div>
+        <div class="up-body">
+          <div class="up-thumb">
+            <img
+              src="img/clip2.jpg"
+              alt=""
+              width="1100"
+              height="997"
+            /><span class="up-dur mono" id="upDur">00:00</span
+            ><span class="up-check" id="upCheck" aria-hidden="true">✓</span>
+          </div>
+          <div class="up-meta">
+            <div class="up-name">
+              Am filmat tot la Electric Spring | vlog
+            </div>
+            <div class="up-ch mono" id="upSub">yutubau_vlog_final.mp4</div>
+          </div>
+        </div>
+        <div class="up-bar"><i id="upBar"></i></div>
+        <div class="up-foot mono">
+          <span id="upStep">Încărcare</span><span id="upPct">0%</span>
+        </div>
+      </div>
+      <nav class="pager mono" id="pager" aria-label="Slide-uri"></nav>
+
+      <main>
+        <section class="slide hero" id="start" data-name="Titlu">
+          <div class="wrap">
+            <div class="hero-meta mono r" style="--i: 0">
+              <p>
+                Universitatea de Stat din Moldova<br />Facultatea de
+                Jurnalism și Științe ale Comunicării<br />Specialitatea:
+                Producție Multimedia · Ciclul I, Licență
+              </p>
+              <p>Managementul<br />Experienței</p>
+            </div>
+            <h1>
+              <span class="fx-chars" style="--i: 1"
+                >bau <span class="red">BAU</span></span
+              ><span class="by r" style="--i: 3">by sorinarseni</span>
+            </h1>
+            <div class="hero-foot mono r" style="--i: 4">
+              <span>Student: <b>Sorin Hodoroja · @sorinarseni</b></span>
+              <span>Asistent universitar: <b>Eugen Boico</b></span>
+            </div>
+          </div>
+          <div class="scrollhint mono" aria-hidden="true">
+            scroll<i></i>
+          </div>
+        </section>
+
+        <section class="slide" id="aspect" data-name="Cum arată">
+          <div class="wrap look">
+            <div class="look-head">
+              <div>
+                <h2 class="fx-chars" style="--i: 1">Cum <em>arată</em></h2>
+              </div>
+              <p class="mono cap r" style="--i: 2">
+                față · profil · spate<br />ochelari · clopoțel · cameră ·
+                blană
+              </p>
+            </div>
+            <figure class="frame sheet r fx-scan" style="--i: 3">
+              <img
+                src="img/sheet.jpg"
+                alt="Fișa personajului: față, profil, spate și detaliile ochelari, clopoțel, cameră, blană"
+                width="1376"
+                height="768"
+              />
+            </figure>
+          </div>
+        </section>
+
+        <section class="slide" id="yutubau" data-name="YUTUBAU">
+          <div class="wrap meet">
+            <figure class="frame pose r fx-zoom" style="--i: 1">
+              <img
+                src="img/pose.jpg"
+                alt="YUTUBAU în picioare, cu camera ridicată și degetul mare în sus"
+                width="768"
+                height="1376"
+              />
+            </figure>
+            <div class="meet-info">
+              <h2
+                class="name r fx-scramble"
+                style="--i: 2"
+                aria-label="YUTUBAU"
+              >
+                YUTUBAU
+              </h2>
+              <p class="lede r" style="--i: 4">
+                YUTUBAU are abonați pe toate continentele și bilete la toate
+                festivalele, dar cel mai vizionat vlog al lui e mereu cel de
+                acasă, de la Electric Spring.
+              </p>
+              <p class="lede r" style="--i: 4">
+                Un Bau Bau care trăiește în fața camerei. Filmează tot, de
+                la scenă până la mulțime, și nu-și arată niciodată fața. Sub
+                blană poate fi oricine, așa că YUTUBAU e orice creator.
+              </p>
+              <dl class="mono style r" style="--i: 5">
+                <dt>Stil</dt>
+                <dd>Hanorac roșu #FF0000, ochelari albi</dd>
+                <dt>Semn</dt>
+                <dd>Pandantiv clopoțel pe lanț</dd>
+                <dt>Mereu cu</dt>
+                <dd>Camera în mână, pe REC</dd>
+                <dt>Fața</dt>
+                <dd>Ascunsă în blană neagră</dd>
+                <dt>Acasă</dt>
+                <dd>Electric Spring</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide" id="youtube" data-name="Descompunere">
+          <div class="wrap">
+            <h2 class="fx-chars" style="--i: 1">
+              Descompunerea <em>YouTube</em>-ului
+            </h2>
+            <p class="lede r" style="--i: 2">
+              Fiecare detaliu al personajului vine dintr-un simbol al
+              platformei.
+            </p>
+            <div class="decomp">
+              <div class="row r fx-row" style="--i: 3">
+                <div class="from">
+                  <span class="sw" style="background: var(--red)"></span
+                  >Roșu #FF0000
+                </div>
+                <div class="arrow" aria-hidden="true">→</div>
+                <div class="to">
+                  <span class="chip hot">hanorac</span
+                  ><span class="chip">merch</span>
+                </div>
+              </div>
+              <div class="row r fx-row" style="--i: 4">
+                <div class="from">Clopoțelul</div>
+                <div class="arrow" aria-hidden="true">→</div>
+                <div class="to">
+                  <span class="chip">notificare</span
+                  ><span class="chip hot">„apasă clopoțelul”</span
+                  ><span class="chip">pandantiv</span>
+                </div>
+              </div>
+              <div class="row r fx-row" style="--i: 5">
+                <div class="from">Camera</div>
+                <div class="arrow" aria-hidden="true">→</div>
+                <div class="to">
+                  <span class="chip hot">REC</span
+                  ><span class="chip">mereu în cadru</span
+                  ><span class="chip">selfie vlog</span>
+                </div>
+              </div>
+              <div class="row r fx-row" style="--i: 6">
+                <div class="from">
+                  <span
+                    class="sw"
+                    style="
+                      background: linear-gradient(
+                        90deg,
+                        var(--white) 50%,
+                        var(--red) 50%
+                      );
+                    "
+                  ></span
+                  >Alb pe roșu
+                </div>
+                <div class="arrow" aria-hidden="true">→</div>
+                <div class="to">
+                  <span class="chip">ochelari albi</span
+                  ><span class="chip hot">contrast</span>
+                </div>
+              </div>
+              <div class="row r fx-row" style="--i: 7">
+                <div class="from">
+                  <span class="sw" style="background: var(--fur)"></span
+                  >Blană neagră
+                </div>
+                <div class="arrow" aria-hidden="true">→</div>
+                <div class="to">
+                  <span class="chip">anonim</span
+                  ><span class="chip hot">„orice creator”</span
+                  ><span class="chip">fața ascunsă</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide" id="unelte" data-name="Unelte">
+          <div class="wrap">
+            <h2 class="fx-chars" style="--i: 1">Ce am <em>folosit</em></h2>
+            <div class="tools">
+              <div class="tool r fx-flip" style="--i: 2">
+                <div class="badge">
+                  <img
+                    src="img/fi.png"
+                    alt="Adobe Firefly"
+                    width="64"
+                    height="62"
+                  />
+                </div>
+                <div>
+                  <h3>Adobe Firefly &amp; Nano Banana</h3>
+                  <p>
+                    Personajul, fișa în toate unghiurile, generarea
+                    clipului.
+                  </p>
+                </div>
+              </div>
+              <div class="tool r fx-flip" style="--i: 3">
+                <div class="badge">
+                  <img
+                    src="img/ai.png"
+                    alt="Adobe Illustrator"
+                    width="64"
+                    height="62"
+                  />
+                </div>
+                <div>
+                  <h3>Adobe Illustrator</h3>
+                  <p>Decupajul, rama comună și textul cardului.</p>
+                </div>
+              </div>
+              <div class="tool r fx-flip" style="--i: 4">
+                <div class="badge">
+                  <img
+                    src="img/pr.png"
+                    alt="Adobe Premiere Pro"
+                    width="64"
+                    height="64"
+                  />
+                </div>
+                <div>
+                  <h3>Adobe Premiere Pro</h3>
+                  <p>Montarea clipului cu rama comună.</p>
+                </div>
+              </div>
+              <div class="tool r fx-flip" style="--i: 5">
+                <div class="badge">
+                  <img
+                    src="img/claude.png"
+                    alt="Claude"
+                    width="64"
+                    height="64"
+                  />
+                </div>
+                <div>
+                  <h3>Claude</h3>
+                  <p>Formularea și rafinarea prompturilor.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide" id="cardul" data-name="Cardul">
+          <div class="wrap">
+            <div class="card-hero">
+              <figure class="frame card r fx-card" style="--i: 1">
+                <video
+                  id="cardvid"
+                  src="img/vlog2.mp4"
+                  poster="img/vlog2-poster.jpg"
+                  width="684"
+                  height="864"
+                  muted
+                  loop
+                  playsinline
+                  autoplay
+                  preload="auto"
+                  aria-label="Cardul animat YUTUBAU, Electric Spring 06.03.26"
+                ></video>
+              </figure>
+              <div class="card-info">
+                <h2 class="fx-chars" style="--i: 2">
+                  Cardul <em>animat</em>
+                </h2>
+                <blockquote class="r" style="--i: 4">
+                  YUTUBAU are abonați pe toate continentele și bilete la
+                  toate festivalele, dar cel mai vizionat vlog al lui e
+                  mereu cel de acasă, de la Electric Spring.
+                </blockquote>
+                <div class="stats r fx-count" style="--i: 5">
+                  <div class="stat">
+                    <div class="mono"><span>Hype</span><b>85</b></div>
+                    <i style="--v: 85%"></i>
+                  </div>
+                  <div class="stat">
+                    <div class="mono"><span>Aura</span><b>95</b></div>
+                    <i style="--v: 95%"></i>
+                  </div>
+                  <div class="stat">
+                    <div class="mono">
+                      <span>Main character</span><b>55</b>
+                    </div>
+                    <i style="--v: 55%"></i>
+                  </div>
+                </div>
+                <div class="r" style="--i: 7">
+                  <button
+                    class="btn"
+                    id="snd"
+                    type="button"
+                    aria-pressed="false"
+                  >
+                    🔇 Pornește sunetul
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide" id="cadre" data-name="Cadre">
+          <div class="wrap">
+            <h2 class="fx-chars" style="--i: 1">
+              Cadre de la <em>Electric Spring</em>
+            </h2>
+            <p class="lede r" style="--i: 2">
+              YUTUBAU în photo pit, culoarul din fața scenei, cu camera pe
+              REC.
+            </p>
+            <div class="cards">
+              <figure class="frame r fx-deal" style="--i: 3">
+                <img
+                  src="img/ecard1.webp"
+                  alt="Card YUTUBAU: filmează cu camera, sub confetti"
+                  width="855"
+                  height="1080"
+                />
+              </figure>
+              <figure class="frame r fx-deal" style="--i: 4">
+                <img
+                  src="img/ecard2.webp"
+                  alt="Card YUTUBAU: degetul mare spre cameră, în fața scenei"
+                  width="855"
+                  height="1080"
+                />
+              </figure>
+              <figure class="frame r fx-deal" style="--i: 5">
+                <img
+                  src="img/ecard3.webp"
+                  alt="Card YUTUBAU: urcă pe scenă, în fața mulțimii"
+                  width="855"
+                  height="1080"
+                />
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide finale" id="final" data-name="Final">
+          <div class="wrap">
+            <h2 class="fx-chars fx-bounce" style="--i: 0">
+              Like &amp; Share
+            </h2>
+            <p class="plus r" style="--i: 2">+ com</p>
+            <div class="actions r" style="--i: 3">
+              <button
+                class="btn"
+                id="like"
+                type="button"
+                aria-pressed="false"
+              >
+                ♥ Like <span class="n" id="likes">0</span>
+              </button>
+              <button class="btn" id="share" type="button">↗ Share</button>
+              <button
+                class="btn"
+                id="bell"
+                type="button"
+                aria-pressed="false"
+              >
+                🔔 Abonează-te
+              </button>
+            </div>
+            <p class="toast mono" id="toast" role="status"></p>
+            <div class="credits mono r" style="--i: 4">
+              <div>Student<b>Sorin Hodoroja · @sorinarseni</b></div>
+              <div>Asistent universitar<b>Eugen Boico</b></div>
+              <div>
+                Disciplina<b>Managementul Experienței · USM, FJȘC</b>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/base.js"></script>
+    <script src="js/bau-bau.js"></script>
+  </body>
+</html>

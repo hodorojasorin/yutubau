@@ -1,0 +1,81 @@
+/* Ecranul de acces cu parolă / cheie (proiectele 02 și 04) */
+
+.clap-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 8, 20, 0.86);
+  backdrop-filter: blur(6px);
+}
+.clap-card {
+  width: 100%;
+  max-width: 320px;
+  background: #1e1b2e;
+  border: 1px solid #3a3550;
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  color: #f1edfb;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.clap-eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a79acb;
+}
+.clap-title {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 700;
+}
+.clap-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #3a3550;
+  background: #141127;
+  color: #fff;
+}
+.clap-input:focus {
+  outline: 2px solid #6d4aff;
+  outline-offset: 2px;
+}
+.clap-note {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: #ff6b6b;
+}
+.clap-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+.clap-back,
+.clap-go {
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.clap-back {
+  background: #2a2640;
+  color: #cfc9e6;
+}
+.clap-go {
+  background: #6d4aff;
+  color: #fff;
+}
