@@ -19,24 +19,29 @@
   opacity: 0.4;
   transition: opacity 0.2s, transform 0.2s;
 }
+
 .rm-btn:hover,
 .rm-btn:focus-visible {
   opacity: 1;
   transform: translateY(-2px);
 }
+
 .rm-btn i {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #b5b5b5;
 }
+
 .rm-btn.on i {
   background: #22c55e;
   box-shadow: 0 0 8px #22c55e;
 }
+
 .rm-btn.on {
   opacity: 0.25;
 }
+
 .pdf-export .rm-btn,
 .pdf-export .rm-modal {
   display: none !important;
@@ -53,6 +58,7 @@
   backdrop-filter: blur(6px);
   padding: 20px;
 }
+
 .rm-card {
   width: min(100%, 460px);
   background: #fffaf0;
@@ -64,18 +70,21 @@
   text-align: center;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
 .rm-card h2 {
   margin: 0;
   font: 400 28px/1.05 "Archivo Black", "Arial Black", sans-serif;
   letter-spacing: -0.02em;
   color: #111;
 }
+
 .rm-card p {
   margin: 8px 0 0;
   font-size: 15px;
   line-height: 1.45;
   color: #444;
 }
+
 .rm-qr {
   margin: 18px auto 12px;
   width: min(100%, 300px);
@@ -87,14 +96,17 @@
   display: grid;
   place-items: center;
 }
+
 .rm-qr svg {
   width: 100%;
   height: 100%;
 }
+
 .rm-qr .rm-wait {
   font: 600 13px "JetBrains Mono", monospace;
   color: #777;
 }
+
 .rm-status {
   display: inline-flex;
   align-items: center;
@@ -104,18 +116,22 @@
   border-radius: 999px;
   padding: 6px 12px;
 }
+
 .rm-status i {
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: #f59e0b;
 }
+
 .rm-status.ok i {
   background: #22c55e;
 }
+
 .rm-status.err i {
   background: #ef4444;
 }
+
 .rm-link {
   display: block;
   margin-top: 10px;
@@ -123,12 +139,14 @@
   color: #666;
   word-break: break-all;
 }
+
 .rm-actions {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 16px;
 }
+
 .rm-actions button {
   font: 700 13px "Inter", sans-serif;
   border: 2px solid #111;
@@ -138,6 +156,7 @@
   background: #fff;
   color: #111;
 }
+
 .rm-actions .rm-close {
   background: #111;
   color: #ffd60a;

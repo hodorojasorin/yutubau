@@ -22,27 +22,32 @@
     opacity 0.4s,
     border-color 0.4s;
 }
+
 .up.show {
   transform: none;
   opacity: 1;
 }
+
 .up.done {
   border-color: var(--red);
   box-shadow:
     0 30px 80px -20px #000,
     0 0 40px -10px var(--red);
 }
+
 .up-head {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 15px;
 }
+
 .up-head b {
   flex: 1;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
+
 .up-ico {
   width: 26px;
   height: 26px;
@@ -52,6 +57,7 @@
   display: grid;
   place-items: center;
 }
+
 .up-x {
   background: none;
   border: 0;
@@ -61,9 +67,11 @@
   padding: 4px 6px;
   border-radius: 6px;
 }
+
 .up-x:hover {
   color: var(--white);
 }
+
 .up-body {
   display: grid;
   grid-template-columns: 132px minmax(0, 1fr);
@@ -71,6 +79,7 @@
   margin-top: 14px;
   align-items: start;
 }
+
 .up-thumb {
   position: relative;
   aspect-ratio: 16/9;
@@ -78,6 +87,7 @@
   overflow: hidden;
   background: var(--black);
 }
+
 .up-thumb img {
   width: 100%;
   height: 100%;
@@ -85,6 +95,7 @@
   object-position: 50% 30%;
   display: block;
 }
+
 .up-dur {
   position: absolute;
   right: 5px;
@@ -96,6 +107,7 @@
   border-radius: 4px;
   letter-spacing: 0.02em;
 }
+
 .up-check {
   position: absolute;
   inset: 0;
@@ -111,16 +123,19 @@
     opacity 0.4s,
     transform 0.5s cubic-bezier(0.34, 1.7, 0.5, 1);
 }
+
 .up.done .up-check {
   opacity: 1;
   transform: none;
 }
+
 .up-name {
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
   letter-spacing: -0.01em;
 }
+
 .up-ch {
   color: var(--mute);
   margin-top: 6px;
@@ -129,6 +144,7 @@
   text-transform: none;
   font-variant-numeric: tabular-nums;
 }
+
 .up-bar {
   margin-top: 14px;
   height: 4px;
@@ -137,6 +153,7 @@
   overflow: hidden;
   position: relative;
 }
+
 .up-bar i {
   display: block;
   height: 100%;
@@ -144,25 +161,27 @@
   background: var(--red);
   border-radius: 4px;
 }
+
 .up.processing .up-bar i {
   width: 100% !important;
-  background: linear-gradient(
-    90deg,
-    var(--red) 0 30%,
-    #ff6a6a 50%,
-    var(--red) 70% 100%
-  );
+  background: linear-gradient(90deg,
+      var(--red) 0 30%,
+      #ff6a6a 50%,
+      var(--red) 70% 100%);
   background-size: 200% 100%;
   animation: proc 1s linear infinite;
 }
+
 @keyframes proc {
   from {
     background-position: 100% 0;
   }
+
   to {
     background-position: -100% 0;
   }
 }
+
 .up-foot {
   display: flex;
   justify-content: space-between;
@@ -171,25 +190,31 @@
   font-variant-numeric: tabular-nums;
   font-size: 11px;
 }
+
 .up.done .up-foot {
   color: var(--white);
 }
+
 #upPct.live::before {
   content: "▲ ";
   color: var(--red);
 }
+
 #upPct.bump {
   animation: bump 0.25s var(--ease);
 }
+
 @keyframes bump {
   0% {
     transform: translateY(-3px);
     color: var(--red);
   }
+
   100% {
     transform: none;
   }
 }
+
 #upPct {
   display: inline-block;
 }
