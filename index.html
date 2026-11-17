@@ -9186,6 +9186,22 @@
           #p-colocviu .hero h1 .co-mark {
             padding: 0 0.06em 0.02em;
           }
+          #co-titlu .co-hero-main {
+            margin: auto 0;
+            text-align: center;
+            transform: translateY(-6vh);
+          }
+          #co-titlu .co-sub {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          #p-colocviu h1,
+          #p-colocviu h2 {
+            text-transform: lowercase;
+          }
+          #p-colocviu .co-keep {
+            text-transform: none;
+          }
           .co-sub {
             font-family: var(--display);
             font-weight: 600;
@@ -10518,11 +10534,6 @@
                 <button type="button" class="back mono" id="co-back">
                   ← Proiecte
                 </button>
-                <div class="co-label mono">
-                  <span class="dot" aria-hidden="true"></span><b>Colocviu</b
-                  ><span class="co-hide">· creativitate și imaginar</span>
-                  <a class="co-pdfmini" id="co-pdf-top" href="colocviu-creativitate-si-imaginar.pdf" download>⬇ PDF</a>
-                </div>
               </div>
               <nav class="mono" aria-label="Secțiuni">
                 <a href="#co-eu">Eu</a>
@@ -10556,10 +10567,10 @@
                     <p class="co-when">Colocviul științific<br />„Coduri și limbaje actuale ale imaginarului”</p>
                   </div>
                 </div>
-                <div>
+                <div class="co-hero-main">
                   <h1>
                     <span class="fx-chars" style="--i: 1"
-                      >Creativitatea și <span class="co-mark">imaginarul</span></span
+                      >creativitatea &amp; <span class="co-mark">imaginarul</span></span
                     >
                   </h1>
                   <p class="co-sub r" style="--i: 4">
@@ -10582,7 +10593,7 @@
                   <p class="eyebrow mono r" style="--i: 0">01 · Cine sunt</p>
                   <h2 class="fx-chars" style="--i: 1">Între <em>cod</em> și cadru</h2>
                   <p class="lede r" style="--i: 2">
-                    Creator digital și vlogger. Am venit în multimedia din IT,
+                    Creator digital. Am venit în multimedia din IT,
                     iar asta se vede în tot ce fac.
                   </p>
                   <ul class="co-roles">
@@ -10590,6 +10601,7 @@
                       <span class="lg"><img src="img/co-ceiti.png" alt="CEITI" width="58" height="58" /></span>
                       <div>
                         <b>Computer Science Absolvent</b>
+                        <span>Centrul de Excelență în Informatică și Tehnologii Informaționale</span>
                       </div>
                     </li>
                     <li class="r" style="--i: 4">
@@ -10615,7 +10627,7 @@
             <section class="slide" id="co-dece" data-name="De ce multimedia">
               <div class="wrap">
                 <p class="eyebrow mono r" style="--i: 0">02 · De ce multimedia</p>
-                <h2 class="fx-chars" style="--i: 1">Un <em>upgrade</em>, nu un ocol</h2>
+                <h2 class="fx-chars" style="--i: 1">Ocol sau <em>upgrade</em>?</h2>
                 <p class="lede r" style="--i: 2">
                   Urmăresc Mediacor și programul <b>Profesiile Viitorului</b> de
                   la înființare. Din anul în care am aplicat la IT știam că,
@@ -10661,7 +10673,7 @@
             <section class="slide" id="co-it" data-name="Avantajul IT">
               <div class="wrap">
                 <p class="eyebrow mono r" style="--i: 0">03 · Ce aduc din IT</p>
-                <h2 class="fx-chars" style="--i: 1">Unelte care mă <em>diferențiază</em></h2>
+                <h2 class="fx-chars" style="--i: 1">Unelte care <em>diferențiază</em></h2>
                 <p class="lede r" style="--i: 2">
                   La CEITI am învățat să construiesc lucruri care rulează. În
                   multimedia, asta înseamnă că pot face și forma, nu doar
@@ -10712,7 +10724,7 @@
             <section class="slide" id="co-multimedia" data-name="Multimedia">
               <div class="wrap">
                 <p class="eyebrow mono r" style="--i: 0">04 · Noțiuni de bază</p>
-                <h2 class="fx-chars" style="--i: 1">Ce este <em>multimedia</em></h2>
+                <h2 class="fx-chars" style="--i: 1">Ce este <em>multimedia</em>?</h2>
                 <div class="co-defs">
                   <div class="co-def big r" style="--i: 2">
                     <div class="who"><b>Laura Tugarev</b><span>USM</span></div>
@@ -10880,7 +10892,7 @@
               <div class="wrap co-bau">
                 <div>
                   <p class="eyebrow mono r" style="--i: 0">08 · De la concept</p>
-                  <h2 class="fx-chars" style="--i: 1">Totul a pornit de la <em>bau BAU</em></h2>
+                  <h2 class="fx-chars" style="--i: 1">Totul a pornit de la <em>bau <span class="co-keep">BAU</span></em></h2>
                   <p class="lede r" style="--i: 2">
                     Un singur proiect, la Managementul Experienței: YUTUBAU, un
                     Bau Bau vlogger pentru cardurile de colecție Electric
@@ -13666,7 +13678,7 @@
             });
 
             // ---- descărcare PDF: fișierul e generat dinainte (merge și fără internet) ----
-            [$("co-pdf"), $("co-pdf-top")].forEach(function (b) {
+            [$("co-pdf")].forEach(function (b) {
               b.addEventListener("click", function () {
                 say("Se descarcă PDF-ul");
               });
