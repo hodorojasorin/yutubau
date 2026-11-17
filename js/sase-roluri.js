@@ -1,4 +1,4 @@
-// Proiectul 02 · Șase roluri (cu cheie de acces)
+// Proiectul 02 · Scurtmetraj Șase roluri (cu parolă)
 var AUD = {
   nunta:
     "audio/sr-nunta.m4a",

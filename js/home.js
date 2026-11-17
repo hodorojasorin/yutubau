@@ -1,5 +1,5 @@
 // Pagina de acasă: bara de căutare care „tastează”, ochii care urmăresc mouse-ul,
-// apariții la scroll și titlul ascuns al proiectului cu cheie.
+// apariții la scroll.
 (function () {
   var root = document.documentElement;
   root.classList.add("js");
@@ -11,18 +11,6 @@
   // ---- anul din footer ----
   var yr = $("#yr");
   if (yr) yr.textContent = new Date().getFullYear();
-
-  // ---- proiectul 02 are titlul ascuns până primești cheia (aceeași cheie ca în proiect) ----
-  var unlocked = false;
-  try {
-    unlocked = sessionStorage.getItem("sr-take-ok") === "1";
-  } catch (e) {}
-  ["#g-sr-title", "#g-sr-sub"].forEach(function (s) {
-    var el = $(s);
-    if (!el) return;
-    if (unlocked) el.textContent = el.dataset.real;
-    else el.classList.add("masked");
-  });
 
   // ---- bara de căutare: tastează singură câteva întrebări ----
   var q = $("#q"),

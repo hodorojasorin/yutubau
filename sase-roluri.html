@@ -9,7 +9,7 @@
     <title>Șase roluri · Sorin Hodoroja</title>
     <meta
       name="description"
-      content="Proiectul 02 · scurtmetraj, acces cu cheie."
+      content="Proiectul 02 · Scurtmetraj Șase roluri, acces cu parolă."
     />
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1248,24 +1248,31 @@
 
     <div class="clap-screen" id="clap-screen" hidden>
       <form id="clap-form" class="clap-card">
-        <p class="clap-eyebrow">Proiectul 02 · acces restricționat</p>
-        <h2 class="clap-title">Introdu codul de acces</h2>
+        <span class="clap-clip" aria-hidden="true"><b>Parolă</b></span>
+        <img
+          class="clap-dog"
+          src="img/home/dog-paznic.webp"
+          alt=""
+          width="602"
+          height="616"
+        />
+        <p class="clap-eyebrow">Proiectul 02 · Scurtmetraj Șase roluri</p>
+        <h2 class="clap-title">Introdu <span>parola</span></h2>
+        <p class="clap-hint">o primesc colegii din grupă și profesorii&nbsp;;)</p>
         <input
           id="clap-input"
           class="clap-input"
           type="password"
           autocomplete="off"
-          placeholder="••••••••"
-          aria-label="Cod de acces"
+          placeholder="parola"
+          aria-label="Parola"
         />
         <p class="clap-note" id="clap-note" role="alert" hidden>
-          Cod greșit. Mai încearcă.
+          Parolă greșită. Mai încearcă.
         </p>
         <div class="clap-actions">
-          <button type="button" class="clap-back" id="clap-back">
-            ← Înapoi
-          </button>
-          <button type="submit" class="clap-go">Intră</button>
+          <button type="button" class="clap-back" id="clap-back">← Înapoi</button>
+          <button type="submit" class="clap-go">Intră ▶</button>
         </div>
       </form>
     </div>

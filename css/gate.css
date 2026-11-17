@@ -1,81 +1,236 @@
-/* Ecranul de acces cu parolă / cheie (proiectele 02 și 04) */
+/* Ecranul cu parolă (proiectele 02 și 04), în stilul paginii de acasă:
+   dulapuri verzi, foaie de hârtie cu clamă, sticker cu paznicul, butoane cu umbră plină. */
 
 .clap-screen {
+  --g: #1f6b49;
+  --pink: #ff7ac8;
+  --pink-d: #e9559f;
+  --y: #ffd60a;
+  --pur: #6b3cff;
+  --paper: #fffaf0;
+  --ink: #111;
   position: fixed;
   inset: 0;
   z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: rgba(10, 8, 20, 0.86);
-  backdrop-filter: blur(6px);
+  padding: 90px 22px 40px;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.06), transparent 60%),
+    linear-gradient(90deg, transparent calc(100% - 7px), rgba(0, 0, 0, 0.22) 0) 0 0 / 25% 100%,
+    linear-gradient(transparent calc(100% - 7px), rgba(0, 0, 0, 0.22) 0) 0 0 / 100% 50%,
+    var(--g);
 }
 .clap-card {
+  position: relative;
   width: 100%;
-  max-width: 320px;
-  background: #1e1b2e;
-  border: 1px solid #3a3550;
-  border-radius: 16px;
-  padding: 28px 24px;
+  max-width: 390px;
+  margin: auto;
+  background:
+    radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1.2px) 0 0 / 7px 7px,
+    var(--paper);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 26px;
+  padding: 50px 28px 26px;
   text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-  color: #f1edfb;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  box-shadow: 10px 10px 0 var(--pink);
+  transform: rotate(-1.2deg);
+  animation: clap-in 0.5s cubic-bezier(0.2, 0.75, 0.15, 1);
+}
+@keyframes clap-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(-4deg);
+  }
+}
+/* clama roz de sus, ca la „Arhivă” */
+.clap-clip {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  width: 130px;
+  height: 58px;
+  margin-left: -65px;
+  border-radius: 13px 13px 9px 9px;
+  background: linear-gradient(#ffb3e1, #f06fbd);
+  box-shadow:
+    inset 0 -6px 0 rgba(0, 0, 0, 0.08),
+    0 7px 14px rgba(0, 0, 0, 0.25);
+  display: grid;
+  place-items: center;
+}
+.clap-clip::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -32px;
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+  border: 7px solid #f06fbd;
+  border-radius: 50%;
+  z-index: -1;
+}
+.clap-clip b {
+  font-family: "Caveat", cursive;
+  font-size: 26px;
+  font-weight: 700;
+  color: rgba(140, 20, 90, 0.6);
+  transform: rotate(-4deg);
+}
+/* paznicul parolelor */
+.clap-dog {
+  position: absolute;
+  right: -46px;
+  top: -64px;
+  width: 112px;
+  height: auto;
+  transform: rotate(9deg);
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.35));
+  pointer-events: none;
 }
 .clap-eyebrow {
-  margin: 0 0 6px;
+  margin: 0 0 10px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 12px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #a79acb;
+  color: #2f6b45;
 }
 .clap-title {
-  margin: 0 0 18px;
+  margin: 0;
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.clap-title span {
+  display: inline-block;
+  margin-top: 6px;
+  background: var(--pink);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  padding: 0 0.22em 0.06em;
+  transform: rotate(-2deg);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.clap-hint {
+  margin: 12px 0 18px;
+  font-family: "Caveat", cursive;
   font-size: 22px;
   font-weight: 700;
+  line-height: 1.1;
+  color: var(--pur);
 }
 .clap-input {
   width: 100%;
   box-sizing: border-box;
-  padding: 12px;
+  padding: 13px 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 20px;
-  letter-spacing: 0.2em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-align: center;
-  border-radius: 10px;
-  border: 1px solid #3a3550;
-  background: #141127;
-  color: #fff;
+  color: var(--ink);
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  outline: none;
+  transition: box-shadow 0.15s;
+}
+.clap-input::placeholder {
+  color: #b9b2a4;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 .clap-input:focus {
-  outline: 2px solid #6d4aff;
-  outline-offset: 2px;
+  box-shadow: 5px 5px 0 var(--pur);
 }
 .clap-note {
-  margin: 10px 0 0;
-  font-size: 13px;
-  color: #ff6b6b;
+  margin: 12px 0 0;
+  font-family: "Caveat", cursive;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1;
+  color: #e0245e;
+}
+.clap-note:not([hidden]) {
+  animation: clap-shake 0.4s;
+}
+@keyframes clap-shake {
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
 }
 .clap-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 12px;
+  margin-top: 20px;
 }
 .clap-back,
 .clap-go {
   flex: 1;
-  border: none;
-  border-radius: 10px;
-  padding: 12px;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  padding: 12px 10px;
+  font-family: "Inter", sans-serif;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
 }
 .clap-back {
-  background: #2a2640;
-  color: #cfc9e6;
+  background: #fff;
 }
 .clap-go {
-  background: #6d4aff;
-  color: #fff;
+  background: var(--y);
+}
+.clap-back:hover,
+.clap-go:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.clap-back:active,
+.clap-go:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.clap-back:focus-visible,
+.clap-go:focus-visible {
+  outline: 3px solid var(--pur);
+  outline-offset: 3px;
+}
+@media (max-width: 480px) {
+  .clap-card {
+    padding: 48px 20px 22px;
+  }
+  .clap-title {
+    font-size: 28px;
+  }
+  .clap-dog {
+    right: -14px;
+    top: -76px;
+    width: 92px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clap-card,
+  .clap-note:not([hidden]) {
+    animation: none;
+  }
 }
