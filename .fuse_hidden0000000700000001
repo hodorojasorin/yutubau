@@ -7821,8 +7821,8 @@
             --e5-yellow: #ffe45c;
             --e5-pink: #ff9ec4;
             --e5-steel: #d9dee2;
-            --display: "Archivo Black", "Inter", "Helvetica Neue", Arial,
-              sans-serif;
+            --display:
+              "Archivo Black", "Inter", "Helvetica Neue", Arial, sans-serif;
             --hand: "Caveat", "Comic Sans MS", cursive;
             --body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--white);
@@ -8407,7 +8407,9 @@
             <section class="slide hero" id="e5-titlu" data-name="Titlu">
               <div class="wrap">
                 <div class="hero-meta mono r" style="--i: 0">
-                  <p>Scenariu · reclamă · efectul fluture<br />Client: Hamal.md</p>
+                  <p>
+                    Scenariu · reclamă · efectul fluture<br />Client: Hamal.md
+                  </p>
                   <p>1:06 · 16:9 · Fujifilm X-T5<br />Liftul Mediacor</p>
                 </div>
                 <div>
@@ -8416,7 +8418,18 @@
                     <span class="e5-five r" style="--i: 2">5</span>
                     <div class="e5-stack r" style="--i: 3">
                       <div class="e5-display">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5" /><path d="M5 12l7-7 7 7" /></svg>
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M12 19V5" />
+                          <path d="M5 12l7-7 7 7" />
+                        </svg>
                         4→5
                       </div>
                       <div class="e5-tape-label mono">
@@ -8438,23 +8451,41 @@
             <!-- 2 · actorii -->
             <section class="slide" id="e5-actori" data-name="Actorii">
               <div class="wrap">
-                <p class="eyebrow mono r" style="--i: 0">Distribuția · fără replici</p>
+                <p class="eyebrow mono r" style="--i: 0">
+                  Distribuția · fără replici
+                </p>
                 <h2 class="r" style="--i: 1">El &amp; <em>Ea</em></h2>
                 <div class="e5-cast">
                   <figure class="e5-actor r" style="--i: 2; --rot: -2deg">
-                    <img src="img/e5-sergiu.jpg" alt="Sergiu, actorul care joacă rolul lui El" width="720" height="880" loading="lazy" />
+                    <img
+                      src="img/e5-sergiu.jpg"
+                      alt="Sergiu, actorul care joacă rolul lui El"
+                      width="720"
+                      height="880"
+                      loading="lazy"
+                    />
                     <figcaption>
                       <span class="mono">El · etajul 4</span>
                       <b>Sergiu</b>
-                      <span class="e5-hand">abia s-a mutat, cu o cutie FRAGIL</span>
+                      <span class="e5-hand"
+                        >abia s-a mutat, cu o cutie FRAGIL</span
+                      >
                     </figcaption>
                   </figure>
                   <figure class="e5-actor r" style="--i: 3; --rot: 2deg">
-                    <img src="img/e5-vanesa.jpg" alt="Vanesa, actrița care joacă rolul Ei" width="720" height="880" loading="lazy" />
+                    <img
+                      src="img/e5-vanesa.jpg"
+                      alt="Vanesa, actrița care joacă rolul Ei"
+                      width="720"
+                      height="880"
+                      loading="lazy"
+                    />
                     <figcaption>
                       <span class="mono">Ea · etajul 5</span>
                       <b>Vanesa</b>
-                      <span class="e5-hand">locuiește aici de mult, ține minte gesturile mici</span>
+                      <span class="e5-hand"
+                        >locuiește aici de mult, ține minte gesturile mici</span
+                      >
                     </figcaption>
                   </figure>
                 </div>
@@ -8474,7 +8505,9 @@
                 </div>
                 <div>
                   <p class="eyebrow mono r" style="--i: 1">Efectul fluture</p>
-                  <h2 class="r" style="--i: 1">Un gest mic <em>schimbă tot.</em></h2>
+                  <h2 class="r" style="--i: 1">
+                    Un gest mic <em>schimbă tot.</em>
+                  </h2>
                   <div class="e5-chain r" style="--i: 2">
                     <span>Un buton apăsat</span><i aria-hidden="true">→</i
                     ><span>Bilețele</span><i aria-hidden="true">→</i
@@ -8483,8 +8516,8 @@
                   </div>
                   <p class="lede r" style="--i: 3">
                     Publicul crede 46 de secunde că privește o poveste de
-                    dragoste. Abia la twist află că e o reclamă pentru o firmă de
-                    mutări.
+                    dragoste. Abia la twist află că e o reclamă pentru o firmă
+                    de mutări.
                   </p>
                   <p class="e5-slogan r" style="--i: 4">
                     „Am mutat mii de vieți. Unele doar un etaj mai sus.”
@@ -8496,7 +8529,9 @@
             <!-- 3 · cronometrul -->
             <section class="slide" id="e5-timp" data-name="Cronometrul">
               <div class="wrap">
-                <p class="eyebrow mono r" style="--i: 0">1:06, secundă cu secundă</p>
+                <p class="eyebrow mono r" style="--i: 0">
+                  1:06, secundă cu secundă
+                </p>
                 <h2 class="r" style="--i: 1">Cronometrul</h2>
                 <p class="lede r" style="--i: 1">
                   Fiecare bloc e o scenă, la lungimea ei reală. Povestea ține
@@ -8522,8 +8557,12 @@
                   </div>
                 </div>
                 <div class="e5-facts r" style="--i: 3">
-                  <div><span class="mono">Locație</span><b>Liftul Mediacor</b></div>
-                  <div><span class="mono">Actori</span><b>2, fără replici</b></div>
+                  <div>
+                    <span class="mono">Locație</span><b>Liftul Mediacor</b>
+                  </div>
+                  <div>
+                    <span class="mono">Actori</span><b>2, fără replici</b>
+                  </div>
                   <div><span class="mono">Filmare</span><b>Joi, 12.11</b></div>
                   <div><span class="mono">Cameră</span><b>X-T5 · 18–55</b></div>
                 </div>
@@ -8537,28 +8576,54 @@
                 <h2 class="r" style="--i: 1">Străini <em>în lift</em></h2>
                 <div class="e5-scenes">
                   <article class="e5-sc r" style="--i: 2">
-                    <div class="e5-sc-top"><span class="e5-time">0:00 – 0:03</span><span class="e5-num">01</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:00 – 0:03</span
+                      ><span class="e5-num">01</span>
+                    </div>
                     <span class="e5-kick">Hook · inel deschidere</span>
                     <h3>Cutia FRAGIL intră prima</h3>
-                    <p>Cadru simetric din fundul liftului. Ușile se deschid, El intră cu o cutie mare pe care abia o ține. Afișajul arată 1.</p>
+                    <p>
+                      Cadru simetric din fundul liftului. Ușile se deschid, El
+                      intră cu o cutie mare pe care abia o ține. Afișajul arată
+                      1.
+                    </p>
                   </article>
                   <article class="e5-sc r" style="--i: 3">
-                    <div class="e5-sc-top"><span class="e5-time">0:03 – 0:08</span><span class="e5-num">02</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:03 – 0:08</span
+                      ><span class="e5-num">02</span>
+                    </div>
                     <span class="e5-kick">Gestul fluture</span>
                     <h3>Un buton apăsat cu cotul</h3>
-                    <p>Ușile se închid în fața Ei, se vede dezamăgirea prin deschizătură. El apasă cu cotul butonul. Ea intră repede, dă din cap a mulțumire și apasă 5.</p>
+                    <p>
+                      Ușile se închid în fața Ei, se vede dezamăgirea prin
+                      deschizătură. El apasă cu cotul butonul. Ea intră repede,
+                      dă din cap a mulțumire și apasă 5.
+                    </p>
                   </article>
                   <article class="e5-sc r" style="--i: 4">
-                    <div class="e5-sc-top"><span class="e5-time">0:08 – 0:13</span><span class="e5-num">03</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:08 – 0:13</span
+                      ><span class="e5-num">03</span>
+                    </div>
                     <span class="e5-kick">Primul contact</span>
                     <h3>Bilețele pe oglindă</h3>
-                    <p>A doua zi, pe oglindă: „Mersi pentru ușă. – 5”. Altă zi, răspunsul dedesubt: „Oricând. – 4”.</p>
+                    <p>
+                      A doua zi, pe oglindă: „Mersi pentru ușă. – 5”. Altă zi,
+                      răspunsul dedesubt: „Oricând. – 4”.
+                    </p>
                   </article>
                   <article class="e5-sc r" style="--i: 5">
-                    <div class="e5-sc-top"><span class="e5-time">0:13 – 0:28</span><span class="e5-num">04</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:13 – 0:28</span
+                      ><span class="e5-num">04</span>
+                    </div>
                     <span class="e5-kick">Montaj pe beat</span>
                     <h3>Zi după zi, bilețel după bilețel</h3>
-                    <p>Același unghi fix pe oglindă. Bilețelele se adună, gecile se schimbă. Fiecare citește singur și zâmbește.</p>
+                    <p>
+                      Același unghi fix pe oglindă. Bilețelele se adună, gecile
+                      se schimbă. Fiecare citește singur și zâmbește.
+                    </p>
                   </article>
                 </div>
               </div>
@@ -8571,28 +8636,53 @@
                 <h2 class="r" style="--i: 1">Aproape. <em>Apoi twist.</em></h2>
                 <div class="e5-scenes">
                   <article class="e5-sc r" style="--i: 2">
-                    <div class="e5-sc-top"><span class="e5-time">0:28 – 0:40</span><span class="e5-num">05</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:28 – 0:40</span
+                      ><span class="e5-num">05</span>
+                    </div>
                     <span class="e5-kick">Apropiere</span>
                     <h3>Tot mai aproape</h3>
-                    <p>Trec pe mesaje: „Coborâm împreună?”. În același cadru, distanța scade zi de zi. Într-o dimineață, Ea adoarme pe umărul lui.</p>
+                    <p>
+                      Trec pe mesaje: „Coborâm împreună?”. În același cadru,
+                      distanța scade zi de zi. Într-o dimineață, Ea adoarme pe
+                      umărul lui.
+                    </p>
                   </article>
                   <article class="e5-sc r" style="--i: 3">
-                    <div class="e5-sc-top"><span class="e5-time">0:40 – 0:46</span><span class="e5-num">06</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:40 – 0:46</span
+                      ><span class="e5-num">06</span>
+                    </div>
                     <span class="e5-kick">Pistă falsă</span>
                     <h3>„Mă mut.”</h3>
-                    <p>Un singur bilețel pe oglinda goală. Fața Ei se întunecă. Liftul pleacă gol, ușile se închid fără nimeni.</p>
+                    <p>
+                      Un singur bilețel pe oglinda goală. Fața Ei se întunecă.
+                      Liftul pleacă gol, ușile se închid fără nimeni.
+                    </p>
                   </article>
                   <article class="e5-sc twist r" style="--i: 4">
-                    <div class="e5-sc-top"><span class="e5-time">0:46 – 0:51</span><span class="e5-num">07</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:46 – 0:51</span
+                      ><span class="e5-num">07</span>
+                    </div>
                     <span class="e5-kick">Plot twist</span>
                     <h3>Ușile se deschid la 5</h3>
-                    <p>La ușa Ei stau cutiile lui. Pe cutia FRAGIL, un bilețel: „Mă mut. La tine. (Dacă vrei.)”</p>
+                    <p>
+                      La ușa Ei stau cutiile lui. Pe cutia FRAGIL, un bilețel:
+                      „Mă mut. La tine. (Dacă vrei.)”
+                    </p>
                   </article>
                   <article class="e5-sc r" style="--i: 5">
-                    <div class="e5-sc-top"><span class="e5-time">0:51 – 0:54</span><span class="e5-num">08</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:51 – 0:54</span
+                      ><span class="e5-num">08</span>
+                    </div>
                     <span class="e5-kick">Reacția</span>
                     <h3>Ea râde, El ridică din umeri</h3>
-                    <p>Ea își acoperă gura cu mâna. Se uită spre scară: El stă pe o treaptă, cu o cutie în brațe.</p>
+                    <p>
+                      Ea își acoperă gura cu mâna. Se uită spre scară: El stă pe
+                      o treaptă, cu o cutie în brațe.
+                    </p>
                   </article>
                 </div>
               </div>
@@ -8602,29 +8692,53 @@
             <section class="slide" id="e5-scene3" data-name="Scenele 9–11">
               <div class="wrap">
                 <p class="eyebrow mono r" style="--i: 0">Scenele 09–11</p>
-                <h2 class="r" style="--i: 1">Drop. <em>Inelul se închide.</em></h2>
+                <h2 class="r" style="--i: 1">
+                  Drop. <em>Inelul se închide.</em>
+                </h2>
                 <div class="e5-scenes">
                   <article class="e5-sc r" style="--i: 2">
-                    <div class="e5-sc-top"><span class="e5-time">0:54 – 0:58</span><span class="e5-num">09</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:54 – 0:58</span
+                      ><span class="e5-num">09</span>
+                    </div>
                     <span class="e5-kick">Pauza</span>
                     <h3>Liniște înainte de drop</h3>
-                    <p>Ea ridică un colț al cutiei. Macro pe logo-ul de pe banda adezivă. Muzica se oprește o clipă.</p>
+                    <p>
+                      Ea ridică un colț al cutiei. Macro pe logo-ul de pe banda
+                      adezivă. Muzica se oprește o clipă.
+                    </p>
                   </article>
                   <article class="e5-sc drop r" style="--i: 3">
-                    <div class="e5-sc-top"><span class="e5-time">0:58 – 1:03</span><span class="e5-num">10</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">0:58 – 1:03</span
+                      ><span class="e5-num">10</span>
+                    </div>
                     <span class="e5-kick">Drop</span>
                     <h3>HAMAL.MD</h3>
-                    <p>Logo-ul cade pe partea dinamică a remixului. Tăieturi pe beat: bandă trasă, cutii închise. Vocea lui El citește sloganul.</p>
+                    <p>
+                      Logo-ul cade pe partea dinamică a remixului. Tăieturi pe
+                      beat: bandă trasă, cutii închise. Vocea lui El citește
+                      sloganul.
+                    </p>
                   </article>
                   <article class="e5-sc r" style="--i: 4">
-                    <div class="e5-sc-top"><span class="e5-time">1:03 – 1:06</span><span class="e5-num">11</span></div>
+                    <div class="e5-sc-top">
+                      <span class="e5-time">1:03 – 1:06</span
+                      ><span class="e5-num">11</span>
+                    </div>
                     <span class="e5-kick">Inel · final</span>
                     <h3>4 → 5. Ușile se închid.</h3>
-                    <p>Același cadru ca la început. Cutia FRAGIL, dusă acum de amândoi. Pe ecran, contactele Hamal.md.</p>
+                    <p>
+                      Același cadru ca la început. Cutia FRAGIL, dusă acum de
+                      amândoi. Pe ecran, contactele Hamal.md.
+                    </p>
                   </article>
                   <article class="e5-sc note r" style="--i: 5">
                     <p class="e5-hand">Primul cadru = ultimul cadru.</p>
-                    <p>Diferența dintre ele e toată povestea: un om singur cu o cutie, apoi doi oameni cu aceeași cutie.</p>
+                    <p>
+                      Diferența dintre ele e toată povestea: un om singur cu o
+                      cutie, apoi doi oameni cu aceeași cutie.
+                    </p>
                   </article>
                 </div>
               </div>
@@ -8640,14 +8754,32 @@
                   <span style="background: #ff9ec4">Ea · roz</span>
                 </div>
                 <div class="e5-mirror r" style="--i: 2">
-                  <div class="e5-postit pink" style="--rot: -3deg"><span>Mersi pentru ușă. – 5</span><span>#1 · Ea</span></div>
-                  <div class="e5-postit" style="--rot: 2deg"><span>Oricând. – 4</span><span>#2 · El</span></div>
-                  <div class="e5-postit pink" style="--rot: -1deg"><span>Ai mutat dulapul la 2 noaptea?</span><span>#3 · Ea</span></div>
-                  <div class="e5-postit" style="--rot: 3deg"><span>Scuze. Am și cântat?</span><span>#4 · El</span></div>
-                  <div class="e5-postit pink" style="--rot: 2deg"><span>Da. Fals.</span><span>#5 · Ea</span></div>
-                  <div class="e5-postit" style="--rot: -2deg"><span>Pizza în plus. Vrei?</span><span>#6 · El</span></div>
-                  <div class="e5-postit" style="--rot: 1deg"><span>Mă mut.</span><span>#7 · El · pista falsă</span></div>
-                  <div class="e5-postit tape key" style="--rot: -3deg"><span>Mă mut. La tine. (Dacă vrei.)</span><span>#8 · El · pe cutie</span></div>
+                  <div class="e5-postit pink" style="--rot: -3deg">
+                    <span>Mersi pentru ușă. – 5</span><span>#1 · Ea</span>
+                  </div>
+                  <div class="e5-postit" style="--rot: 2deg">
+                    <span>Oricând. – 4</span><span>#2 · El</span>
+                  </div>
+                  <div class="e5-postit pink" style="--rot: -1deg">
+                    <span>Ai mutat dulapul la 2 noaptea?</span
+                    ><span>#3 · Ea</span>
+                  </div>
+                  <div class="e5-postit" style="--rot: 3deg">
+                    <span>Scuze. Am și cântat?</span><span>#4 · El</span>
+                  </div>
+                  <div class="e5-postit pink" style="--rot: 2deg">
+                    <span>Da. Fals.</span><span>#5 · Ea</span>
+                  </div>
+                  <div class="e5-postit" style="--rot: -2deg">
+                    <span>Pizza în plus. Vrei?</span><span>#6 · El</span>
+                  </div>
+                  <div class="e5-postit" style="--rot: 1deg">
+                    <span>Mă mut.</span><span>#7 · El · pista falsă</span>
+                  </div>
+                  <div class="e5-postit tape key" style="--rot: -3deg">
+                    <span>Mă mut. La tine. (Dacă vrei.)</span
+                    ><span>#8 · El · pe cutie</span>
+                  </div>
                 </div>
               </div>
             </section>
@@ -8655,17 +8787,27 @@
             <!-- 8 · final -->
             <section class="slide finale" id="e5-final" data-name="Final">
               <div class="wrap">
-                <p class="eyebrow mono r" style="--i: 0">Un gest mic schimbă tot</p>
-                <h2 class="r" style="--i: 1">Am mutat mii de vieți. <em>Unele doar un etaj mai sus.</em></h2>
+                <p class="eyebrow mono r" style="--i: 0">
+                  Un gest mic schimbă tot
+                </p>
+                <h2 class="r" style="--i: 1">
+                  Am mutat mii de vieți. <em>Unele doar un etaj mai sus.</em>
+                </h2>
                 <div class="e5-chips r" style="--i: 2">
-                  <button class="btn" id="e5-again" type="button">↺ De la capăt</button>
-                  <button class="btn" id="e5-share" type="button">Copiază linkul</button>
+                  <button class="btn" id="e5-again" type="button">
+                    ↺ De la capăt
+                  </button>
+                  <button class="btn" id="e5-share" type="button">
+                    Copiază linkul
+                  </button>
                 </div>
                 <p class="toast mono" id="e5-toast" role="status"></p>
                 <div class="credits mono r" style="--i: 3">
                   <div>Regie<b>Sorin Arseni Hodoroja · @sorinarseni</b></div>
                   <div>Client<b>Hamal.md</b></div>
-                  <div>Specialitatea<b>Producție Multimedia · USM, FJȘC</b></div>
+                  <div>
+                    Specialitatea<b>Producție Multimedia · USM, FJȘC</b>
+                  </div>
                 </div>
               </div>
             </section>
@@ -10538,7 +10680,6 @@
             route();
           })();
         </script>
-
       </body>
     </html>
   </body>
