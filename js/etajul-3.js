@@ -118,7 +118,7 @@
     });
     cur = -1;
     scrollTo({ top: 0, behavior: "instant" });
-    document.title = "Etajul 3 · regie Sorin Arseni Hodoroja";
+    document.title = "Etajul 3 · regie Sorin Hodoroja";
     requestAnimationFrame(function () {
       requestAnimationFrame(pick);
     });
