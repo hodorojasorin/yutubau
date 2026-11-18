@@ -6,7 +6,7 @@
 //     npm start        → telefoanele din aceeași rețea Wi-Fi ca laptopul (fără internet)
 //     npm run online   → telefoane din orice rețea (Wi-Fi, date mobile): laptopul primește
 //                        o adresă https://…trycloudflare.com printr-un tunel Cloudflare
-//                        (o dată: brew install cloudflared)
+//                        (cloudflared stă în tools/; altfel: brew install cloudflared)
 //
 // Apoi deschizi pe laptop http://localhost:8000/colocviu.html (sau altă prezentare).
 // Codul QR din telecomandă și din quiz arată singur adresa potrivită.
@@ -107,7 +107,8 @@ function serve(req, res, pathname) {
   }
   let file = path.normalize(path.join(ROOT, rel));
   // nimic în afara folderului și nimic ascuns (.git, .DS_Store…)
-  if ((file !== ROOT && !file.startsWith(ROOT + path.sep)) || /(^|[\\/])\./.test(path.relative(ROOT, file))) {
+  const relp = path.relative(ROOT, file);
+  if ((file !== ROOT && !file.startsWith(ROOT + path.sep)) || /(^|[\\/])\./.test(relp) || /^(tools|node_modules)([\\/]|$)/.test(relp) || relp === "server.js") {
     res.writeHead(403);
     return res.end("403");
   }
@@ -164,7 +165,10 @@ function startTunnel() {
   const { spawn } = require("child_process");
   let p;
   try {
-    p = spawn("cloudflared", ["tunnel", "--no-autoupdate", "--url", `http://localhost:${PORT}`], { stdio: ["ignore", "pipe", "pipe"] });
+    // întâi cel din folderul proiectului (tools/cloudflared), apoi cel instalat cu brew
+    const local = path.join(ROOT, "tools", "cloudflared");
+    const bin = fs.existsSync(local) ? local : "cloudflared";
+    p = spawn(bin, ["tunnel", "--no-autoupdate", "--url", `http://localhost:${PORT}`], { stdio: ["ignore", "pipe", "pipe"] });
   } catch (e) {
     return tunnelFail("nu găsesc cloudflared");
   }

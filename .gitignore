@@ -1,4 +1,5 @@
-.DS_Store
-
 .fuse_hidden*
 .DS_Store
+# cloudflared pentru „npm run online” (doar pe laptop, nu pe site)
+tools/
+node_modules/
