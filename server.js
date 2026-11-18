@@ -57,30 +57,37 @@ function lanIPs() {
   return out.sort((a, b) => rank(a) - rank(b)).map((x) => x.ip);
 }
 
-// ---------- poșta: cine ascultă ce subiect ----------
-const subs = new Map(); // subiect → Set(răspunsuri SSE)
-function listen(req, res, topics) {
-  res.writeHead(200, {
-    "Content-Type": "text/event-stream",
-    "Cache-Control": "no-store, no-transform",
-    Connection: "keep-alive",
-    "X-Accel-Buffering": "no",
-  });
-  res.write("retry: 1500\n: salut\n\n");
-  for (const t of topics) {
-    if (!subs.has(t)) subs.set(t, new Set());
-    subs.get(t).add(res);
-  }
-  const beat = setInterval(() => res.write(": ping\n\n"), 15000);
+// ---------- poșta: mesajele dintre laptop și telefoane ----------
+// Fiecare dispozitiv întreabă „ai ceva nou pentru mine?” (GET /bus/poll). Dacă nu e nimic,
+// cererea așteaptă până vine un mesaj (max. 25 s). Așa trece prin orice tunel sau proxy.
+let seq = 0;
+const log = []; // ultimele mesaje: { seq, t, m }
+const waiters = new Set();
+function pending(topics, since) {
+  return log.filter((x) => x.seq > since && topics.has(x.t)).map((x) => ({ t: x.t, m: x.m }));
+}
+function reply(res, msgs, extra) {
+  res.writeHead(200, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store, no-transform" });
+  res.end(JSON.stringify(Object.assign({ seq, msgs }, extra || {})));
+}
+function poll(req, res, topics, since) {
+  if (!(since >= 0)) return reply(res, []); // prima întrebare: doar numărul de ordine curent
+  if (since > seq) return reply(res, [], { reset: true }); // serverul a fost repornit
+  const msgs = pending(topics, since);
+  if (msgs.length) return reply(res, msgs);
+  const w = { topics, since, res };
+  w.timer = setTimeout(() => wake(w), 25000);
+  waiters.add(w);
   req.on("close", () => {
-    clearInterval(beat);
-    for (const t of topics) {
-      const s = subs.get(t);
-      if (!s) continue;
-      s.delete(res);
-      if (!s.size) subs.delete(t);
-    }
+    clearTimeout(w.timer);
+    waiters.delete(w);
   });
+}
+function wake(w) {
+  if (!waiters.has(w)) return;
+  waiters.delete(w);
+  clearTimeout(w.timer);
+  reply(w.res, pending(w.topics, w.since));
 }
 function post(req, res, topic) {
   let body = "";
@@ -90,8 +97,9 @@ function post(req, res, topic) {
     if (body.length > 65536) req.destroy();
   });
   req.on("end", () => {
-    const line = "data: " + JSON.stringify({ t: topic, m: body }) + "\n\n";
-    for (const r of subs.get(topic) || []) r.write(line);
+    log.push({ seq: ++seq, t: topic, m: body });
+    if (log.length > 600) log.shift();
+    for (const w of [...waiters]) if (w.topics.has(topic)) wake(w);
     res.writeHead(204, { "Cache-Control": "no-store" });
     res.end();
   });
@@ -146,9 +154,9 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
     return res.end(JSON.stringify({ ok: true, ips: lanIPs(), port: PORT, tunnel: tunnel.state, public: tunnel.url }));
   }
-  if (u.pathname === "/bus/s") {
-    const topics = u.searchParams.getAll("t").filter(Boolean).slice(0, 8);
-    return listen(req, res, topics);
+  if (u.pathname === "/bus/poll") {
+    const topics = new Set(u.searchParams.getAll("t").filter(Boolean).slice(0, 8));
+    return poll(req, res, topics, parseInt(u.searchParams.get("since"), 10));
   }
   if (u.pathname === "/bus/p" && req.method === "POST") return post(req, res, u.searchParams.get("t") || "");
   serve(req, res, u.pathname);

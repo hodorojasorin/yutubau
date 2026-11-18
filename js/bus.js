@@ -136,41 +136,63 @@
     });
   }
 
-  // ---------- legătura cu serverul: ascultare (SSE) și trimitere (POST) ----------
+  // ---------- legătura cu serverul ----------
+  // ascultare: „ai ceva nou?” (GET /bus/poll, așteaptă până vine un mesaj); trimitere: POST /bus/p.
+  // Fiecare răspuns e o cerere încheiată, așa că trece și prin tunelul Cloudflare.
   function Local(topics, onMsg, onState) {
-    var self = this;
+    var self = this,
+      since = -1,
+      stop = false,
+      fails = 0;
     self.up = false;
-    var es = new EventSource(
-      "/bus/s?" +
-        topics
-          .map(function (t) {
-            return "t=" + encodeURIComponent(t);
-          })
-          .join("&"),
-    );
-    es.onopen = function () {
-      self.up = true;
-      onState();
-    };
-    es.onerror = function () {
-      if (self.up) {
-        self.up = false;
-        onState();
-      }
-    };
-    es.onmessage = function (e) {
-      try {
-        var d = JSON.parse(e.data);
-        onMsg(d.t, d.m);
-      } catch (x) {}
-    };
+    var q = topics
+      .map(function (t) {
+        return "t=" + encodeURIComponent(t);
+      })
+      .join("&");
+    function loop() {
+      if (stop) return;
+      var ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
+      var guard = setTimeout(function () {
+        if (ctl) ctl.abort();
+      }, 35000);
+      fetch("/bus/poll?" + q + "&since=" + since + "&_=" + Date.now(), { cache: "no-store", signal: ctl ? ctl.signal : undefined })
+        .then(function (r) {
+          if (!r.ok) throw new Error("http " + r.status);
+          return r.json();
+        })
+        .then(function (j) {
+          clearTimeout(guard);
+          fails = 0;
+          if (since >= 0 && !j.reset)
+            (j.msgs || []).forEach(function (x) {
+              onMsg(x.t, x.m);
+            });
+          since = j.seq;
+          if (!self.up) {
+            self.up = true;
+            onState();
+          }
+          loop();
+        })
+        .catch(function () {
+          clearTimeout(guard);
+          fails++;
+          if (self.up && fails > 1) {
+            self.up = false;
+            onState();
+          }
+          setTimeout(loop, Math.min(4000, 400 * fails));
+        });
+    }
+    loop();
     self.publish = function (topic, text) {
       if (!self.up) return false;
-      fetch("/bus/p?t=" + encodeURIComponent(topic), { method: "POST", body: text, keepalive: true }).catch(function () {});
+      fetch("/bus/p?t=" + encodeURIComponent(topic), { method: "POST", body: text, keepalive: true, cache: "no-store" }).catch(function () {});
       return true;
     };
     self.close = function () {
-      es.close();
+      stop = true;
     };
   }
 
