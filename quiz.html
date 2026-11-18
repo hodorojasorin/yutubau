@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+    <meta name="theme-color" content="#6a2cff" />
+    <meta name="robots" content="noindex" />
+    <title>Quiz · Istoria Multimediei</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500;700;800;900&family=JetBrains+Mono:wght@700&display=swap" />
+    <link rel="stylesheet" href="css/quiz-phone.css" />
+  </head>
+  <body>
+    <header class="top">
+      <b>Istoria Multimediei</b><span class="st" id="st"><i></i><em>se conectează…</em></span>
+    </header>
+
+    <main>
+      <section class="scr" id="s-code" hidden>
+        <h1>Quiz 📱</h1>
+        <p>Scrie codul de pe ecranul mare:</p>
+        <input id="code" maxlength="6" autocomplete="off" autocapitalize="characters" placeholder="ABC123" />
+        <button type="button" class="big" id="code-go">Mai departe →</button>
+      </section>
+
+      <section class="scr" id="s-join" hidden>
+        <h1>Cum te cheamă?</h1>
+        <input id="name" maxlength="16" autocomplete="nickname" placeholder="numele tău" />
+        <p class="lbl">Alege-ți un avatar</p>
+        <div class="emo" id="emo"></div>
+        <button type="button" class="big" id="join">Intră în joc 🚀</button>
+      </section>
+
+      <section class="scr" id="s-wait" hidden>
+        <div class="me"><span id="me-emo">🎥</span><b id="me-name">…</b></div>
+        <h1>Ești în joc!</h1>
+        <p>Uită-te la ecranul mare. Întrebările apar aici, pe telefon.</p>
+        <p class="pill-n" id="wait-n"></p>
+      </section>
+
+      <section class="scr" id="s-q" hidden>
+        <div class="q-top"><span id="q-num">1 / 6</span><span id="q-sec">20</span></div>
+        <div class="q-bar"><i id="q-bar"></i></div>
+        <h2 id="q-text"></h2>
+        <div class="opts" id="opts"></div>
+      </section>
+
+      <section class="scr" id="s-sent" hidden>
+        <div class="spin">⏳</div>
+        <h1>Răspuns trimis!</h1>
+        <p>Așteptăm și restul clasei…</p>
+      </section>
+
+      <section class="scr" id="s-res" hidden>
+        <div class="verdict" id="verdict">✓</div>
+        <h1 id="res-t"></h1>
+        <p class="pts" id="res-pts"></p>
+        <p id="res-more"></p>
+      </section>
+
+      <section class="scr" id="s-end" hidden>
+        <div class="verdict" id="end-medal">🏆</div>
+        <h1 id="end-t"></h1>
+        <p class="pts" id="end-pts"></p>
+        <ol class="top3" id="end-top"></ol>
+        <p>Mulțumesc că ai jucat! <br />— Sorin</p>
+      </section>
+    </main>
+
+    <script src="js/vendor/peerjs.min.js"></script>
+    <script src="js/quiz-phone.js"></script>
+  </body>
+</html>
