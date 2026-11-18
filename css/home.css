@@ -555,8 +555,8 @@ a {
 .me-pic {
   position: absolute;
   z-index: 4;
-  right: -118px;
-  bottom: -62px;
+  right: -46px;
+  bottom: -56px;
   width: 300px;
   height: auto;
   filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.3));
