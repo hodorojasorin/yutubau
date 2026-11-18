@@ -9,16 +9,10 @@
     $("noid").hidden = false;
     return;
   }
-  var OPTS = qs.get("peerhost")
-    ? { host: qs.get("peerhost"), port: +qs.get("peerport") || 9000, path: "/", secure: false }
-    : {};
-
-  var peer = null,
-    conn = null,
+  var bus = null,
     state = null,
     gotAt = 0,
-    tries = 0,
-    timer = null;
+    started = Date.now();
 
   function status(t, kind) {
     var el = $("st");
@@ -56,12 +50,8 @@
   setInterval(tick, 250);
 
   function send(m) {
-    if (conn && conn.open) {
-      conn.send(m);
-      return true;
-    }
+    if (bus && bus.send(m)) return true;
     status("Nu e conectat. Se reîncearcă…", "err");
-    connect();
     return false;
   }
   function go(d) {
@@ -75,60 +65,37 @@
   }
 
   // ---- legătura cu laptopul ----
-  function connect() {
-    if (timer) return;
-    if (!peer || peer.destroyed) {
-      peer = new Peer(OPTS);
-      peer.on("open", dial);
-      peer.on("disconnected", function () {
-        if (!peer.destroyed) peer.reconnect();
-      });
-      peer.on("error", function (e) {
-        if (e.type === "peer-unavailable") {
-          status("Prezentarea nu răspunde. Redeschide codul QR pe laptop.", "err");
-          later(3000);
-        } else if (e.type === "network" || e.type === "server-error" || e.type === "socket-error") {
-          status("Fără internet. Se reîncearcă…", "err");
-          later(3000);
-        } else {
-          status("Eroare: " + e.type, "err");
-          later(4000);
-        }
-      });
-    } else if (peer.open) dial();
+  // telefonul spune „salut” la câteva secunde; laptopul răspunde cu slide-ul curent
+  function hello() {
+    if (bus && bus.online()) bus.send({ t: "hello" });
   }
-  function later(ms) {
-    if (timer) return;
-    timer = setTimeout(function () {
-      timer = null;
-      if (++tries > 40) return status("Nu se poate conecta. Folosește tastatura laptopului.", "err");
-      connect();
-    }, ms);
+  function check() {
+    if (!bus) return;
+    var fresh = Date.now() - gotAt < 9000;
+    if (fresh) status(bus.mode === "laptop" ? "Conectat (prin laptop)" : "Conectat", "ok");
+    else if (!bus.online()) status(Date.now() - started > 9000 ? "Fără internet. Se reîncearcă…" : "Se conectează…", Date.now() - started > 9000 ? "err" : "");
+    else if (gotAt) status("Prezentarea nu mai răspunde…", "err");
+    else status(Date.now() - started > 8000 ? "Prezentarea nu răspunde. Redeschide codul QR pe laptop." : "Se conectează la prezentare…", Date.now() - started > 8000 ? "err" : "");
   }
-  function dial() {
-    if (conn && conn.open) return;
-    status("Se conectează la prezentare…", "");
-    conn = peer.connect(id, { reliable: true });
-    conn.on("open", function () {
-      tries = 0;
-      status("Conectat", "ok");
-      conn.send({ t: "hello" });
-    });
-    conn.on("data", function (m) {
+  bus = SRNBus.client(id.replace(/^srn-/, "rm-"), {
+    onMessage: function (m) {
       if (m && m.t === "state") {
         state = m;
         gotAt = Date.now();
         render();
         tick();
+        check();
       }
-    });
-    conn.on("close", function () {
-      status("Conexiunea s-a închis. Se reîncearcă…", "err");
-      conn = null;
-      later(1500);
-    });
-  }
-  connect();
+    },
+    onStatus: function () {
+      hello();
+      check();
+    },
+  });
+  setInterval(function () {
+    hello();
+    check();
+  }, 3000);
 
   // ---- butoane, swipe, tastatură ----
   $("prev").addEventListener("click", function () {
@@ -187,7 +154,7 @@
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "visible") {
       wake();
-      if (!conn || !conn.open) connect();
+      hello();
     }
   });
 })();

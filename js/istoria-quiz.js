@@ -1,5 +1,5 @@
 // Quiz-ul live: ecranul mare e „gazda”, colegii intră de pe telefon prin codul QR (quiz.html).
-// Legătura e directă, prin PeerJS (ca la telecomandă). Fără server propriu, fără cont.
+// Mesajele trec prin js/bus.js (ca la telecomandă): brokere publice pe internet sau serverul de pe laptop.
 // Repetiție fără colegi: în lobby apeși B și intră 5 boți.
 (function () {
   "use strict";
@@ -24,45 +24,47 @@
   var EMO = ["🎥", "📷", "🎞️", "📺", "📼", "💾", "🎧", "🎙️", "🕹️", "📱", "🖥️", "📻", "🎬", "💿"];
   var BOTS = ["Ana", "Ion", "Mihai", "Cristina", "Dan", "Elena", "Vlad", "Irina", "Radu", "Maria", "Nicu", "Diana"];
 
-  var state = "lobby", qi = -1, qStart = 0, timer = null, raf = 0, players = {}, order = [], peer = null, code = null, linkUrl = "";
+  var state = "lobby", qi = -1, qStart = 0, timer = null, raf = 0, players = {}, order = [], byCid = {}, bus = null, code = null, linkUrl = "", linkHost = "university.sorinarseni.com/quiz.html", offline = 0;
 
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function list() { return order.map(function (p) { return players[p]; }); }
   function ranked() { return list().slice().sort(function (a, b) { return b.score - a.score || a.joined - b.joined; }); }
-  function send(p, m) { if (p.conn && p.conn.open) try { p.conn.send(m); } catch (e) {} }
+  function send(p, m) { if (p.cid && bus) bus.sendTo(p.cid, m); }
   function bcast(m) { list().forEach(function (p) { send(p, m); }); }
   function answered() { return list().filter(function (p) { return p.ans[qi] != null; }).length; }
 
   // ---------- conexiunea ----------
   function newCode() { var a = "abcdefghjkmnpqrstuvwxyz23456789", s = ""; for (var k = 0; k < 6; k++) s += a[Math.floor(Math.random() * a.length)]; return s; }
   function startPeer() {
-    if (peer) return;
+    if (bus) return;
     try { code = sessionStorage.getItem("im-quiz-code") || newCode(); sessionStorage.setItem("im-quiz-code", code); } catch (e) { code = newCode(); }
-    linkUrl = IM.siteURL("quiz.html") + "?id=srn-q" + code;
     IM.loadJS("js/vendor/qrcode.js", function () { return typeof qrcode !== "undefined"; }, function () {
-      if (state === "lobby") render();
-      IM.loadJS("js/vendor/peerjs.min.js", function () { return typeof Peer !== "undefined"; }, function () {
-        peer = new Peer("srn-q" + code);
-        peer.on("open", function () { setSt("gata · scanează codul"); });
-        peer.on("connection", onConn);
-        peer.on("disconnected", function () { if (!peer.destroyed) peer.reconnect(); });
-        peer.on("error", function (e) {
-          if (e && e.type === "unavailable-id") { code = newCode(); try { sessionStorage.setItem("im-quiz-code", code); } catch (x) {} peer.destroy(); peer = null; setTimeout(startPeer, 600); return; }
-          setSt("fără internet: apasă B pentru boți de repetiție");
+      IM.loadJS("js/bus.js", function () { return typeof SRNBus !== "undefined"; }, function () {
+        SRNBus.phoneURL("quiz.html", { id: "srn-q" + code }).then(function (url) {
+          linkUrl = url;
+          var u = new URL(url);
+          linkHost = u.host + u.pathname;
+          if (state === "lobby") render();
         });
-      }, function () { setSt("nu s-a putut încărca PeerJS"); });
+        if (bus) return;
+        bus = SRNBus.host("q-" + code, { onMessage: onMsg, onStatus: busSt });
+        setInterval(function () { offline = bus.online() ? 0 : offline + 1; busSt(); }, 4000);
+      }, function () { setSt("nu s-a putut încărca legătura: apasă B pentru boți de repetiție"); });
     }, function () { setSt("nu s-a putut încărca generatorul QR"); });
   }
-  function setSt(t) { var el = root.querySelector(".q-st"); if (el) el.textContent = t; root._st = t; }
-  function onConn(c) {
-    c.on("data", function (m) {
-      if (!m || typeof m !== "object") return;
-      if (m.t === "join") join(c, m);
-      else if (m.t === "ans") answer(c._pid, m.i, m.a);
-    });
-    c.on("close", function () { var p = players[c._pid]; if (p && p.conn === c) p.conn = null; });
+  function busSt() {
+    if (!bus) return;
+    if (bus.online()) setSt(bus.mode === "laptop" ? "gata · prin laptop · scanează codul" : "gata · scanează codul");
+    else setSt(offline > 1 ? "fără internet: apasă B pentru boți de repetiție" : "se conectează…");
   }
-  function join(c, m) {
+  function setSt(t) { var el = root.querySelector(".q-st"); if (el) el.textContent = t; root._st = t; }
+  function onMsg(m, from) {
+    if (!m || typeof m !== "object" || !from) return;
+    if (m.t === "hello") bus.sendTo(from, { t: "hi" });
+    else if (m.t === "join") join(from, m);
+    else if (m.t === "ans") answer(byCid[from], m.i, m.a);
+  }
+  function join(cid, m) {
     var pid = String(m.pid || "").slice(0, 40) || "p" + Math.random();
     var name = String(m.name || "Anonim").replace(/\s+/g, " ").trim().slice(0, 16) || "Anonim";
     var p = players[pid];
@@ -71,8 +73,9 @@
       order.push(pid);
       IM.sfx.join();
     } else p.name = name;
-    p.conn = c;
-    c._pid = pid;
+    if (p.cid) delete byCid[p.cid];
+    p.cid = cid;
+    byCid[cid] = pid;
     send(p, { t: "welcome", name: p.name, emoji: p.emoji });
     if (state === "q") sendQ(p);
     else if (state === "reveal") sendRes(p);
@@ -195,7 +198,7 @@
         '<p class="q-count"><b>' + order.length + "</b> în joc</p>" +
         '<div class="q-players">' + (chips || '<span class="q-empty">Așteptăm primul curajos… 👀</span>') + "</div>" +
         '<div class="q-qrbox"><div class="q-qr">' + qr + "</div><p>Scanează cu camera telefonului</p>" +
-        '<p style="font-size:17px;font-weight:600">sau intră pe <b>university.sorinarseni.com/quiz.html</b><br>și scrie codul</p><code>' + (code || "······").toUpperCase() + '</code><p class="q-st mono">' + (root._st || "se conectează…") + "</p></div>" +
+        '<p style="font-size:17px;font-weight:600">sau intră pe <b>' + esc(linkHost) + '</b><br>și scrie codul</p><code>' + (code || "······").toUpperCase() + '</code><p class="q-st mono">' + (root._st || "se conectează…") + "</p></div>" +
         '<div class="q-go"><button type="button" class="pill hot" data-act="start">▶ Pornește quiz-ul</button><small>→ / spațiu · B = 5 boți pentru repetiție</small></div>' +
         "</div>";
     } else if (state === "q" || state === "reveal") {

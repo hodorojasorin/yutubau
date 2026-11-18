@@ -1001,7 +1001,7 @@
   });
 
   // ---------- telecomanda (același protocol ca remote.html de pe site) ----------
-  var rm = { peer: null, conns: [], id: null };
+  var rm = { bus: null, phones: {}, id: null };
   function loadJS(src, test, cb, fail) {
     if (test()) return cb();
     var s = document.createElement("script");
@@ -1017,45 +1017,52 @@
   }
   function openRemote() {
     $("#rm-modal").hidden = false;
-    if (rm.peer) return;
+    if (rm.bus) return;
     try { rm.id = sessionStorage.getItem("rm-id:im") || rid(); sessionStorage.setItem("rm-id:im", rm.id); } catch (e) { rm.id = rid(); }
     loadJS("js/vendor/qrcode.js", function () { return typeof qrcode !== "undefined"; }, function () {
-      var url = siteURL("remote.html") + "?id=" + rm.id;
-      var q = qrcode(0, "M"); q.addData(url); q.make();
-      $("#rm-qr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true }).replace(/fill="white"/g, 'fill="#c8ff2e"');
-      loadJS("js/vendor/peerjs.min.js", function () { return typeof Peer !== "undefined"; }, function () {
-        rm.peer = new Peer(rm.id);
-        rm.peer.on("open", function () { $("#rm-st").textContent = "Gata. Scanează codul."; });
-        rm.peer.on("connection", function (c) {
-          rm.conns.push(c);
-          c.on("open", function () { $("#rm-st").textContent = "📱 Telefonul e conectat"; $("#rm-open").classList.add("on"); sendState(true); setTimeout(closeRemote, 900); });
-          c.on("data", function (m) {
+      loadJS("js/bus.js", function () { return typeof SRNBus !== "undefined"; }, function () {
+        SRNBus.phoneURL("remote.html", { id: rm.id }).then(function (url) {
+          var q = qrcode(0, "M"); q.addData(url); q.make();
+          $("#rm-qr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true }).replace(/fill="white"/g, 'fill="#c8ff2e"');
+        });
+        if (rm.bus) return;
+        rm.bus = SRNBus.host(rm.id.replace(/^srn-/, "rm-"), {
+          onStatus: rmStatus,
+          onMessage: function (m, from) {
             if (!m || typeof m !== "object") return;
+            var fresh = !rm.phones[from] || Date.now() - rm.phones[from] > 12000;
+            rm.phones[from] = Date.now();
             if (m.t === "go") (m.d > 0 ? next : prev)();
             else if (m.t === "goto") go(+m.i || 0);
             else if (m.t === "reset") { recOn = true; recT0 = Date.now(); }
+            if (fresh) { rmStatus(); if (!$("#rm-modal").hidden) setTimeout(closeRemote, 900); }
             sendState(true);
-          });
-          c.on("close", function () { rm.conns = rm.conns.filter(function (x) { return x !== c; }); $("#rm-open").classList.toggle("on", rm.conns.length > 0); });
+          },
         });
-        rm.peer.on("disconnected", function () { if (rm.peer && !rm.peer.destroyed) rm.peer.reconnect(); });
-        rm.peer.on("error", function () { $("#rm-st").textContent = "Fără conexiune: folosește tastatura"; });
-      });
+      }, function () { $("#rm-st").textContent = "nu s-a putut încărca telecomanda"; });
     }, function () { $("#rm-qr").textContent = "nu s-a putut încărca"; });
   }
+  function rmPhones() { var now = Date.now(); return Object.keys(rm.phones).filter(function (k) { return now - rm.phones[k] < 12000; }).length; }
+  function rmStatus() {
+    if (!rm.bus) return;
+    var on = rmPhones() > 0;
+    $("#rm-open").classList.toggle("on", on);
+    $("#rm-st").textContent = on ? "📱 Telefonul e conectat" : rm.bus.online() ? (rm.bus.mode === "laptop" ? "Gata (prin laptop). Scanează codul." : "Gata. Scanează codul.") : "Se conectează… (dacă nu merge: tastatura)";
+  }
+  setInterval(rmStatus, 4000);
   function closeRemote() { $("#rm-modal").hidden = true; }
   $("#rm-open").addEventListener("click", openRemote);
   $("#rm-close").addEventListener("click", closeRemote);
   $("#rm-modal").addEventListener("click", function (e) { if (e.target.id === "rm-modal") closeRemote(); });
   var lastMsg = "";
   function sendState(force) {
-    if (!rm.conns.length) return;
+    if (!rm.bus || !rmPhones()) return;
     var s = SL[cur], nx = SL[cur + 1];
     var msg = { t: "state", i: cur, n: N, name: s.dataset.name, q: "", next: nx ? nx.dataset.name : "", title: document.title, sec: elapsed(), open: true };
     var key = JSON.stringify(msg);
     if (!force && key === lastMsg) return;
     lastMsg = key;
-    rm.conns.forEach(function (c) { if (c.open) c.send(msg); });
+    rm.bus.send(msg);
   }
   setInterval(sendState, 1000);
 

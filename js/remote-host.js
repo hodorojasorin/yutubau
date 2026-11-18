@@ -1,17 +1,12 @@
 // Telecomanda: prezentarea (laptopul) primește comenzi de la telefon.
-// Legătura e directă (WebRTC prin PeerJS); serverul public PeerJS face doar „prezentarea” celor două dispozitive.
 // Laptopul arată un cod QR, telefonul îl scanează și deschide remote.html.
+// Mesajele trec prin js/bus.js (brokere publice pe internet sau serverul de pe laptop).
 (function () {
   var P = document.querySelector(".project");
   if (!P) return;
   var slides = [].slice.call(P.querySelectorAll(".slide"));
   if (!slides.length) return;
 
-  // pentru teste locale: ?peerhost=127.0.0.1&peerport=9000 folosește un server PeerJS propriu
-  var qs = new URLSearchParams(location.search);
-  var OPTS = qs.get("peerhost")
-    ? { host: qs.get("peerhost"), port: +qs.get("peerport") || 9000, path: "/", secure: false }
-    : {};
   var KEY = "rm-id:" + location.pathname;
   var ON = "rm-on:" + location.pathname;
 
@@ -46,7 +41,7 @@
     '<h2 id="rm-t">Telecomanda de pe telefon</h2>' +
     "<p>Scanează codul cu camera telefonului. Apoi dai swipe sau apeși ← → ca să schimbi slide-urile.</p>" +
     '<div class="rm-qr" id="rm-qr"><span class="rm-wait">se pregătește…</span></div>' +
-    '<span class="rm-status" id="rm-status"><i></i><span>Se conectează la server…</span></span>' +
+    '<span class="rm-status" id="rm-status"><i></i><span>Se conectează…</span></span>' +
     '<a class="rm-link" id="rm-link" target="_blank" rel="noopener"></a>' +
     '<div class="rm-actions"><button type="button" class="rm-new" id="rm-new">Cod nou</button>' +
     '<button type="button" class="rm-close" id="rm-close">Gata</button></div>' +
@@ -102,96 +97,73 @@
     load("js/vendor/qrcode.js", function () {
       return typeof qrcode !== "undefined";
     }, function () {
-      load("js/vendor/peerjs.min.js", function () {
-        return typeof Peer !== "undefined";
+      load("js/bus.js", function () {
+        return typeof SRNBus !== "undefined";
       }, cb);
     });
   }
-  function remoteUrl() {
-    var u = new URL("remote.html", location.href);
-    u.searchParams.set("id", id);
-    if (OPTS.host) {
-      u.searchParams.set("peerhost", OPTS.host);
-      u.searchParams.set("peerport", OPTS.port);
-    }
-    return u.href;
-  }
   function drawQR() {
-    var url = remoteUrl();
-    var q = qrcode(0, "M");
-    q.addData(url);
-    q.make();
-    $("#rm-qr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
-    var a = $("#rm-link");
-    a.href = url;
-    a.textContent = url;
+    SRNBus.phoneURL("remote.html", { id: id }).then(function (url) {
+      var q = qrcode(0, "M");
+      q.addData(url);
+      q.make();
+      $("#rm-qr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+      var a = $("#rm-link");
+      a.href = url;
+      a.textContent = url;
+    });
   }
 
   // ---- legătura ----
-  var peer = null,
-    conns = [],
-    retry = 0,
-    startAt = Date.now();
+  var bus = null,
+    phones = {},
+    startAt = Date.now(),
+    noNet = 0;
+  function phonesOn() {
+    var now = Date.now();
+    return Object.keys(phones).filter(function (k) {
+      return now - phones[k] < 12000;
+    }).length;
+  }
   function setOn() {
-    var on = conns.some(function (c) {
-      return c.open;
-    });
+    var on = phonesOn() > 0;
     btn.classList.toggle("on", on);
     btn.lastChild.textContent = on ? "📱 conectat" : "📱 Telecomandă";
+    if (!bus) return;
     if (on) status("Telefonul e conectat", "ok");
-    else if (peer && peer.open) status("Gata. Scanează codul", "");
+    else if (bus.online()) status(bus.mode === "laptop" ? "Gata (prin laptop). Scanează codul" : "Gata. Scanează codul", "");
+    else status(noNet > 1 ? "Fără internet: folosește tastatura" : "Se conectează…", noNet > 1 ? "err" : "");
   }
+  setInterval(function () {
+    if (!bus) return;
+    noNet = bus.online() ? 0 : noNet + 1;
+    setOn();
+  }, 4000);
   function start() {
-    if (peer) return;
+    if (bus) return;
     store(ON, "1");
     libs(function () {
       drawQR();
-      if (peer) return;
-      peer = new Peer(id, OPTS);
-      peer.on("open", function () {
-        retry = 0;
-        setOn();
-      });
-      peer.on("connection", function (c) {
-        conns.push(c);
-        c.on("open", function () {
-          setOn();
-          send(true);
-          setTimeout(closeModal, 900);
-        });
-        c.on("data", onData);
-        c.on("close", function () {
-          conns = conns.filter(function (x) {
-            return x !== c;
-          });
-          setOn();
-        });
-      });
-      peer.on("disconnected", function () {
-        if (peer && !peer.destroyed) peer.reconnect();
-      });
-      peer.on("error", function (e) {
-        if (e.type === "unavailable-id" && retry < 5) {
-          // după o reîncărcare, serverul mai ține codul vechi câteva secunde
-          retry++;
-          status("Se reconectează…", "");
-          setTimeout(restart, 2500);
-        } else if (e.type === "peer-unavailable") {
-          /* telefon vechi, ignorăm */
-        } else {
-          status("Fără conexiune: folosește tastatura", "err");
-        }
+      if (bus) return;
+      bus = SRNBus.host(id.replace(/^srn-/, "rm-"), {
+        onMessage: function (m, from) {
+          if (!m || typeof m !== "object") return;
+          var fresh = !phones[from] || Date.now() - phones[from] > 12000;
+          phones[from] = Date.now();
+          onData(m);
+          if (fresh) {
+            setOn();
+            if (!modal.hidden) setTimeout(closeModal, 900);
+          }
+        },
+        onStatus: setOn,
       });
     });
   }
   function restart() {
-    if (peer) {
-      try {
-        peer.destroy();
-      } catch (e) {}
-    }
-    peer = null;
-    conns = [];
+    if (bus) bus.close();
+    bus = null;
+    phones = {};
     setOn();
     $("#rm-qr").innerHTML = '<span class="rm-wait">se pregătește…</span>';
     start();
@@ -249,7 +221,7 @@
   }
   var last = "";
   function send(force) {
-    if (!conns.length) return;
+    if (!bus || !phonesOn()) return;
     var i = here(),
       s = slides[i],
       nx = slides[i + 1];
@@ -267,9 +239,7 @@
     var key = JSON.stringify(msg);
     if (!force && key === last) return;
     last = key;
-    conns.forEach(function (c) {
-      if (c.open) c.send(msg);
-    });
+    bus.send(msg);
   }
   var tick = false;
   addEventListener(

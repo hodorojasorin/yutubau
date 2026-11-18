@@ -10,7 +10,7 @@
   var pid = store("im-quiz-pid");
   if (!pid) { pid = "p" + Math.random().toString(36).slice(2, 10); store("im-quiz-pid", pid); }
   var me = { name: store("im-quiz-name") || "", emoji: store("im-quiz-emo") || EMO[Math.floor(Math.random() * EMO.length)] };
-  var peer = null, conn = null, joined = false, tries = 0, cur = null, timer = 0;
+  var bus = null, joined = false, welcomed = false, cur = null, timer = 0, hostAt = 0, t0 = Date.now(), wasOn = 0;
 
   function show(id) { [].forEach.call(document.querySelectorAll(".scr"), function (s) { s.hidden = s.id !== id; }); }
   function status(t, kind) { var el = $("st"); el.className = "st" + (kind ? " " + kind : ""); el.lastChild.textContent = t; }
@@ -58,36 +58,36 @@
   $("name").addEventListener("keydown", function (e) { if (e.key === "Enter") doJoin(); });
 
   // ---------- conexiunea ----------
-  function send(m) { if (conn && conn.open) conn.send(m); }
+  // telefonul spune „salut” la câteva secunde; ecranul mare răspunde „hi”
+  function send(m) { if (bus) bus.send(m); }
+  function check() {
+    if (!bus) return;
+    var on = bus.online();
+    if (Date.now() - hostAt < 12000) status(bus.mode === "laptop" ? "conectat · prin laptop" : "conectat", "ok");
+    else if (!on) status(Date.now() - t0 > 9000 ? "fără internet · reîncerc" : "se conectează…", Date.now() - t0 > 9000 ? "err" : "");
+    else status(Date.now() - t0 > 8000 ? "ecranul mare nu răspunde" : "se conectează…", Date.now() - t0 > 8000 ? "err" : "");
+  }
   function connect() {
-    status("se conectează…", "");
-    if (!peer || peer.destroyed) {
-      peer = new Peer();
-      peer.on("open", dial);
-      peer.on("error", function (e) {
-        if (e.type === "peer-unavailable") status("prezentarea nu e deschisă", "err");
-        else status("fără conexiune", "err");
-        retry();
-      });
-      peer.on("disconnected", function () { if (!peer.destroyed) peer.reconnect(); });
-    } else dial();
-  }
-  function dial() {
-    conn = peer.connect(host, { reliable: true });
-    conn.on("open", function () {
-      tries = 0;
-      status("conectat", "ok");
-      if (joined) send({ t: "join", pid: pid, name: me.name, emoji: me.emoji });
-      else show("s-join");
+    bus = SRNBus.client(host.replace(/^srn-q/, "q-"), {
+      onMessage: onMsg,
+      onStatus: function () {
+        var on = bus.online();
+        if (on && !wasOn) { send({ t: "hello" }); if (joined) send({ t: "join", pid: pid, name: me.name, emoji: me.emoji }); }
+        wasOn = on;
+        check();
+      },
     });
-    conn.on("data", onMsg);
-    conn.on("close", function () { status("reconectare…", "err"); retry(); });
+    setInterval(function () { send({ t: "hello" }); check(); }, 5000);
   }
-  function retry() { if (tries++ < 30) setTimeout(connect, 1800); }
 
   // ---------- mesajele de la ecranul mare ----------
   function onMsg(m) {
     if (!m || typeof m !== "object") return;
+    var first = Date.now() - hostAt > 12000;
+    hostAt = Date.now();
+    if (first) { check(); if (joined && !welcomed) send({ t: "join", pid: pid, name: me.name, emoji: me.emoji }); }
+    if (m.t === "hi") return;
+    if (m.t === "welcome") welcomed = true;
     if (m.t === "welcome") { joined = true; me.name = m.name; me.emoji = m.emoji; $("me-emo").textContent = m.emoji; $("me-name").textContent = m.name; if (!cur) show("s-wait"); }
     else if (m.t === "lobby") { $("wait-n").textContent = m.n + " în joc"; if (joined) show("s-wait"); }
     else if (m.t === "q") question(m);
