@@ -1,5 +1,5 @@
 // Quiz-ul live: ecranul mare e „gazda”, colegii intră de pe telefon prin codul QR (quiz.html).
-// Mesajele trec prin js/bus.js (ca la telecomandă): brokere publice pe internet sau serverul de pe laptop.
+// Mesajele trec prin serverul de pe laptop (js/bus.js + server.js): în VS Code, Terminal → npm start.
 // Repetiție fără colegi: în lobby apeși B și intră 5 boți.
 (function () {
   "use strict";
@@ -24,7 +24,7 @@
   var EMO = ["🎥", "📷", "🎞️", "📺", "📼", "💾", "🎧", "🎙️", "🕹️", "📱", "🖥️", "📻", "🎬", "💿"];
   var BOTS = ["Ana", "Ion", "Mihai", "Cristina", "Dan", "Elena", "Vlad", "Irina", "Radu", "Maria", "Nicu", "Diana"];
 
-  var state = "lobby", qi = -1, qStart = 0, timer = null, raf = 0, players = {}, order = [], byCid = {}, bus = null, code = null, linkUrl = "", linkHost = "university.sorinarseni.com/quiz.html", offline = 0;
+  var state = "lobby", qi = -1, qStart = 0, timer = null, raf = 0, players = {}, order = [], byCid = {}, bus = null, code = null, linkUrl = "", linkHost = "", offline = 0, noServer = false;
 
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function list() { return order.map(function (p) { return players[p]; }); }
@@ -40,22 +40,26 @@
     try { code = sessionStorage.getItem("im-quiz-code") || newCode(); sessionStorage.setItem("im-quiz-code", code); } catch (e) { code = newCode(); }
     IM.loadJS("js/vendor/qrcode.js", function () { return typeof qrcode !== "undefined"; }, function () {
       IM.loadJS("js/bus.js", function () { return typeof SRNBus !== "undefined"; }, function () {
-        SRNBus.phoneURL("quiz.html", { id: "srn-q" + code }).then(function (url) {
-          linkUrl = url;
-          var u = new URL(url);
-          linkHost = u.host + u.pathname;
-          if (state === "lobby") render();
-        });
+        drawLink();
         if (bus) return;
         bus = SRNBus.host("q-" + code, { onMessage: onMsg, onStatus: busSt });
         setInterval(function () { offline = bus.online() ? 0 : offline + 1; busSt(); }, 4000);
       }, function () { setSt("nu s-a putut încărca legătura: apasă B pentru boți de repetiție"); });
     }, function () { setSt("nu s-a putut încărca generatorul QR"); });
   }
+  function drawLink() {
+    SRNBus.phoneURL("quiz.html", { id: "srn-q" + code }).then(function (url) {
+      noServer = !url;
+      linkUrl = url || "";
+      if (url) { var u = new URL(url); linkHost = u.host + u.pathname; }
+      if (state === "lobby") render();
+    });
+  }
   function busSt() {
     if (!bus) return;
-    if (bus.online()) setSt(bus.mode === "laptop" ? "gata · prin laptop · scanează codul" : "gata · scanează codul");
-    else setSt(offline > 1 ? "fără internet: apasă B pentru boți de repetiție" : "se conectează…");
+    if (bus.mode === "none") setSt("serverul de pe laptop nu e pornit · B = boți de repetiție");
+    else if (bus.online()) setSt("gata · scanează codul");
+    else setSt(offline > 1 ? "serverul s-a oprit? rulează npm start" : "se conectează…");
   }
   function setSt(t) { var el = root.querySelector(".q-st"); if (el) el.textContent = t; root._st = t; }
   function onMsg(m, from) {
@@ -189,7 +193,8 @@
   function render() {
     if (state === "lobby") {
       var qr = '<span class="q-wait">se pregătește codul…</span>';
-      if (typeof qrcode !== "undefined" && linkUrl) { var q = qrcode(0, "M"); q.addData(linkUrl); q.make(); qr = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true }).replace(/fill="white"/g, 'fill="#c8ff2e"').replace(/fill:\s*white/g, "fill:#c8ff2e"); }
+      if (noServer) qr = '<p class="q-howto"><b>Pornește serverul pe laptop</b>VS Code → Terminal →<br><code>npm start</code><br>apoi deschide prezentarea de pe <code>localhost:8000</code></p>';
+      else if (typeof qrcode !== "undefined" && linkUrl) { var q = qrcode(0, "M"); q.addData(linkUrl); q.make(); qr = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true }).replace(/fill="white"/g, 'fill="#c8ff2e"').replace(/fill:\s*white/g, "fill:#c8ff2e"); }
       var chips = list().map(function (p) { return '<span class="q-chip" style="--c:' + p.color + '"><span>' + p.emoji + "</span>" + esc(p.name) + "</span>"; }).join("");
       root.innerHTML =
         '<div class="q-lobby">' +
@@ -198,7 +203,7 @@
         '<p class="q-count"><b>' + order.length + "</b> în joc</p>" +
         '<div class="q-players">' + (chips || '<span class="q-empty">Așteptăm primul curajos… 👀</span>') + "</div>" +
         '<div class="q-qrbox"><div class="q-qr">' + qr + "</div><p>Scanează cu camera telefonului</p>" +
-        '<p style="font-size:17px;font-weight:600">sau intră pe <b>' + esc(linkHost) + '</b><br>și scrie codul</p><code>' + (code || "······").toUpperCase() + '</code><p class="q-st mono">' + (root._st || "se conectează…") + "</p></div>" +
+        '' + (linkHost ? '<p style="font-size:17px;font-weight:600">sau intră pe <b>' + esc(linkHost) + "</b><br>și scrie codul</p>" : "") + '<code>' + (code || "······").toUpperCase() + '</code><p class="q-st mono">' + (root._st || "se conectează…") + '</p><p class="q-ips mono"></p></div>' +
         '<div class="q-go"><button type="button" class="pill hot" data-act="start">▶ Pornește quiz-ul</button><small>→ / spațiu · B = 5 boți pentru repetiție</small></div>' +
         "</div>";
     } else if (state === "q" || state === "reveal") {
@@ -231,6 +236,7 @@
         (rest ? '<ol class="q-rest">' + rest + "</ol>" : "") +
         '<canvas id="confetti" width="1920" height="1080"></canvas></div>';
     }
+    if (state === "lobby" && window.SRNBus) SRNBus.ipPicker(root.querySelector(".q-ips"), drawLink);
     var b = root.querySelector("[data-act=start]");
     if (b) b.addEventListener("click", function () { IM.ensureAudio(); startQ(0); });
   }

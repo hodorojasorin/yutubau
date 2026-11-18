@@ -63,8 +63,9 @@
   function check() {
     if (!bus) return;
     var on = bus.online();
-    if (Date.now() - hostAt < 12000) status(bus.mode === "laptop" ? "conectat · prin laptop" : "conectat", "ok");
-    else if (!on) status(Date.now() - t0 > 9000 ? "fără internet · reîncerc" : "se conectează…", Date.now() - t0 > 9000 ? "err" : "");
+    if (bus.mode === "none") status("scanează codul de pe ecranul mare", "err");
+    else if (Date.now() - hostAt < 12000) status("conectat", "ok");
+    else if (!on) status(Date.now() - t0 > 9000 ? "nu găsesc laptopul · ești pe același Wi-Fi?" : "se conectează…", Date.now() - t0 > 9000 ? "err" : "");
     else status(Date.now() - t0 > 8000 ? "ecranul mare nu răspunde" : "se conectează…", Date.now() - t0 > 8000 ? "err" : "");
   }
   function connect() {

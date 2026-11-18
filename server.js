@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-// Laptopul ca server: pornește site-ul local și „poșta” dintre laptop și telefoane.
+// Laptopul ca server: pornește site-ul local și „poșta” dintre laptop și telefoane
+// (telecomanda și quiz-ul).
 //
-//   node server.js            (sau dublu-click pe „porneste-serverul.command”)
+//   În VS Code: Terminal → New Terminal, apoi   npm start   (sau: node server.js)
 //
 // Apoi deschizi pe laptop http://localhost:8000/colocviu.html (sau altă prezentare).
-// Codul QR din telecomandă și din quiz va arăta adresa laptopului în rețea,
+// Codul QR din telecomandă și din quiz arată adresa laptopului în rețea,
 // așa că telefoanele trebuie să fie în aceeași rețea Wi-Fi (sau pe hotspotul tău).
 // Nu are nevoie de internet și nici de pachete instalate: doar Node.js.
 "use strict";
@@ -36,16 +37,18 @@ const MIME = {
   ".txt": "text/plain; charset=utf-8",
 };
 
-// adresele laptopului în rețeaua locală (întâi cele de tip Wi-Fi/hotspot)
+// adresele laptopului în rețeaua locală: întâi Wi-Fi / Ethernet (en0, en1…, wlan, eth),
+// apoi hotspotul de pe Mac (bridge), la urmă restul; fără VPN și mașini virtuale
 function lanIPs() {
   const out = [];
-  for (const list of Object.values(os.networkInterfaces())) {
+  for (const [name, list] of Object.entries(os.networkInterfaces())) {
+    if (/^(utun|tun|tap|vmnet|vboxnet|docker|br-|veth|llw|awdl|lo)/i.test(name)) continue;
     for (const i of list || []) {
-      if ((i.family === "IPv4" || i.family === 4) && !i.internal) out.push(i.address);
+      if ((i.family === "IPv4" || i.family === 4) && !i.internal && !i.address.startsWith("169.254.")) out.push({ name, ip: i.address });
     }
   }
-  const rank = (ip) => (ip.startsWith("192.168.") ? 0 : ip.startsWith("172.20.10.") ? 1 : ip.startsWith("10.") ? 2 : ip.startsWith("172.") ? 3 : 9);
-  return out.sort((a, b) => rank(a) - rank(b));
+  const rank = (x) => (/^(en|wlan|wl|eth|wi-?fi|ethernet)/i.test(x.name) ? 0 : /^bridge/i.test(x.name) ? 1 : 2);
+  return out.sort((a, b) => rank(a) - rank(b)).map((x) => x.ip);
 }
 
 // ---------- poșta: cine ascultă ce subiect ----------
@@ -152,10 +155,17 @@ server.on("error", (e) => {
 
 server.listen(PORT, "0.0.0.0", () => {
   const ips = lanIPs();
+  const pages = fs
+    .readdirSync(ROOT)
+    .filter((f) => f.endsWith(".html") && !/^(index|remote|quiz)\.html$/.test(f))
+    .sort();
   console.log("\n  ✦ Serverul de pe laptop e pornit\n");
-  console.log(`  Pe laptop deschide:   http://localhost:${PORT}/`);
-  if (ips.length) console.log(`  Din rețea (telefon):  http://${ips[0]}:${PORT}/`);
-  else console.log("  ⚠ Laptopul nu e conectat la nicio rețea: telefoanele nu-l vor găsi.");
-  console.log("\n  Telefoanele trebuie să fie în aceeași rețea Wi-Fi (sau pe hotspotul tău).");
-  console.log("  Oprești cu Ctrl+C.\n");
+  console.log(`  Acasă:  http://localhost:${PORT}/`);
+  console.log("  Prezentări (Cmd + click):");
+  for (const f of pages) console.log(`    http://localhost:${PORT}/${f}`);
+  if (ips.length) console.log(`\n  Telefoanele intră pe:  http://${ips[0]}:${PORT}/  (codul QR o face singur)`);
+  else console.log("\n  ⚠ Laptopul nu e conectat la nicio rețea: telefoanele nu-l vor găsi.");
+  if (ips.length > 1) console.log(`  Alte adrese ale laptopului: ${ips.slice(1).join(", ")}`);
+  console.log("\n  Telefoanele trebuie să fie în aceeași rețea Wi-Fi ca laptopul (sau pe hotspotul tău).");
+  console.log("  Oprești serverul cu Ctrl+C.\n");
 });

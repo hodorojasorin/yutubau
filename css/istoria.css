@@ -545,3 +545,66 @@ button { font: inherit; color: inherit; }
 .q-steps { position: absolute; left: 230px; top: 380px; display: flex; gap: 16px; margin: 0; padding: 0; list-style: none; }
 .q-steps li { background: var(--cream); color: var(--ink); border: 4px solid var(--ink); border-radius: 16px; padding: 12px 18px; font: 800 22px/1.2 var(--t-font); box-shadow: 6px 6px 0 var(--ink); transform: rotate(var(--rot, 0deg)); }
 .q-steps li b { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--violet); color: var(--cream); margin-right: 8px; font: 400 18px var(--d-font); }
+
+/* fără serverul de pe laptop: pașii în locul codului QR; alegerea rețelei */
+.q-howto,
+.m-howto {
+  margin: 0;
+  padding: 14px;
+  font: 600 17px/1.4 "Inter", sans-serif;
+  color: #111;
+  text-align: left;
+}
+.q-howto b,
+.m-howto b {
+  display: block;
+  margin-bottom: 8px;
+  font: 400 22px/1.1 "Archivo Black", sans-serif;
+}
+.q-howto code,
+.m-howto code {
+  font: 700 15px "JetBrains Mono", monospace;
+  background: #fff;
+  border: 2px solid #111;
+  border-radius: 8px;
+  padding: 0 6px;
+}
+.q-ips,
+.m-ips {
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+.q-ips:empty,
+.m-ips:empty {
+  display: none;
+}
+.q-ips button,
+.m-ips button {
+  margin: 2px;
+  font: 700 12px "JetBrains Mono", monospace;
+  border: 2px solid #111;
+  border-radius: 8px;
+  background: #fff;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+.q-ips button.on,
+.m-ips button.on {
+  background: #ffd21f;
+}
+.q-qrbox .q-howto {
+  font: 700 22px/1.45 var(--t-font);
+}
+.q-qrbox .q-howto b {
+  font: 400 30px/1.1 var(--d-font);
+}
+.q-qrbox .q-howto code {
+  display: inline;
+  margin: 0;
+  padding: 1px 8px;
+  font: 800 20px var(--m-font);
+  letter-spacing: 0;
+  color: var(--ink);
+  background: #fff;
+  border: 3px solid var(--ink);
+}

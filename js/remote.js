@@ -72,8 +72,9 @@
   function check() {
     if (!bus) return;
     var fresh = Date.now() - gotAt < 9000;
-    if (fresh) status(bus.mode === "laptop" ? "Conectat (prin laptop)" : "Conectat", "ok");
-    else if (!bus.online()) status(Date.now() - started > 9000 ? "Fără internet. Se reîncearcă…" : "Se conectează…", Date.now() - started > 9000 ? "err" : "");
+    if (bus.mode === "none") status("Scanează codul QR de pe laptop", "err");
+    else if (fresh) status("Conectat", "ok");
+    else if (!bus.online()) status(Date.now() - started > 9000 ? "Nu găsesc laptopul. Ești pe același Wi-Fi?" : "Se conectează…", Date.now() - started > 9000 ? "err" : "");
     else if (gotAt) status("Prezentarea nu mai răspunde…", "err");
     else status(Date.now() - started > 8000 ? "Prezentarea nu răspunde. Redeschide codul QR pe laptop." : "Se conectează la prezentare…", Date.now() - started > 8000 ? "err" : "");
   }
@@ -151,6 +152,23 @@
     );
   }
   wake();
+  // pe http (în rețeaua laptopului) Wake Lock nu e voie; un video mut, în buclă, ține ecranul aprins
+  var ns = null;
+  function noSleep() {
+    if (lock || ns) return;
+    ns = document.createElement("video");
+    ns.setAttribute("playsinline", "");
+    ns.setAttribute("muted", "");
+    ns.muted = true;
+    ns.loop = true;
+    ns.src = "img/nosleep.mp4";
+    ns.style.cssText = "position:fixed;left:0;bottom:0;width:2px;height:2px;opacity:0.01;pointer-events:none";
+    document.body.appendChild(ns);
+    var p = ns.play();
+    if (p && p.catch) p.catch(function () { ns.remove(); ns = null; });
+  }
+  document.addEventListener("touchend", noSleep, { passive: true });
+  document.addEventListener("click", noSleep);
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "visible") {
       wake();

@@ -1021,10 +1021,15 @@
     try { rm.id = sessionStorage.getItem("rm-id:im") || rid(); sessionStorage.setItem("rm-id:im", rm.id); } catch (e) { rm.id = rid(); }
     loadJS("js/vendor/qrcode.js", function () { return typeof qrcode !== "undefined"; }, function () {
       loadJS("js/bus.js", function () { return typeof SRNBus !== "undefined"; }, function () {
-        SRNBus.phoneURL("remote.html", { id: rm.id }).then(function (url) {
-          var q = qrcode(0, "M"); q.addData(url); q.make();
-          $("#rm-qr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true }).replace(/fill="white"/g, 'fill="#c8ff2e"');
-        });
+        function drawQR() {
+          SRNBus.phoneURL("remote.html", { id: rm.id }).then(function (url) {
+            if (!url) { $("#rm-qr").innerHTML = '<p class="m-howto"><b>Pornește serverul pe laptop</b>VS Code → Terminal → <code>npm start</code>, apoi deschide prezentarea de pe <code>localhost:8000</code></p>'; return; }
+            var q = qrcode(0, "M"); q.addData(url); q.make();
+            $("#rm-qr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true }).replace(/fill="white"/g, 'fill="#c8ff2e"');
+          });
+        }
+        drawQR();
+        SRNBus.ipPicker($("#rm-ips"), drawQR);
         if (rm.bus) return;
         rm.bus = SRNBus.host(rm.id.replace(/^srn-/, "rm-"), {
           onStatus: rmStatus,
@@ -1047,7 +1052,7 @@
     if (!rm.bus) return;
     var on = rmPhones() > 0;
     $("#rm-open").classList.toggle("on", on);
-    $("#rm-st").textContent = on ? "📱 Telefonul e conectat" : rm.bus.online() ? (rm.bus.mode === "laptop" ? "Gata (prin laptop). Scanează codul." : "Gata. Scanează codul.") : "Se conectează… (dacă nu merge: tastatura)";
+    $("#rm-st").textContent = on ? "📱 Telefonul e conectat" : rm.bus.mode === "none" ? "Serverul de pe laptop nu e pornit" : rm.bus.online() ? "Gata. Scanează codul." : "Se conectează… (serverul e pornit?)";
   }
   setInterval(rmStatus, 4000);
   function closeRemote() { $("#rm-modal").hidden = true; }

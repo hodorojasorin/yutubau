@@ -166,3 +166,45 @@
 body:has(.clap-screen:not([hidden])) .rm-btn {
   display: none;
 }
+/* fără serverul de pe laptop: pașii, în locul codului QR */
+.rm-howto {
+  text-align: left;
+  font: 500 14px/1.45 "Inter", sans-serif;
+  color: #222;
+}
+.rm-howto b {
+  display: block;
+  margin-bottom: 8px;
+  font: 400 18px/1.1 "Archivo Black", sans-serif;
+}
+.rm-howto ol {
+  margin: 0;
+  padding-left: 20px;
+}
+.rm-howto li {
+  margin: 4px 0;
+}
+.rm-howto code,
+.rm-ips button {
+  font: 700 12px "JetBrains Mono", monospace;
+  background: #ffd60a;
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+.rm-ips {
+  margin: 8px 0 0;
+  font: 500 11px "JetBrains Mono", monospace;
+  color: #666;
+}
+.rm-ips:empty {
+  display: none;
+}
+.rm-ips button {
+  margin: 2px;
+  border: 1.5px solid #111;
+  background: #fff;
+  cursor: pointer;
+}
+.rm-ips button.on {
+  background: #ffd60a;
+}

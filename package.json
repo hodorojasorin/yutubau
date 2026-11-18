@@ -1,0 +1,8 @@
+{
+  "name": "university-sorinarseni",
+  "private": true,
+  "description": "Proiecte studențești · serverul de pe laptop pentru telecomandă și quiz",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

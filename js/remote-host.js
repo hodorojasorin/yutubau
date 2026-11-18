@@ -1,6 +1,6 @@
 // Telecomanda: prezentarea (laptopul) primește comenzi de la telefon.
 // Laptopul arată un cod QR, telefonul îl scanează și deschide remote.html.
-// Mesajele trec prin js/bus.js (brokere publice pe internet sau serverul de pe laptop).
+// Mesajele trec prin serverul de pe laptop (js/bus.js + server.js): în VS Code, Terminal → npm start.
 (function () {
   var P = document.querySelector(".project");
   if (!P) return;
@@ -43,6 +43,7 @@
     '<div class="rm-qr" id="rm-qr"><span class="rm-wait">se pregătește…</span></div>' +
     '<span class="rm-status" id="rm-status"><i></i><span>Se conectează…</span></span>' +
     '<a class="rm-link" id="rm-link" target="_blank" rel="noopener"></a>' +
+    '<p class="rm-ips" id="rm-ips"></p>' +
     '<div class="rm-actions"><button type="button" class="rm-new" id="rm-new">Cod nou</button>' +
     '<button type="button" class="rm-close" id="rm-close">Gata</button></div>' +
     "</div>";
@@ -104,6 +105,13 @@
   }
   function drawQR() {
     SRNBus.phoneURL("remote.html", { id: id }).then(function (url) {
+      if (!url) {
+        $("#rm-qr").innerHTML =
+          '<div class="rm-howto"><b>Pornește serverul pe laptop</b><ol><li>VS Code → Terminal → New Terminal</li><li>scrie <code>npm start</code></li><li>deschide prezentarea de pe <code>localhost:8000</code></li></ol></div>';
+        $("#rm-link").textContent = "";
+        $("#rm-link").removeAttribute("href");
+        return;
+      }
       var q = qrcode(0, "M");
       q.addData(url);
       q.make();
@@ -131,8 +139,9 @@
     btn.lastChild.textContent = on ? "📱 conectat" : "📱 Telecomandă";
     if (!bus) return;
     if (on) status("Telefonul e conectat", "ok");
-    else if (bus.online()) status(bus.mode === "laptop" ? "Gata (prin laptop). Scanează codul" : "Gata. Scanează codul", "");
-    else status(noNet > 1 ? "Fără internet: folosește tastatura" : "Se conectează…", noNet > 1 ? "err" : "");
+    else if (bus.mode === "none") status("Serverul de pe laptop nu e pornit", "err");
+    else if (bus.online()) status("Gata. Scanează codul", "");
+    else status(noNet > 1 ? "Serverul s-a oprit? Rulează npm start" : "Se conectează…", noNet > 1 ? "err" : "");
   }
   setInterval(function () {
     if (!bus) return;
@@ -144,6 +153,7 @@
     store(ON, "1");
     libs(function () {
       drawQR();
+      SRNBus.ipPicker($("#rm-ips"), drawQR);
       if (bus) return;
       bus = SRNBus.host(id.replace(/^srn-/, "rm-"), {
         onMessage: function (m, from) {
