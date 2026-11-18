@@ -152,4 +152,23 @@
       so.observe(s);
     });
   }
+
+  // ---- profilul din colțul stânga sus ----
+  var pop = document.getElementById("me-pop");
+  var openBtn = document.getElementById("me-open");
+  if (pop && openBtn && pop.showModal) {
+    openBtn.addEventListener("click", function () {
+      pop.showModal();
+    });
+    document.getElementById("me-close").addEventListener("click", function () {
+      pop.close();
+    });
+    // click pe fundalul întunecat închide
+    pop.addEventListener("click", function (e) {
+      if (e.target === pop) pop.close();
+    });
+    pop.addEventListener("close", function () {
+      openBtn.focus();
+    });
+  }
 })();

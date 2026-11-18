@@ -69,13 +69,49 @@
       </symbol>
     </svg>
 
+    <!-- profilul: se deschide din colțul din stânga sus -->
+    <dialog class="me-pop" id="me-pop" aria-labelledby="me-pop-t">
+      <div class="mp-card">
+        <button type="button" class="mp-x" id="me-close" aria-label="Închide">✕</button>
+        <div class="mp-strip"><span>ID · student</span><span>FJȘC · 2026</span></div>
+        <div class="mp-head">
+          <img class="mp-face" src="img/home/me-face.webp" alt="Sorin Arseni Hodoroja" width="400" height="400" />
+          <img class="mp-pfp" src="img/home/pfp.webp" alt="" width="128" height="128" />
+          <div>
+            <h2 id="me-pop-t">Sorin Arseni Hodoroja</h2>
+            <p class="mp-handle">@sorinarseni · Chișinău</p>
+            <p class="mp-hand hand">din IT în multimedia ✦</p>
+          </div>
+        </div>
+        <dl class="mp-rows">
+          <div><dt>Studii</dt><dd><b>Absolvent Computer Science</b> la CEITI, Centrul de Excelență în Informatică și Tehnologii Informaționale</dd></div>
+          <div><dt>Acum</dt><dd><b>Student, anul I</b> la Producție Multimedia, FJȘC, USM</dd></div>
+          <div><dt>Job</dt><dd><b>Editor video la PRASADA</b>: montez podcastul Just cu Gust și video-urile Gust Academy, plus idei pentru social media</dd></div>
+          <div><dt>Cod</dt><dd><b>Web developer</b>: site-ul ăsta e scris de mine, de la zero</dd></div>
+          <div><dt>Limbi</dt><dd>română, engleză</dd></div>
+        </dl>
+        <div class="mp-links">
+          <a href="https://www.instagram.com/sorinarseni/" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="mailto:contact@sorinarseni.com">contact@sorinarseni.com</a>
+          <a href="https://sorinarseni.com" target="_blank" rel="noopener">sorinarseni.com ↗</a>
+        </div>
+      </div>
+    </dialog>
+
     <a class="skip" href="#proiecte">Sari la proiecte</a>
 
     <!-- bara de sus -->
     <header class="nav">
-      <a class="nav-logo" href="#top" aria-label="Sus">
+<button
+        type="button"
+        class="nav-logo"
+        id="me-open"
+        aria-haspopup="dialog"
+        aria-controls="me-pop"
+        title="Cine sunt"
+      >
         <img class="nav-s" src="img/home/pfp.webp" alt="" width="128" height="128" /><b>sorinarseni</b><i>university</i>
-      </a>
+      </button>
       <nav class="nav-pill" aria-label="Secțiuni">
         <a href="#despre">Despre</a>
         <a href="#proiecte">Proiecte</a>
