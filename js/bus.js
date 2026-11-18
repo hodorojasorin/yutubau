@@ -35,7 +35,9 @@
     if (modeP) return modeP;
     modeP = new Promise(function (res) {
       var none = { local: false, ips: [] };
-      if (location.protocol !== "http:") return res(none);
+      // pe localhost, pe IP-ul din rețea sau prin tunel (https://…trycloudflare.com): întrebăm serverul;
+      // pe site-ul public (GitHub Pages) /bus/info nu există și rămânem fără telecomandă
+      if (location.protocol === "file:") return res(none);
       var done = false;
       var t = setTimeout(function () {
         if (!done) { done = true; res(none); }
