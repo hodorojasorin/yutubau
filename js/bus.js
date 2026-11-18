@@ -1,9 +1,10 @@
 // Legătura laptop ↔ telefoane (telecomanda și quiz-ul), prin serverul de pe laptop.
 //
-// Pe laptop, în terminalul din VS Code:   npm start   (sau: node server.js)
+// Pe laptop, în terminalul din VS Code:
+//   npm start        → telefoanele din aceeași rețea Wi-Fi ca laptopul
+//   npm run online   → telefoane din orice rețea (tunel https://…trycloudflare.com spre laptop)
 // apoi prezentarea se deschide de pe http://localhost:8000/…
-// Codul QR arată adresa laptopului în rețea; telefoanele trebuie să fie în aceeași rețea Wi-Fi
-// (sau pe hotspotul tău). Nu trece nimic prin internet.
+// Codul QR arată singur adresa potrivită (tunelul, dacă e pornit, altfel IP-ul din rețea).
 //
 // SRNBus.host(cameră, { onMessage(msg, deLa), onStatus() })   → laptopul
 // SRNBus.client(cameră, { onMessage(msg), onStatus() })      → telefonul
@@ -61,23 +62,55 @@
     return m.ips[0] || location.hostname;
   }
 
+  // informațiile proaspete de la server (tunelul poate porni după ce s-a deschis prezentarea)
+  function info() {
+    return fetch("/bus/info", { cache: "no-store" })
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .catch(function () {
+        return null;
+      });
+  }
+  // dacă tunelul încă pornește, așteptăm până la ~40 s, apoi rămânem pe rețeaua locală
+  function publicBase(tries) {
+    return info().then(function (j) {
+      if (!j) return null;
+      if (j.tunnel === "up" && j.public) return j.public.replace(/\/?$/, "/");
+      if (j.tunnel === "starting" && tries < 26)
+        return new Promise(function (r) {
+          setTimeout(r, 1500);
+        }).then(function () {
+          return publicBase(tries + 1);
+        });
+      return null;
+    });
+  }
   // adresa pe care o deschide telefonul (null dacă serverul nu e pornit)
   function phoneURL(file, params) {
     return mode().then(function (m) {
       if (!m.local) return null;
-      var u = new URL(file, "http://" + chosenIP(m) + ":" + m.port + "/");
-      Object.keys(params || {}).forEach(function (k) {
-        u.searchParams.set(k, params[k]);
+      return publicBase(0).then(function (pub) {
+        var u = new URL(file, pub || "http://" + chosenIP(m) + ":" + m.port + "/");
+        Object.keys(params || {}).forEach(function (k) {
+          u.searchParams.set(k, params[k]);
+        });
+        return u.href;
       });
-      return u.href;
     });
+  }
+  // „orice rețea” (tunel https) sau „același Wi-Fi”
+  function reach(url) {
+    return /^https:/.test(url || "") ? "din orice rețea" : "telefonul pe același Wi-Fi ca laptopul";
   }
 
   // dacă laptopul e în mai multe rețele: butoane ca să alegi adresa din codul QR
   function ipPicker(el, onChange) {
     if (!el) return;
-    mode().then(function (m) {
-      if (!m.local || m.ips.length < 2) {
+    Promise.all([mode(), info()]).then(function (r) {
+      var m = r[0],
+        j = r[1];
+      if (!m.local || m.ips.length < 2 || (j && j.tunnel === "up")) {
         el.innerHTML = "";
         return;
       }
@@ -199,6 +232,7 @@
     },
     mode: mode,
     phoneURL: phoneURL,
+    reach: reach,
     ipPicker: ipPicker,
     rid: rid,
     // textul pentru când prezentarea e deschisă de pe internet, nu de pe laptop

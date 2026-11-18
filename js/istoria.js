@@ -1024,6 +1024,7 @@
         function drawQR() {
           SRNBus.phoneURL("remote.html", { id: rm.id }).then(function (url) {
             if (!url) { $("#rm-qr").innerHTML = '<p class="m-howto"><b>Pornește serverul pe laptop</b>VS Code → Terminal → <code>npm start</code>, apoi deschide prezentarea de pe <code>localhost:8000</code></p>'; return; }
+            rm.reach = SRNBus.reach(url); rmStatus();
             var q = qrcode(0, "M"); q.addData(url); q.make();
             $("#rm-qr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true }).replace(/fill="white"/g, 'fill="#c8ff2e"');
           });
@@ -1052,7 +1053,7 @@
     if (!rm.bus) return;
     var on = rmPhones() > 0;
     $("#rm-open").classList.toggle("on", on);
-    $("#rm-st").textContent = on ? "📱 Telefonul e conectat" : rm.bus.mode === "none" ? "Serverul de pe laptop nu e pornit" : rm.bus.online() ? "Gata. Scanează codul." : "Se conectează… (serverul e pornit?)";
+    $("#rm-st").textContent = on ? "📱 Telefonul e conectat" : rm.bus.mode === "none" ? "Serverul de pe laptop nu e pornit" : rm.bus.online() ? "Gata · " + (rm.reach || "scanează codul") : "Se conectează… (serverul e pornit?)";
   }
   setInterval(rmStatus, 4000);
   function closeRemote() { $("#rm-modal").hidden = true; }

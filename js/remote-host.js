@@ -112,6 +112,8 @@
         $("#rm-link").removeAttribute("href");
         return;
       }
+      reachTxt = SRNBus.reach(url);
+      setOn();
       var q = qrcode(0, "M");
       q.addData(url);
       q.make();
@@ -124,6 +126,7 @@
 
   // ---- legătura ----
   var bus = null,
+    reachTxt = "scanează codul",
     phones = {},
     startAt = Date.now(),
     noNet = 0;
@@ -140,7 +143,7 @@
     if (!bus) return;
     if (on) status("Telefonul e conectat", "ok");
     else if (bus.mode === "none") status("Serverul de pe laptop nu e pornit", "err");
-    else if (bus.online()) status("Gata. Scanează codul", "");
+    else if (bus.online()) status("Gata · " + reachTxt, "");
     else status(noNet > 1 ? "Serverul s-a oprit? Rulează npm start" : "Se conectează…", noNet > 1 ? "err" : "");
   }
   setInterval(function () {

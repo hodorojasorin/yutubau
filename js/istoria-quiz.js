@@ -24,7 +24,7 @@
   var EMO = ["🎥", "📷", "🎞️", "📺", "📼", "💾", "🎧", "🎙️", "🕹️", "📱", "🖥️", "📻", "🎬", "💿"];
   var BOTS = ["Ana", "Ion", "Mihai", "Cristina", "Dan", "Elena", "Vlad", "Irina", "Radu", "Maria", "Nicu", "Diana"];
 
-  var state = "lobby", qi = -1, qStart = 0, timer = null, raf = 0, players = {}, order = [], byCid = {}, bus = null, code = null, linkUrl = "", linkHost = "", offline = 0, noServer = false;
+  var state = "lobby", qi = -1, qStart = 0, timer = null, raf = 0, players = {}, order = [], byCid = {}, bus = null, code = null, linkUrl = "", linkHost = "", offline = 0, noServer = false, reachTxt = "scanează codul";
 
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function list() { return order.map(function (p) { return players[p]; }); }
@@ -51,14 +51,14 @@
     SRNBus.phoneURL("quiz.html", { id: "srn-q" + code }).then(function (url) {
       noServer = !url;
       linkUrl = url || "";
-      if (url) { var u = new URL(url); linkHost = u.host + u.pathname; }
+      if (url) { var u = new URL(url); linkHost = u.host + u.pathname; reachTxt = SRNBus.reach(url); busSt(); }
       if (state === "lobby") render();
     });
   }
   function busSt() {
     if (!bus) return;
     if (bus.mode === "none") setSt("serverul de pe laptop nu e pornit · B = boți de repetiție");
-    else if (bus.online()) setSt("gata · scanează codul");
+    else if (bus.online()) setSt("gata · " + reachTxt);
     else setSt(offline > 1 ? "serverul s-a oprit? rulează npm start" : "se conectează…");
   }
   function setSt(t) { var el = root.querySelector(".q-st"); if (el) el.textContent = t; root._st = t; }
