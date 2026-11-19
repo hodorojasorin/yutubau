@@ -53,7 +53,7 @@ html.co body {
   --rd: #ff3b30;
   --gr: #22b14c;
   --or: #ff8a1f;
-  --pk: #ff6fae;
+  --aq: #22c7f0;
   --cr: #fff4de;
   --dg: #1f6b3a;
   --h: "Titan One", "Arial Black", "Helvetica Neue", sans-serif;
@@ -243,7 +243,7 @@ html.co body {
 
 #p-colocviu .wipe {
   height: 6px;
-  background: linear-gradient(90deg, var(--rd), var(--y), var(--gr), var(--bl), var(--pk));
+  background: linear-gradient(90deg, var(--rd), var(--y), var(--gr), var(--bl), var(--aq));
 }
 
 /* ---------- slide-urile ---------- */
@@ -285,9 +285,9 @@ html.co body {
   background: linear-gradient(rgba(47, 107, 255, 0.08) 2px, transparent 2px) 0 0 / 100% 34px, var(--cr);
 }
 
-.bg-pink {
-  --sb: var(--pk);
-  background: radial-gradient(rgba(20, 20, 20, 0.09) 1.6px, transparent 2px) 0 0 / 24px 24px, var(--pk);
+.bg-orange {
+  --sb: var(--or);
+  background: radial-gradient(rgba(20, 20, 20, 0.09) 1.6px, transparent 2px) 0 0 / 24px 24px, var(--or);
 }
 
 .bg-sun {
@@ -352,8 +352,8 @@ html.co body {
   color: var(--bl);
 }
 
-.bg-pink .co-h em {
-  color: var(--y);
+.bg-orange .co-h em {
+  color: var(--bl);
 }
 
 .co-h.big {
@@ -698,7 +698,7 @@ html.co body {
 }
 
 .tab-row.small .tab.on {
-  background: var(--pk);
+  background: var(--aq);
 }
 
 @keyframes co-pop {
@@ -895,7 +895,6 @@ html.co body {
 
 
 .hero .d2 { left: 47vw; top: 19vh; width: 54px; height: 54px; }
-.hero .d3 { right: 30vw; bottom: 12vh; width: 58px; height: 52px; }
 .hero .d4 { left: 3vw; bottom: 12vh; width: 84px; height: 68px; }
 .hero .d4l { left: calc(3vw + 6px); bottom: calc(12vh - 22px); }
 .hero .d5 { right: 18vw; top: 28vh; width: 74px; height: 60px; transform: rotate(-8deg); }
@@ -984,7 +983,7 @@ html.co body {
 }
 
 .tpl-grid {
-  --hue: 268;
+  --hue: 195;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
@@ -1177,7 +1176,7 @@ html.co body {
   display: block;
   height: 100%;
   width: calc(var(--n, 0) / 6 * 100%);
-  background: linear-gradient(90deg, var(--y), var(--pk), var(--bl), var(--gr));
+  background: linear-gradient(90deg, var(--y), var(--aq), var(--bl), var(--gr));
   border-right: 4px solid var(--k);
   transition: width 0.45s cubic-bezier(0.3, 1.4, 0.5, 1);
 }
@@ -1734,7 +1733,7 @@ html.co body {
 }
 
 .co-tags span:nth-child(3) {
-  background: var(--pk);
+  background: var(--aq);
 }
 
 .co-card {
@@ -1767,7 +1766,6 @@ html.co body {
 }
 
 #co-bau .l1 { right: 4vw; top: 12vh; width: 110px; height: 110px; }
-#co-bau .l2 { left: 44vw; bottom: 10vh; width: 56px; height: 50px; }
 
 /* ---------- 10 · anatomia ---------- */
 .co-anat {
@@ -1885,7 +1883,7 @@ html.co body {
 }
 
 .hs.on {
-  background: var(--pk);
+  background: var(--aq);
   animation: none;
   transform: scale(1.25);
 }
