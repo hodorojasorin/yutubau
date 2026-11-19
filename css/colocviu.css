@@ -259,7 +259,7 @@ html.co body {
 
 .bg-yellow {
   --sb: var(--y);
-  background: radial-gradient(rgba(20, 20, 20, 0.09) 1.6px, transparent 2px) 0 0 / 24px 24px, var(--y);
+  background: var(--y);
 }
 
 .bg-blue {
@@ -270,7 +270,7 @@ html.co body {
 
 .bg-green {
   --sb: var(--gr);
-  background: radial-gradient(rgba(20, 20, 20, 0.1) 1.6px, transparent 2px) 0 0 / 24px 24px, var(--gr);
+  background: var(--gr);
   color: var(--cr);
 }
 
@@ -282,36 +282,16 @@ html.co body {
 
 .bg-cream {
   --sb: var(--cr);
-  background: linear-gradient(rgba(47, 107, 255, 0.08) 2px, transparent 2px) 0 0 / 100% 34px, var(--cr);
+  background: var(--cr);
 }
 
 .bg-orange {
   --sb: var(--or);
-  background: radial-gradient(rgba(20, 20, 20, 0.09) 1.6px, transparent 2px) 0 0 / 24px 24px, var(--or);
+  background: var(--or);
 }
 
-.bg-sun {
-  background: repeating-conic-gradient(from 0deg at 72% 58%, #ff3b30 0 7deg, #f02c22 7deg 14deg);
-}
 
-.bg-desk {
-  background: linear-gradient(rgba(255, 255, 255, 0.08) 2px, transparent 2px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255, 255, 255, 0.08) 2px, transparent 2px) 0 0 / 40px 40px, var(--bl);
-}
 
-/* cuvinte uriașe, doar conturate, pe fundal (ca la afișe) */
-.bg-words::before {
-  content: attr(data-words);
-  position: absolute;
-  inset: -4vh -2vw;
-  z-index: 0;
-  font-family: var(--h);
-  font-size: 19vw;
-  line-height: 0.86;
-  color: transparent;
-  -webkit-text-stroke: 3px rgba(255, 255, 255, 0.17);
-  word-break: break-all;
-  pointer-events: none;
-}
 
 /* ---------- tipografie ---------- */
 .co-eyebrow {
@@ -440,52 +420,7 @@ html.co body {
   opacity: 0.68;
 }
 
-/* ---------- autocolante decorative ---------- */
-.dd {
-  position: absolute;
-  z-index: 1;
-  width: 64px;
-  height: 64px;
-  pointer-events: none;
-  overflow: visible;
-  filter: drop-shadow(4px 4px 0 rgba(20, 20, 20, 0.25));
-}
 
-.dd-lbl {
-  position: absolute;
-  z-index: 1;
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-}
-
-.spin {
-  animation: co-spin 14s linear infinite;
-}
-
-.bob {
-  animation: co-bob 3.2s ease-in-out infinite;
-}
-
-@keyframes co-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes co-bob {
-  50% {
-    transform: translateY(-12px) rotate(6deg);
-  }
-}
-
-.co-sticker {
-  position: absolute;
-  z-index: 3;
-  height: auto;
-  pointer-events: none;
-  filter: drop-shadow(8px 8px 0 rgba(20, 20, 20, 0.85));
-}
 
 /* întrebarea care leagă slide-urile */
 .co-next {
@@ -894,12 +829,6 @@ html.co body {
 }
 
 
-.hero .d2 { left: 47vw; top: 19vh; width: 54px; height: 54px; }
-.hero .d4 { left: 3vw; bottom: 12vh; width: 84px; height: 68px; }
-.hero .d4l { left: calc(3vw + 6px); bottom: calc(12vh - 22px); }
-.hero .d5 { right: 18vw; top: 28vh; width: 74px; height: 60px; transform: rotate(-8deg); }
-.hero .d5l { right: calc(18vw + 20px); top: calc(28vh + 64px); }
-.hero .d6 { left: 2.5vw; top: 46vh; width: 34px; height: 82px; transform: rotate(12deg); }
 
 /* ---------- 2 · din Canva pe site ---------- */
 .co-2col {
@@ -1095,8 +1024,6 @@ html.co body {
   box-shadow: none;
 }
 
-#co-canva .e1 { left: 44vw; top: 12vh; width: 60px; height: 60px; }
-#co-canva .e2 { right: 5vw; bottom: 9vh; width: 56px; height: 70px; }
 
 /* ---------- 3 · multimedia ---------- */
 .co-defs {
@@ -1198,7 +1125,6 @@ html.co body {
   animation: co-pop 0.5s ease-out;
 }
 
-#co-multimedia .f2 { left: 2.5vw; bottom: 12vh; width: 50px; height: 50px; }
 
 /* ---------- 4 · creativitate ---------- */
 .co-3 {
@@ -1246,8 +1172,6 @@ html.co body {
   background: linear-gradient(transparent 55%, var(--y) 55%);
 }
 
-#co-creativ .g1 { right: 3vw; top: 12vh; width: 62px; height: 56px; }
-#co-creativ .g2 { left: 44vw; top: 11vh; width: 48px; height: 48px; }
 
 /* ---------- 5 · portofoliul digital (teorie) ---------- */
 .co-stack {
@@ -1563,7 +1487,6 @@ html.co body {
 }
 
 
-#co-eu .i1 { left: 46vw; top: 12vh; width: 50px; height: 50px; }
 
 /* ---------- 7 · de ce multimedia ---------- */
 .co-path {
@@ -1601,7 +1524,6 @@ html.co body {
   transform: rotate(-1.5deg);
 }
 
-#co-dece .j2 { left: 40vw; bottom: 9vh; width: 72px; height: 72px; }
 
 /* ---------- 8 · rețeta ---------- */
 .co-recipe {
@@ -1707,8 +1629,6 @@ html.co body {
   display: none;
 }
 
-#co-reteta .k1 { right: 6vw; top: 14vh; width: 56px; height: 70px; }
-#co-reteta .k2 { right: 22vw; bottom: 10vh; width: 54px; height: 54px; }
 
 /* ---------- 9 · bau BAU ---------- */
 .co-tags {
@@ -1765,7 +1685,6 @@ html.co body {
   pointer-events: none;
 }
 
-#co-bau .l1 { right: 4vw; top: 12vh; width: 110px; height: 110px; }
 
 /* ---------- 10 · anatomia ---------- */
 .co-anat {
@@ -1937,7 +1856,6 @@ html.co body {
   box-shadow: 5px 5px 0 var(--k);
 }
 
-#co-pagina .m1 { right: 3vw; top: 12vh; width: 60px; height: 60px; }
 
 /* ---------- 11 · Wallas ---------- */
 .co-wallas {
@@ -2000,7 +1918,6 @@ html.co body {
   font-weight: 800;
 }
 
-#co-proces .n1 { right: 4vw; top: 12vh; width: 34px; height: 84px; transform: rotate(14deg); }
 
 /* ---------- 12 · portofoliul meu ---------- */
 .co-desk {
@@ -2252,13 +2169,11 @@ html.co body {
   height: 100%;
 }
 
-#co-concluzie .p1 { left: 46vw; top: 11vh; width: 56px; height: 56px; }
-#co-concluzie .p2 { right: 4vw; bottom: 8vh; width: 76px; height: 76px; transform: rotate(-30deg); }
 
 /* ---------- 15 · final ---------- */
 .finale .wrap {
   text-align: center;
-  padding-bottom: 14vh;
+  padding-bottom: 0;
 }
 
 .co-puffy.small {
@@ -2325,26 +2240,6 @@ html.co body {
   text-transform: none;
 }
 
-.co-palms {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -14px;
-  z-index: 1;
-  display: flex;
-  justify-content: space-around;
-  pointer-events: none;
-}
-
-.co-palms svg {
-  width: clamp(70px, 11vw, 160px);
-  height: clamp(80px, 13vw, 190px);
-  overflow: visible;
-}
-
-.co-palms svg:nth-child(odd) {
-  transform: scaleX(-1) translateY(18px);
-}
 
 /* ---------- PDF: totul în starea finală ---------- */
 html.co-pdf .co-next,
@@ -2357,8 +2252,6 @@ html.co-pdf .finale .toast {
   display: none !important;
 }
 
-html.co-pdf .spin,
-html.co-pdf .bob,
 html.co-pdf .hs {
   animation: none;
 }
@@ -2440,11 +2333,6 @@ html.co-pdf .co-wallas .m {
 }
 
 @media (max-width: 640px) {
-  .dd,
-  .dd-lbl,
-  .co-sticker {
-    display: none;
-  }
   .co-wallas {
     grid-template-columns: 1fr;
   }
@@ -2471,8 +2359,6 @@ html.co-pdf .co-wallas .m {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .spin,
-  .bob,
   .hs {
     animation: none;
   }
