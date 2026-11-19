@@ -259,7 +259,7 @@ html.co body {
 
 .bg-yellow {
   --sb: var(--y);
-  background: var(--y);
+  background: radial-gradient(rgba(20, 20, 20, 0.09) 1.6px, transparent 2px) 0 0 / 24px 24px, var(--y);
 }
 
 .bg-blue {
@@ -270,7 +270,7 @@ html.co body {
 
 .bg-green {
   --sb: var(--gr);
-  background: var(--gr);
+  background: radial-gradient(rgba(20, 20, 20, 0.1) 1.6px, transparent 2px) 0 0 / 24px 24px, var(--gr);
   color: var(--cr);
 }
 
@@ -282,12 +282,35 @@ html.co body {
 
 .bg-cream {
   --sb: var(--cr);
-  background: var(--cr);
+  background: linear-gradient(rgba(47, 107, 255, 0.08) 2px, transparent 2px) 0 0 / 100% 34px, var(--cr);
 }
 
 .bg-orange {
   --sb: var(--or);
-  background: var(--or);
+  background: radial-gradient(rgba(20, 20, 20, 0.09) 1.6px, transparent 2px) 0 0 / 24px 24px, var(--or);
+}
+
+.bg-sun {
+  background: repeating-conic-gradient(from 0deg at 72% 58%, #ff3b30 0 7deg, #f02c22 7deg 14deg);
+}
+
+.bg-desk {
+  background: linear-gradient(rgba(255, 255, 255, 0.08) 2px, transparent 2px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255, 255, 255, 0.08) 2px, transparent 2px) 0 0 / 40px 40px, var(--bl);
+}
+
+/* cuvinte uriașe, doar conturate, pe fundal (ca la afișe) */
+.bg-words::before {
+  content: attr(data-words);
+  position: absolute;
+  inset: -4vh -2vw;
+  z-index: 0;
+  font-family: var(--h);
+  font-size: 19vw;
+  line-height: 0.86;
+  color: transparent;
+  -webkit-text-stroke: 3px rgba(255, 255, 255, 0.17);
+  word-break: break-all;
+  pointer-events: none;
 }
 
 
