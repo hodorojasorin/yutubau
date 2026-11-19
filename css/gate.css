@@ -1,5 +1,9 @@
-/* Ecranul cu parolă (proiectele 02 și 04), în stilul paginii de acasă:
+/* Ecranul cu parolă (proiectele 02, 04 și 06), în stilul paginii de acasă:
    dulapuri verzi, foaie de hârtie cu clamă, sticker cu paznicul, butoane cu umbră plină. */
+
+.clap-screen[hidden] {
+  display: none;
+}
 
 .clap-screen {
   --g: #1f6b49;

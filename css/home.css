@@ -1937,7 +1937,7 @@ a.game:hover .play {
 }
 .sj {
   display: grid;
-  grid-template-columns: 50px minmax(0, 1fr) minmax(0, auto);
+  grid-template-columns: 50px minmax(240px, 1fr) minmax(0, auto);
   gap: 16px;
   align-items: center;
   padding: 16px 0;
@@ -1967,6 +1967,7 @@ a.game:hover .play {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
+  max-width: 440px;
 }
 .sj-proj {
   display: inline-flex;
@@ -2031,6 +2032,7 @@ a.game:hover .play {
   .sj-projs {
     grid-column: 2;
     justify-content: flex-start;
+    max-width: none;
   }
   .sj-no {
     font-size: 24px;

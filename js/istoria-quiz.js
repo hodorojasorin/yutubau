@@ -6,7 +6,7 @@
   var root = document.getElementById("quiz");
   if (!root || !window.IM) return;
   var DUR = 20;
-  var Q = [
+  var Q = (window.IM_CFG && IM_CFG.quiz) || [
     { q: "Cine a inventat cuvântul „multimedia”?", o: ["Steve Jobs, 1984", "Bob Goldstein, 1966", "Marshall McLuhan, 1964", "Tim Berners-Lee, 1991"], c: 1, w: "<b>Bob Goldstein</b>, în iulie 1966, pentru show-ul „LightWorks at L'Oursin”. Variety a scris despre el pe 10 august 1966." },
     { q: "Cât a durat expunerea primei fotografii (Niépce, 1826)?", o: ["1 secundă", "8 minute", "8 ore", "8 zile"], c: 2, w: "<b>8 ore</b>, pe o placă de cositor cu bitum de Iudeea. Telefonul tău: cam 1/1000 de secundă." },
     { q: "Ce puteai face, în 1860, cu prima voce înregistrată?", o: ["S-o asculți la gramofon", "Doar s-o privești, ca linie pe hârtie", "S-o dai la radio", "S-o pui pe disc"], c: 1, w: "Fonautograful doar <b>desena</b> sunetul. Înregistrarea a fost redată abia în <b>2008</b>." },
@@ -37,7 +37,7 @@
   function newCode() { var a = "abcdefghjkmnpqrstuvwxyz23456789", s = ""; for (var k = 0; k < 6; k++) s += a[Math.floor(Math.random() * a.length)]; return s; }
   function startPeer() {
     if (bus) return;
-    try { code = sessionStorage.getItem("im-quiz-code") || newCode(); sessionStorage.setItem("im-quiz-code", code); } catch (e) { code = newCode(); }
+    try { code = sessionStorage.getItem(IM.deck + "-quiz-code") || newCode(); sessionStorage.setItem(IM.deck + "-quiz-code", code); } catch (e) { code = newCode(); }
     IM.loadJS("js/vendor/qrcode.js", function () { return typeof qrcode !== "undefined"; }, function () {
       IM.loadJS("js/bus.js", function () { return typeof SRNBus !== "undefined"; }, function () {
         drawLink();
@@ -198,7 +198,7 @@
       var chips = list().map(function (p) { return '<span class="q-chip" style="--c:' + p.color + '"><span>' + p.emoji + "</span>" + esc(p.name) + "</span>"; }).join("");
       root.innerHTML =
         '<div class="q-lobby">' +
-        '<h2 class="q-title">QUIZ!<small>6 întrebări · 20 de secunde · contează și viteza ⚡</small></h2>' +
+        '<h2 class="q-title">QUIZ!<small>' + Q.length + ' întrebări · 20 de secunde · contează și viteza ⚡</small></h2>' +
         '<ol class="q-steps"><li style="--rot:-2deg"><b>1</b>scanezi codul</li><li style="--rot:1.5deg"><b>2</b>îți scrii numele</li><li style="--rot:-1deg"><b>3</b>răspunzi rapid pe telefon</li></ol>' +
         '<p class="q-count"><b>' + order.length + "</b> în joc</p>" +
         '<div class="q-players">' + (chips || '<span class="q-empty">Așteptăm primul curajos… 👀</span>') + "</div>" +

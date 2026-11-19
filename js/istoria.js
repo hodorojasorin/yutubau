@@ -1,8 +1,12 @@
-// Proiectul 06 · Istoria Multimediei
+// Motorul prezentărilor-„drum”: proiectul 06 (Istoria Multimediei) și 07 (Istoria Camerei).
+// O pagină își poate da setările în window.IM_CFG (deck, numele epocilor, întrebările de quiz)
+// și stații interactive noi în window.IM_EXT, încărcate înaintea acestui fișier.
 // Scena 1920×1080 · un drum șerpuit leagă slide-urile · camera „zboară” de la o stație la alta.
 // Muzica: bucle pe epoci (audio/im-*.m4a), sunetele de tranziție sunt sintetizate aici, în WebAudio.
 (function () {
   "use strict";
+  var CFG = window.IM_CFG || {};
+  var DECK = CFG.deck || "im";
   var W = 1920, H = 1080;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
@@ -170,7 +174,7 @@
   // ---------- AUDIO ----------
   var LOOPS = { 0: "im-e0", 1: "im-e1", 2: "im-e2", 3: "im-e3", 4: "im-e4", 5: "im-e5", 6: "im-e6", quiz: "im-quiz" };
   var LOOPLEN = { "im-e0": 22.857143, "im-e1": 24, "im-e2": 20, "im-e3": 19.2, "im-e4": 16, "im-e5": 17.142857, "im-e6": 15.737705, "im-quiz": 15, "im-win": 4.2 };
-  var ERANAME = { 0: "Preistorie · tobă și fluier", 1: "Ev Mediu · laută și ney", 2: "Secolul XIX · cutie muzicală", 3: "Cinema mut · ragtime", 4: "Anii '50 · jazz", 5: "Computerul · synth și 8-bit", 6: "Acum · deep house de ședință foto", quiz: "Quiz · tic-tac" };
+  var ERANAME = CFG.eraname || { 0: "Preistorie · tobă și fluier", 1: "Ev Mediu · laută și ney", 2: "Secolul XIX · cutie muzicală", 3: "Cinema mut · ragtime", 4: "Anii '50 · jazz", 5: "Computerul · synth și 8-bit", 6: "Acum · deep house de ședință foto", quiz: "Quiz · tic-tac" };
   var A = { ctx: null, bufs: {}, cur: null, era: null, muted: false, vol: 0.34, soft: 1, ducked: false };
   function ensureAudio() {
     if (!A.ctx) {
@@ -372,12 +376,13 @@
 
   // ---------- intrare / ieșire din slide ----------
   var INT = {};
+  if (window.IM_EXT) for (var ek in IM_EXT) INT[ek] = IM_EXT[ek];
   function enter(i) {
     var s = SL[i], k = s.dataset.int;
     var era = s.dataset.era;
     if (A.ctx) {
       playEra(era === "quiz" ? "quiz" : +era, s.dataset.soft === "1");
-      var st = STING[i];
+      var st = "sting" in s.dataset ? s.dataset.sting : CFG.deck ? "" : STING[i];
       if (st && sfx[st]) setTimeout(function () { if (cur === i) sfx[st](); }, 80);
       // pregătim muzica stației următoare
       var nx = SL[i + 1];
@@ -398,7 +403,7 @@
 
   // imaginile/filmele de pe Wikimedia: dacă nu se încarcă, rămâne un fundal hașurat, nu o imagine spartă
   $$("img").forEach(function (im) {
-    im.addEventListener("error", function () { (im.closest(".cut,.poster,.disc,.strip-frame,.polar-img") || im.parentNode).classList.add("noimg"); });
+    im.addEventListener("error", function () { (im.closest(".cut,.poster,.disc,.strip-frame,.polar-img,.fb") || im.parentNode).classList.add("noimg"); });
   });
 
   // ---------- 00 · titlul ----------
@@ -1018,7 +1023,7 @@
   function openRemote() {
     $("#rm-modal").hidden = false;
     if (rm.bus) return;
-    try { rm.id = sessionStorage.getItem("rm-id:im") || rid(); sessionStorage.setItem("rm-id:im", rm.id); } catch (e) { rm.id = rid(); }
+    try { rm.id = sessionStorage.getItem("rm-id:" + DECK) || rid(); sessionStorage.setItem("rm-id:" + DECK, rm.id); } catch (e) { rm.id = rid(); }
     loadJS("js/vendor/qrcode.js", function () { return typeof qrcode !== "undefined"; }, function () {
       loadJS("js/bus.js", function () { return typeof SRNBus !== "undefined"; }, function () {
         function drawQR() {
@@ -1079,6 +1084,7 @@
     sfx: sfx, ensureAudio: ensureAudio, playEra: playEra, oneShot: oneShot, duck: duck,
     siteURL: siteURL, loadJS: loadJS,
     slide: function (i) { return SL[i]; },
+    deck: DECK,
   };
   var start = parseInt((location.hash || "").slice(1), 10);
   go(isFinite(start) && start > 0 ? start - 1 : 0, true);
