@@ -161,6 +161,134 @@ h1 {
   font-size: 16px;
 }
 
+/* notițele vorbitorului */
+.notes {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  margin: 2px -8px 0;
+  padding: 2px 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  -webkit-mask-image: linear-gradient(#000 calc(100% - 22px), transparent);
+  mask-image: linear-gradient(#000 calc(100% - 22px), transparent);
+}
+
+.n {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.42;
+  color: #c9c9d3;
+}
+
+.n b {
+  color: #fff;
+  font-weight: 800;
+}
+
+.n-pt {
+  padding-left: 16px;
+  position: relative;
+}
+
+.n-pt::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--y);
+}
+
+.n-say {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--txt);
+  border-left: 4px solid var(--y);
+  padding-left: 12px;
+}
+
+.n-say b {
+  color: var(--y);
+}
+
+.n-do {
+  background: rgba(255, 214, 10, 0.13);
+  color: var(--y);
+  border-radius: 12px;
+  padding: 8px 11px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.n-do b {
+  color: var(--y);
+}
+
+.n-go {
+  color: #8fd3ff;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.notes-big .n {
+  font-size: 19px;
+}
+
+.notes-big .n-say {
+  font-size: 23px;
+}
+
+.notes-huge .n {
+  font-size: 23px;
+}
+
+.notes-huge .n-say {
+  font-size: 28px;
+}
+
+.aa {
+  margin-left: auto;
+  flex: none;
+  font: 800 16px "Inter", sans-serif;
+  color: var(--txt);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.has-notes .card {
+  padding: 16px 18px;
+  gap: 8px;
+}
+
+.has-notes h1 {
+  font-size: clamp(22px, 6.4vw, 30px);
+}
+
+.has-notes .count b {
+  font-size: 26px;
+}
+
+.has-notes .pad {
+  height: 21vh;
+  min-height: 110px;
+}
+
+.has-notes .next {
+  margin: 0;
+  font-size: 14px;
+}
+
 .next {
   margin: auto 0 0;
   font-size: 15px;

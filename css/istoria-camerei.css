@@ -1,5 +1,6 @@
 /* Proiectul 07 · Istoria Camerei: doar stațiile noi. Restul (scena, drumul, HUD-ul, quiz-ul) vine din istoria.css. */
 
+.sn { display: none !important; }
 .ic-bigcam { filter: drop-shadow(12px 12px 0 rgba(18, 12, 43, 0.35)); opacity: 0.22; }
 
 /* ---------- 3 · Daguerre și Talbot ---------- */

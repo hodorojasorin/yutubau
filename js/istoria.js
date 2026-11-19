@@ -1065,11 +1065,21 @@
   $("#rm-open").addEventListener("click", openRemote);
   $("#rm-close").addEventListener("click", closeRemote);
   $("#rm-modal").addEventListener("click", function (e) { if (e.target.id === "rm-modal") closeRemote(); });
+  // notițele vorbitorului (<div class="sn" hidden> din fiecare slide) ajung pe telecomandă
+  var NOTES = SL.map(function (s) {
+    var box = $(".sn", s);
+    if (!box) return null;
+    return [].map.call(box.children, function (el) {
+      var t = "";
+      [].forEach.call(el.childNodes, function (n) { t += n.nodeType === 1 && n.tagName === "B" ? "**" + n.textContent + "**" : n.textContent; });
+      return { k: el.dataset.k || "", t: t.replace(/\s+/g, " ").trim() };
+    });
+  });
   var lastMsg = "";
   function sendState(force) {
     if (!rm.bus || !rmPhones()) return;
     var s = SL[cur], nx = SL[cur + 1];
-    var msg = { t: "state", i: cur, n: N, name: s.dataset.name, q: "", next: nx ? nx.dataset.name : "", title: document.title, sec: elapsed(), open: true };
+    var msg = { t: "state", i: cur, n: N, name: s.dataset.name, q: "", next: nx ? nx.dataset.name : "", title: document.title, sec: elapsed(), open: true, notes: NOTES[cur] };
     var key = JSON.stringify(msg);
     if (!force && key === lastMsg) return;
     lastMsg = key;

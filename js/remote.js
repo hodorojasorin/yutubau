@@ -37,9 +37,42 @@
     if (state.next) $("next").firstElementChild.textContent = state.next;
     $("prev").disabled = i <= 0;
     $("nextb").disabled = i >= n - 1;
-    $("hint").hidden = i > 0;
+    $("hint").hidden = i > 0 || !!(state.notes && state.notes.length);
+    renderNotes();
     if (state.title) document.title = "📱 " + state.title;
   }
+  // notițele vorbitorului: ce spui, ce apeși, cum treci la slide-ul următor
+  var notesKey = "";
+  function renderNotes() {
+    var box = $("notes"), list = (state && state.notes) || [];
+    var key = state.i + "|" + JSON.stringify(list);
+    if (key === notesKey) return;
+    notesKey = key;
+    box.innerHTML = "";
+    document.body.classList.toggle("has-notes", list.length > 0);
+    box.hidden = !list.length;
+    $("aa").hidden = !list.length;
+    list.forEach(function (n) {
+      var p = document.createElement("p");
+      p.className = "n n-" + (n.k || "pt");
+      String(n.t || "").split("**").forEach(function (part, k) {
+        if (!part) return;
+        if (k % 2) { var b = document.createElement("b"); b.textContent = part; p.appendChild(b); }
+        else p.appendChild(document.createTextNode(part));
+      });
+      box.appendChild(p);
+    });
+    box.scrollTop = 0;
+  }
+  var SIZES = ["", "big", "huge"], size = 0;
+  try { size = Math.max(0, SIZES.indexOf(localStorage.getItem("rm-notes-size") || "")); } catch (e) {}
+  function applySize() { SIZES.forEach(function (c) { if (c) document.body.classList.remove("notes-" + c); }); if (SIZES[size]) document.body.classList.add("notes-" + SIZES[size]); }
+  applySize();
+  $("aa").addEventListener("click", function () {
+    size = (size + 1) % SIZES.length;
+    applySize();
+    try { localStorage.setItem("rm-notes-size", SIZES[size]); } catch (e) {}
+  });
   function tick() {
     if (!state) return;
     var s = state.sec + (Date.now() - gotAt) / 1000;
@@ -110,12 +143,15 @@
   });
   var sx = 0,
     sy = 0,
-    st = 0;
+    st = 0,
+    inNotes = false;
   document.addEventListener(
     "touchstart",
     function (e) {
       if (e.target.closest && e.target.closest("button")) return (st = 0);
       var t = e.changedTouches[0];
+      // în notițe, swipe-ul în sus/jos derulează textul; slide-urile se schimbă doar cu swipe stânga/dreapta
+      inNotes = !!(e.target.closest && e.target.closest(".notes"));
       sx = t.clientX;
       sy = t.clientY;
       st = Date.now();
@@ -131,7 +167,7 @@
         dy = t.clientY - sy;
       st = 0;
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) go(dx < 0 ? 1 : -1);
-      else if (Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx) * 1.2) go(dy < 0 ? 1 : -1);
+      else if (!inNotes && Math.abs(dy) > 60 && Math.abs(dy) > Math.abs(dx) * 1.2) go(dy < 0 ? 1 : -1);
     },
     { passive: true },
   );
