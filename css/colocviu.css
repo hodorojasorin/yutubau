@@ -893,14 +893,7 @@ html.co body {
   animation: co-blink 0.8s steps(2) infinite;
 }
 
-.co-sticker.me {
-  right: 4vw;
-  bottom: 9vh;
-  width: clamp(150px, 21vw, 330px);
-  transform: rotate(6deg);
-}
 
-.hero .d1 { left: 3vw; top: 13vh; width: 70px; height: 70px; }
 .hero .d2 { left: 47vw; top: 19vh; width: 54px; height: 54px; }
 .hero .d3 { right: 30vw; bottom: 12vh; width: 58px; height: 52px; }
 .hero .d4 { left: 3vw; bottom: 12vh; width: 84px; height: 68px; }
@@ -1206,7 +1199,6 @@ html.co body {
   animation: co-pop 0.5s ease-out;
 }
 
-#co-multimedia .f1 { right: 5vw; top: 13vh; width: 80px; height: 80px; }
 #co-multimedia .f2 { left: 2.5vw; bottom: 12vh; width: 50px; height: 50px; }
 
 /* ---------- 4 · creativitate ---------- */
@@ -1424,7 +1416,6 @@ html.co body {
   transform: rotate(-3deg);
 }
 
-#co-teorie-portofoliu .h1 { right: 3vw; top: 12vh; width: 76px; height: 76px; }
 
 /* ---------- 6 · cine sunt ---------- */
 .co-me {
@@ -1572,12 +1563,6 @@ html.co body {
   border-bottom: 15px solid transparent;
 }
 
-.co-sticker.me2 {
-  right: 5vw;
-  bottom: 7vh;
-  width: clamp(110px, 11vw, 170px);
-  transform: rotate(-8deg);
-}
 
 #co-eu .i1 { left: 46vw; top: 12vh; width: 50px; height: 50px; }
 
@@ -1617,7 +1602,6 @@ html.co body {
   transform: rotate(-1.5deg);
 }
 
-#co-dece .j1 { right: 3vw; top: 11vh; width: 70px; height: 70px; }
 #co-dece .j2 { left: 40vw; bottom: 9vh; width: 72px; height: 72px; }
 
 /* ---------- 8 · rețeta ---------- */
@@ -2198,7 +2182,6 @@ html.co body {
   border-color: var(--rd);
 }
 
-#co-test .o1 { right: 3vw; top: 12vh; width: 70px; height: 70px; }
 
 /* ---------- 14 · concluzia ---------- */
 .co-why {
@@ -2451,14 +2434,6 @@ html.co-pdf .co-wallas .m {
   }
   .co-s {
     padding-bottom: 70px;
-  }
-  .co-sticker.me {
-    width: 120px;
-    bottom: 4vh;
-    right: 3vw;
-  }
-  .co-sticker.me2 {
-    display: none;
   }
   .co-stamp.big {
     position: static;
