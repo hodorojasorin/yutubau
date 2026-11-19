@@ -232,6 +232,18 @@
   function txt(el) {
     return el ? el.textContent.replace(/\s+/g, " ").replace(/^\?\s*/, "").trim() : "";
   }
+  // notițele vorbitorului (<div class="sn" hidden> din fiecare slide) ajung pe telecomandă
+  var NOTES = slides.map(function (s) {
+    var box = s.querySelector(".sn");
+    if (!box) return null;
+    return [].map.call(box.children, function (el) {
+      var t = "";
+      [].forEach.call(el.childNodes, function (n) {
+        t += n.nodeType === 1 && n.tagName === "B" ? "**" + n.textContent + "**" : n.textContent;
+      });
+      return { k: el.dataset.k || "", t: t.replace(/\s+/g, " ").trim() };
+    });
+  });
   var last = "";
   function send(force) {
     if (!bus || !phonesOn()) return;
@@ -248,6 +260,7 @@
       title: document.title,
       sec: elapsed(),
       open: P.classList.contains("open"),
+      notes: NOTES[i],
     };
     var key = JSON.stringify(msg);
     if (!force && key === last) return;

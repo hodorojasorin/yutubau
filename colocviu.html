@@ -4,571 +4,603 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <title>Creativitatea și imaginarul · Sorin Hodoroja</title>
-    <meta name="description" content="Proiectul 05 · colocviu: creativitatea și imaginarul în elaborarea unui portofoliu multimedia." />
+    <meta name="description" content="Proiectul 05 · colocviu: creativitatea și imaginarul în elaborarea unui portofoliu de creație multimedia. De la Canva la un portofoliu digital pe site." />
+    <meta name="theme-color" content="#ffc93c" />
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&family=Archivo+Black&family=Caveat:wght@600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" />
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/deck.css" />
-    <link rel="stylesheet" href="css/thumbs.css" />
     <link rel="stylesheet" href="css/colocviu.css" />
     <link rel="stylesheet" href="css/remote.css" />
   </head>
   <body>
-            <div class="project" id="p-colocviu">
-              <header class="recbar">
-                <div class="wrap">
-                  <div class="rec-left">
-                    <button type="button" class="back mono" id="co-back">
-                      ← Proiecte
-                    </button>
-                    <button type="button" class="rec mono co-rec" id="co-rec" title="Click: repornește cronometrul">
-                      <span class="tc" id="co-tc">00:00:00</span>
-                    </button>
-                  </div>
-                  <nav class="mono" aria-label="Secțiuni">
-                    <a href="#co-multimedia">Teorie</a>
-                    <a href="#co-eu">Eu</a>
-                    <a href="#co-bau">Concept</a>
-                    <a href="#co-pagina">Pagina</a>
-                    <a href="#co-proces">Proces</a>
-                    <a href="#co-portofoliu">Portofoliu</a>
-                    <a href="#co-concluzii">Concluzii</a>
-                  </nav>
-                </div>
-              </header>
-              <div class="wipe" id="co-wipe" aria-hidden="true"></div>
-              <nav class="pager mono" id="co-pager" aria-label="Slide-uri"></nav>
+    <!-- desene refolosite: steluțe, floricele, inimi, dosare, săgeți -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="k-spark" viewBox="0 0 100 100"><path d="M50 4C54 34 66 46 96 50 66 54 54 66 50 96 46 66 34 54 4 50 34 46 46 34 50 4Z" stroke="#141414" stroke-width="7" stroke-linejoin="round" /></symbol>
+        <symbol id="k-flower" viewBox="0 0 100 100"><path d="M50 8c9 0 15 9 13 18 8-5 19-2 22 7 3 8-3 17-11 19 8 3 13 13 9 21-4 9-15 10-22 5 1 9-6 17-15 16-9 0-14-9-12-17-8 5-19 2-22-7-3-9 3-17 11-19-8-3-13-12-9-20 4-9 15-11 22-5-2-9 4-18 14-18Z" stroke="#141414" stroke-width="6" stroke-linejoin="round" /><circle cx="50" cy="50" r="10" fill="#fff4de" stroke="#141414" stroke-width="5" /></symbol>
+        <symbol id="k-heart" viewBox="0 0 100 90"><path d="M50 84C20 62 6 46 6 28 6 14 17 5 30 5c9 0 16 5 20 13 4-8 11-13 20-13 13 0 24 9 24 23 0 18-14 34-44 56Z" stroke="#141414" stroke-width="7" stroke-linejoin="round" /></symbol>
+        <symbol id="k-folder" viewBox="0 0 120 96"><path d="M6 18c0-7 5-12 12-12h28l10 12h46c7 0 12 5 12 12v50c0 7-5 12-12 12H18C11 92 6 87 6 80Z" stroke="#141414" stroke-width="6" stroke-linejoin="round" /><path d="M6 34h108" stroke="#141414" stroke-width="6" /></symbol>
+        <symbol id="k-cursor" viewBox="0 0 80 100"><path d="M6 4 74 58 44 62 60 92 46 98 30 68 8 88Z" fill="#fff" stroke="#141414" stroke-width="6" stroke-linejoin="round" /></symbol>
+        <symbol id="k-arrow" viewBox="0 0 120 120"><path d="M14 104 66 52 52 38 106 14 82 68 68 54 16 106Z" stroke="#141414" stroke-width="7" stroke-linejoin="round" /></symbol>
+        <symbol id="k-bang" viewBox="0 0 50 120"><path d="M14 6h28L32 78H18Z" stroke="#141414" stroke-width="6" stroke-linejoin="round" /><circle cx="25" cy="100" r="12" stroke="#141414" stroke-width="6" /></symbol>
+        <symbol id="k-burst" viewBox="0 0 200 200"><path d="M100 4 116 60 166 26 140 80 196 84 146 112 182 158 124 140 120 196 96 146 60 190 66 132 8 136 54 104 12 64 72 72 54 16Z" stroke="#141414" stroke-width="7" stroke-linejoin="round" /></symbol>
+        <symbol id="k-palm" viewBox="0 0 120 140"><path d="M60 136C58 104 56 76 60 48" stroke="#141414" stroke-width="7" fill="none" /><path d="M60 50C44 22 18 18 4 30c18-2 34 6 46 22-20-14-40-10-50 4 22-6 40-2 56 4 6-20 26-34 56-30-24 2-40 14-46 26 14-16 36-22 54-14-20 0-36 8-46 18" stroke="#141414" stroke-width="6" stroke-linejoin="round" /></symbol>
+      </defs>
+    </svg>
 
-              <main>
-                <!-- 1 · titlul -->
-                <section class="slide hero" id="co-titlu" data-name="Titlu">
-                  <div class="wrap">
-                    <div class="hero-meta mono r" style="--i: 0">
-                      <p>
-                        Universitatea de Stat din Moldova<br />Facultatea de
-                        Jurnalism și Științe ale Comunicării<br />Specialitatea:
-                        Producție Multimedia · Ciclul I, Licență
-                      </p>
-                      <div>
-                        <p class="co-when">Colocviul științific<br />„Coduri și limbaje actuale ale imaginarului”</p>
-                      </div>
-                    </div>
-                    <div class="co-hero-main">
-                      <h1>
-                        <span class="fx-chars" style="--i: 1"
-                          >Creativitatea &amp; <span class="co-mark">imaginarul</span></span
-                        >
-                      </h1>
-                      <p class="co-sub r" style="--i: 4">
-                        în elaborarea unui portofoliu de creație multimedia:
-                        <span>de la concept la realizare</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="scrollhint mono" aria-hidden="true">scroll<i></i></div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce înseamnă, de fapt, multimedia?</p>
-                </section>
+    <div class="project" id="p-colocviu">
+      <header class="recbar">
+        <div class="wrap">
+          <div class="rec-left">
+            <button type="button" class="back mono" id="co-back">← Proiecte</button>
+            <button type="button" class="rec mono co-rec" id="co-rec" title="Click: repornește cronometrul">
+              <span class="tc" id="co-tc">00:00:00</span>
+            </button>
+          </div>
+          <nav class="mono" aria-label="Secțiuni">
+            <a href="#co-canva">Start</a>
+            <a href="#co-multimedia">Teorie</a>
+            <a href="#co-eu">Eu</a>
+            <a href="#co-reteta">Site-ul</a>
+            <a href="#co-proces">Proces</a>
+            <a href="#co-portofoliu">Portofoliu</a>
+            <a href="#co-concluzie">Concluzia</a>
+          </nav>
+          <span class="co-winbtns" aria-hidden="true"><i class="mi"></i><i class="ma"></i><i class="x"></i></span>
+        </div>
+      </header>
+      <div class="wipe" id="co-wipe" aria-hidden="true"></div>
+      <nav class="pager mono" id="co-pager" aria-label="Slide-uri"></nav>
 
-                <!-- 2 · multimedia -->
-                <section class="slide" id="co-multimedia" data-name="Multimedia">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">01 · Noțiuni de bază</p>
-                    <h2 class="fx-chars" style="--i: 1">Ce este <em>multimedia</em>?</h2>
-                    <div class="co-defs">
-                      <div class="co-def big r" style="--i: 2">
-                        <div class="who"><b>Laura Tugarev</b><span>USM</span></div>
-                        <p>
-                          Multimedia este <q>o sinergie a diferitor forme de
-                          conținut</q>, adică text, imagine, sunet, animație,
-                          video și interacțiune, <q>integrate într-un singur
-                          produs sau experiență</q>.
-                        </p>
-                        <p class="co-src">
-                          <b>L. Tugarev</b>, Specialitatea Producție multimedia: o
-                          inovație în peisajul educațional universitar din RM
-                        </p>
-                      </div>
-                      <div class="co-def big r" style="--i: 3">
-                        <div class="who"><b>Tay Vaughan</b><span>1993</span></div>
-                        <p>
-                          Orice combinație de text, grafică, sunet, animație și
-                          video livrată prin computer. Devine
-                          <b>interactivă</b> când utilizatorul decide ce vede și
-                          când.
-                        </p>
-                        <p class="co-src">
-                          <b>T. Vaughan</b>, Multimedia: Making It Work
-                        </p>
-                      </div>
-                    </div>
-                    <div class="co-elems r" style="--i: 4" aria-label="Elementele multimedia">
-                      <div class="co-el"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 6h14M12 6v13M9 19h6" /></svg>Text</div>
-                      <div class="co-el"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 16 5-5 4 4 3-3 6 6" /></svg>Imagine</div>
-                      <div class="co-el"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2" /></svg>Sunet</div>
-                      <div class="co-el"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="3" /><circle cx="17" cy="12" r="3" stroke-dasharray="2 2" /><path d="M10 12h4" /></svg>Animație</div>
-                      <div class="co-el"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="13" height="12" rx="2" /><path d="m16 10 5-3v10l-5-3" /></svg>Video</div>
-                      <div class="co-el"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11V5a2 2 0 0 1 4 0v6l4 1a2 2 0 0 1 1.5 2.3L17.5 20H10l-4-5a1.6 1.6 0 0 1 2.4-2.1L9 14" /></svg>Interacțiune</div>
-                      <span class="co-eq" aria-hidden="true">=</span>
-                      <div class="co-out">o singură experiență</div>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce face un produs multimedia să fie creativ?</p>
-                </section>
-
-                <!-- 3 · creativitate și imaginar -->
-                <section class="slide" id="co-creativ" data-name="Creativitate și imaginar">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">02 · Noțiuni de bază</p>
-                    <h2 class="fx-chars" style="--i: 1">Creativitate și <em>imaginar</em></h2>
-                    <div class="co-defs">
-                      <div class="co-def r" style="--i: 2">
-                        <div class="who"><b>Sternberg &amp; Lubart</b><span>1999</span></div>
-                        <p>
-                          Creativitatea este capacitatea de a produce ceva
-                          <b>nou</b> (original, neașteptat) și <b>adecvat</b>
-                          (util, potrivit sarcinii).
-                        </p>
-                        <p class="co-src"><b>Handbook of Creativity</b>, Cambridge University Press</p>
-                      </div>
-                      <div class="co-def r" style="--i: 3">
-                        <div class="who"><b>Margaret A. Boden</b><span>1990</span></div>
-                        <p>
-                          Creativitatea înseamnă idei noi, surprinzătoare și
-                          valoroase. Ele apar în trei feluri:
-                        </p>
-                        <div class="co-mini">
-                          <span class="chip hot">combinațională</span><span class="chip">explorativă</span><span class="chip">transformațională</span>
-                        </div>
-                        <p class="co-src"><b>The Creative Mind</b>: Myths and Mechanisms</p>
-                      </div>
-                      <div class="co-def r" style="--i: 4">
-                        <div class="who"><b>Gilbert Durand</b><span>1960</span></div>
-                        <p>
-                          Imaginarul este ansamblul imaginilor și al legăturilor
-                          dintre ele, rezerva din care pornește orice creație.
-                          Imaginația lucrează ca un <q>dinamism organizator</q>.
-                        </p>
-                        <p class="co-src"><b>Structurile antropologice ale imaginarului</b> (trad. rom. 1977)</p>
-                      </div>
-                    </div>
-                    <p class="co-quote r" style="--i: 5">
-                      Pe scurt: <span class="co-mark">imaginarul</span> îmi dă
-                      imaginea, creativitatea o face nouă și utilă.
-                    </p>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Cum arată creativitatea în multimedia, în practică?</p>
-                </section>
-
-                <!-- 4 · creativitatea în multimedia -->
-                <section class="slide" id="co-formula" data-name="Creativitate în multimedia">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">03 · Creativitatea în multimedia</p>
-                    <h2 class="fx-chars" style="--i: 1">Combinația <em>e creația</em></h2>
-                    <p class="lede r" style="--i: 2">
-                      Multimedia e combinațională prin natura ei: pune împreună,
-                      într-un mod nou, lucruri care există deja. Rețeta mea:
-                    </p>
-                    <div class="co-formula r" style="--i: 3">
-                      <div class="co-ing"><small>Tehnologie</small><b>Cod</b><span>site, animații, interacțiune</span></div>
-                      <div class="co-ing"><small>Video</small><b>Montaj</b><span>ritm, cadre, sunet</span></div>
-                      <div class="co-ing"><small>Design</small><b>Identitate</b><span>paletă, font, layout</span></div>
-                      <div class="co-ing"><small>Idee</small><b>Poveste</b><span>personaje, mesaj, simboluri</span></div>
-                      <span class="co-eq" aria-hidden="true">=</span>
-                      <div class="co-res"><small>Rezultat</small><b>Prezentarea-site</b><span>un produs multimedia, nu un fișier</span></div>
-                    </div>
-                    <div class="co-levels r" style="--i: 4">
-                      <div>
-                        <span class="lv">Combinațională</span><b>Le pun împreună</b>
-                        <p>Site + film + design = o prezentare cum nu am mai văzut în grupă.</p>
-                      </div>
-                      <div>
-                        <span class="lv">Explorativă</span><b>Împing limitele</b>
-                        <p>Fiecare proiect adaugă ceva: sunet, animatic, parolă, PDF.</p>
-                      </div>
-                      <div class="goal">
-                        <span class="lv">Transformațională · ținta</span><b>Schimb regula</b>
-                        <p>Prezentarea nu mai e un șir de slide-uri, ci o experiență.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Cine sunt eu și de unde vin aceste ingrediente?</p>
-                </section>
-
-                <!-- 5 · cine sunt -->
-                <section class="slide" id="co-eu" data-name="Cine sunt">
-                  <div class="wrap co-me">
-                    <figure class="co-photo r" style="--i: 0">
-                      <img src="img/co-sorin.jpg" alt="Sorin Hodoroja pe un scaun de regizor, cu un aparat foto" width="1000" height="1154" />
-                      <figcaption class="mono">@sorinarseni</figcaption>
-                    </figure>
-                    <div>
-                      <p class="eyebrow mono r" style="--i: 0">04 · Cine sunt</p>
-                      <h2 class="fx-chars" style="--i: 1">Între <em>cod</em> și cadru</h2>
-                      <p class="lede r" style="--i: 2">
-                        Creator digital. Am venit în multimedia din IT
-                        și încerc să îmbin cele două lumi.
-                      </p>
-                      <ul class="co-roles">
-                        <li class="r" style="--i: 3">
-                          <span class="lg"><img src="img/co-ceiti.png" alt="CEITI" width="58" height="58" /></span>
-                          <div>
-                            <b>Computer Science Absolvent</b>
-                            <span>Centrul de Excelență în Informatică și Tehnologii Informaționale</span>
-                          </div>
-                        </li>
-                        <li class="r" style="--i: 4">
-                          <span class="lg dk"><img src="img/co-prasada.svg" alt="PRASADA" width="58" height="58" /></span>
-                          <div>
-                            <b>Editor Video</b>
-                            <span>La PRASADA lucrez pe proiectele Just cu Gust și Gust Academy: montaj și idei pentru rețelele sociale.</span>
-                          </div>
-                        </li>
-                        <li class="r" style="--i: 5">
-                          <span class="lg fj"><img src="img/co-fjsc.png" alt="FJȘC" width="58" height="58" /></span>
-                          <div>
-                            <b>Student, Anul I · Producție Multimedia</b>
-                            <span>Facultatea de Jurnalism și Științe ale Comunicării, USM</span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>De ce am ales tocmai multimedia?</p>
-                </section>
-
-                <!-- 6 · de ce multimedia -->
-                <section class="slide" id="co-dece" data-name="De ce multimedia">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">05 · De ce multimedia</p>
-                    <h2 class="fx-chars" style="--i: 1">Ocol sau <em>upgrade</em>?</h2>
-                    <p class="lede r" style="--i: 2">
-                      Urmăresc Mediacor și programul <b>Profesiile Viitorului</b> de
-                      la înființare. Din anul în care am aplicat la IT știam că,
-                      după absolvire, merg mai departe în multimedia.
-                    </p>
-                    <div class="co-lanes">
-                      <span class="co-lane-name mono r" style="--i: 3">Drumul meu</span>
-                      <div class="co-node r" style="--i: 3">
-                        <small>Colegiu</small><b>Aplic la IT, CEITI</b
-                        ><span>programare, web</span>
-                      </div>
-                      <div class="co-node r" style="--i: 4">
-                        <small>Practică</small><b>Primele site-uri și primele colaborări mari</b
-                        ><span>HTML, CSS, JS, PHP, Laravel</span>
-                      </div>
-                      <div class="co-node r" style="--i: 5">
-                        <small>Muncă</small><b>Editor Video</b
-                        ><span>PRASADA · Just cu Gust, Gust Academy</span>
-                      </div>
-                      <span class="co-lane-name mono r" style="--i: 3">Multimedia la USM</span>
-                      <div class="co-node r" style="--i: 4">
-                        <small>2021</small><b>Se deschide Mediacor</b
-                        ><span>centru de producție digital-media la USM</span>
-                      </div>
-                      <div class="co-node r" style="--i: 5">
-                        <small>2022</small><b>Apare Producție multimedia</b
-                        ><span>prin programul Profesiile Viitorului</span>
-                      </div>
-                      <div class="co-node r" style="--i: 6">
-                        <small>Mereu</small><b>Îi urmăresc de la început</b
-                        ><span>proiecte, evenimente, absolvenți</span>
-                      </div>
-                      <div class="co-merge r" style="--i: 7">
-                        <small>2026 · aici</small>
-                        <b>Anul I, FJȘC</b>
-                        <span>Codul și montajul se întâlnesc într-o singură specialitate.</span>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce am schimbat la felul în care îmi prezint proiectele?</p>
-                </section>
-
-                <!-- 7 · avantajul IT -->
-                <section class="slide" id="co-it" data-name="Din Canva pe site">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">06 · Felul în care prezint</p>
-                    <h2 class="fx-chars" style="--i: 1">Din Canva, pe <em>propriul site</em></h2>
-                    <p class="lede r" style="--i: 2">
-                      Până acum îmi făceam prezentările în Canva. Din acest semestru
-                      le construiesc pe site-ul meu, ca la finalul anului să am un
-                      <b>portofoliu de prezentări și proiecte studențești</b>.
-                    </p>
-                    <div class="co-split">
-                      <div class="co-box r" style="--i: 3">
-                        <h3>Ce găsiți pe platformă</h3>
-                        <div class="co-chips">
-                          <span class="chip">proiecte de la diferite materii</span><span class="chip">competiții</span
-                          ><span class="chip">programe reale</span><span class="chip">after movie-uri</span
-                          ><span class="chip hot">prezentări</span>
-                        </div>
-                      </div>
-                      <div class="co-box r" style="--i: 4">
-                        <h3>Cine are acces</h3>
-                        <ul class="co-access">
-                          <li><b>Publice</b> deschise oricui</li>
-                          <li><b>Cu parolă</b> pentru colegi și profesori</li>
-                          <li><b>Private, cu cheie de acces</b> lucrări reale pe care autorii nu vor încă să le facă publice, din cauza drepturilor de autor</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="co-vs">
-                      <div class="co-box r" style="--i: 5">
-                        <h3>Cum se fac de obicei</h3>
-                        <ul>
-                          <li>în Canva sau PowerPoint</li>
-                          <li>pornind de la un șablon gata făcut</li>
-                          <li>slide-uri statice</li>
-                        </ul>
-                      </div>
-                      <span class="co-arrow r" style="--i: 6" aria-hidden="true">→</span>
-                      <div class="co-box on r" style="--i: 6">
-                        <h3>Prezentarea mea</h3>
-                        <ul>
-                          <li>design propriu pentru fiecare proiect</li>
-                          <li>animații, sunet, video, elemente interactive, quizuri, jocuri interactive</li>
-                          <li>un link pentru toți + PDF la un click</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Cum a început totul?</p>
-                </section>
-
-                <!-- 8 · conceptul: bau BAU -->
-                <section class="slide" id="co-bau" data-name="Conceptul">
-                  <div class="wrap co-bau">
-                    <div>
-                      <p class="eyebrow mono r" style="--i: 0">07 · De la concept</p>
-                      <h2 class="fx-chars" style="--i: 1">Totul a pornit de la <em>bau <span class="co-keep">BAU</span></em></h2>
-                      <p class="lede r" style="--i: 2">
-                        Un singur proiect, la Managementul Experienței: YUTUBAU, un
-                        Bau Bau vlogger pentru cardurile de colecție Electric
-                        Spring. În loc de slide-uri, am construit <b>un site</b>.
-                        Mecanica lui a devenit baza întregului portofoliu.
-                      </p>
-                      <div class="co-facts r" style="--i: 3">
-                        <span class="chip">8 slide-uri</span><span class="chip">personaj în Firefly</span><span class="chip">card animat</span><span class="chip hot">primul proiect</span>
-                      </div>
-                      <a class="co-link mono r" style="--i: 4" href="bau-bau.html">Deschide proiectul 01 <i aria-hidden="true">→</i></a>
-                    </div>
-                    <div class="co-bau-pics r" style="--i: 2" aria-hidden="true">
-                      <img class="a" src="img/pose.jpg" alt="" width="768" height="1376" />
-                      <img class="b" src="img/ecard1.webp" alt="" width="855" height="1080" />
-                      <span class="sticker mono">● REC · proiectul 01</span>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Din ce este făcută o astfel de prezentare?</p>
-                </section>
-
-                <!-- 9 · anatomia paginii -->
-                <section class="slide" id="co-pagina" data-name="Componentele paginii">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">08 · Componentele paginii</p>
-                    <h2 class="fx-chars" style="--i: 1">Anatomia unei <em>prezentări</em></h2>
-                    <div class="co-anat">
-                      <div class="co-wire r" style="--i: 2" aria-label="Schița unei pagini de proiect">
-                        <div class="bar"><span>← PROIECTE &nbsp; <em>●</em> REC 00:01:24</span><span class="nv"><span>CUM ARATĂ</span><span>UNELTE</span><span>CARDUL</span></span></div>
-                        <div class="wp"></div>
-                        <div class="ttl">bau <em>BAU</em></div>
-                        <div class="ln" style="top: 62%; width: 44%"></div>
-                        <div class="ln" style="top: 68%; width: 32%"></div>
-                        <div class="pg"><i></i><i class="on"></i><i></i><i></i><i></i></div>
-                        <div class="bt"><span>↺ DE LA ÎNCEPUT</span><span>↗ SHARE</span><span>⬇ PDF</span></div>
-                        <span class="co-pin" style="left: -10px; top: -10px">1</span>
-                        <span class="co-pin" style="left: 44%; top: 3%">2</span>
-                        <span class="co-pin" style="left: 3%; top: 24%">3</span>
-                        <span class="co-pin" style="right: -10px; top: 30%">4</span>
-                        <span class="co-pin" style="left: 54%; top: 40%">5</span>
-                        <span class="co-pin" style="left: 3%; bottom: 3%">6</span>
-                      </div>
-                      <ol class="co-parts">
-                        <li class="r" style="--i: 3"><div><b>Indexul de proiecte.</b> <span>Pagina de acasă, cu câte un card pentru fiecare proiect.</span></div></li>
-                        <li class="r" style="--i: 3"><div><b>Bara de sus.</b> <span>Înapoi, eticheta proiectului și secțiunile.</span></div></li>
-                        <li class="r" style="--i: 4"><div><b>Slide pe tot ecranul.</b> <span>Se oprește singur la scroll; textul intră pe rând, ca într-un montaj.</span></div></li>
-                        <li class="r" style="--i: 4"><div><b>Contorul de slide-uri.</b> <span>Arată unde ești și te duce oriunde.</span></div></li>
-                        <li class="r" style="--i: 5"><div><b>Identitate proprie.</b> <span>Fiecare proiect are paleta, fontul și „jucăriile” lui: sunet, animatic, parolă.</span></div></li>
-                        <li class="r" style="--i: 5"><div><b>Finalul.</b> <span>De la început, share cu link și descărcare PDF.</span></div></li>
-                      </ol>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Cum am ajuns la ideea asta?</p>
-                </section>
-
-                <!-- 10 · procesul creativ -->
-                <section class="slide" id="co-proces" data-name="Procesul creativ">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">09 · Procesul creativ</p>
-                    <h2 class="fx-chars" style="--i: 1">Patru <em>etape</em></h2>
-                    <p class="co-src r" style="--i: 2">
-                      Modelul lui <b>Graham Wallas</b>, The Art of Thought (1926),
-                      studiat la cursul Gândire și scriere creativă
-                    </p>
-                    <div class="co-cycle">
-                      <div class="co-stage r" style="--i: 3; --s: 0">
-                        <span class="n">1</span>
-                        <h3>Pregătire</h3>
-                        <p class="t"><i>teorie</i>Problema e cercetată din toate direcțiile.</p>
-                        <p class="m"><i>la mine</i>Tema: un card Bau Bau pentru Electric Spring. Studiez YouTube, festivalul, prezentările colegilor.</p>
-                      </div>
-                      <div class="co-stage r" style="--i: 4; --s: 1">
-                        <span class="n">2</span>
-                        <h3>Incubație</h3>
-                        <p class="t"><i>teorie</i>Nu te mai gândești conștient, mintea combină în fundal.</p>
-                        <p class="m"><i>la mine</i>Las tema deoparte, montez la muncă. Rămâne o întrebare: de ce arată toate prezentările la fel?</p>
-                      </div>
-                      <div class="co-stage r" style="--i: 5; --s: 2">
-                        <span class="n">3</span>
-                        <h3>Iluminare</h3>
-                        <p class="t"><i>teorie</i>Apare brusc ideea bună, momentul „aha”.</p>
-                        <p class="m"><i>la mine</i>Prezentarea poate fi un site: slide cu slide, cu bara REC ca într-o cameră de filmat.</p>
-                      </div>
-                      <div class="co-stage r" style="--i: 6; --s: 3">
-                        <span class="n">4</span>
-                        <h3>Verificare</h3>
-                        <p class="t"><i>teorie</i>Ideea e testată și adusă la forma finală.</p>
-                        <p class="m"><i>la mine</i>Construiesc, testez pe proiector și telefon, prezint, primesc feedback.</p>
-                      </div>
-                      <div class="co-loop r" style="--i: 7" aria-hidden="true">
-                        <svg viewBox="0 0 1000 46" preserveAspectRatio="none">
-                          <path d="M880 2 C 880 40, 860 40, 820 40 L 180 40 C 140 40, 120 40, 120 4" fill="none" stroke="#14161b" stroke-width="2" vector-effect="non-scaling-stroke" />
-                          <path d="M112 14 L120 2 L128 14" fill="none" stroke="#14161b" stroke-width="2" vector-effect="non-scaling-stroke" />
-                        </svg>
-                        <span class="mono">verificarea devine pregătirea proiectului următor</span>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce a ieșit din acest proces?</p>
-                </section>
-
-                <!-- 11 · portofoliul -->
-                <section class="slide" id="co-portofoliu" data-name="Portofoliul">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">10 · La realizare</p>
-                    <h2 class="fx-chars" style="--i: 1">Un proiect a devenit <em>portofoliu</em></h2>
-                    <div class="co-port">
-                      <a class="co-pj r" style="--i: 2; --pc: #ff0000" href="bau-bau.html">
-                        <span class="num">01</span>
-                        <div class="th h-thumb" aria-hidden="true"><img src="img/ecard1.webp" alt="" width="855" height="1080" /><img src="img/ecard2.webp" alt="" width="855" height="1080" /><img src="img/ecard3.webp" alt="" width="855" height="1080" /></div>
-                        <div class="bd"><b>bau BAU</b><span>personaj și card animat</span></div>
-                      </a>
-                      <a class="co-pj r" style="--i: 3; --pc: #6d4aff" href="sase-roluri.html">
-                        <span class="num">02</span>
-                        <div class="th h-thumb sr-thumb" aria-hidden="true"><img src="img/sb/2.webp" alt="" width="394" height="219" /><img src="img/sb/7.webp" alt="" width="394" height="219" /><img src="img/sb/5.webp" alt="" width="394" height="219" /></div>
-                        <div class="bd"><b>Șase roluri</b><span>scurtmetraj · storyboard</span></div>
-                      </a>
-                      <a class="co-pj r" style="--i: 4; --pc: #40c9a2; --pon: #050404" href="pascaru.html">
-                        <span class="num">03</span>
-                        <div class="th h-thumb pp-thumb" aria-hidden="true"><img src="img/pp-camera.jpg" alt="" width="1200" height="800" /><img src="img/pp-van.jpg" alt="" width="1200" height="800" /><img src="img/pp-stationery.jpg" alt="" width="1200" height="800" /></div>
-                        <div class="bd"><b>Pascaru Production</b><span>rebranding · brandbook</span></div>
-                      </a>
-                      <a class="co-pj r" style="--i: 5; --pc: #ff5a1f" href="etajul-3.html">
-                        <span class="num">04</span>
-                        <div class="th h-thumb e5-thumb" aria-hidden="true"><span class="e5-pi e5-pi-1">Mersi pentru ușă. – 3</span><span class="e5-pi e5-pi-2">Oricând. – 2</span><span class="e5-pi e5-pi-3">Mă mut.</span></div>
-                        <div class="bd"><b>Etajul 3</b><span>reclamă · scenariu și animatic</span></div>
-                      </a>
-                      <div class="co-pj here r" style="--i: 6; --pc: #14161b; --pon: #ffd60a">
-                        <span class="num">05</span>
-                        <div class="th co-mini-slide"><span class="t">Creativitatea &amp;<br /><i>imaginarul</i></span></div>
-                        <div class="bd"><b>Colocviul</b><span>creativitate și imaginar</span></div>
-                      </div>
-                    </div>
-                    <div class="co-extra">
-                      <div class="co-xcard r" style="--i: 7">
-                        <span class="lg"><img src="img/co-gust.png" alt="" width="58" height="58" /></span>
-                        <div><b>Clipuri editate de mine</b><span>podcastul Just cu Gust, Gust Academy, after movie-uri</span></div>
-                      </div>
-                      <a class="co-xcard r" style="--i: 8" href="https://bibl.ceiti.md" target="_blank" rel="noopener">
-                        <span class="lg"><img src="img/co-ceiti.png" alt="" width="58" height="58" /></span>
-                        <div><b>Site-uri realizate în trecut</b><span>de exemplu bibl.ceiti.md ↗</span></div>
-                      </a>
-                      <div class="co-xcard r" style="--i: 9">
-                        <span class="lg dk"><span class="mono">🔑</span></span>
-                        <div><b>Proiecte private</b><span>vizibile doar cu cheie de acces</span></div>
-                      </div>
-    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Este acest portofoliu cu adevărat creativ?</p>
-                </section>
-
-                <!-- 12 · nou și adecvat -->
-                <section class="slide" id="co-test" data-name="Nou și adecvat">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">11 · Verificarea</p>
-                    <h2 class="fx-chars" style="--i: 1">Nou <em>și</em> adecvat?</h2>
-                    <p class="lede r" style="--i: 2">
-                      Trec portofoliul prin definiția lui Sternberg și Lubart:
-                      un produs creativ trebuie să fie și nou, și util.
-                    </p>
-                    <div class="co-test">
-                      <div class="co-box r" style="--i: 3">
-                        <h3><i>Nou</i> original, neașteptat</h3>
-                        <ul class="co-checks">
-                          <li>Prezentări construite ca site-uri, nu ca slide-uri</li>
-                          <li>Fiecare proiect are altă identitate vizuală</li>
-                        </ul>
-                      </div>
-                      <div class="co-box r" style="--i: 4">
-                        <h3><i>Adecvat</i> util, potrivit sarcinii</h3>
-                        <ul class="co-checks">
-                          <li>Respectă cerința: teorie, practică și doar esența, în 14 slide-uri</li>
-                          <li>Merge pe proiector, laptop și telefon</li>
-                          <li>Se trimite cu un link și se descarcă în PDF</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce iau cu mine din toate acestea?</p>
-                </section>
-
-                <!-- 13 · concluzii -->
-                <section class="slide" id="co-concluzii" data-name="Concluzii">
-                  <div class="wrap">
-                    <p class="eyebrow mono r" style="--i: 0">12 · Concluzii</p>
-                    <h2 class="fx-chars" style="--i: 1">Ce <em>am învățat</em></h2>
-                    <ol class="co-concl">
-                      <li class="r" style="--i: 2"><i>01</i><div><b>Creativitatea în multimedia e combinație.</b><span>Ce știi din alte domenii devine materie primă.</span></div></li>
-                      <li class="r" style="--i: 3"><i>02</i><div><b>Imaginarul dă ideea, multimedia îi dă formă.</b><span>Un personaj sau o lume devin o experiență pe care o poți deschide.</span></div></li>
-                      <li class="r" style="--i: 4"><i>03</i><div><b>Nu trebuie să știi totul de la început.</b><span>Am învățat pe parcurs, proiect cu proiect, din greșeli și feedback.</span></div></li>
-                      <li class="r co-cta" style="--i: 5"><i>04</i><div><b>Depășiți așteptările celorlalți.</b><span>Toți se vor prezenta într-un anumit fel. Veniți cu ceva nou și puneți un efort în plus: profesorii din domeniul privat apreciază exact asta.</span></div></li>
-                    </ol>
-                  </div>
-                  <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Unde mă găsiți?</p>
-                </section>
-
-                <!-- 14 · final -->
-                <section class="slide finale" id="co-final" data-name="Final">
-                  <div class="wrap">
-                    <div>
-                      <h2 class="fx-chars fx-bounce" style="--i: 0">Mulțumesc pentru <em>atenție</em></h2>
-
-                      <div class="actions r" style="--i: 3">
-                        <a class="btn main" id="co-pdf" href="colocviu-creativitate-si-imaginar.pdf" download>⬇ Descarcă prezentarea (PDF)</a>
-                        <button class="btn" id="co-share" type="button">↗ Share</button>
-                        <button class="btn" id="co-again" type="button">↺ De la început</button>
-                      </div>
-                      <p class="toast mono" id="co-toast" role="status"></p>
-                    </div>
-                    <div class="co-follow r" style="--i: 2">
-                      <img class="co-ig" src="img/co-instagram.jpg" alt="Profilul de Instagram @sorinarseni" width="640" height="1145" />
-                    <a class="co-qr" href="https://www.instagram.com/sorinarseni/" target="_blank" rel="noopener">
-                      <span class="box"><svg role="img" aria-label="Cod QR spre instagram.com/sorinarseni" viewBox="0 0 29 29" shape-rendering="crispEdges"><path d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM9 0h1v1h-1zM11 0h1v1h-1zM13 0h1v1h-1zM14 0h1v1h-1zM15 0h1v1h-1zM18 0h1v1h-1zM19 0h1v1h-1zM22 0h1v1h-1zM23 0h1v1h-1zM24 0h1v1h-1zM25 0h1v1h-1zM26 0h1v1h-1zM27 0h1v1h-1zM28 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h1v1h-1zM12 1h1v1h-1zM15 1h1v1h-1zM16 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM12 2h1v1h-1zM14 2h1v1h-1zM15 2h1v1h-1zM17 2h1v1h-1zM19 2h1v1h-1zM20 2h1v1h-1zM22 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM26 2h1v1h-1zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM9 3h1v1h-1zM10 3h1v1h-1zM11 3h1v1h-1zM12 3h1v1h-1zM18 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM25 3h1v1h-1zM26 3h1v1h-1zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM10 4h1v1h-1zM14 4h1v1h-1zM15 4h1v1h-1zM16 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM25 4h1v1h-1zM26 4h1v1h-1zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM9 5h1v1h-1zM11 5h1v1h-1zM15 5h1v1h-1zM16 5h1v1h-1zM17 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM23 6h1v1h-1zM24 6h1v1h-1zM25 6h1v1h-1zM26 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM9 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM15 7h1v1h-1zM17 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM0 8h1v1h-1zM3 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM16 8h1v1h-1zM19 8h1v1h-1zM21 8h1v1h-1zM23 8h1v1h-1zM0 9h1v1h-1zM2 9h1v1h-1zM3 9h1v1h-1zM9 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM16 9h1v1h-1zM20 9h1v1h-1zM21 9h1v1h-1zM22 9h1v1h-1zM25 9h1v1h-1zM28 9h1v1h-1zM1 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM11 10h1v1h-1zM16 10h1v1h-1zM19 10h1v1h-1zM22 10h1v1h-1zM25 10h1v1h-1zM26 10h1v1h-1zM27 10h1v1h-1zM1 11h1v1h-1zM2 11h1v1h-1zM3 11h1v1h-1zM5 11h1v1h-1zM8 11h1v1h-1zM9 11h1v1h-1zM14 11h1v1h-1zM18 11h1v1h-1zM19 11h1v1h-1zM20 11h1v1h-1zM23 11h1v1h-1zM24 11h1v1h-1zM26 11h1v1h-1zM27 11h1v1h-1zM0 12h1v1h-1zM3 12h1v1h-1zM5 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM8 12h1v1h-1zM10 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM20 12h1v1h-1zM21 12h1v1h-1zM22 12h1v1h-1zM25 12h1v1h-1zM27 12h1v1h-1zM28 12h1v1h-1zM2 13h1v1h-1zM5 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM19 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM23 13h1v1h-1zM0 14h1v1h-1zM1 14h1v1h-1zM3 14h1v1h-1zM6 14h1v1h-1zM7 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM16 14h1v1h-1zM21 14h1v1h-1zM25 14h1v1h-1zM26 14h1v1h-1zM27 14h1v1h-1zM28 14h1v1h-1zM0 15h1v1h-1zM3 15h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM10 15h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM14 15h1v1h-1zM17 15h1v1h-1zM18 15h1v1h-1zM21 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM27 15h1v1h-1zM0 16h1v1h-1zM1 16h1v1h-1zM5 16h1v1h-1zM6 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM13 16h1v1h-1zM14 16h1v1h-1zM16 16h1v1h-1zM17 16h1v1h-1zM19 16h1v1h-1zM21 16h1v1h-1zM23 16h1v1h-1zM27 16h1v1h-1zM1 17h1v1h-1zM2 17h1v1h-1zM4 17h1v1h-1zM8 17h1v1h-1zM10 17h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM25 17h1v1h-1zM28 17h1v1h-1zM0 18h1v1h-1zM2 18h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM11 18h1v1h-1zM13 18h1v1h-1zM17 18h1v1h-1zM18 18h1v1h-1zM22 18h1v1h-1zM23 18h1v1h-1zM27 18h1v1h-1zM28 18h1v1h-1zM2 19h1v1h-1zM7 19h1v1h-1zM8 19h1v1h-1zM9 19h1v1h-1zM10 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM19 19h1v1h-1zM20 19h1v1h-1zM27 19h1v1h-1zM28 19h1v1h-1zM0 20h1v1h-1zM3 20h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM6 20h1v1h-1zM9 20h1v1h-1zM12 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM26 20h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM13 21h1v1h-1zM16 21h1v1h-1zM19 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h1v1h-1zM27 21h1v1h-1zM28 21h1v1h-1zM0 22h1v1h-1zM1 22h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM9 22h1v1h-1zM10 22h1v1h-1zM11 22h1v1h-1zM13 22h1v1h-1zM14 22h1v1h-1zM17 22h1v1h-1zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM27 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM9 23h1v1h-1zM11 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM18 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM25 23h1v1h-1zM26 23h1v1h-1zM27 23h1v1h-1zM28 23h1v1h-1zM0 24h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM6 24h1v1h-1zM9 24h1v1h-1zM14 24h1v1h-1zM15 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM27 24h1v1h-1zM28 24h1v1h-1zM0 25h1v1h-1zM2 25h1v1h-1zM3 25h1v1h-1zM4 25h1v1h-1zM6 25h1v1h-1zM8 25h1v1h-1zM9 25h1v1h-1zM12 25h1v1h-1zM14 25h1v1h-1zM17 25h1v1h-1zM18 25h1v1h-1zM19 25h1v1h-1zM22 25h1v1h-1zM24 25h1v1h-1zM25 25h1v1h-1zM26 25h1v1h-1zM27 25h1v1h-1zM0 26h1v1h-1zM2 26h1v1h-1zM3 26h1v1h-1zM4 26h1v1h-1zM6 26h1v1h-1zM9 26h1v1h-1zM11 26h1v1h-1zM12 26h1v1h-1zM14 26h1v1h-1zM18 26h1v1h-1zM21 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM12 27h1v1h-1zM14 27h1v1h-1zM15 27h1v1h-1zM17 27h1v1h-1zM19 27h1v1h-1zM20 27h1v1h-1zM24 27h1v1h-1zM27 27h1v1h-1zM0 28h1v1h-1zM1 28h1v1h-1zM2 28h1v1h-1zM3 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM17 28h1v1h-1zM20 28h1v1h-1zM23 28h1v1h-1zM24 28h1v1h-1zM27 28h1v1h-1z" fill="currentColor"/></svg></span>
-                      <span class="h">@sorinarseni</span>
-                    </a>
-                    </div>
-                    <div class="credits mono r" style="--i: 4">
-                      <div>Prezintă<b>Hodoroja Sorin · anul I</b></div>
-                      <div>Colocviu<b>Mediacor, USM · 20 noiembrie 2026</b></div>
-                      <div>Specialitatea<b>Producție Multimedia · USM, FJȘC</b></div>
-                    </div>
-                  </div>
-                </section>
-              </main>
+      <main>
+        <!-- ============ 1 · TITLU ============ -->
+        <section class="slide co-s hero bg-yellow" id="co-titlu" data-name="Titlu">
+          <div class="wrap">
+            <div class="co-top r" style="--i: 0">
+              <p class="co-pill mono">USM · FJȘC · Producție Multimedia · Ciclul I, Licență</p>
+              <p class="co-pill dark mono">Colocviul științific „Coduri și limbaje actuale ale imaginarului”</p>
             </div>
+            <h1 class="co-puffy" aria-label="Creativitatea și imaginarul">
+              <span class="pf-row r" style="--i: 1" aria-hidden="true"><b style="--c: #ff3b30; --t: -6deg">C</b><b style="--c: #22b14c; --t: 4deg">r</b><b style="--c: #2f6bff; --t: -3deg">e</b><b style="--c: #ff8a1f; --t: 5deg">a</b><b style="--c: #ff6fae; --t: -5deg">t</b><b style="--c: #2f6bff; --t: 3deg">i</b><b style="--c: #22b14c; --t: -4deg">v</b><b style="--c: #ff3b30; --t: 6deg">i</b><b style="--c: #ff8a1f; --t: -3deg">t</b><b style="--c: #ff6fae; --t: 4deg">a</b><b style="--c: #2f6bff; --t: -6deg">t</b><b style="--c: #22b14c; --t: 3deg">e</b><b style="--c: #ff3b30; --t: -4deg">a</b></span>
+              <span class="pf-zip r" style="--i: 2" aria-hidden="true">&amp; imaginarul</span>
+            </h1>
+            <div class="co-hero-row">
+              <div class="win r" style="--i: 3; --wc: #22b14c">
+                <div class="win-bar"><span>TEMA.TXT</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <p class="co-sub">în elaborarea unui portofoliu de creație multimedia: <b>de la concept la realizare</b></p>
+                </div>
+              </div>
+              <div class="win r" style="--i: 4; --wc: #ff3b30">
+                <div class="win-bar"><span>PREZINTĂ</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body co-by">
+                  <img src="img/home/pfp.webp" alt="" width="128" height="128" />
+                  <p><b>Sorin Hodoroja</b><span>anul I · Producție Multimedia</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="co-search r" style="--i: 5" aria-hidden="true"><span class="lens">⌕</span><span class="q mono">portofoliu digital multimedia</span></div>
+          </div>
+          <img class="co-sticker me r" style="--i: 3" src="img/home/sorin.webp" alt="" width="877" height="875" />
+          <svg class="dd d1 spin" aria-hidden="true"><use href="#k-flower" fill="#fff4de" /></svg>
+          <svg class="dd d2 bob" aria-hidden="true"><use href="#k-spark" fill="#ff8a1f" /></svg>
+          <svg class="dd d3 bob" aria-hidden="true"><use href="#k-heart" fill="#ff6fae" /></svg>
+          <svg class="dd d4" aria-hidden="true"><use href="#k-folder" fill="#2f6bff" /></svg>
+          <span class="dd-lbl d4l mono" aria-hidden="true">PROIECTE</span>
+          <svg class="dd d5" aria-hidden="true"><use href="#k-folder" fill="#ff3b30" /></svg>
+          <span class="dd-lbl d5l mono" aria-hidden="true">IDEI</span>
+          <svg class="dd d6 bob" aria-hidden="true"><use href="#k-bang" fill="#2f6bff" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Cum îmi făceam prezentările până acum?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Bună ziua! Eu sunt <b>Sorin Hodoroja</b>, anul I, Producție Multimedia. Tema mea: creativitatea și imaginarul în elaborarea unui <b>portofoliu de creație multimedia</b>.</p>
+            <p data-k="say">Dar vreau să încep cu o mărturisire: până de curând, toate prezentările mele arătau exact ca ale voastre.</p>
+            <p data-k="go">→ slide-ul cu Canva</p>
+          </div>
+        </section>
+
+        <!-- ============ 2 · DIN CANVA PE SITE (deschiderea) ============ -->
+        <section class="slide co-s bg-blue bg-words" id="co-canva" data-name="Din Canva pe site" data-words="CANVA CANVA CANVA">
+          <div class="wrap co-2col">
+            <div>
+              <p class="co-eyebrow mono r" style="--i: 0">01 · De unde am pornit</p>
+              <h2 class="co-h r" style="--i: 1">Din Canva, pe <em>propriul site</em></h2>
+              <p class="co-lede r" style="--i: 2">
+                Până acum îmi făceam prezentările în Canva. Din acest semestru le construiesc pe site-ul meu, ca la finalul anului să am un
+                <b>portofoliu de prezentări și proiecte studențești</b>.
+              </p>
+              <div class="co-tickets r" style="--i: 3">
+                <div class="tk" style="--tc: #fff4de"><b>De obicei</b><span>Canva sau PowerPoint · un șablon gata făcut · slide-uri statice</span></div>
+                <div class="tk" style="--tc: #ffc93c"><b>La mine</b><span>design propriu · sunet, video, quizuri · un link pentru toți + PDF</span></div>
+              </div>
+            </div>
+            <div class="win co-tabs r" style="--i: 3; --wc: #ffc93c" data-tabs>
+              <div class="win-bar"><span>PREZENTARE.EXE</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+              <div class="tab-row">
+                <button type="button" class="tab on" data-tab="canva">Canva</button>
+                <button type="button" class="tab" data-tab="site">Site-ul meu</button>
+              </div>
+              <div class="win-body">
+                <div class="pane on" data-pane="canva">
+                  <div class="tpl-grid" aria-label="Șase prezentări făcute pe același șablon">
+                    <span class="tpl"><i></i><b>Coleg 1</b></span><span class="tpl"><i></i><b>Coleg 2</b></span><span class="tpl"><i></i><b>Coleg 3</b></span>
+                    <span class="tpl"><i></i><b>Coleg 4</b></span><span class="tpl"><i></i><b>Coleg 5</b></span><span class="tpl me"><i></i><b>Eu</b></span>
+                  </div>
+                  <p class="pane-cap"><button type="button" class="mini-btn" data-shuffle>↻ alt șablon</button> <span class="shuffle-msg">6 prezentări, același șablon</span></p>
+                </div>
+                <div class="pane" data-pane="site">
+                  <div class="site-grid">
+                    <span style="--pc: #ff0000"><b>01</b>bau BAU</span><span style="--pc: #22b14c"><b>02</b>Șase roluri</span><span style="--pc: #141414"><b>03</b>Pascaru</span>
+                    <span style="--pc: #ff8a1f"><b>04</b>Etajul 3</span><span style="--pc: #ffc93c; --tc: #141414"><b>05</b>Colocviul</span><span style="--pc: #2f6bff"><b>06</b>Istoria</span>
+                    <span style="--pc: #6a2cff"><b>07</b>Camera</span><span class="more"><b>+</b>urmează</span>
+                  </div>
+                  <p class="pane-cap"><b>Fiecare proiect</b> are paleta, fontul și „jucăriile” lui.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <svg class="dd e1 spin" aria-hidden="true"><use href="#k-spark" fill="#ffc93c" /></svg>
+          <svg class="dd e2 bob" aria-hidden="true"><use href="#k-cursor" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Dar ce înseamnă, de fapt, multimedia?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Până acum îmi făceam prezentările în <b>Canva</b>, ca toată lumea: alegi un șablon și pui textul. Problema e că șase prezentări ajung să arate la fel.</p>
+            <p data-k="do">👆 apasă „↻ alt șablon”, apoi tabul „Site-ul meu”</p>
+            <p data-k="say">Din semestrul ăsta le fac pe <b>site-ul meu</b>: fiecare proiect cu designul lui, iar la final de an am un portofoliu întreg.</p>
+            <p data-k="go">→ „Ca să explic de ce, am nevoie de trei noțiuni. Prima: multimedia.”</p>
+          </div>
+        </section>
+
+        <!-- ============ 3 · TEORIE 1: MULTIMEDIA ============ -->
+        <section class="slide co-s bg-cream" id="co-multimedia" data-name="Ce este multimedia">
+          <div class="wrap">
+            <p class="co-eyebrow mono r" style="--i: 0">02 · Teorie 1 din 3</p>
+            <h2 class="co-h dark r" style="--i: 1">Ce este <em>multimedia</em>?</h2>
+            <div class="co-defs">
+              <div class="win r" style="--i: 2; --wc: #2f6bff">
+                <div class="win-bar"><span>TUGAREV.DOC</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <p class="q">Multimedia este o <b>sinergie</b> a diferitor forme de conținut (text, imagine, sunet, animație, video și interacțiune) integrate într-un <b>singur produs sau experiență</b>.</p>
+                  <p class="src mono">Laura Tugarev, USM · Specialitatea Producție multimedia: o inovație în peisajul educațional universitar din RM</p>
+                </div>
+              </div>
+              <div class="win r" style="--i: 3; --wc: #ff8a1f">
+                <div class="win-bar"><span>VAUGHAN_1993.DOC</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <p class="q">Orice combinație de text, grafică, sunet, animație și video livrată prin computer. Devine <b>interactivă</b> când utilizatorul decide ce vede și când.</p>
+                  <p class="src mono">Tay Vaughan · Multimedia: Making It Work (1993)</p>
+                </div>
+              </div>
+            </div>
+            <div class="co-mix r" style="--i: 4" data-mix>
+              <div class="mix-chips">
+                <button type="button" class="chip" style="--cc: #ffc93c">Text</button>
+                <button type="button" class="chip" style="--cc: #ff6fae">Imagine</button>
+                <button type="button" class="chip" style="--cc: #22b14c">Sunet</button>
+                <button type="button" class="chip" style="--cc: #ff8a1f">Animație</button>
+                <button type="button" class="chip" style="--cc: #2f6bff">Video</button>
+                <button type="button" class="chip" style="--cc: #ff3b30">Interacțiune</button>
+              </div>
+              <span class="mix-eq" aria-hidden="true">=</span>
+              <div class="mix-out"><div class="mix-bar"><i></i></div><b class="mix-t">apasă pe ingrediente <span class="mono">0/6</span></b></div>
+            </div>
+          </div>
+          <svg class="dd f1 spin" aria-hidden="true"><use href="#k-flower" fill="#ffc93c" /></svg>
+          <svg class="dd f2 bob" aria-hidden="true"><use href="#k-spark" fill="#2f6bff" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce face un produs multimedia să fie creativ?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Multimedia înseamnă mai multe tipuri de conținut, <b>text, imagine, sunet, animație, video și interacțiune</b>, puse într-un singur produs. Laura Tugarev îi spune „sinergie”.</p>
+            <p data-k="say">Tay Vaughan adaugă ceva important: devine interactivă când <b>tu decizi</b> ce vezi și când.</p>
+            <p data-k="do">👆 apasă pe cele 6 ingrediente, unul câte unul</p>
+            <p data-k="go">→ „Bun, dar când e multimedia și creativă?”</p>
+          </div>
+        </section>
+
+        <!-- ============ 4 · TEORIE 2: CREATIVITATE ȘI IMAGINAR ============ -->
+        <section class="slide co-s bg-green" id="co-creativ" data-name="Creativitate și imaginar">
+          <div class="wrap">
+            <p class="co-eyebrow mono r" style="--i: 0">03 · Teorie 2 din 3</p>
+            <h2 class="co-h r" style="--i: 1">Creativitate și <em>imaginar</em></h2>
+            <div class="co-3">
+              <div class="win r" style="--i: 2; --wc: #ffc93c">
+                <div class="win-bar"><span>STERNBERG &amp; LUBART · 1999</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <p class="q">Creativitatea este capacitatea de a produce ceva <b>nou</b> (original, neașteptat) și <b>adecvat</b> (util, potrivit sarcinii).</p>
+                  <p class="src mono">Handbook of Creativity, Cambridge University Press</p>
+                </div>
+              </div>
+              <div class="win r" style="--i: 3; --wc: #ff6fae" data-boden>
+                <div class="win-bar"><span>BODEN · 1990</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <p class="q">Idei noi, surprinzătoare și valoroase. Apar în <b>trei feluri</b>:</p>
+                  <div class="tab-row small">
+                    <button type="button" class="tab on" data-b="0">combinațională</button>
+                    <button type="button" class="tab" data-b="1">explorativă</button>
+                    <button type="button" class="tab" data-b="2">transformațională</button>
+                  </div>
+                  <p class="boden-out" aria-live="polite"><b>Le pun împreună.</b> Lucruri care există deja, legate într-un fel nou.</p>
+                  <p class="src mono">The Creative Mind: Myths and Mechanisms</p>
+                </div>
+              </div>
+              <div class="win r" style="--i: 4; --wc: #2f6bff">
+                <div class="win-bar"><span>DURAND · 1960</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <p class="q">Imaginarul este ansamblul imaginilor și al legăturilor dintre ele: <b>rezerva</b> din care pornește orice creație.</p>
+                  <p class="src mono">Structurile antropologice ale imaginarului (trad. rom. 1977)</p>
+                </div>
+              </div>
+            </div>
+            <p class="co-claim r" style="--i: 5">Pe scurt: <b>imaginarul</b> îmi dă imaginea, <b>creativitatea</b> o face nouă și utilă.</p>
+          </div>
+          <svg class="dd g1 bob" aria-hidden="true"><use href="#k-heart" fill="#ff6fae" /></svg>
+          <svg class="dd g2 spin" aria-hidden="true"><use href="#k-spark" fill="#ffc93c" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Unde pui tot ce creezi?</p>
+          <div class="sn" hidden>
+            <p data-k="say">După Sternberg și Lubart, ceva e creativ dacă e <b>nou</b> și, în același timp, <b>util</b>. Nu ajunge să fie doar ciudat.</p>
+            <p data-k="say">Margaret Boden spune că ideile noi apar în trei feluri: <b>combini</b> lucruri, <b>explorezi</b> limitele sau <b>schimbi regulile</b>. Iar imaginarul, la Durand, e rezerva de imagini din care pornești.</p>
+            <p data-k="do">👆 apasă cele 3 taburi de la Boden</p>
+            <p data-k="go">→ „Și dacă tot creăm, unde punem ce creăm?”</p>
+          </div>
+        </section>
+
+        <!-- ============ 5 · TEORIE 3: PORTOFOLIUL DIGITAL MULTIMEDIA ============ -->
+        <section class="slide co-s bg-red bg-sun" id="co-teorie-portofoliu" data-name="Portofoliul digital">
+          <div class="wrap co-2col wide">
+            <div>
+              <p class="co-eyebrow mono r" style="--i: 0">04 · Teorie 3 din 3</p>
+              <h2 class="co-h r" style="--i: 1">Portofoliul <em>digital</em> multimedia</h2>
+              <div class="co-stack">
+                <div class="win r" style="--i: 2; --wc: #ffc93c">
+                  <div class="win-bar"><span>PAULSON ET AL. · 1991</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                  <div class="win-body"><p class="q">O colecție <b>cu scop</b> a lucrărilor tale, care arată efortul, <b>progresul</b> și realizările.</p><p class="src mono">What Makes a Portfolio a Portfolio? · Educational Leadership</p></div>
+                </div>
+                <div class="win r" style="--i: 3; --wc: #22b14c">
+                  <div class="win-bar"><span>BARRETT · 2000</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                  <div class="win-body"><p class="q">Tehnologia te ajută să aduni lucrări în <b>multe formate</b>: audio, video, grafică, text. Nu e o arhivă la întâmplare, ci arată cum <b>crești</b>.</p><p class="src mono">Create Your Own Electronic Portfolio · Learning &amp; Leading with Technology</p></div>
+                </div>
+                <div class="win r" style="--i: 4; --wc: #2f6bff">
+                  <div class="win-bar"><span>LORENZO &amp; ITTELSON · 2005</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                  <div class="win-body"><p class="q">Pus pe un <b>site</b>, te ajută să-ți organizezi lucrările și să alegi <b>cine le vede</b>.</p><p class="src mono">An Overview of E-Portfolios · EDUCAUSE</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="co-zip r" style="--i: 3" data-zip>
+              <div class="zip-files">
+                <button type="button" class="zf" style="--fc: #2f6bff"><i>🎬</i>montaj.mp4</button>
+                <button type="button" class="zf" style="--fc: #ff6fae"><i>📸</i>poze.jpg</button>
+                <button type="button" class="zf" style="--fc: #ffc93c"><i>📝</i>scenariu.txt</button>
+                <button type="button" class="zf" style="--fc: #22b14c"><i>🎧</i>podcast.wav</button>
+                <button type="button" class="zf" style="--fc: #ff8a1f"><i>💻</i>site.html</button>
+              </div>
+              <div class="zip-folder">
+                <svg viewBox="0 0 120 96" aria-hidden="true"><use href="#k-folder" fill="#ffc93c" /></svg>
+                <b class="zip-name">portofoliu<span>.zip</span></b>
+                <span class="zip-n mono">0 / 5</span>
+              </div>
+              <ol class="zip-steps mono" aria-label="Etapele lui Barrett">
+                <li>colectezi</li><li>selectezi</li><li>reflectezi</li><li>prezinți</li>
+              </ol>
+            </div>
+          </div>
+          <svg class="dd h1 spin" aria-hidden="true"><use href="#k-flower" fill="#ffc93c" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Și cum arată asta la mine?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Un portofoliu nu e un dosar cu tot ce ai făcut. E o <b>selecție cu scop</b>, care arată cum ai crescut (Paulson, 1991).</p>
+            <p data-k="say">Varianta digitală, spune Helen Barrett, adună <b>video, poze, sunet, text</b> într-un singur loc. Iar pus pe un site, alegi și <b>cine îl vede</b> (Lorenzo și Ittelson).</p>
+            <p data-k="do">👆 apasă pe cele 5 fișiere, să intre în portofoliu</p>
+            <p data-k="go">→ „Atât cu teoria. Hai să vă arăt cum arată la mine, pe site.”</p>
+          </div>
+        </section>
+
+        <!-- ============ 6 · CINE SUNT (cu clipul) ============ -->
+        <section class="slide co-s bg-yellow" id="co-eu" data-name="Cine sunt">
+          <div class="wrap co-me">
+            <div>
+              <p class="co-eyebrow mono r" style="--i: 0">05 · Cine sunt</p>
+              <h2 class="co-h dark r" style="--i: 1">Între <em>cod</em> și cadru</h2>
+              <p class="co-lede r" style="--i: 2">Creator digital. Am venit în multimedia din IT și încerc să îmbin cele două lumi.</p>
+              <ul class="co-roles">
+                <li class="r" style="--i: 3"><span class="lg"><img src="img/co-ceiti.png" alt="CEITI" width="58" height="58" /></span><div><b>Computer Science · absolvent</b><span>Centrul de Excelență în Informatică și Tehnologii Informaționale</span></div></li>
+                <li class="r" style="--i: 4"><span class="lg dk"><img src="img/co-prasada.svg" alt="PRASADA" width="58" height="58" /></span><div><b>Editor video</b><span>La PRASADA: Just cu Gust și Gust Academy, montaj și idei pentru rețelele sociale</span></div></li>
+                <li class="r" style="--i: 5"><span class="lg"><img src="img/co-fjsc.png" alt="FJȘC" width="58" height="58" /></span><div><b>Student, anul I · Producție Multimedia</b><span>Facultatea de Jurnalism și Științe ale Comunicării, USM</span></div></li>
+              </ul>
+            </div>
+            <div class="co-tv r" style="--i: 3">
+              <div class="tv-holes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="yt" data-yt="RFJnFnCKeDM">
+                <img src="img/co-vlog.jpg" alt="" width="625" height="343" />
+                <button type="button" class="yt-play" aria-label="Pornește clipul"><span></span></button>
+              </div>
+              <div class="tv-holes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <img class="co-sticker me2 r" style="--i: 4" src="img/home/sorin.webp" alt="" width="877" height="875" />
+          <svg class="dd i1 bob" aria-hidden="true"><use href="#k-spark" fill="#ff3b30" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>De ce am ales tocmai multimedia?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Pe scurt despre mine: am terminat <b>Computer Science</b> la CEITI, lucrez ca <b>editor video</b> la PRASADA, pe Just cu Gust și Gust Academy, iar acum sunt în anul I la Producție Multimedia.</p>
+            <p data-k="do">👆 pornește clipul</p>
+            <p data-k="go">→ „De ce am ales tocmai multimedia?”</p>
+          </div>
+        </section>
+
+        <!-- ============ 7 · DE CE MULTIMEDIA ============ -->
+        <section class="slide co-s bg-pink" id="co-dece" data-name="De ce multimedia">
+          <div class="wrap co-2col">
+            <div>
+              <p class="co-eyebrow mono r" style="--i: 0">06 · De ce multimedia</p>
+              <h2 class="co-h r" style="--i: 1">Ocol sau <em>upgrade</em>?</h2>
+              <p class="co-lede r" style="--i: 2">Urmăresc Mediacor și programul Profesiile Viitorului de la înființare. Din anul în care am aplicat la IT știam că, după absolvire, merg mai departe în multimedia.</p>
+              <button type="button" class="co-switch r" style="--i: 3" data-switch aria-pressed="false"><span class="sw-a">ocol</span><i></i><span class="sw-b">upgrade</span></button>
+              <span class="co-stamp" aria-hidden="true">UPGRADE ✓</span>
+            </div>
+            <ol class="co-path r" style="--i: 3">
+              <li style="--pc: #ffc93c"><b>Colegiu</b>Aplic la IT, la CEITI: programare, web</li>
+              <li style="--pc: #22b14c"><b>Practică</b>Primele site-uri și primele colaborări mari: HTML, CSS, JS, PHP, Laravel</li>
+              <li style="--pc: #ff8a1f"><b>Muncă</b>Editor video la PRASADA</li>
+              <li style="--pc: #8fd3ff"><b>2021</b>Se deschide Mediacor, centrul de producție digital-media al USM</li>
+              <li style="--pc: #fff4de"><b>2022</b>Apare Producție multimedia, prin programul Profesiile Viitorului</li>
+              <li class="now" style="--pc: #ff3b30"><b>2026 · aici</b>Anul I, FJȘC: codul și montajul, într-o singură specialitate</li>
+            </ol>
+          </div>
+          <svg class="dd j1 spin" aria-hidden="true"><use href="#k-flower" fill="#ffc93c" /></svg>
+          <svg class="dd j2" aria-hidden="true"><use href="#k-arrow" fill="#22b14c" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce iese când pui la un loc codul și montajul?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Mulți cred că din IT în multimedia e un ocol. Pentru mine e un <b>upgrade</b>: urmăresc Mediacor și Profesiile Viitorului de când au apărut și știam de la început că ajung aici.</p>
+            <p data-k="do">👆 apasă butonul „ocol / upgrade”</p>
+            <p data-k="go">→ „Și ce iese când pui codul lângă montaj?”</p>
+          </div>
+        </section>
+
+        <!-- ============ 8 · REȚETA (site-ul) ============ -->
+        <section class="slide co-s bg-blue bg-words" id="co-reteta" data-name="Combinația e creația" data-words="COD MONTAJ DESIGN IDEE">
+          <div class="wrap">
+            <p class="co-eyebrow mono r" style="--i: 0">07 · Creativitatea în multimedia</p>
+            <h2 class="co-h r" style="--i: 1">Combinația <em>e creația</em></h2>
+            <p class="co-lede r" style="--i: 2">Multimedia e combinațională prin natura ei: pune împreună, într-un mod nou, lucruri care există deja. Rețeta mea:</p>
+            <div class="co-recipe r" style="--i: 3" data-recipe>
+              <button type="button" class="ing" style="--ic: #ffc93c"><small class="mono">Tehnologie</small><b>Cod</b><span>site, animații, interacțiune</span></button>
+              <span class="plus" aria-hidden="true">+</span>
+              <button type="button" class="ing" style="--ic: #ff6fae"><small class="mono">Video</small><b>Montaj</b><span>ritm, cadre, sunet</span></button>
+              <span class="plus" aria-hidden="true">+</span>
+              <button type="button" class="ing" style="--ic: #22b14c"><small class="mono">Design</small><b>Identitate</b><span>paletă, font, layout</span></button>
+              <span class="plus" aria-hidden="true">+</span>
+              <button type="button" class="ing" style="--ic: #ff8a1f"><small class="mono">Idee</small><b>Poveste</b><span>personaje, mesaj, simboluri</span></button>
+              <span class="plus eq" aria-hidden="true">=</span>
+              <div class="res"><small class="mono">Rezultat</small><b>Prezentarea-site</b><span>un produs multimedia, nu un fișier</span><em class="res-hint mono">apasă ingredientele</em></div>
+            </div>
+          </div>
+          <svg class="dd k1 bob" aria-hidden="true"><use href="#k-cursor" /></svg>
+          <svg class="dd k2 spin" aria-hidden="true"><use href="#k-spark" fill="#ff6fae" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Cum a început totul?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Creativitatea mea e exact ce spunea Boden: <b>combinație</b>. Pun la un loc codul din IT, montajul de la muncă, designul și o poveste.</p>
+            <p data-k="say">Rezultatul nu e un fișier, ci o <b>prezentare-site</b>, un produs multimedia în sine.</p>
+            <p data-k="do">👆 apasă cele 4 ingrediente</p>
+            <p data-k="go">→ „Totul a pornit de la un singur proiect.”</p>
+          </div>
+        </section>
+
+        <!-- ============ 9 · BAU BAU ============ -->
+        <section class="slide co-s bg-red" id="co-bau" data-name="Conceptul">
+          <div class="wrap co-2col">
+            <div>
+              <p class="co-eyebrow mono r" style="--i: 0">08 · De la concept</p>
+              <h2 class="co-h r" style="--i: 1">Totul a pornit de la <em>bau BAU</em></h2>
+              <p class="co-lede r" style="--i: 2">Un singur proiect, la Managementul Experienței: YUTUBAU, un Bau Bau vlogger pentru cardurile de colecție Electric Spring. În loc de slide-uri, am construit <b>un site</b>. Mecanica lui a devenit baza întregului portofoliu.</p>
+              <div class="co-tags r" style="--i: 3"><span>8 slide-uri</span><span>personaj în Firefly</span><span>card animat</span><span>primul proiect</span></div>
+              <a class="co-btn r" style="--i: 4" href="bau-bau.html" target="_blank" rel="noopener">Deschide proiectul 01 ↗</a>
+            </div>
+            <div class="co-card r" style="--i: 3" data-tilt>
+              <img src="img/ecard1.webp" alt="Cardul YUTUBAU pentru Electric Spring" width="855" height="1080" />
+              <span class="card-glare" aria-hidden="true"></span>
+            </div>
+          </div>
+          <svg class="dd l1 spin" aria-hidden="true"><use href="#k-burst" fill="#ffc93c" /></svg>
+          <svg class="dd l2 bob" aria-hidden="true"><use href="#k-heart" fill="#fff4de" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Din ce e făcută o astfel de prezentare?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Totul a pornit de la un singur proiect: <b>YUTUBAU</b>, un Bau Bau vlogger pentru cardurile Electric Spring. În loc de slide-uri, am făcut un site.</p>
+            <p data-k="say">Mi-a plăcut atât de mult încât <b>toate proiectele</b> de după au pornit de la el.</p>
+            <p data-k="do">👆 mișcă mouse-ul peste card</p>
+            <p data-k="go">→ „Din ce e făcută o astfel de prezentare?”</p>
+          </div>
+        </section>
+
+        <!-- ============ 10 · ANATOMIA ============ -->
+        <section class="slide co-s bg-green" id="co-pagina" data-name="Anatomia unei prezentări">
+          <div class="wrap">
+            <p class="co-eyebrow mono r" style="--i: 0">09 · Componentele paginii</p>
+            <h2 class="co-h r" style="--i: 1">Anatomia unei <em>prezentări</em></h2>
+            <div class="co-anat" data-anat>
+              <div class="win browser r" style="--i: 2; --wc: #fff4de">
+                <div class="win-bar"><span>university.sorinarseni.com</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <div class="b-bar mono"><span>← PROIECTE</span><span class="b-rec">● REC 00:01:24</span><span>CUM ARATĂ · UNELTE · CARDUL</span></div>
+                  <div class="b-slide"><b>bau BAU</b><i class="b-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></i></div>
+                  <div class="b-end mono"><span>↺ DE LA ÎNCEPUT</span><span>↗ SHARE</span><span>⬇ PDF</span></div>
+                  <button type="button" class="hs" data-h="0" style="left: 6px; top: 2px">1</button>
+                  <button type="button" class="hs" data-h="1" style="left: 46%; top: 2px">2</button>
+                  <button type="button" class="hs" data-h="2" style="left: 18%; top: 42%">3</button>
+                  <button type="button" class="hs" data-h="3" style="right: 34px; top: 40%">4</button>
+                  <button type="button" class="hs" data-h="4" style="left: 66%; top: 56%">5</button>
+                  <button type="button" class="hs" data-h="5" style="left: 30%; bottom: 4px">6</button>
+                </div>
+              </div>
+              <ol class="anat-list r" style="--i: 3">
+                <li><b>Indexul de proiecte.</b> Pagina de acasă, cu câte un card pentru fiecare proiect.</li>
+                <li><b>Bara de sus.</b> Înapoi, cronometrul REC și secțiunile.</li>
+                <li><b>Slide pe tot ecranul.</b> Se oprește singur la scroll; textul intră pe rând, ca într-un montaj.</li>
+                <li><b>Contorul de slide-uri.</b> Arată unde ești și te duce oriunde.</li>
+                <li><b>Identitate proprie.</b> Fiecare proiect are paleta, fontul și „jucăriile” lui: sunet, quiz, parolă.</li>
+                <li><b>Finalul.</b> De la început, share cu link și PDF.</li>
+              </ol>
+            </div>
+          </div>
+          <svg class="dd m1 spin" aria-hidden="true"><use href="#k-spark" fill="#ffc93c" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Cum am ajuns la ideea asta?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Fiecare prezentare are aceleași 6 piese: <b>pagina de proiecte</b>, bara de sus cu cronometrul, slide-urile pe tot ecranul, contorul, <b>identitatea proprie</b> și finalul cu link și PDF.</p>
+            <p data-k="do">👆 apasă cifrele 1–6 de pe fereastră</p>
+            <p data-k="go">→ „Cum am ajuns la ideea asta? Prin patru etape.”</p>
+          </div>
+        </section>
+
+        <!-- ============ 11 · PROCESUL CREATIV ============ -->
+        <section class="slide co-s bg-yellow" id="co-proces" data-name="Procesul creativ">
+          <div class="wrap">
+            <p class="co-eyebrow mono r" style="--i: 0">10 · Procesul creativ</p>
+            <h2 class="co-h dark r" style="--i: 1">Patru <em>etape</em></h2>
+            <p class="co-lede dark r" style="--i: 2">Modelul lui Graham Wallas, <i>The Art of Thought</i> (1926), studiat la cursul Gândire și scriere creativă.
+              <button type="button" class="co-switch small" data-wallas aria-pressed="false"><span class="sw-a">teorie</span><i></i><span class="sw-b">la mine</span></button>
+            </p>
+            <div class="co-wallas">
+              <div class="win st r" style="--i: 3; --wc: #2f6bff"><div class="win-bar"><span>1 · PREGĂTIRE</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div><div class="win-body"><p class="t">Problema e cercetată din toate direcțiile.</p><p class="m">Tema: un card Bau Bau pentru Electric Spring. Studiez YouTube, festivalul, prezentările colegilor.</p></div></div>
+              <div class="win st r" style="--i: 4; --wc: #22b14c"><div class="win-bar"><span>2 · INCUBAȚIE</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div><div class="win-body"><p class="t">Nu te mai gândești conștient, mintea combină în fundal.</p><p class="m">Las tema deoparte, montez la muncă. Rămâne o întrebare: de ce arată toate prezentările la fel?</p></div></div>
+              <div class="win st r" style="--i: 5; --wc: #ff3b30"><div class="win-bar"><span>3 · ILUMINARE</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div><div class="win-body"><p class="t">Apare brusc ideea bună, momentul „aha”.</p><p class="m">Prezentarea poate fi un site: slide cu slide, cu bara REC ca într-o cameră de filmat.</p></div></div>
+              <div class="win st r" style="--i: 6; --wc: #ff8a1f"><div class="win-bar"><span>4 · VERIFICARE</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div><div class="win-body"><p class="t">Ideea e testată și adusă la forma finală.</p><p class="m">Construiesc, testez pe proiector și telefon, prezint, primesc feedback.</p></div></div>
+            </div>
+            <p class="co-loop mono r" style="--i: 7">↻ verificarea devine pregătirea proiectului următor</p>
+          </div>
+          <svg class="dd n1 bob" aria-hidden="true"><use href="#k-bang" fill="#ff3b30" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce a ieșit din acest proces?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Ideea n-a venit dintr-odată. Am trecut prin cele <b>4 etape ale lui Wallas</b>: pregătire, incubație, iluminare și verificare.</p>
+            <p data-k="say">Momentul „aha” a fost la etapa 3: <b>prezentarea poate fi un site</b>.</p>
+            <p data-k="do">👆 apasă „teorie / la mine” ca să vezi ce a fost la mine</p>
+            <p data-k="go">→ „Ce a ieșit din proces?”</p>
+          </div>
+        </section>
+
+        <!-- ============ 12 · PORTOFOLIUL MEU ============ -->
+        <section class="slide co-s bg-blue bg-desk" id="co-portofoliu" data-name="Portofoliul meu">
+          <div class="wrap">
+            <p class="co-eyebrow mono r" style="--i: 0">11 · La realizare</p>
+            <h2 class="co-h r" style="--i: 1">Un proiect a devenit <em>portofoliu</em></h2>
+            <div class="co-desk r" style="--i: 2">
+              <a class="ic" href="bau-bau.html" target="_blank" rel="noopener" style="--fc: #ff3b30"><img src="img/home/p-bau.webp" alt="" width="800" height="600" /><b>01 · bau BAU</b><span>personaj și card animat</span></a>
+              <a class="ic" href="sase-roluri.html" target="_blank" rel="noopener" style="--fc: #22b14c"><img src="img/home/p-sase.webp" alt="" width="800" height="600" /><b>02 · Șase roluri</b><span>scurtmetraj · storyboard</span></a>
+              <a class="ic" href="pascaru.html" target="_blank" rel="noopener" style="--fc: #141414"><img src="img/home/p-pascaru.webp" alt="" width="800" height="600" /><b>03 · Pascaru</b><span>rebranding · brandbook</span></a>
+              <a class="ic" href="etajul-3.html" target="_blank" rel="noopener" style="--fc: #ff8a1f"><img src="img/home/p-etajul.webp" alt="" width="800" height="600" /><b>04 · Etajul 3</b><span>reclamă · animatic</span></a>
+              <a class="ic here" href="#co-titlu" style="--fc: #ffc93c"><img src="img/home/p-colocviu.webp" alt="" width="800" height="600" /><b>05 · Colocviul</b><span>ești aici</span></a>
+              <a class="ic" href="istoria-multimediei.html" target="_blank" rel="noopener" style="--fc: #2f6bff"><img src="img/home/p-istoria.webp" alt="" width="800" height="600" /><b>06 · Istoria Multimediei</b><span>quiz pe telefon</span></a>
+              <a class="ic" href="istoria-camerei.html" target="_blank" rel="noopener" style="--fc: #6a2cff"><img src="img/home/p-camera.webp" alt="" width="800" height="600" /><b>07 · Istoria Camerei</b><span>10 stații interactive</span></a>
+              <div class="ic more" style="--fc: #fff4de"><span class="plus">+</span><b>clipuri și site-uri</b><span>Just cu Gust, Gust Academy, after movie-uri, bibl.ceiti.md</span></div>
+            </div>
+            <p class="co-access r" style="--i: 3"><span class="acc pub">public</span> deschise oricui <span class="acc pass">parolă</span> pentru colegi și profesori: lucrări cu actori reali sau încă în lucru</p>
+          </div>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Este acest portofoliu cu adevărat creativ?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Dintr-un singur proiect a ieșit un <b>portofoliu</b>: șapte prezentări, fiecare cu designul ei, plus clipurile și site-urile mele.</p>
+            <p data-k="say">Unele sunt publice, altele au <b>parolă</b>, exact cum spuneau Lorenzo și Ittelson: tu alegi cine vede.</p>
+            <p data-k="do">click pe un proiect îl deschide într-un tab nou (doar dacă te întreabă)</p>
+            <p data-k="go">→ „E creativ cu adevărat? Hai să verificăm.”</p>
+          </div>
+        </section>
+
+        <!-- ============ 13 · NOU ȘI ADECVAT ============ -->
+        <section class="slide co-s bg-cream" id="co-test" data-name="Nou și adecvat">
+          <div class="wrap">
+            <p class="co-eyebrow mono r" style="--i: 0">12 · Verificarea</p>
+            <h2 class="co-h dark r" style="--i: 1">Nou <em>și</em> adecvat?</h2>
+            <p class="co-lede dark r" style="--i: 2">Trec portofoliul prin definiția lui Sternberg și Lubart: un produs creativ trebuie să fie și nou, și util.</p>
+            <div class="co-checks" data-checks>
+              <div class="win r" style="--i: 3; --wc: #ff6fae">
+                <div class="win-bar"><span>NOU · original, neașteptat</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <button type="button" class="ck">Prezentări construite ca site-uri, nu ca slide-uri</button>
+                  <button type="button" class="ck">Fiecare proiect are altă identitate vizuală</button>
+                  <button type="button" class="ck">Quiz, telecomandă și sunet, direct din telefon</button>
+                </div>
+              </div>
+              <div class="win r" style="--i: 4; --wc: #22b14c">
+                <div class="win-bar"><span>ADECVAT · util, potrivit sarcinii</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <button type="button" class="ck">Respectă cerința: teorie, practică și doar esența</button>
+                  <button type="button" class="ck">Merge pe proiector, laptop și telefon</button>
+                  <button type="button" class="ck">Se trimite cu un link și se descarcă în PDF</button>
+                </div>
+              </div>
+              <span class="co-stamp big" aria-hidden="true">CREATIV ✓</span>
+            </div>
+          </div>
+          <svg class="dd o1 spin" aria-hidden="true"><use href="#k-flower" fill="#ff6fae" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Ce iau cu mine din toate acestea?</p>
+          <div class="sn" hidden>
+            <p data-k="say">Revin la definiția de la început: creativ înseamnă <b>nou și util</b>. Nou: prezentări-site, fiecare cu altă identitate. Util: merge pe orice ecran și se trimite cu un link.</p>
+            <p data-k="do">👆 bifează cele 6 căsuțe, la final apare ștampila</p>
+            <p data-k="go">→ „Și asta mă aduce la concluzie.”</p>
+          </div>
+        </section>
+
+        <!-- ============ 14 · CONCLUZIA ============ -->
+        <section class="slide co-s bg-red bg-sun" id="co-concluzie" data-name="Concluzia">
+          <div class="wrap co-2col wide">
+            <div>
+              <p class="co-eyebrow mono r" style="--i: 0">13 · Concluzia</p>
+              <h2 class="co-h big r" style="--i: 1">Toată lumea ar trebui să aibă un <em>portofoliu digital</em></h2>
+              <ol class="co-why">
+                <li class="r" style="--i: 2"><b>Arată cum crești,</b> nu doar ce ai terminat. Un proiect bun e și mai bun lângă cele de dinainte.</li>
+                <li class="r" style="--i: 3"><b>Un link în loc de 20 de fișiere.</b> Pentru profesori, colegi, angajatori, festivaluri.</li>
+                <li class="r" style="--i: 4"><b>Combinația e creația.</b> Ce știi din alte domenii devine materie primă.</li>
+                <li class="r" style="--i: 5"><b>Nu trebuie să știi totul de la început.</b> Începi cu un singur proiect și înveți pe drum.</li>
+              </ol>
+            </div>
+            <div class="co-cta r" style="--i: 3">
+              <div class="win" style="--wc: #ffc93c">
+                <div class="win-bar"><span>SCANEAZĂ.EXE</span><i class="mi"></i><i class="ma"></i><i class="x"></i></div>
+                <div class="win-body">
+                  <a class="co-qrbox" id="co-qr" href="https://university.sorinarseni.com" target="_blank" rel="noopener" aria-label="Cod QR spre university.sorinarseni.com"></a>
+                  <div class="co-search small"><span class="lens">⌕</span><span class="q mono" id="co-type">university.sorinarseni.com</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <svg class="dd p1 spin" aria-hidden="true"><use href="#k-spark" fill="#ffc93c" /></svg>
+          <svg class="dd p2" aria-hidden="true"><use href="#k-arrow" fill="#22b14c" /></svg>
+          <p class="co-next mono" aria-label="Întrebarea pentru slide-ul următor"><i>?</i>Unde mă găsiți?</p>
+          <div class="sn" hidden>
+            <p data-k="say">De aceea cred că <b>toată lumea ar trebui să aibă un portofoliu digital</b>. Nu ca să te lauzi, ci ca să se vadă cum crești.</p>
+            <p data-k="say">E un singur link în loc de 20 de fișiere, iar ce știi din alte domenii devine materie primă. Și nu trebuie să știi totul de la început: <b>începeți cu un singur proiect</b>.</p>
+            <p data-k="say">Al meu e aici: scanați codul și intrați pe <b>university.sorinarseni.com</b>.</p>
+            <p data-k="go">→ final</p>
+          </div>
+        </section>
+
+        <!-- ============ 15 · FINAL ============ -->
+        <section class="slide co-s bg-green finale" id="co-final" data-name="Final">
+          <div class="wrap">
+            <h2 class="co-puffy small r" style="--i: 0" aria-label="Mulțumesc!"><span class="pf-row" aria-hidden="true"><b style="--c: #ffc93c; --t: -5deg">M</b><b style="--c: #ff6fae; --t: 4deg">u</b><b style="--c: #2f6bff; --t: -3deg">l</b><b style="--c: #ff8a1f; --t: 5deg">ț</b><b style="--c: #fff4de; --t: -4deg">u</b><b style="--c: #ff3b30; --t: 3deg">m</b><b style="--c: #ffc93c; --t: -6deg">e</b><b style="--c: #2f6bff; --t: 4deg">s</b><b style="--c: #ff6fae; --t: -3deg">c</b><b style="--c: #ff3b30; --t: 6deg">!</b></span></h2>
+            <p class="co-lede r" style="--i: 1">pentru atenție. Întrebări?</p>
+            <div class="actions r" style="--i: 2">
+              <a class="co-btn" id="co-pdf" href="colocviu-creativitate-si-imaginar.pdf" download>⬇ Descarcă prezentarea (PDF)</a>
+              <button class="co-btn alt" id="co-share" type="button">↗ Share</button>
+              <button class="co-btn alt" id="co-again" type="button">↺ De la început</button>
+            </div>
+            <p class="toast mono" id="co-toast" role="status"></p>
+            <div class="co-credits mono r" style="--i: 3">
+              <div>Prezintă<b>Sorin Hodoroja · anul I</b></div>
+              <div>Colocviu<b>Mediacor, USM · 20 noiembrie 2026</b></div>
+              <div>Specialitatea<b>Producție Multimedia · USM, FJȘC</b></div>
+              <div>Portofoliul<b>university.sorinarseni.com</b></div>
+            </div>
+          </div>
+          <div class="co-palms" aria-hidden="true">
+            <svg><use href="#k-palm" fill="#22b14c" /></svg><svg><use href="#k-palm" fill="#1f6b3a" /></svg><svg><use href="#k-palm" fill="#22b14c" /></svg><svg><use href="#k-palm" fill="#1f6b3a" /></svg><svg><use href="#k-palm" fill="#22b14c" /></svg><svg><use href="#k-palm" fill="#1f6b3a" /></svg><svg><use href="#k-palm" fill="#22b14c" /></svg>
+          </div>
+          <div class="sn" hidden>
+            <p data-k="say">Mulțumesc pentru atenție! Aveți întrebări?</p>
+            <p>prezentarea se poate descărca în PDF de aici</p>
+          </div>
+        </section>
+      </main>
+    </div>
 
     <script src="js/base.js"></script>
     <script src="js/colocviu.js"></script>
+    <script src="js/vendor/qrcode.js"></script>
+    <script src="js/colocviu-play.js"></script>
     <script src="js/remote-host.js"></script>
   </body>
 </html>
