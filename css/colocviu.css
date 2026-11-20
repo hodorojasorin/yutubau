@@ -1438,6 +1438,10 @@ html.co body {
   transform: rotate(2deg);
 }
 
+.co-photo .win-bar {
+  text-transform: none;
+}
+
 .co-photo img {
   display: block;
   width: 100%;
