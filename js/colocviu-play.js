@@ -1,4 +1,4 @@
-// Proiectul 05 · Colocviu: lucrurile pe care le apeși în slide-uri (taburi, ingrediente, portofoliu.zip, clipul, bife, QR).
+// Proiectul 05 · Colocviu: lucrurile pe care le apeși în slide-uri (taburi, ingrediente, portofoliu.zip, bife, QR, „ridicați mâna”).
 // Sunetele sunt mici bipuri făcute în browser și pornesc doar după primul click.
 (function () {
   "use strict";
@@ -51,6 +51,34 @@
     beep(220, 0.18, "square", 0.05);
     beep(185, 0.22, "square", 0.05, 0.12);
   }
+
+  // ---------- 0 · „ridicați mâna”: fiecare click pe o întrebare = mai multe mâini ----------
+  var HANDS = ["", "✋ câțiva", "✋✋ mulți", "✋✋✋ aproape toți"];
+  $$("[data-poll]").forEach(function (box) {
+    var qs = $$(".pq", box),
+      s = box.closest(".slide");
+    qs.forEach(function (q, i) {
+      var out = $(".pq-hands", q);
+      q.dataset.lv = 0;
+      q.addEventListener("click", function () {
+        var lv = (+q.dataset.lv + 1) % HANDS.length;
+        q.dataset.lv = lv;
+        out.textContent = HANDS[lv];
+        qs.forEach(function (x) {
+          x.classList.toggle("now", x === q);
+        });
+        var all = qs.every(function (x) {
+          return +x.dataset.lv > 0;
+        });
+        if (all && !s.classList.contains("all-ok")) tada();
+        else pop(i * 2 + lv);
+        s.classList.toggle("all-ok", all);
+      });
+    });
+    box.coFinal = function () {
+      s.classList.add("all-ok");
+    };
+  });
 
   // ---------- 1 · literele din titlu sar când le atingi ----------
   $$(".pf-row b").forEach(function (b, i) {
@@ -199,27 +227,6 @@
     };
   });
 
-  // ---------- 6 · clipul: se încarcă doar când apeși play și se oprește când pleci de pe slide ----------
-  $$(".yt").forEach(function (box) {
-    var id = box.dataset.yt,
-      facade = box.innerHTML;
-    function play() {
-      if ($("iframe", box)) return;
-      box.innerHTML =
-        '<iframe src="https://www.youtube-nocookie.com/embed/' +
-        id +
-        '?autoplay=1&rel=0&playsinline=1&modestbranding=1" title="Clip" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
-    }
-    box.addEventListener("click", function (e) {
-      if (e.target.closest("iframe")) return;
-      play();
-    });
-    var slide = box.closest(".slide");
-    new MutationObserver(function () {
-      if (!slide.classList.contains("active") && $("iframe", box)) box.innerHTML = facade;
-    }).observe(slide, { attributes: true, attributeFilter: ["class"] });
-  });
-
   // ---------- 7 · ocol sau upgrade ----------
   $$("[data-switch]").forEach(function (b) {
     var s = b.closest(".slide");
@@ -344,16 +351,19 @@
   });
 
   // ---------- 14 · codul QR și adresa care se scrie singură ----------
-  var URL_PF = "https://university.sorinarseni.com";
-  var qrBox = document.getElementById("co-qr");
-  if (qrBox && typeof qrcode !== "undefined") {
+  function qr(id, url) {
+    var el = document.getElementById(id);
+    if (!el || typeof qrcode === "undefined") return;
     try {
       var q = qrcode(0, "M");
-      q.addData(URL_PF);
+      q.addData(url);
       q.make();
-      qrBox.innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+      el.innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
     } catch (e) {}
   }
+  qr("co-qr", "https://university.sorinarseni.com");
+  // ---------- 16 · Instagram (networking) ----------
+  qr("co-igqr", "https://www.instagram.com/sorinarseni/");
   var typeEl = document.getElementById("co-type");
   if (typeEl) {
     var full = typeEl.textContent,
@@ -380,7 +390,7 @@
 
   // starea finală a tuturor jucăriilor (pentru PDF)
   window.coFinal = function () {
-    $$("[data-mix],[data-zip],[data-switch],[data-recipe],[data-checks]").forEach(function (el) {
+    $$("[data-poll],[data-mix],[data-zip],[data-switch],[data-recipe],[data-checks]").forEach(function (el) {
       if (el.coFinal) el.coFinal();
     });
     if (typeEl) {
