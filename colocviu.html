@@ -332,7 +332,7 @@
                 </div>
               </div>
             </div>
-            <div class="co-mix r" style="--i: 4" data-mix>
+            <div class="co-mix r" style="--i: 4" data-mix data-rm-group="Ingrediente">
               <div class="mix-chips">
                 <button type="button" class="chip" style="--cc: #ffc93c">
                   Text
@@ -550,7 +550,7 @@
               </div>
             </div>
             <div class="co-zip r" style="--i: 3" data-zip>
-              <div class="zip-files">
+              <div class="zip-files" data-rm-group="Fișiere în portofoliu.zip">
                 <button type="button" class="zf" style="--fc: #2f6bff">
                   <i>🎬</i>montaj.mp4
                 </button>
@@ -722,6 +722,7 @@
                 class="co-switch r"
                 style="--i: 3"
                 data-switch
+                data-rm-label="Ocol ⇄ upgrade"
                 aria-pressed="false"
               >
                 <span class="sw-a">ocol</span><i></i
@@ -787,7 +788,7 @@
               Multimedia e combinațională prin natura ei: pune împreună, într-un
               mod nou, lucruri care există deja. Rețeta mea:
             </p>
-            <div class="co-recipe r" style="--i: 3" data-recipe>
+            <div class="co-recipe r" style="--i: 3" data-recipe data-rm-group="Rețeta">
               <button type="button" class="ing" style="--ic: #ffc93c">
                 <small class="mono">Tehnologie</small><b>Cod</b
                 ><span>site, animații, interacțiune</span>
@@ -933,6 +934,7 @@
                     type="button"
                     class="hs"
                     data-h="0"
+                    data-rm-label="1 · Indexul de proiecte"
                     style="left: 6px; top: 2px"
                   >
                     1
@@ -941,6 +943,7 @@
                     type="button"
                     class="hs"
                     data-h="1"
+                    data-rm-label="2 · Bara de sus"
                     style="left: 46%; top: 2px"
                   >
                     2
@@ -949,6 +952,7 @@
                     type="button"
                     class="hs"
                     data-h="2"
+                    data-rm-label="3 · Slide pe tot ecranul"
                     style="left: 18%; top: 42%"
                   >
                     3
@@ -957,6 +961,7 @@
                     type="button"
                     class="hs"
                     data-h="3"
+                    data-rm-label="4 · Contorul de slide-uri"
                     style="right: 34px; top: 40%"
                   >
                     4
@@ -965,6 +970,7 @@
                     type="button"
                     class="hs"
                     data-h="4"
+                    data-rm-label="5 · Identitate proprie"
                     style="left: 66%; top: 56%"
                   >
                     5
@@ -973,6 +979,7 @@
                     type="button"
                     class="hs"
                     data-h="5"
+                    data-rm-label="6 · Finalul"
                     style="left: 30%; bottom: 4px"
                   >
                     6
@@ -1039,6 +1046,7 @@
                 type="button"
                 class="co-switch small"
                 data-wallas
+                data-rm-label="Teorie ⇄ la mine"
                 aria-pressed="false"
               >
                 <span class="sw-a">teorie</span><i></i
@@ -1443,7 +1451,7 @@
                   download
                   >⬇ Descarcă prezentarea (PDF)</a
                 >
-                <button class="co-btn alt" id="co-share" type="button">
+                <button class="co-btn alt" id="co-share" type="button" data-rm="off">
                   ↗ Share
                 </button>
                 <button class="co-btn alt" id="co-again" type="button">

@@ -1026,6 +1026,7 @@
     try { rm.id = sessionStorage.getItem("rm-id:" + DECK) || rid(); sessionStorage.setItem("rm-id:" + DECK, rm.id); } catch (e) { rm.id = rid(); }
     loadJS("js/vendor/qrcode.js", function () { return typeof qrcode !== "undefined"; }, function () {
       loadJS("js/bus.js", function () { return typeof SRNBus !== "undefined"; }, function () {
+        loadJS("js/remote-actions.js", function () { return typeof SRNActions !== "undefined"; }, function () {}, function () {});
         function drawQR() {
           SRNBus.phoneURL("remote.html", { id: rm.id }).then(function (url) {
             if (!url) { $("#rm-qr").innerHTML = '<p class="m-howto"><b>Pornește serverul pe laptop</b>VS Code → Terminal → <code>npm start</code>, apoi deschide prezentarea de pe <code>localhost:8000</code></p>'; return; }
@@ -1046,6 +1047,7 @@
             if (m.t === "go") (m.d > 0 ? next : prev)();
             else if (m.t === "goto") go(+m.i || 0);
             else if (m.t === "reset") { recOn = true; recT0 = Date.now(); }
+            else if (m.t === "act" && window.SRNActions) { SRNActions.run(SL[cur], +m.k, m.l); setTimeout(function () { sendState(true); }, 600); }
             if (fresh) { rmStatus(); if (!$("#rm-modal").hidden) setTimeout(closeRemote, 900); }
             sendState(true);
           },
@@ -1079,7 +1081,7 @@
   function sendState(force) {
     if (!rm.bus || !rmPhones()) return;
     var s = SL[cur], nx = SL[cur + 1];
-    var msg = { t: "state", i: cur, n: N, name: s.dataset.name, q: "", next: nx ? nx.dataset.name : "", title: document.title, sec: elapsed(), open: true, notes: NOTES[cur] };
+    var msg = { t: "state", i: cur, n: N, name: s.dataset.name, q: "", next: nx ? nx.dataset.name : "", title: document.title, sec: elapsed(), open: true, notes: NOTES[cur], acts: window.SRNActions ? SRNActions.list(SL[cur]) : null };
     var key = JSON.stringify(msg);
     if (!force && key === lastMsg) return;
     lastMsg = key;

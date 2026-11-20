@@ -39,7 +39,7 @@
   modal.innerHTML =
     '<div class="rm-card" role="dialog" aria-modal="true" aria-labelledby="rm-t">' +
     '<h2 id="rm-t">Telecomanda de pe telefon</h2>' +
-    "<p>Scanează codul cu camera telefonului. Apoi dai swipe sau apeși ← → ca să schimbi slide-urile.</p>" +
+    "<p>Scanează codul cu camera telefonului. De pe telefon schimbi slide-urile și apeși butoanele din fiecare slide.</p>" +
     '<div class="rm-qr" id="rm-qr"><span class="rm-wait">se pregătește…</span></div>' +
     '<span class="rm-status" id="rm-status"><i></i><span>Se conectează…</span></span>' +
     '<a class="rm-link" id="rm-link" target="_blank" rel="noopener"></a>' +
@@ -100,7 +100,11 @@
     }, function () {
       load("js/bus.js", function () {
         return typeof SRNBus !== "undefined";
-      }, cb);
+      }, function () {
+        load("js/remote-actions.js", function () {
+          return typeof SRNActions !== "undefined";
+        }, cb);
+      });
     });
   }
   function drawQR() {
@@ -227,6 +231,13 @@
     if (m.t === "go") go(here() + (m.d > 0 ? 1 : -1));
     else if (m.t === "goto") go(+m.i || 0);
     else if (m.t === "reset") resetTime();
+    else if (m.t === "act" && window.SRNActions) {
+      // butoanele slide-ului apăsate de pe telefon
+      SRNActions.run(slides[here()], +m.k, m.l);
+      setTimeout(function () {
+        send(true);
+      }, 600);
+    }
     send(true);
   }
   function txt(el) {
@@ -255,12 +266,13 @@
       i: i,
       n: slides.length,
       name: s.dataset.name || txt(s.querySelector("h1,h2")),
-      q: txt(s.querySelector(".co-next")).replace(/^\?\s*/, ""),
+      q: txt(s.querySelector(".co-next")),
       next: nx ? nx.dataset.name || txt(nx.querySelector("h1,h2")) : "",
       title: document.title,
       sec: elapsed(),
       open: P.classList.contains("open"),
       notes: NOTES[i],
+      acts: window.SRNActions ? SRNActions.list(s) : null,
     };
     var key = JSON.stringify(msg);
     if (!force && key === last) return;

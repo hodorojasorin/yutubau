@@ -39,6 +39,7 @@
     $("nextb").disabled = i >= n - 1;
     $("hint").hidden = i > 0 || !!(state.notes && state.notes.length);
     renderNotes();
+    renderActs();
     if (state.title) document.title = "📱 " + state.title;
   }
   // notițele vorbitorului: ce spui, ce apeși, cum treci la slide-ul următor
@@ -63,6 +64,49 @@
       box.appendChild(p);
     });
     box.scrollTop = 0;
+  }
+  // butoanele slide-ului: apeși aici, se apasă pe laptop
+  var actsKey = "";
+  function renderActs() {
+    var box = $("acts"),
+      el = $("actsList"),
+      list = (state && state.acts) || [];
+    var key = state.i + "|" + JSON.stringify(list);
+    if (key === actsKey) return;
+    var same = actsKey.split("|")[0] === String(state.i),
+      top = el.scrollTop;
+    actsKey = key;
+    box.hidden = !list.length;
+    document.body.classList.toggle("has-acts", list.length > 0);
+    $("actsN").textContent = list.length ? String(list.length) : "";
+    el.innerHTML = "";
+    var g = null;
+    list.forEach(function (a) {
+      if ((a.g || "") !== g) {
+        g = a.g || "";
+        if (g) {
+          var h = document.createElement("p");
+          h.className = "act-g";
+          h.textContent = g;
+          el.appendChild(h);
+        }
+      }
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "act" + (a.on ? " on" : "");
+      b.disabled = !!a.off;
+      b.textContent = a.t;
+      b.addEventListener("click", function () {
+        if (!send({ t: "act", k: a.k, l: a.t })) return;
+        if (navigator.vibrate) navigator.vibrate(10);
+        b.classList.add("tap");
+        setTimeout(function () {
+          b.classList.remove("tap");
+        }, 260);
+      });
+      el.appendChild(b);
+    });
+    el.scrollTop = same ? top : 0;
   }
   var SIZES = ["", "big", "huge"], size = 0;
   try { size = Math.max(0, SIZES.indexOf(localStorage.getItem("rm-notes-size") || "")); } catch (e) {}
@@ -151,7 +195,7 @@
       if (e.target.closest && e.target.closest("button")) return (st = 0);
       var t = e.changedTouches[0];
       // în notițe, swipe-ul în sus/jos derulează textul; slide-urile se schimbă doar cu swipe stânga/dreapta
-      inNotes = !!(e.target.closest && e.target.closest(".notes"));
+      inNotes = !!(e.target.closest && e.target.closest(".notes, .acts"));
       sx = t.clientX;
       sy = t.clientY;
       st = Date.now();
