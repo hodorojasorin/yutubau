@@ -1,4 +1,4 @@
-// Proiectul 05 · Colocviu: lucrurile pe care le apeși în slide-uri (taburi, ingrediente, portofoliu.zip, bife, QR, „ridicați mâna”).
+// Proiectul 05 · Colocviu: lucrurile pe care le apeși în slide-uri (taburi, ingrediente, portofoliu.zip, bife, QR).
 // Sunetele sunt mici bipuri făcute în browser și pornesc doar după primul click.
 (function () {
   "use strict";
@@ -51,34 +51,6 @@
     beep(220, 0.18, "square", 0.05);
     beep(185, 0.22, "square", 0.05, 0.12);
   }
-
-  // ---------- 0 · „ridicați mâna”: fiecare click pe o întrebare = mai multe mâini ----------
-  var HANDS = ["", "✋ câțiva", "✋✋ mulți", "✋✋✋ aproape toți"];
-  $$("[data-poll]").forEach(function (box) {
-    var qs = $$(".pq", box),
-      s = box.closest(".slide");
-    qs.forEach(function (q, i) {
-      var out = $(".pq-hands", q);
-      q.dataset.lv = 0;
-      q.addEventListener("click", function () {
-        var lv = (+q.dataset.lv + 1) % HANDS.length;
-        q.dataset.lv = lv;
-        out.textContent = HANDS[lv];
-        qs.forEach(function (x) {
-          x.classList.toggle("now", x === q);
-        });
-        var all = qs.every(function (x) {
-          return +x.dataset.lv > 0;
-        });
-        if (all && !s.classList.contains("all-ok")) tada();
-        else pop(i * 2 + lv);
-        s.classList.toggle("all-ok", all);
-      });
-    });
-    box.coFinal = function () {
-      s.classList.add("all-ok");
-    };
-  });
 
   // ---------- 1 · literele din titlu sar când le atingi ----------
   $$(".pf-row b").forEach(function (b, i) {
@@ -390,7 +362,7 @@
 
   // starea finală a tuturor jucăriilor (pentru PDF)
   window.coFinal = function () {
-    $$("[data-poll],[data-mix],[data-zip],[data-switch],[data-recipe],[data-checks]").forEach(function (el) {
+    $$("[data-mix],[data-zip],[data-switch],[data-recipe],[data-checks]").forEach(function (el) {
       if (el.coFinal) el.coFinal();
     });
     if (typeEl) {

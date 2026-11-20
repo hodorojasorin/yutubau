@@ -230,7 +230,7 @@
     send(true);
   }
   function txt(el) {
-    return el ? el.textContent.replace(/\s+/g, " ").replace(/^\?\s*/, "").trim() : "";
+    return el ? el.textContent.replace(/\s+/g, " ").trim().replace(/^\?\s*/, "") : "";
   }
   // notițele vorbitorului (<div class="sn" hidden> din fiecare slide) ajung pe telecomandă
   var NOTES = slides.map(function (s) {
@@ -255,7 +255,7 @@
       i: i,
       n: slides.length,
       name: s.dataset.name || txt(s.querySelector("h1,h2")),
-      q: txt(s.querySelector(".co-next")),
+      q: txt(s.querySelector(".co-next")).replace(/^\?\s*/, ""),
       next: nx ? nx.dataset.name || txt(nx.querySelector("h1,h2")) : "",
       title: document.title,
       sec: elapsed(),

@@ -673,107 +673,6 @@ html.co body {
   }
 }
 
-/* ---------- 0 · ridicați mâna ---------- */
-.co-poll {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  margin-top: 2.4vh;
-}
-
-.co-poll .win:first-child {
-  transform: rotate(-0.8deg);
-}
-
-.co-poll .win:last-child {
-  transform: rotate(1deg);
-}
-
-.pq {
-  display: grid;
-  grid-template-columns: 46px 1fr;
-  gap: 8px 14px;
-  align-items: center;
-  width: 100%;
-  padding: clamp(14px, 1.4vw, 24px) 10px;
-  border: 0;
-  border-bottom: 2px dashed rgba(20, 20, 20, 0.22);
-  border-radius: 12px;
-  background: transparent;
-  color: var(--k);
-  text-align: left;
-  font: 600 clamp(17px, 1.55vw, 31px) / 1.3 var(--body);
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.pq:last-child {
-  border-bottom: 0;
-}
-
-.pq:hover {
-  background: rgba(255, 255, 255, 0.6);
-}
-
-.pq > i {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border: 3px solid var(--k);
-  border-radius: 50%;
-  background: var(--y);
-  font-family: var(--h);
-  font-style: normal;
-  font-size: 22px;
-  transition: background 0.2s, transform 0.3s cubic-bezier(0.3, 1.8, 0.5, 1);
-}
-
-.pq b {
-  font-weight: 800;
-  background: linear-gradient(transparent 58%, var(--y) 58%);
-}
-
-.pq.now {
-  background: #fff;
-  box-shadow: inset 0 0 0 3px var(--k);
-}
-
-.pq.now > i {
-  background: var(--gr);
-  color: var(--cr);
-  transform: rotate(-10deg) scale(1.1);
-}
-
-.pq-hands {
-  grid-column: 2;
-  justify-self: start;
-  background: var(--k);
-  color: var(--y);
-  border-radius: 999px;
-  padding: 3px 12px;
-  font-style: normal;
-  font-size: 15px;
-  font-weight: 800;
-  animation: co-pop 0.35s ease-out;
-}
-
-.pq-hands:empty {
-  display: none;
-}
-
-.poll-end {
-  opacity: 0;
-  transform: translateY(12px) rotate(-1deg);
-  transition: opacity 0.4s, transform 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
-}
-
-.all-ok .poll-end,
-html.co-pdf .poll-end {
-  opacity: 1;
-  transform: rotate(-1deg);
-}
-
 /* ---------- 1 · titlul ---------- */
 .co-top {
   display: flex;
@@ -2399,7 +2298,6 @@ html.co-pdf .co-wallas .m {
 @media (max-width: 900px) {
   .co-2col,
   .co-2col.wide,
-  .co-poll,
   .co-bye,
   .co-defs,
   .co-3,
