@@ -2261,3 +2261,21 @@ a.game:hover .play {
     animation: none;
   }
 }
+
+/* ---------- proiectele: doar numele și descrierea, fără poze ---------- */
+.game {
+  min-height: 230px;
+}
+
+.g-top {
+  padding-top: 6px;
+}
+
+.g-top b {
+  font-size: clamp(20px, 2vw, 24px);
+}
+
+.g-sub {
+  font-size: 15px;
+}
+
