@@ -51,7 +51,7 @@ button{cursor:pointer;border:0;background:none}
 .role .ic{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center}
 .role.c .ic{background:var(--y)}.role.b .ic{background:var(--k)}
 .role b{display:block;font:900 20px Unbounded,sans-serif}
-.role span{font-size:14px;opacity:.75}
+.role b+span{font-size:14px;opacity:.75}
 .role .ar{margin-left:auto;font-size:24px}
 .fine{font-size:13px;color:var(--g2);text-align:center;margin-top:14px}
 /* flow */
@@ -150,6 +150,209 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .cf{position:fixed;top:-40px;width:22px;fill:var(--y);z-index:8;animation:fall var(--t) cubic-bezier(.3,.1,.6,1) forwards;pointer-events:none}
 @keyframes fall{to{transform:translate(var(--x),110vh) rotate(var(--r))}}
 textarea.cp{width:100%;min-height:140px;margin-top:10px;border-radius:14px;padding:12px;font:14px/1.5 Inter;background:#fff;color:var(--k);border:2px solid #E4DFD3}
+/* ---------- echipa ARSENI ---------- */
+.ico{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.role.t{background:transparent;color:var(--k);border:2px solid var(--k);min-height:72px;padding:14px 18px}
+.role.t .ic{background:var(--k);color:var(--y)}.role.t b{font-size:18px}
+.mine{display:flex;gap:10px;align-items:center;background:rgba(18,18,18,.08);border-radius:16px;padding:10px 14px;margin:0 0 12px;font-size:14px;line-height:1.45}
+body.wide #app{max-width:none}
+.tgate .star{fill:var(--y)}
+.team{padding:0!important;background:var(--k)}
+.team .side{display:none}
+.ttop{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:calc(var(--sat) + 12px) 16px 12px;background:rgba(18,18,18,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid #222}
+.ttop .tt{display:flex;align-items:center;gap:10px;margin-right:auto}.ttop .tt b{font-size:19px}
+.tbell,.tme{position:relative;width:44px;height:44px;border-radius:14px;background:var(--k2);display:grid;place-items:center;flex:none}
+.tme{background:var(--y);color:var(--k);font:900 16px Unbounded,sans-serif;border-radius:50%}
+.tbell i{position:absolute;top:-5px;right:-5px;min-width:20px;height:20px;border-radius:99px;background:var(--y);color:var(--k);font:800 11px/20px Inter;font-style:normal;padding:0 5px;text-align:center}
+.tmain{flex:1;padding:18px 16px 28px}
+.tmain.fx{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.tbar{position:sticky;bottom:0;z-index:5;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:6px 4px calc(var(--sab) + 6px);background:rgba(18,18,18,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid #222}
+.tn{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;font:600 11px Inter;color:var(--g);border-radius:14px;width:100%}
+.tn.on{color:var(--y)}
+.tn .nb{position:absolute;top:4px;left:calc(50% + 6px);min-width:18px;height:18px;border-radius:99px;background:var(--y);color:var(--k);font:800 10px/18px Inter;font-style:normal;padding:0 5px;text-align:center}
+.vt{font-size:clamp(30px,8vw,42px);margin:2px 0 16px}
+.eyebrow{font:600 13px Inter;color:var(--g);margin:0}
+.vrow{display:flex;align-items:center;justify-content:space-between;gap:12px}.vrow .vt{margin-bottom:16px}
+.add{min-height:44px;padding:0 16px;border-radius:14px;background:var(--y);color:var(--k);font:800 14px Inter;flex:none;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.kpi{display:flex;flex-direction:column;justify-content:space-between;gap:10px;text-align:left;padding:16px;border-radius:22px;background:var(--k2);border:1px solid #262626;min-height:112px;transition:transform .15s}
+button.kpi:active{transform:scale(.97)}
+.kpi .kv{display:flex;align-items:baseline;gap:6px}
+.kpi b{font-size:clamp(28px,8.5vw,36px)}
+.kpi em{font:700 12px Inter;font-style:normal;color:var(--g)}
+.kpi .kl{font-size:13px;font-weight:600;color:var(--g);line-height:1.3}
+.kpi.y{background:var(--y);color:var(--k);border-color:var(--y)}.kpi.y .kl,.kpi.y em{color:#5d5900}
+.kpi.red b{color:#FF8E8E}
+.card2{background:var(--k2);border:1px solid #262626;border-radius:22px;padding:18px;margin-bottom:14px}
+.card2 h3{font:800 15px Inter;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.bd{display:inline-block;font:700 12px/1 Inter;padding:6px 9px;border-radius:99px;white-space:nowrap}
+.bd.y{background:var(--y);color:var(--k)}.bd.w{background:#38361a;color:var(--y)}.bd.g{background:#2c2c2c;color:#cfcac0}.bd.ok{background:#1d3523;color:#8FE3A0}.bd.no{background:#3b1d1d;color:#FF9A9A}
+.todo{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 0;border-top:1px solid #2b2b2b;font-size:15px;line-height:1.35}
+.card2 h3+.todo{border-top:0}
+.todo .dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--y)}
+.todo.u .dot{background:#FF6B6B;box-shadow:0 0 0 4px rgba(255,107,107,.18)}
+.todo .ar{margin-left:auto;color:var(--g);flex:none}
+.empty{display:flex;align-items:center;gap:10px;color:var(--g);margin:6px 0;grid-column:1/-1}
+.fun{display:grid;gap:12px}
+.fun .lab{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.bt{height:12px;border-radius:9px;background:#2c2c2c;overflow:hidden}
+.bt i{display:block;height:100%;border-radius:9px;background:var(--y);transform-origin:left;animation:grx .9s cubic-bezier(.2,.9,.2,1) both}
+@keyframes grx{from{transform:scaleX(0)}}
+.avs{display:flex;flex-wrap:wrap;gap:6px}
+.avs .av{width:42px;height:42px;font-size:14px}
+.av.s,.avs.s .av{width:30px;height:30px;font-size:12px}
+.av.l{width:56px;height:56px;font-size:20px}
+.av.sq{border-radius:16px}
+.av.doc{background:#2c2c2c;color:var(--y)}
+.avs.s{gap:0}.avs.s .av{margin-left:-8px;border:2px solid var(--k2)}.avs.s .av:first-child{margin-left:0}
+.link{color:var(--y);font-weight:700;margin-top:10px;min-height:40px}
+.feed>div{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:9px 0;font-size:14px;border-top:1px solid #2b2b2b}
+.feed>div:first-child{border-top:0}
+.feed i{width:8px;height:8px;border-radius:50%;background:var(--y);align-self:center}
+.feed small{color:var(--g);font-size:12px;white-space:nowrap}
+.seg{display:flex;gap:4px;background:var(--k2);border-radius:16px;padding:4px;margin-bottom:12px}
+.seg button{flex:1;min-height:44px;border-radius:12px;font-weight:700;font-size:14px;color:var(--g)}
+.seg .on{background:var(--y);color:var(--k)}
+.srch{display:flex;align-items:center;gap:10px;background:var(--k2);border:1px solid #2b2b2b;border-radius:16px;padding:0 14px;min-height:50px;margin-bottom:12px;color:var(--g)}
+.srch:focus-within{border-color:var(--y)}
+.srch input{flex:1;border:0;background:none;outline:0;font-size:16px;height:48px;color:var(--w)}
+.fchips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 12px;padding:0 16px 2px;scrollbar-width:none}
+.fchips::-webkit-scrollbar{display:none}
+.fchips .chip{flex:none;min-height:40px;padding:8px 14px;font-size:14px}
+.li{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;border-radius:20px;background:var(--k2);border:1px solid #262626;margin-bottom:8px;transition:transform .15s,border-color .15s}
+.li:hover{border-color:#3d3d3d}.li:active{transform:scale(.985)}
+.li.flat{background:none;border:0;border-top:1px solid #2b2b2b;border-radius:0;padding:12px 0;margin:0}
+.card2 h3+.li.flat{border-top:0}
+.li .m{flex:1;min-width:0}
+.li .m b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li .m small{display:block;color:var(--g);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li .m small.fl{color:#FF9A9A}
+.li .r{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.li .r small{font-size:12px;color:var(--g)}.li .r small.u{color:#FF9A9A;font-weight:700}
+.mo{font:900 14px Unbounded,sans-serif;color:var(--w);white-space:nowrap}
+em.new{font:700 11px Inter;font-style:normal;background:var(--y);color:var(--k);padding:2px 7px;border-radius:99px;margin-left:4px;vertical-align:2px}
+.tr{display:block;height:6px;border-radius:9px;background:#2c2c2c;margin:6px 0 4px;overflow:hidden;max-width:180px}
+.tr i{display:block;height:100%;background:var(--y);border-radius:9px}
+.sum3{margin:-8px 0 14px;color:var(--g);font-size:14px}.sum3 b{color:var(--y);font-size:24px;display:block}
+.kb{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 10px;scrollbar-width:thin}
+.kc{flex:none;width:min(80vw,280px);scroll-snap-align:start;background:#171717;border:1px solid #242424;border-radius:22px;padding:12px}
+.kc h4{display:flex;justify-content:space-between;font:800 13px Inter;margin:4px 6px 12px;color:var(--g)}
+.kcard{display:flex;flex-direction:column;gap:10px;width:100%;text-align:left;background:var(--k2);border:1px solid #2e2e2e;border-radius:18px;padding:14px;margin-bottom:8px;transition:transform .15s}
+.kcard:active{transform:scale(.97)}.kcard b{font-size:16px}.kcard small{font-size:12px;color:var(--g)}
+.pr{display:block;height:6px;border-radius:9px;background:#2c2c2c;overflow:hidden}.pr i{display:block;height:100%;background:var(--y)}
+.okc{color:#8FE3A0}.noc{color:#FF9A9A;font-weight:700}
+.kempty{color:#4a4a4a;text-align:center;margin:10px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:170px}
+.bars>div{flex:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px}
+.bars i{width:100%;max-width:46px;border-radius:12px 12px 4px 4px;background:#3a381c;transform-origin:bottom;animation:gry .8s cubic-bezier(.2,.9,.2,1) both}
+.bars>div:last-child i{background:var(--y)}
+@keyframes gry{from{transform:scaleY(0)}}
+.bars small{font-size:12px;color:var(--g)}.bars b{font-size:11px;color:var(--g)}
+.split{display:flex;height:14px;overflow:hidden;gap:3px;margin:10px 0 8px}
+.split i{display:block;height:100%;border-radius:5px}
+.leg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px}.leg span{display:flex;align-items:center;gap:6px}.leg i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.sheet{position:fixed;inset:0;z-index:20;display:none}
+.sheet.on,.sheet.closing{display:block}
+.sb{position:absolute;inset:0;background:rgba(0,0,0,.6);animation:fd .25s both}
+.closing .sb{animation:fdo .25s both}
+@keyframes fd{from{opacity:0}}@keyframes fdo{to{opacity:0}}
+.sp{position:absolute;left:0;right:0;bottom:0;margin:0 auto;max-width:560px;max-height:93dvh;overflow-y:auto;overscroll-behavior:contain;background:#161616;border:1px solid #2a2a2a;border-bottom:0;border-radius:28px 28px 0 0;padding:10px 18px 0;animation:sup .42s cubic-bezier(.2,.9,.2,1) both;color:var(--w)}
+.closing .sp{animation:sdn .25s ease both}
+.stay .sp,.stay .sb{animation:none}
+@keyframes sup{from{transform:translateY(100%)}}@keyframes sdn{to{transform:translateY(100%)}}
+@keyframes sin{from{transform:translateX(100%)}}@keyframes sout{to{transform:translateX(100%)}}
+.grab{width:42px;height:5px;border-radius:9px;background:#3a3a3a;margin:2px auto 12px}
+.shd{display:flex;align-items:center;gap:12px}
+.sht{min-width:0;flex:1}.sht h2{font-size:22px;margin:0;word-break:break-word}.sht small{display:block;color:var(--g);font-size:13px;margin-top:4px}
+.x{width:42px;height:42px;border-radius:14px;background:var(--k2);display:grid;place-items:center;flex:none;align-self:flex-start}
+.shb{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:16px 0 4px}
+.facts>div{background:var(--k2);border-radius:16px;padding:12px 14px}
+.facts b{display:block;font:900 18px Unbounded,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.facts small{color:var(--g);font-size:12px}
+.flag{background:#2a1616;border:1px solid #5a2626;color:#FFB9B9;border-radius:16px;padding:12px 14px;font-size:14px;margin:12px 0 0;line-height:1.5}
+.flag b{display:block;margin-bottom:4px}.flag.soft{background:#222;border-color:#333;color:#ddd}
+.pub{background:var(--k2);border-radius:16px;padding:14px}.pub b{display:block;font:900 15px Unbounded,sans-serif;color:var(--y);margin-bottom:2px}.pub span{font-size:14px;color:#ddd}
+.chips.sm .chip{min-height:34px;padding:6px 12px;font-size:13px}
+.pub .chips{margin-top:10px}
+span.chip{display:inline-flex;align-items:center}
+.pledge{display:grid;gap:6px}.pledge div{padding:10px 12px;border-radius:12px;background:var(--k2);font-size:14px;color:#FF9A9A}.pledge div.ok{color:#8FE3A0}
+.scorebox{display:flex;align-items:center;gap:16px;margin-bottom:12px}
+.gauge{--v:50;flex:none;width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--y) calc(var(--v)*1%),#2c2c2c 0);display:grid;place-items:center}
+.gauge>div{width:88px;height:88px;border-radius:50%;background:#161616;display:grid;place-items:center;align-content:center;text-align:center}
+.gauge b{font-size:30px;line-height:1}.gauge small{font-size:10px;color:var(--g)}
+.opt:disabled{opacity:.55}
+.tnote{width:100%;min-height:84px;border-radius:16px;padding:12px 14px;background:var(--k2);border:2px solid var(--k3);color:var(--w);font:15px/1.5 Inter;resize:vertical;outline:0}
+.tnote:focus{border-color:var(--y)}
+.sact{position:sticky;bottom:0;z-index:2;margin:18px -18px 0;padding:14px 18px calc(var(--sab) + 16px);background:linear-gradient(rgba(22,22,22,0),#161616 18px);display:grid;gap:8px}
+.sact .ghost{margin:0}.sact .go{min-height:56px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.two .ghost{margin:0}
+.ghost.no{color:#FF9A9A}
+.bigm{font-size:clamp(30px,9vw,40px);color:var(--y);margin:16px 0 12px}.bigm small{display:block;font:600 13px Inter;color:var(--g);margin-top:6px;letter-spacing:0}
+.brief.dark{background:var(--k2);border-color:#2b2b2b;animation:none;color:var(--w);padding:8px 16px}.brief.dark .row{border-color:#2f2f2f}.brief.dark .row b{color:var(--y)}.brief.dark .row:first-child{border-top:0}
+.cr.dk{background:var(--k2);border:2px solid #2b2b2b;color:var(--w);width:100%;text-align:left}
+.cr.dk.on{border-color:var(--y)}.cr.dk .pc{color:var(--y)}.cr.dk small{color:var(--g)}
+.stepper{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;margin:18px 0 6px}
+.stepper div{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:11px;color:var(--g);line-height:1.2;position:relative}
+.stepper i{width:30px;height:30px;border-radius:50%;background:#2c2c2c;display:grid;place-items:center;font:800 12px Inter;font-style:normal;z-index:1}
+.stepper div::before{content:"";position:absolute;top:14px;left:-50%;width:100%;height:2px;background:#2c2c2c}
+.stepper div:first-child::before{display:none}
+.stepper .done i{background:var(--y);color:var(--k)}.stepper .done::before,.stepper .now::before{background:var(--y)}
+.stepper .now i{background:var(--w);color:var(--k);box-shadow:0 0 0 4px rgba(255,247,0,.25)}.stepper .now{color:var(--w);font-weight:700}
+.paper{position:relative;background:#FAF7F0;color:#121212;border-radius:18px;padding:22px 20px 24px;font:14px/1.6 Inter,sans-serif;margin-top:14px;overflow:hidden;box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
+.paper .phd{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.pwm{height:14px;width:86px;fill:#121212}
+.paper h2{font:900 21px/1.15 Unbounded,sans-serif;margin:0 0 4px}
+.paper .pm{font-size:12px;color:#6E6A63;margin:0}
+.paper h4{font:800 12px Inter;letter-spacing:.05em;text-transform:uppercase;margin:16px 0 4px}
+.paper p{margin:0}
+.paper .sig{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.paper .sig>div{position:relative;border-top:1.5px solid #121212;padding-top:6px;min-height:84px}
+.paper .sig small{font-size:11px;color:#6E6A63;display:block}
+.paper .sig img{display:block;max-width:100%;height:58px;object-fit:contain;object-position:left;margin-top:4px}
+.sgn{font:italic 600 18px/1.2 Georgia,serif;display:block;margin-top:10px}
+.stampd{position:relative;display:inline-block;margin:-4px 2px 0 0;z-index:2;transform:rotate(-12deg);background:var(--y);border:4px solid #121212;color:#121212;font:900 19px Unbounded,sans-serif;padding:6px 14px;border-radius:12px;text-transform:uppercase;animation:stmp .55s cubic-bezier(.2,1.5,.3,1) both}
+@keyframes stmp{from{transform:rotate(-12deg) scale(2.6);opacity:0}}
+.pad{display:block;width:100%;height:170px;background:#fff;border:2px dashed #cfc8b8;border-radius:16px;touch-action:none;cursor:crosshair;margin-bottom:8px}
+.tin{width:100%;min-height:52px;border-radius:16px;padding:0 14px;background:var(--k2);border:2px solid var(--k3);color:var(--w);font:600 16px Inter;outline:0}
+.tin:focus{border-color:var(--y)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.form label{display:flex;flex-direction:column;gap:6px;font:600 12px Inter;color:var(--g)}
+.form input{min-height:48px;border-radius:14px;padding:0 12px;background:var(--k2);border:2px solid var(--k3);color:var(--w);font:600 16px Inter;outline:0;width:100%}
+.form input:focus{border-color:var(--y)}
+.me2{display:flex;align-items:center;gap:10px;text-align:left;padding:12px;border-radius:16px;background:var(--k2);width:100%;margin-top:auto}
+.me2 b{display:block;font-size:14px}.me2 small{display:block;color:var(--g);font-size:12px}
+.me2 .av{background:var(--y)}
+.shake{animation:shk .4s}
+@keyframes shk{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+body.sh .toast{bottom:auto;top:calc(var(--sat) + 14px);transform:translate(-50%,-160px)}body.sh .toast.on{transform:translate(-50%,0)}
+.toast{z-index:30;width:max-content;max-width:calc(100vw - 40px);text-align:center}.cf{z-index:25}
+.sact.nost{position:static;background:none}
+.okban{display:flex;gap:10px;align-items:center;background:var(--y);color:var(--k);border-radius:16px;padding:12px 14px;font-weight:700;font-size:14px;margin-top:14px;line-height:1.4}
+.kc.e{width:128px;opacity:.55}
+#print{display:none}
+@media print{body.printing>*:not(#print){display:none!important}body.printing{background:#fff!important}body.printing #print{display:block}#print .paper{box-shadow:none;border-radius:0;background:#fff;padding:0;font-size:11pt;margin:0}#print .stampd{animation:none}}
+@media (min-width:900px){
+ .team{display:grid!important;grid-template-columns:252px minmax(0,1fr);grid-template-rows:auto 1fr;align-items:start}
+ .team .side{display:flex;flex-direction:column;gap:6px;grid-row:1/3;position:sticky;top:0;height:100dvh;padding:26px 16px;background:#0d0d0d;border-right:1px solid #1f1f1f}
+ .sl{display:flex;flex-direction:column;gap:6px;padding:0 10px 22px}.sl .wm{height:20px;width:122px;fill:var(--y)}.sl span{font:600 12px Inter;color:var(--g)}
+ .side .tn{flex-direction:row;justify-content:flex-start;gap:12px;min-height:46px;padding:0 12px;font-size:15px;color:#cfcac0}
+ .side .tn.on{background:var(--y);color:var(--k)}
+ .side .tn .nb{position:static;margin-left:auto}.side .tn.on .nb{background:var(--k);color:var(--y)}
+ .ttop{grid-column:2;padding:14px 36px;justify-content:flex-end}.ttop .tt{display:none}
+ .tmain{grid-column:2;padding:22px 36px 56px;max-width:1180px;width:100%}
+ .tbar{display:none}
+ .kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .g2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+ .lgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px}
+ .fchips{margin:0 0 12px;padding:0}
+ .kb{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:0 0 10px;overflow:visible}.kc,.kc.e{width:auto;opacity:1}.kc.e{opacity:.55}
+ .srch{max-width:520px}
+ .sp{left:auto;top:0;right:0;bottom:0;width:540px;max-width:none;max-height:none;margin:0;border-radius:28px 0 0 28px;border:1px solid #2a2a2a;border-right:0;padding-top:22px;animation-name:sin}
+ .closing .sp{animation-name:sout}
+ .grab{display:none}
+}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 @media (min-width:521px){body{background:#0b0b0b}#app{box-shadow:0 0 0 1px #222}}
 </style>
@@ -157,7 +360,21 @@ textarea.cp{width:100%;min-height:140px;margin-top:10px;border-radius:14px;paddi
 <body>
 <div id="app" aria-live="polite"></div>
 <div class="toast" id="toast" role="status"></div>
+<div class="sheet" id="sheet"></div>
+<div id="print"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.8 6.5-5.8s5.9 2.2 6.5 5.8"/><path d="M15.5 4.6a3.5 3.5 0 0 1 0 6.8M17.6 14.6c2.1.6 3.5 2.6 3.9 5.4"/></symbol>
+<symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A2.5 2.5 0 0 1 11 3h2a2.5 2.5 0 0 1 2.5 2.5V7M3 12.5h18"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l5 5v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h5"/></symbol>
+<symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9.2c-.5-.9-1.6-1.4-3-1.4-1.8 0-3 .9-3 2.1 0 3 6 1.5 6 4.4 0 1.3-1.3 2.2-3 2.2-1.5 0-2.6-.6-3.1-1.6M12 5.8v2M12 16.4v1.8"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 5.5 2.2 7 2.2 7H3.8S6 15.5 6 10z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
 <symbol id="st" viewBox="0 0 339 350"><path d="M230.811 36L221.953 126.782L338.57 78.2998L333.38 178.82L244.312 198.447L326.46 294.38L229.25 320.51L183.058 241.859L117.21 349.63L62.3203 265.25L122.841 197.017L0 167.69L63.2803 89.4199L146.881 125.898L136.811 0L230.811 36Z"/></symbol>
 <symbol id="wm" viewBox="0 0 770 126"><path d="M38.56 102.72V69.92H120.32V102.72H38.56ZM107.68 2.88L160.32 122.88H116.32L74.88 21.12H85.44L44 122.88H0L52.64 2.88H107.68Z"/><path d="M196.335 54.24H236.655C240.708 54.24 243.855 53.28 246.095 51.36C248.335 49.44 249.455 46.667 249.455 43.04C249.455 39.413 248.335 36.64 246.095 34.72C243.855 32.8 240.708 31.84 236.655 31.84H190.575L209.135 13.28V122.88H167.855V2.88H243.055C252.655 2.88 261.028 4.587 268.175 8C275.428 11.307 281.028 15.947 284.975 21.92C289.028 27.893 291.055 34.933 291.055 43.04C291.055 50.933 289.028 57.92 284.975 64C281.028 69.973 275.428 74.613 268.175 77.92C261.028 81.227 252.655 82.88 243.055 82.88H196.335V54.24ZM210.415 66.72H256.015L295.855 122.88H248.655L210.415 66.72Z"/><path d="M301.474 83.36H343.394C343.82 85.707 345.047 87.733 347.074 89.44C349.1 91.04 351.874 92.32 355.394 93.28C358.914 94.133 363.127 94.56 368.034 94.56C374.434 94.56 379.394 93.92 382.914 92.64C386.54 91.36 388.354 89.28 388.354 86.4C388.354 84.48 387.34 82.88 385.314 81.6C383.287 80.213 379.127 79.307 372.834 78.88L352.994 77.6C334.967 76.427 321.954 72.587 313.954 66.08C305.954 59.573 301.954 50.987 301.954 40.32C301.954 31.36 304.514 23.893 309.634 17.92C314.754 11.947 321.9 7.467 331.074 4.48C340.354 1.493 351.18 0 363.554 0C375.607 0 386.274 1.707 395.554 5.12C404.94 8.427 412.354 13.12 417.794 19.2C423.34 25.28 426.38 32.373 426.914 40.48H384.994C384.674 38.56 383.607 36.907 381.794 35.52C380.087 34.133 377.634 33.067 374.434 32.32C371.234 31.573 367.34 31.2 362.754 31.2C356.887 31.2 352.247 31.787 348.834 32.96C345.527 34.133 343.874 36.053 343.874 38.72C343.874 40.533 344.834 42.08 346.754 43.36C348.78 44.64 352.62 45.493 358.274 45.92L380.674 47.36C392.407 48.107 401.9 49.867 409.154 52.64C416.407 55.307 421.687 59.04 424.994 63.84C428.407 68.64 430.114 74.56 430.114 81.6C430.114 90.453 427.5 98.187 422.274 104.8C417.047 111.413 409.687 116.587 400.194 120.32C390.807 123.947 379.82 125.76 367.234 125.76C354.22 125.76 342.807 124 332.994 120.48C323.18 116.96 315.5 112 309.954 105.6C304.514 99.2 301.687 91.787 301.474 83.36Z"/><path d="M549.351 48.64V77.12H458.951V48.64H549.351ZM487.271 62.88L479.911 107.52L464.231 90.24H555.271V122.88H439.111L447.911 62.88L439.111 2.88H554.471V35.52H464.231L479.911 18.24L487.271 62.88Z"/><path d="M681.755 92.8L670.555 95.52V2.88H710.555V122.88H658.875L599.355 30.4L610.555 27.68V122.88H570.555V2.88H623.835L681.755 92.8Z"/><path d="M728.174 2.88H769.454V122.88H728.174V2.88Z"/></symbol>
 </svg>
@@ -238,17 +455,21 @@ function go(html,cls,dir){const old=app.querySelector('.scr');app.classList.togg
  if(old){old.classList.add('out');setTimeout(()=>old.remove(),250)}
  const d=document.createElement('section');d.className='scr '+(cls||'');d.innerHTML=html;app.appendChild(d);d.scrollTop=0;
  document.body.style.background=cls&&cls.includes('home')?'#FFF700':cls&&cls.includes('brand')?'#FAF7F0':'#121212';
+ document.body.classList.toggle('wide',!!cls&&/\bteam\b/.test(cls));
  return d}
-function home(dir){role=null;step=0;try{history.replaceState(null,'',location.pathname)}catch(e){}
+function home(dir){role=null;step=0;closeSheet();tload();try{history.replaceState(null,'',location.pathname)}catch(e){}
  const words='CREATORI ✱ ETICĂ ONLINE ✱ PRODUCȚIE ✱ BRANDURI ✱ ACADEMY ✱ ';
+ const mine=[...T.apps.filter(a=>a.src==='app').map(a=>`Aplicația <b>@${esc(a.h)}</b>: ${esc(APPST[a.st][0].toLowerCase())}${a.st==='acc'?' ✱':''}`),...T.req.filter(r=>r.src==='app').map(r=>`Brief-ul <b>${esc(r.name)}</b>: ${esc(REQST[r.st][0].toLowerCase())}`)];
  go(`<div class="top"><svg class="wm" viewBox="0 0 770 126" role="img" aria-label="ARSENI"><use href="#wm"/></svg><span class="pill">Prototip</span></div>
  <div class="hero">${star('star')}</div>
  <div class="marq" aria-hidden="true"><div>${words.repeat(4)}</div></div>
  <h1 class="d">Conținut cu sens, din Moldova.</h1>
  <p class="sub">Agenția care alege creatorii buni și îi pune lângă brandurile potrivite. Alege cine ești, durează un minut.</p>
+ ${mine.length?`<div class="mine">${star('','width:20px;fill:var(--k);flex:none')}<span>${mine.join('<br>')}</span></div>`:''}
  <div class="roles">
   <button class="role c" data-go="creator"><span class="ic">${star('','width:30px;fill:var(--k)')}</span><span><b>Sunt creator</b><span>Aplic, casa mă verifică</span></span><span class="ar">→</span></button>
   <button class="role b" data-go="brand"><span class="ic">${star('','width:30px;fill:var(--y)')}</span><span><b>Sunt brand</b><span>Primesc un brief instant</span></span><span class="ar">→</span></button>
+  <button class="role t" data-t="team"><span class="ic">${ic('users',26)}</span><span><b>Echipa ARSENI</b><span>Creatori, branduri, contracte</span></span><span class="ar">→</span></button>
  </div>
  <p class="fine">Fără cont și fără parolă. Prototip: datele rămân pe telefonul tău.</p>`,'home',dir)}
 function flow(dir){const F=role==='creator'?C:B,st=F.steps[step](),brand=role==='brand';
@@ -261,6 +482,9 @@ function refreshOk(){const d=app.querySelector('.scr:not(.out)');const b=d&&d.qu
 
 function resultCreator(){const c=S.c,f=followers(c.f),t=tierOf(f),a=AUD[c.niche[0]]||AUD['Lifestyle'];
  const h=hash(c.handle+c.niche.join()),id=String(h%9000+1000);
+ tload();const hh=c.handle.replace(/^@/,''),ex=T.apps.find(x=>x.src==='app'&&x.h===hh);
+ const rec={id:'A-'+id,h:hh,name:c.name.trim(),plat:c.plat.slice(),niche:c.niche.slice(),f,er:+(2.5+h%60/10).toFixed(1),need:c.need.slice(),eth:c.eth.slice(),contact:c.contact.trim(),t:now(),st:'nou',chk:{},src:'app'};
+ if(ex)Object.assign(ex,rec,{st:ex.st,chk:ex.chk,t:ex.t});else{T.apps.unshift(rec);T.log.unshift({t:now(),x:'Aplicație nouă din aplicație: @'+hh,w:'aplicația'})}tsave();
  const d=go(`<div class="res"><div class="bar"><button class="bk" data-home aria-label="Acasă">←</button><div class="prog"><i style="width:100%"></i></div><span class="cnt">Trimis</span></div>
  <h2 class="q d">Aplicația ta a ajuns la casă, ${esc(c.name.split(' ')[0])}.</h2><p class="hint">ARSENI alege cine intră. Echipa îți verifică profilul și îți răspunde în 48 de ore.</p>
  <div class="stage"><div class="card" id="card">${star('cs')}
@@ -275,13 +499,16 @@ function resultCreator(){const c=S.c,f=followers(c.f),t=tierOf(f),a=AUD[c.niche[
  <div class="steps"><div><i>1</i><span><b>Conținutul</b><br><small style="color:var(--g)">Ultimele postări, stilul, ce lași în urmă.</small></span></div><div><i>2</i><span><b>Etica</b><br><small style="color:var(--g)">Reclame marcate, fără ură, fără fake news.</small></span></div><div><i>3</i><span><b>Publicul</b><br><small style="color:var(--g)">${esc(t[0])}: cine te urmărește și cât de implicat e.</small></span></div></div>
  <div class="lbl" style="text-align:left">Dacă ești selectat</div>
  <div class="steps"><div><i>✱</i><span><b>Întâlnire 1:1 cu echipa</b><br><small style="color:var(--g)">Apoi 3 luni de probă, fără contract pe viață.</small></span></div></div>
- <button class="go" data-copy="c">Copiază aplicația</button><button class="ghost" data-go="brand">Am și un brand →</button><button class="ghost" data-home>Înapoi la început</button>
+ <button class="go" data-copy="c">Copiază aplicația</button><button class="ghost" data-t="team">Vezi cum o primește echipa →</button><button class="ghost" data-go="brand">Am și un brand →</button><button class="ghost" data-home>Înapoi la început</button>
  <p class="note">Prototip ARSENI. Răspunsul vine pe ${esc(c.contact)} la lansare.</p></div>`,'',1);
  tilt(d.querySelector('#card'));confetti()}
 function resultBrand(){const b=S.b,bud=budget(b.budget),e=estim(bud),g=GOAL.find(x=>x[0]===b.goal)||GOAL[0];
  const AN={'Vrea doar să râdă':['Umor'],'Vrea să învețe':['Educație','Tech'],'Se compară mereu':['Lifestyle','Beauty'],'Crede că afară e mai bine':['Cultură locală','Muzică'],'Caută o pauză':['Food','Gaming']};const want=b.aud.flatMap(a=>AN[a]||[]);
  const picks=DEMO.map(x=>({...x,s:Math.min(97,58+x.tags.filter(t=>b.dom.includes(t)).length*12+(want.includes(x.n)?18:0)+hash(x.h+b.name)%9)})).sort((a,c)=>c.s-a.s).slice(0,3);
  const why={L:'să se afle de lansare exact la publicul care contează',C:'să vină clienți noi, măsurați prin cod promo',I:'să crească încrederea tinerilor în brand',E:'să găsească oamenii potriviți pentru echipă'}[b.goal];
+ tload();{const bid='B-'+(hash(b.name.trim().toLowerCase())%9000+1000),ex=T.req.find(x=>x.id===bid);
+  const rec={id:bid,name:b.name.trim(),dom:b.dom.slice(),goal:b.goal,age:b.age.slice(),aud:b.aud.slice(),budget:bud,person:b.person.trim(),contact:b.contact.trim(),t:now(),st:'nou',src:'app'};
+  if(ex)Object.assign(ex,rec,{st:ex.st,t:ex.t,pick:ex.pick});else{T.req.unshift(rec);T.log.unshift({t:now(),x:`Brief nou din aplicație: ${rec.name}, ${mdl(bud)}`,w:'aplicația'})}tsave()}
  const d=go(`<div class="res"><div class="bar"><button class="bk" data-home aria-label="Acasă">←</button><div class="prog"><i style="width:100%"></i></div><span class="cnt">Gata</span></div>
  <h2 class="q d">Brief-ul tău e gata.</h2><p class="hint">Îl citim în 24 de ore și revenim pe ${esc(b.contact)}.</p>
  <div class="brief" id="brief"><div class="hd"><b class="d" style="font-size:20px">${esc(b.name)}</b>${star('','width:30px;fill:var(--k)')}</div>
@@ -295,7 +522,7 @@ function resultBrand(){const b=S.b,bud=budget(b.budget),e=estim(bud),g=GOAL.find
  <div class="lbl" style="text-align:left;margin-top:20px">Creatori potriviți</div>
  <div class="match">${picks.map(x=>`<div class="cr"><span class="av" style="background:${x.c}">${esc(x.h[1].toUpperCase())}</span><span><b>${esc(x.h)}</b><small>${esc(x.n)} · ${esc(x.f)} urmăritori</small></span><span class="pc">${x.s}%</span></div>`).join('')}</div>
  <p class="note">Profiluri demo, pentru prototip.</p>
- <button class="go" data-copy="b" style="margin-top:16px">Copiază brief-ul</button><button class="ghost" data-go="creator">Sunt și creator →</button><button class="ghost" data-home>Înapoi la început</button></div>`,'brand',1);
+ <button class="go" data-copy="b" style="margin-top:16px">Copiază brief-ul</button><button class="ghost" data-t="team">Vezi cum îl primește echipa →</button><button class="ghost" data-go="creator">Sunt și creator →</button><button class="ghost" data-home>Înapoi la început</button></div>`,'brand',1);
  d._brief=`BRIEF ARSENI · ${b.name}\nCE: ${g[1]}: ${e.r} reels cu ${e.n} creatori, ~${fmt(e.v)} vizualizări.\nCINE: ${b.name}, creatori ARSENI, public ${b.age.join(', ')}: ${b.aud.join(', ').toLowerCase()}.\nDE CE: Pentru ca brandul ${why}.\nAIDA: hook în 2 secunde · povestea creatorului · produsul de aproape · cod promo.\nBUGET: ${mdl(bud)}\nCREATORI: ${picks.map(p=>p.h+' '+p.s+'%').join(', ')}\nContact: ${b.person}, ${b.contact}`;
  confetti()}
 
@@ -311,6 +538,371 @@ function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');setT
 async function copy(kind){const d=app.querySelector('.scr:not(.out)');const c=S.c;
  const txt=kind==='b'?d._brief:`Aplicație ARSENI (în verificare) · @${c.handle.replace(/^@/,'')} · ${c.niche.join(', ')} · ${fmt(followers(c.f))} urmăritori · ${c.plat.join(', ')}`;
  try{await navigator.clipboard.writeText(txt);toast('Copiat ✱')}catch(e){if(!d.querySelector('textarea')){const t=document.createElement('textarea');t.className='cp';t.value=txt;t.readOnly=true;d.querySelector('.res').appendChild(t);t.select()}toast('Selectează și copiază')}}
+
+/* ---------- echipa ARSENI · panoul casei ---------- */
+const TK='arseni-team',HR=36e5,DY=864e5,now=()=>Date.now();
+const ic=(n,s=20)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const MEM=[['S','Sorin','fondator'],['T','Manager de talente','creatori și Academy'],['P','Producție','ARSENI Studio'],['B','Parteneriate','branduri și oferte']];
+const APPST={nou:['Nou','y'],verif:['În verificare','w'],info:['Așteaptă detalii','g'],acc:['Acceptat','ok'],resp:['Respins','no']};
+const REQST={nou:['Nou','y'],disc:['În discuție','w'],oferta:['Ofertă trimisă','g'],acc:['Acceptat','ok'],ref:['Refuzat','no']};
+const CTRST={draft:['Ciornă','g'],trimis:['La semnat','y'],semnat:['Semnat','ok']};
+const PAYST={platit:['Plătit','ok'],asteapta:['Așteaptă','w'],intarziat:['Întârziat','no']};
+const STG=['Brief','Script','Filmare','Aprobare brand','Publicat','Raport'];
+const CHK=[['cont','C','Conținutul','Ultimele 30 de postări: stil, calitate, ce lasă în urmă.'],['ad','#','Reclame marcate','Orice colaborare plătită are #reclamă la vedere.'],['eth','E','Fără ură și fake news','Nu umilește oameni, verifică înainte să posteze.'],['aud','A','Public real','Implicare sănătoasă, fără urmăritori cumpărați.']];
+const REASON=[['Reclame nemarcate','am găsit reclame nemarcate în ultimele postări'],['Conținut care umilește','unele clipuri umilesc oameni, iar asta contrazice Codul de etică'],['Public suspect','implicarea publicului nu pare încă reală'],['Nișă plină','nișa ta e deja acoperită acum în casă']];
+const AUDN={'Vrea doar să râdă':['Umor'],'Vrea să învețe':['Educație','Tech'],'Se compară mereu':['Lifestyle','Beauty'],'Crede că afară e mai bine':['Cultură locală','Muzică'],'Caută o pauză':['Food','Gaming']};
+const NT={'Umor':['HoReCa','Retail','Telecom','Evenimente'],'Lifestyle':['HoReCa','Retail','Evenimente'],'Educație':['Educație','Bănci','Tech','ONG'],'Food':['HoReCa','Retail','Evenimente'],'Tech':['Tech','Telecom','Bănci','Educație'],'Cultură locală':['ONG','Evenimente','HoReCa','Educație'],'Sport':['Retail','Evenimente','HoReCa'],'Beauty':['Retail','Evenimente'],'Muzică':['Evenimente','HoReCa','Telecom'],'Gaming':['Tech','Telecom','Retail']};
+const PAL=['#FFF700','#F3E28B','#D9D3C3','#FFE95C','#E9E4D7','#FFF7A8'];
+const LUNI=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
+const NAV=[['azi','Azi','home'],['cre','Creatori','users'],['br','Branduri','brief'],['camp','Campanii','grid'],['ctr','Contracte','doc'],['bani','Bani','coin'],['set','Setări','sliders']];
+const NAVM=['azi','cre','br','ctr','more'];
+let T=null,tv='azi',tseg='apl',tf='toate',tq='',cur=null,rej=false,padDirty=false,nc={type:'mgmt',who:''};
+
+function seed(){const t=now(),d=n=>t-n*DY,h=n=>t-n*HR,E=['ad','hate','check'];
+ return{v:1,me:null,com:20,seq:17,base:{apl:41,ver:29},hist:[26000,31500,22000,47000,39500],
+ apps:[
+  {id:'A-4821',h:'cristi.vlog',name:'Cristian Rusu',plat:['TikTok','Instagram'],niche:['Umor'],f:23000,er:6.2,need:['M','▶'],eth:E,contact:'cristi@exemplu.md',t:h(41),st:'nou',chk:{}},
+  {id:'A-2208',h:'alex.prank',name:'Alexandru Lungu',plat:['TikTok'],niche:['Umor'],f:118000,er:1.3,need:['M'],eth:E,contact:'alex@exemplu.md',t:h(46),st:'nou',chk:{},flags:['3 reclame nemarcate în ultimele 30 de zile','Farse care umilesc trecători pe stradă']},
+  {id:'A-5307',h:'maria.citeste',name:'Maria Ceban',plat:['Instagram','TikTok'],niche:['Educație','Cultură locală'],f:8400,er:7.9,need:['A','✱'],eth:E,contact:'maria@exemplu.md',t:h(20),st:'verif',chk:{cont:1,ad:1}},
+  {id:'A-6112',h:'nicu.fit',name:'Nicolae Popa',plat:['Instagram','YouTube'],niche:['Sport'],f:41000,er:3.4,need:['M','▶'],eth:E,contact:'nicu@exemplu.md',t:h(9),st:'nou',chk:{}},
+  {id:'A-3390',h:'elena.makeup',name:'Elena Moraru',plat:['TikTok'],niche:['Beauty','Lifestyle'],f:15000,er:4.6,need:['✱','M'],eth:E,contact:'elena@exemplu.md',t:h(4),st:'nou',chk:{}},
+  {id:'A-7741',h:'vlad.joaca',name:'Vlad Cojocaru',plat:['YouTube','TikTok'],niche:['Gaming'],f:6100,er:9.1,need:['A','▶'],eth:E,contact:'vlad@exemplu.md',t:h(30),st:'info',chk:{cont:1}},
+  {id:'A-1907',h:'doina.gateste',name:'Doina Rotaru',plat:['Instagram'],niche:['Food'],f:31000,er:5.8,need:['▶','M'],eth:E,contact:'doina@exemplu.md',t:d(6),st:'resp',reason:REASON[3][1],reasonL:REASON[3][0],chk:{cont:1,ad:1,eth:1}}],
+ roster:DEMO.map((x,i)=>({h:x.h.slice(1),n:x.n,f:parseFloat(x.f)*1000,c:x.c,tags:x.tags,since:d([140,34,210,61,12,160][i]),camp:[3,1,4,2,1,2][i],earned:[46400,9600,52800,21600,7200,18400][i]})),
+ req:[
+  {id:'B-2093',name:'Cafeneaua Sens',dom:['HoReCa'],goal:'L',age:['18–24','25–34'],aud:['Caută o pauză','Vrea doar să râdă'],budget:20000,person:'Irina, marketing',contact:'irina@exemplu.md',t:h(3),st:'nou'},
+  {id:'B-1180',name:'Librăria Rândul 7',dom:['Educație','Retail'],goal:'I',age:['16–18','18–24'],aud:['Vrea să învețe'],budget:12000,person:'Victor, fondator',contact:'victor@exemplu.md',t:h(26),st:'disc'},
+  {id:'B-3375',name:'Sala Ritm',dom:['Retail'],goal:'C',age:['18–24','25–34'],aud:['Se compară mereu'],budget:35000,person:'Ana, manager',contact:'ana@exemplu.md',t:d(3),st:'oferta',pick:['ana.filmeaza','tudor.rade']},
+  {id:'B-0912',name:'Festivalul Toamna Albă',dom:['Evenimente'],goal:'E',age:['18–24'],aud:['Crede că afară e mai bine'],budget:60000,person:'Mihai, producător',contact:'mihai@exemplu.md',t:d(18),st:'acc',pick:['ioana.local','tudor.rade'],ctr:'C-0012',camp:'K-0031'},
+  {id:'B-4410',name:'Unda Mobile',dom:['Telecom'],goal:'C',age:['16–18','18–24'],aud:['Vrea doar să râdă','Vrea să învețe'],budget:90000,person:'Cristina, brand manager',contact:'cristina@exemplu.md',t:d(9),st:'acc',pick:['dan.tech','radu.explica','tudor.rade'],ctr:'C-0014',camp:'K-0034'}],
+ ctr:[
+  {id:'C-0016',type:'mgmt',title:'Management · @ana.filmeaza',creator:'ana.filmeaza',cname:'Ana',com:20,start:d(34),st:'trimis',t:d(2)},
+  {id:'C-0015',type:'mgmt',title:'Management · @dan.tech',creator:'dan.tech',cname:'Dan',com:20,start:d(12),st:'draft',t:d(12)},
+  {id:'C-0014',type:'colab',title:'Colaborare · Unda Mobile',brand:'Unda Mobile',person:'Cristina, brand manager',creators:['dan.tech','radu.explica','tudor.rade'],sum:90000,deliv:6,rights:12,start:t+2*DY,end:t+24*DY,st:'semnat',signed:d(8),by:'Cristina',t:d(9)},
+  {id:'C-0012',type:'colab',title:'Colaborare · Festivalul Toamna Albă',brand:'Festivalul Toamna Albă',person:'Mihai, producător',creators:['ioana.local','tudor.rade'],sum:60000,deliv:4,rights:6,start:d(10),end:t+6*DY,st:'semnat',signed:d(16),by:'Mihai',t:d(17)},
+  {id:'C-0007',type:'mgmt',title:'Management · @tudor.rade',creator:'tudor.rade',cname:'Tudor',com:20,start:d(140),st:'semnat',signed:d(139),by:'Tudor',t:d(140)}],
+ camp:[
+  {id:'K-0034',brand:'Unda Mobile',creators:['dan.tech','radu.explica','tudor.rade'],stage:1,due:t+24*DY,deliv:6,ad:false},
+  {id:'K-0031',brand:'Festivalul Toamna Albă',creators:['ioana.local','tudor.rade'],stage:3,due:t+6*DY,deliv:4,ad:true},
+  {id:'K-0029',brand:'Patiseria Colț',creators:['mihaela.gusta','ana.filmeaza'],stage:5,due:d(12),deliv:4,ad:true,rep:{v:184000,er:6.8,c:312}}],
+ pay:[
+  {id:'F-0108',brand:'Unda Mobile',sum:45000,st:'asteapta',due:t+30*DY,note:'Final 50%',ctr:'C-0014'},
+  {id:'F-0107',brand:'Unda Mobile',sum:45000,st:'intarziat',due:d(2),note:'Avans 50%',ctr:'C-0014'},
+  {id:'F-0105',brand:'Festivalul Toamna Albă',sum:30000,st:'asteapta',due:t+8*DY,note:'Final 50%',ctr:'C-0012'},
+  {id:'F-0104',brand:'Festivalul Toamna Albă',sum:30000,st:'platit',due:d(12),paid:d(11),note:'Avans 50%',ctr:'C-0012'},
+  {id:'F-0101',brand:'Patiseria Colț',sum:18000,st:'platit',due:d(20),paid:d(19),note:'Campanie completă'}],
+ log:[
+  {t:h(3),x:'Brief nou de la Cafeneaua Sens, 20.000 MDL',w:'aplicația'},
+  {t:h(4),x:'Aplicație nouă: @elena.makeup',w:'aplicația'},
+  {t:h(9),x:'Aplicație nouă: @nicu.fit',w:'aplicația'},
+  {t:h(20),x:'@maria.citeste a intrat în verificare',w:'Manager de talente'},
+  {t:d(2),x:'Contractul @ana.filmeaza trimis la semnat',w:'Sorin'},
+  {t:d(3),x:'Ofertă trimisă către Sala Ritm',w:'Parteneriate'},
+  {t:d(6),x:'@doina.gateste: nu acum, nișa e plină',w:'Manager de talente'}]}}
+
+function tload(){let s=null;try{s=JSON.parse(localStorage.getItem(TK)||'null')}catch(e){}if(s&&s.v===1)T=s;else if(!T)T=seed();
+ T.pay.forEach(p=>{if(p.st==='asteapta'&&p.due<now())p.st='intarziat'})}
+function tsave(){try{localStorage.setItem(TK,JSON.stringify(T))}catch(e){}}
+const who=()=>T.me===0?'Sorin':(MEM[T.me]||MEM[0])[1];
+const addLog=x=>{T.log.unshift({t:now(),x,w:who()});T.log=T.log.slice(0,40)};
+const nid=p=>{T.seq=(T.seq||20)+1;return p+String(T.seq).padStart(4,'0')};
+const cap=s=>s?s[0].toUpperCase()+s.slice(1):'';
+const av=(h,c,cls='')=>`<span class="av ${cls}" style="background:${c||PAL[hash(h)%6]}">${esc(String(h||'?').replace(/^@/,'')[0].toUpperCase())}</span>`;
+const bd=([l,c])=>`<span class="bd ${c}">${esc(l)}</span>`;
+const ago=t=>{const s=(now()-t)/HR;return s<1?'acum':s<24?`acum ${Math.floor(s)} h`:s<48?'ieri':`acum ${Math.floor(s/24)} zile`};
+const due=t=>{const x=Math.ceil((t-now())/DY);return x<0?`întârziat ${-x} ${-x===1?'zi':'zile'}`:x===0?'azi':x===1?'mâine':`în ${x} zile`};
+const dstr=t=>new Date(t).toLocaleDateString('ro-RO',{day:'numeric',month:'long',year:'numeric'});
+const iso=t=>new Date(t).toISOString().slice(0,10);
+const fmtM=n=>n>=1e4?Math.round(n/1e3)+'K':n.toLocaleString('ro-RO').replace(/\s/g,'.');
+const rost=h=>T.roster.find(r=>r.h===h);
+const busy=h=>T.camp.some(c=>c.stage<5&&c.creators.includes(h));
+const empty=t=>`<p class="empty">${star('','width:24px;fill:var(--y);flex:none')}${esc(t)}</p>`;
+const ORD={nou:0,verif:1,info:2,acc:3,resp:4,disc:1,oferta:2,ref:4};
+
+function score(a){const c=a.chk||{};let s=(c.cont?15:0)+(c.ad?15:0)+(c.eth?15:0)+(c.aud?15:0);
+ s+=a.eth.length*5+Math.min(15,Math.round(a.er*2.5))+(a.f>=1e4&&a.f<1e5?10:a.f>=1e5?5:a.f>=1e3?7:3)-(a.flags||[]).length*12;return Math.max(0,Math.min(100,s))}
+function matchR(r){const want=r.aud.flatMap(a=>AUDN[a]||[]);return T.roster.map(x=>({...x,s:Math.min(97,58+(x.tags||[]).filter(t=>r.dom.includes(t)).length*12+(want.includes(x.n)?18:0)+hash(x.h+r.name)%9)})).sort((a,b)=>b.s-a.s)}
+function kpis(){const t=now(),paid=T.pay.filter(p=>p.st==='platit'&&t-p.paid<30*DY).reduce((s,p)=>s+p.sum,0);
+ return{apps:T.apps.filter(a=>a.st==='nou').length,req:T.req.filter(r=>r.st==='nou'||r.st==='disc').length,ctr:T.ctr.filter(c=>c.st!=='semnat').length,rev:Math.round(paid*T.com/100),paid}}
+function todos(){const t=now(),o=[];
+ T.apps.filter(a=>a.st==='nou'||a.st==='verif').forEach(a=>{const l=Math.floor(48-(t-a.t)/HR);o.push({p:l<12?0:2,u:l<12,x:l>0?`Răspunde lui @${a.h}: mai ai ${l} h din 48`:`@${a.h} așteaptă de peste 48 h`,go:'app:'+a.id})});
+ T.pay.filter(p=>p.st==='intarziat').forEach(p=>o.push({p:0,u:1,x:`Factura ${p.id} de la ${p.brand} e întârziată`,go:'pay:'+p.id}));
+ T.camp.filter(c=>!c.ad&&c.stage>=2&&c.stage<4).forEach(c=>o.push({p:1,u:c.stage===3,x:`${c.brand}: marchează #reclamă înainte de publicare`,go:'camp:'+c.id}));
+ T.req.filter(r=>r.st==='nou').forEach(r=>o.push({p:1,x:`Brief nou de la ${r.name}: ${mdl(r.budget)}`,go:'req:'+r.id}));
+ T.ctr.filter(c=>c.st==='draft').forEach(c=>o.push({p:3,x:`Trimite la semnat: ${c.title}`,go:'ctr:'+c.id}));
+ T.camp.filter(c=>c.stage===3).forEach(c=>o.push({p:3,x:`${c.brand}: așteptăm aprobarea brandului`,go:'camp:'+c.id}));
+ return o.sort((a,b)=>a.p-b.p)}
+function nb(k){const n=k==='cre'?T.apps.filter(a=>a.st==='nou').length:k==='br'?T.req.filter(r=>r.st==='nou').length:k==='ctr'?T.ctr.filter(c=>c.st!=='semnat').length:0;return n?`<i class="nb">${n}</i>`:''}
+const kpi=(v,l,cls,nav,m)=>`<${nav?'button':'div'} class="kpi ${cls||''}" ${nav?`data-t="nav" data-v="${nav}"`:''}><span class="kv"><b class="d" data-count="${v}" ${m?'data-money':''}>0</b>${m?'<em>MDL</em>':''}</span><span class="kl">${l}</span></${nav?'button':'div'}>`;
+const filt=(fs,arr)=>`<div class="fchips">${fs.map(([k,l])=>`<button class="chip ${tf===k?'on':''}" data-t="f" data-v="${k}">${l}${k!=='toate'?` · ${arr.filter(x=>x.st===k).length}`:''}</button>`).join('')}</div>`;
+const srch=ph=>`<label class="srch">${ic('search',18)}<input data-ti="q" value="${esc(tq)}" placeholder="${ph}" autocomplete="off" aria-label="Caută"></label>`;
+
+/* views */
+function vAzi(){const k=kpis(),td=todos(),hr=new Date().getHours(),gr=hr<12?'Bună dimineața':hr<18?'Bună ziua':'Bună seara';
+ const a=T.base.apl+T.apps.length,v=T.base.ver+T.apps.filter(x=>x.st!=='nou').length,c=T.roster.length;
+ return `<p class="eyebrow">${esc(new Date().toLocaleDateString('ro-RO',{weekday:'long',day:'numeric',month:'long'}))}</p>
+ <h1 class="vt d">${gr}, ${esc(T.me===0?'Sorin':'echipă')}.</h1>
+ <div class="kpis">${kpi(k.apps,'Aplicații noi de la creatori','y','cre')}${kpi(k.req,'Cereri de la branduri','','br')}${kpi(k.ctr,'Contracte nesemnate','','ctr')}${kpi(k.rev,'Venitul ARSENI, 30 de zile','','bani',1)}</div>
+ <div class="g2"><section class="card2"><h3>De făcut ${bd([String(td.length),'y'])}</h3>${td.length?td.slice(0,8).map(x=>`<button class="todo ${x.u?'u':''}" data-t="open" data-v="${x.go}"><i class="dot"></i><span>${esc(x.x)}</span><span class="ar">${ic('arrow',16)}</span></button>`).join(''):empty('Totul e la zi.')}</section>
+ <div><section class="card2"><h3>Pâlnia creatorilor</h3><div class="fun">${[['Au aplicat',a],['Verificați',v],['În casă',c]].map(([l,n])=>`<div><div class="lab"><span>${l}</span><b>${n}</b></div><div class="bt"><i style="width:${Math.max(6,n/a*100)}%"></i></div></div>`).join('')}</div><p class="note">Rata de acceptare: ${Math.round(c/a*100)}%. Casa alege.</p></section>
+ <section class="card2"><h3>În casă ${bd([String(c),'g'])}</h3><div class="avs">${T.roster.map(r=>av(r.h,r.c)).join('')}</div><button class="link" data-t="nav" data-v="cre" data-seg="ros">Vezi creatorii →</button></section></div></div>
+ <section class="card2"><h3>Activitate</h3><div class="feed">${T.log.slice(0,8).map(l=>`<div><i></i><span>${esc(l.x)}</span><small>${esc(l.w||'')} · ${ago(l.t)}</small></div>`).join('')}</div></section>`}
+
+function appRow(a){const left=48-(now()-a.t)/HR,op=a.st==='nou'||a.st==='verif';
+ return `<button class="li" data-t="open" data-v="app:${a.id}">${av(a.h)}<span class="m"><b>@${esc(a.h)}${a.src==='app'?'<em class="new">din aplicație</em>':''}</b><small>${esc(a.niche.join(', '))} · ${fmt(a.f)} · ${esc(a.plat.join(', '))}</small>${a.flags&&a.flags.length&&op?`<small class="fl">⚑ ${a.flags.length} semnale de verificat</small>`:''}</span><span class="r">${bd(APPST[a.st])}<small class="${op&&left<12?'u':''}">${op?(left>0?`${Math.floor(left)} h rămase`:'peste termen'):ago(a.t)}</small></span></button>`}
+function rosRow(r){const days=Math.floor((now()-r.since)/DY)+1,trial=days<=90,b=busy(r.h);
+ return `<button class="li" data-t="open" data-v="ros:${esc(r.h)}">${av(r.h,r.c)}<span class="m"><b>@${esc(r.h)}</b><small>${esc(r.n)} · ${fmt(r.f)} urmăritori</small>${trial?`<span class="tr"><i style="width:${days/90*100}%"></i></span><small>Probă · ziua ${days} din 90</small>`:`<small>În casă din ${esc(new Date(r.since).toLocaleDateString('ro-RO',{month:'long',year:'numeric'}))}</small>`}</span><span class="r">${bd(b?['În campanie','w']:['Liber','ok'])}<small>${fmtM(r.earned)} MDL</small></span></button>`}
+function listCre(){const q=tq.toLowerCase().replace(/^@/,'');
+ if(tseg==='apl'){const L=T.apps.filter(a=>(tf==='toate'||a.st===tf)&&(!q||(a.h+' '+a.name+' '+a.niche.join(' ')).toLowerCase().includes(q))).sort((a,b)=>ORD[a.st]-ORD[b.st]||b.t-a.t);return L.map(appRow).join('')||empty('Nicio aplicație aici.')}
+ const L=T.roster.filter(r=>!q||(r.h+' '+r.n).toLowerCase().includes(q));return L.map(rosRow).join('')||empty('Niciun creator găsit.')}
+function vCre(){const open=T.apps.filter(a=>['nou','verif','info'].includes(a.st)).length;
+ return `<h1 class="vt d">Creatori</h1><div class="seg"><button class="${tseg==='apl'?'on':''}" data-t="seg" data-v="apl">Aplicații · ${open}</button><button class="${tseg==='ros'?'on':''}" data-t="seg" data-v="ros">În casă · ${T.roster.length}</button></div>
+ ${srch('Caută după nume sau nișă')}${tseg==='apl'?filt([['toate','Toate'],['nou','Noi'],['verif','În verificare'],['info','Așteaptă detalii'],['acc','Acceptați'],['resp','Respinși']],T.apps):''}<div id="tl" class="lgrid">${listCre()}</div>`}
+
+function reqRow(r){const g=GOAL.find(x=>x[0]===r.goal)||GOAL[0];
+ return `<button class="li" data-t="open" data-v="req:${r.id}"><span class="av sq" style="background:${PAL[hash(r.name)%6]}">${esc(r.name[0].toUpperCase())}</span><span class="m"><b>${esc(r.name)}${r.src==='app'?'<em class="new">din aplicație</em>':''}</b><small>${esc(g[1])} · ${esc(r.dom.join(', '))}</small></span><span class="r"><b class="mo">${mdl(r.budget)}</b>${bd(REQST[r.st])}</span></button>`}
+function listBr(){const q=tq.toLowerCase();const L=T.req.filter(r=>(tf==='toate'||r.st===tf)&&(!q||(r.name+' '+r.dom.join(' ')).toLowerCase().includes(q))).sort((a,b)=>ORD[a.st]-ORD[b.st]||b.t-a.t);return L.map(reqRow).join('')||empty('Nicio cerere aici.')}
+function vBr(){const s=T.req.filter(r=>['nou','disc','oferta'].includes(r.st)).reduce((a,r)=>a+r.budget,0);
+ return `<h1 class="vt d">Branduri</h1><p class="sum3"><b class="d">${mdl(s)}</b>în discuție acum</p>${srch('Caută un brand')}${filt([['toate','Toate'],['nou','Noi'],['disc','În discuție'],['oferta','Ofertă trimisă'],['acc','Acceptate'],['ref','Refuzate']],T.req)}<div id="tl" class="lgrid">${listBr()}</div>`}
+
+function campCard(c){return `<button class="kcard" data-t="open" data-v="camp:${c.id}"><b>${esc(c.brand)}</b><span class="avs s">${c.creators.map(h=>{const r=rost(h);return av(h,r&&r.c)}).join('')}</span><span class="pr"><i style="width:${(c.stage+1)/6*100}%"></i></span><small>${c.deliv} reels · ${c.stage>=5?'raport gata':due(c.due)} · ${c.ad?'<span class="okc">#reclamă ✓</span>':'<span class="noc">#reclamă lipsă</span>'}</small></button>`}
+function vCamp(){return `<h1 class="vt d">Campanii</h1><p class="hint">Fiecare campanie trece prin 6 etape. Nimic nu se publică fără #reclamă.</p>
+ <div class="kb">${STG.map((s,i)=>{const L=T.camp.filter(c=>c.stage===i);return `<div class="kc ${L.length?'':'e'}"><h4><span>${i+1}. ${s}</span><span>${L.length}</span></h4>${L.map(campCard).join('')||'<p class="kempty">—</p>'}</div>`}).join('')}</div>`}
+
+function ctrRow(c){return `<button class="li" data-t="open" data-v="ctr:${c.id}"><span class="av sq doc">${ic('doc',22)}</span><span class="m"><b>${esc(c.type==='mgmt'?'@'+c.creator:c.brand)}</b><small>${c.type==='mgmt'?`Management · ${c.com}%`:`Colaborare · ${mdl(+c.sum||0)}`} · ${esc(c.id)}</small></span><span class="r">${bd(CTRST[c.st])}<small>${c.st==='semnat'?'semnat '+ago(c.signed):ago(c.t)}</small></span></button>`}
+function vCtr(){const L=T.ctr.filter(c=>tf==='toate'||c.st===tf).sort((a,b)=>ORD2(a)-ORD2(b)||b.t-a.t);
+ return `<div class="vrow"><h1 class="vt d">Contracte</h1><button class="add" data-t="newctr">+ Contract nou</button></div>
+ ${filt([['toate','Toate'],['draft','Ciorne'],['trimis','La semnat'],['semnat','Semnate']],T.ctr)}<div class="lgrid">${L.map(ctrRow).join('')||empty('Niciun contract aici.')}</div>
+ <p class="note">Modele orientative generate de prototip. Înainte de folosire reală, le verifică un jurist.</p>`}
+const ORD2=c=>({draft:0,trimis:1,semnat:2})[c.st];
+
+function payRow(p){return `<button class="li flat" data-t="open" data-v="pay:${p.id}"><span class="av sq doc">${ic('coin',22)}</span><span class="m"><b>${esc(p.brand)}</b><small>${esc(p.id)}${p.note?' · '+esc(p.note):''} · ${p.st==='platit'?'plătit '+ago(p.paid):'scadent '+due(p.due)}</small></span><span class="r"><b class="mo">${mdl(p.sum)}</b>${bd(PAYST[p.st])}</span></button>`}
+function vBani(){const t=now(),dt=new Date(),m=dt.getMonth(),k=kpis();
+ const wait=T.pay.filter(p=>p.st==='asteapta').reduce((s,p)=>s+p.sum,0),late=T.pay.filter(p=>p.st==='intarziat').reduce((s,p)=>s+p.sum,0);
+ const curM=T.pay.filter(p=>p.st==='platit'&&new Date(p.paid).getMonth()===m&&new Date(p.paid).getFullYear()===dt.getFullYear()).reduce((s,p)=>s+p.sum,0);
+ const vals=[...T.hist.slice(-5),curM],mx=Math.max(...vals,1);
+ return `<h1 class="vt d">Bani</h1>
+ <div class="kpis">${kpi(k.paid,'Încasat, 30 de zile','y','',1)}${kpi(k.rev,`Partea ARSENI (${T.com}%)`,'','',1)}${kpi(wait,'De încasat','','',1)}${kpi(late,'Întârziat',late?'red':'','',1)}</div>
+ <div class="g2"><section class="card2"><h3>Încasări pe luni</h3><div class="bars">${vals.map((v,i)=>`<div><b>${fmtM(v)}</b><i style="height:${Math.max(3,v/mx*100)}%;animation-delay:${i*70}ms"></i><small>${LUNI[(m-5+i+12)%12]}</small></div>`).join('')}</div></section>
+ <section class="card2"><h3>Din fiecare leu</h3><div class="split"><i style="width:${100-T.com}%;background:var(--y)"></i><i style="width:${T.com}%;background:var(--w)"></i></div><div class="leg"><span><i style="background:var(--y)"></i>${100-T.com}% creatorilor</span><span><i style="background:var(--w)"></i>${T.com}% casei ARSENI</span></div><p class="note">Creatorii primesc banii în 10 zile lucrătoare de la încasare. Comisionul se schimbă din Setări.</p></section></div>
+ <section class="card2"><h3>Facturi ${bd([String(T.pay.filter(p=>p.st!=='platit').length)+' deschise','g'])}</h3>${T.pay.slice().sort((a,b)=>(a.st==='platit')-(b.st==='platit')||a.due-b.due).map(payRow).join('')}</section>`}
+
+function vSet(){return `<h1 class="vt d">Setări</h1>
+ <section class="card2"><h3>Comisionul casei</h3><div class="big d" id="cv" style="font-size:52px;margin:0;text-align:left">${T.com}%</div><input type="range" min="10" max="30" value="${T.com}" data-tr="com" style="--p:${(T.com-10)/20*100}%" aria-label="Comision"><div class="ticks"><span>10%</span><span>30%</span></div><p class="note">Se aplică contractelor noi. Cele semnate rămân cum sunt.</p></section>
+ <section class="card2"><h3>Cine ești în echipă</h3><div class="opts">${MEM.map((m,i)=>`<button class="opt ${T.me===i?'on':''}" data-t="me" data-v="${i}"><span class="ic">${m[0]}</span><span><b>${m[1]}</b><small>${m[2]}</small></span><span class="tk">✓</span></button>`).join('')}</div></section>
+ <section class="card2"><h3>Date</h3><div style="display:grid;gap:8px"><button class="ghost" style="margin:0" data-t="export">Copiază toate datele (JSON)</button><button class="ghost" style="margin:0" data-t="reset">Resetează datele demo</button><button class="ghost" style="margin:0" data-t="exit">Ieși din panou</button></div><p class="note">Prototip: datele stau doar în acest browser. Versiunea reală le ține pe server, cu acces securizat pentru echipă.</p></section>`}
+function vMore(){return `<h1 class="vt d">Mai mult</h1><div class="opts">${[['camp','grid','Campanii','Etape, termene, #reclamă'],['bani','coin','Bani','Facturi, încasări, comision'],['set','sliders','Setări','Comision, echipă, date']].map(([k,i,t,s])=>`<button class="opt" data-t="nav" data-v="${k}"><span class="ic">${ic(i,22)}</span><span><b>${t}</b><small>${s}</small></span><span class="tk" style="color:var(--g);border:0">→</span></button>`).join('')}</div><button class="ghost" data-t="exit" style="margin-top:16px">Ieși din panou</button>`}
+const VIEW={azi:vAzi,cre:vCre,br:vBr,camp:vCamp,ctr:vCtr,bani:vBani,set:vSet,more:vMore};
+
+/* shell */
+function tenter(dir){tload();role='team';closeSheet();if(T.me==null){gate(dir);return}team(dir)}
+function gate(dir){go(`<div class="bar"><button class="bk" data-home aria-label="Acasă">←</button><div class="grow"></div><span class="pill" style="background:var(--y);color:var(--k)">Doar pentru echipă</span></div>
+ <div class="hero" style="min-height:190px">${star('star')}</div>
+ <h2 class="q d">Panoul casei.</h2><p class="hint">Aici ARSENI alege creatorii, răspunde brandurilor și semnează contractele. Cine intră azi?</p>
+ <div class="opts">${MEM.map((m,i)=>`<button class="opt" data-t="me" data-v="${i}"><span class="ic">${m[0]}</span><span><b>${m[1]}</b><small>${m[2]}</small></span><span class="tk" style="color:var(--g);border:0">→</span></button>`).join('')}</div>
+ <p class="note">Prototip fără parolă. Versiunea reală va avea acces securizat pentru echipă.</p>`,'tgate',dir)}
+function team(dir){go(`<aside class="side"><div class="sl"><svg class="wm" viewBox="0 0 770 126" role="img" aria-label="ARSENI"><use href="#wm"/></svg><span>Panoul casei</span></div><nav id="sn" style="display:grid;gap:4px"></nav><div id="sm" style="margin-top:auto"></div></aside>
+ <header class="ttop"><span class="tt">${star('','width:24px;fill:var(--y)')}<b class="d">Echipa</b></span><button class="tbell" data-t="nav" data-v="azi" aria-label="De făcut">${ic('bell')}<i id="bellN"></i></button><button class="tme" id="tme" data-t="nav" data-v="set" aria-label="Setări"></button></header>
+ <main class="tmain" id="tmain"></main><nav class="tbar" id="tbar"></nav>`,'team',dir);
+ try{history.replaceState(null,'',location.pathname+'#echipa')}catch(e){}trender()}
+function trender(keep){const mm=$('#tmain');if(!mm)return;const m=MEM[T.me]||MEM[0];
+ $('#sn').innerHTML=NAV.map(([k,l,i])=>`<button class="tn ${tv===k?'on':''}" data-t="nav" data-v="${k}">${ic(i)}<span>${l}</span>${nb(k)}</button>`).join('');
+ const mv=['camp','bani','set','more'].includes(tv)?'more':tv;
+ $('#tbar').innerHTML=NAVM.map(k=>{const n=NAV.find(x=>x[0]===k)||['more','Mai mult','more'];return `<button class="tn ${mv===k?'on':''}" data-t="nav" data-v="${k}">${ic(n[2],22)}<span>${n[1]}</span>${nb(k)}</button>`}).join('');
+ $('#sm').innerHTML=`<button class="me2" data-t="nav" data-v="set"><span class="av s">${m[0]}</span><span><b>${esc(m[1])}</b><small>${esc(m[2])}</small></span></button>`;
+ $('#tme').textContent=m[0];const n=todos().length,b=$('#bellN');b.textContent=n;b.style.display=n?'':'none';
+ mm.innerHTML=VIEW[tv]();mm.classList.remove('fx');if(!keep){void mm.offsetWidth;mm.classList.add('fx');mm.closest('.scr').scrollTop=0}
+ countUp(mm,keep)}
+function countUp(root,instant){root.querySelectorAll('[data-count]').forEach(el=>{const v=+el.dataset.count,mo=el.hasAttribute('data-money'),f=x=>mo?fmtM(x):String(x);
+ if(instant||matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=f(v);return}
+ const t0=performance.now();const st=t=>{const p=Math.min(1,(t-t0)/900),e=1-Math.pow(1-p,3);el.textContent=f(Math.round(v*e));if(p<1)requestAnimationFrame(st)};requestAnimationFrame(st)})}
+
+/* sheets */
+function sheet(html,stay){const s=$('#sheet'),old=s.querySelector('.sp'),key=cur?cur.join(':'):'',y=stay&&old&&key===s.dataset.k?old.scrollTop:0;s.dataset.k=key;
+ s.className='sheet on'+(stay?' stay':'');document.body.classList.add('sh');s.innerHTML=`<div class="sb" data-t="close"></div><div class="sp" role="dialog" aria-modal="true" aria-label="Detalii">${html}</div>`;
+ const n=s.querySelector('.sp');n.scrollTop=y;if(!stay)setTimeout(()=>{const x=n.querySelector('.x');x&&x.focus({preventScroll:true})},60)}
+function closeSheet(){const s=$('#sheet');if(!s||!s.classList.contains('on'))return;s.classList.remove('on');s.classList.add('closing');document.body.classList.remove('sh');cur=null;rej=false;
+ setTimeout(()=>{if(!s.classList.contains('on')){s.className='sheet';s.innerHTML=''}},260)}
+const shd=(avatar,title,sub,badges)=>`<div class="grab"></div><div class="shd">${avatar}<div class="sht"><h2 class="d">${title}</h2><small>${sub}</small></div><button class="x" data-t="close" aria-label="Închide">${ic('x',18)}</button></div>${badges?`<div class="shb">${badges}</div>`:''}`;
+function topen(k,id,stay){cur=[k,id];({app:sApp,ros:sRos,req:sReq,ctr:sCtr,camp:sCamp,pay:sPay,new:sNew})[k](id,stay)}
+
+function msgFor(a){const n=(a.name||a.h).split(' ')[0];
+ return a.st==='acc'?`Salut, ${n}! Echipa ARSENI ți-a verificat profilul și te vrem în casă. ✱ Urmează o întâlnire 1:1 și 3 luni de probă. Când ai timp săptămâna asta?`
+ :a.st==='resp'?`Salut, ${n}! Mulțumim că ai aplicat la ARSENI. Acum nu te putem lua în casă: ${a.reason||''}. Ușa rămâne deschisă: poți aplica din nou peste 3 luni, iar ARSENI Academy e gratuit pentru tine.`
+ :`Salut, ${n}! Ne place ce faci. Ca să terminăm verificarea, trimite-ne statisticile din ultimele 30 de zile (reach, vârsta publicului, orașe). Echipa ARSENI ✱`}
+function sApp(id,stay){const a=T.apps.find(x=>x.id===id);if(!a)return closeSheet();const sc=score(a),A=AUD[a.niche[0]]||AUD['Lifestyle'],op=['nou','verif','info'].includes(a.st);
+ const ver=sc>=75?['Recomandat pentru casă','ok']:sc>=50?['De discutat la 1:1','w']:['Risc pentru casă','no'];
+ sheet(shd(av(a.h,null,'l'),'@'+esc(a.h),`${esc(a.name)} · ${esc(a.id)} · a aplicat ${ago(a.t)}`,bd(APPST[a.st])+(a.src==='app'?bd(['din aplicație','y']):''))+
+ `${a.st==='acc'?`<div class="okban">${star('','width:20px;fill:var(--k);flex:none')}<span>În casă de ${ago(a.dec||a.t)}. Contractul ${esc(a.ctr||'')} e pregătit, urmează întâlnirea 1:1.</span></div>`:''}<div class="facts"><div><b>${fmt(a.f)}</b><small>urmăritori</small></div><div><b>${String(a.er).replace('.',',')}%</b><small>implicare medie</small></div><div><b>${esc(tierOf(a.f)[0])}</b><small>nivel</small></div><div><b>${a.plat.length}</b><small>${esc(a.plat.join(', '))}</small></div></div>
+ ${a.flags&&a.flags.length?`<div class="flag"><b>⚑ Semnale găsite la verificare</b>${a.flags.map(f=>`<div>· ${esc(f)}</div>`).join('')}</div>`:''}
+ <div class="lbl">Pentru cine creează</div><div class="pub"><b>${esc(A[0])}</b><span>${esc(A[1])}</span><div class="chips sm">${a.niche.map(n=>`<span class="chip on">${esc(n)}</span>`).join('')}</div></div>
+ <div class="lbl">Are nevoie de</div><div class="chips sm">${a.need.map(n=>{const x=NEED.find(y=>y[0]===n);return `<span class="chip">${esc(x?x[1]:n)}</span>`}).join('')}</div>
+ <div class="lbl">Codul de etică semnat</div><div class="pledge">${ETH.map(e=>`<div class="${a.eth.includes(e[0])?'ok':''}">${a.eth.includes(e[0])?'✓':'✕'} ${esc(e[1])}</div>`).join('')}</div>
+ <div class="lbl">Verificarea casei</div><div class="scorebox"><div class="gauge" style="--v:${sc}"><div><b class="d">${sc}</b><small>scor ARSENI</small></div></div><div>${bd(ver)}<p class="note">Bifează ce a verificat echipa: conținut, reclame, etică și public.</p></div></div>
+ <div class="opts">${CHK.map(([k,i,t,s])=>`<button class="opt ${a.chk&&a.chk[k]?'on':''}" data-t="chk" data-v="${k}" ${op?'':'disabled'}><span class="ic">${i}</span><span><b>${t}</b><small>${s}</small></span><span class="tk">✓</span></button>`).join('')}</div>
+ <div class="lbl">Notă internă</div><textarea class="tnote" data-ti="note" placeholder="Ce a observat echipa…">${esc(a.note||'')}</textarea>
+ ${a.st==='resp'?`<div class="flag soft"><b>Motiv: ${esc(a.reasonL||'')}</b>${esc(cap(a.reason||''))}.</div>`:''}
+ <div class="sact">${op?(rej?`<div class="lbl" style="margin:0">De ce nu acum?</div><div class="opts">${REASON.map((r,i)=>`<button class="opt" data-t="rejr" data-v="${i}"><span class="ic">${i+1}</span><span><b>${esc(r[0])}</b><small>${esc(cap(r[1]))}.</small></span><span class="tk" style="color:var(--g);border:0">→</span></button>`).join('')}</div><button class="ghost" data-t="rejx">Anulează</button>`
+  :`<button class="go" data-t="accept">${star('','width:20px;fill:var(--k)')} Acceptă în casă</button><div class="two"><button class="ghost" data-t="info">Cere detalii</button><button class="ghost no" data-t="rej">Respinge</button></div>`)
+  :`<button class="go" data-t="msg">Copiază mesajul pentru ${esc((a.name||a.h).split(' ')[0])}</button>${a.st==='acc'&&a.ctr?`<button class="ghost" data-t="gotoctr" data-v="${esc(a.ctr)}">Deschide contractul de management</button>`:''}`}</div>`,stay)}
+
+function sRos(h,stay){const r=rost(h);if(!r)return closeSheet();const days=Math.floor((now()-r.since)/DY)+1,trial=days<=90,A=AUD[r.n]||AUD['Lifestyle'];
+ const cs=T.camp.filter(c=>c.creators.includes(h)),ct=T.ctr.filter(c=>c.creator===h||(c.creators||[]).includes(h));
+ sheet(shd(av(r.h,r.c,'l'),'@'+esc(r.h),`${esc(r.n)} · ${trial?`probă, ziua ${days} din 90`:'în casă din '+dstr(r.since)}`,bd(busy(h)?['În campanie','w']:['Liber pentru campanii','ok']))+
+ `<div class="facts"><div><b>${fmt(r.f)}</b><small>urmăritori</small></div><div><b>${r.camp+cs.filter(c=>c.stage<5).length}</b><small>campanii cu ARSENI</small></div><div><b>${fmtM(r.earned)}</b><small>MDL câștigați prin casă</small></div><div><b>${trial?Math.max(0,90-days)+' zile':'12 luni'}</b><small>${trial?'până la finalul probei':'contract curent'}</small></div></div>
+ <div class="lbl">Publicul lui</div><div class="pub"><b>${esc(A[0])}</b><span>${esc(A[1])}</span></div>
+ <div class="lbl">Campanii</div>${cs.length?`<div class="match">${cs.map(c=>`<button class="cr dk" data-t="open" data-v="camp:${c.id}"><span class="av sq" style="background:${PAL[hash(c.brand)%6]}">${esc(c.brand[0])}</span><span><b>${esc(c.brand)}</b><small>${STG[c.stage]}</small></span><span class="pc">${Math.ceil(c.deliv/c.creators.length)} reels</span></button>`).join('')}</div>`:empty('Nicio campanie încă.')}
+ <div class="lbl">Contracte</div>${ct.length?`<div class="match">${ct.map(c=>`<button class="cr dk" data-t="open" data-v="ctr:${c.id}"><span class="av sq doc">${ic('doc',20)}</span><span><b>${esc(c.title)}</b><small>${esc(c.id)}</small></span><span class="pc">${bd(CTRST[c.st])}</span></button>`).join('')}</div>`:empty('Niciun contract încă.')}
+ <div class="sact">${ct.some(c=>c.type==='mgmt')?`<button class="ghost" data-t="close">Gata</button>`:`<button class="go" data-t="mkmgmt" data-v="${esc(h)}">Generează contractul de management</button>`}</div>`,stay)}
+
+function sReq(id,stay){const r=T.req.find(x=>x.id===id);if(!r)return closeSheet();const g=GOAL.find(x=>x[0]===r.goal)||GOAL[0],e=estim(r.budget),M=matchR(r),op=['nou','disc','oferta'].includes(r.st);
+ if(!r.pick)r.pick=M.slice(0,Math.min(3,e.n)).map(x=>x.h);
+ const why={L:'să se afle de lansare exact la publicul care contează',C:'să vină clienți noi, măsurați prin cod promo',I:'să crească încrederea tinerilor în brand',E:'să găsească oamenii potriviți pentru echipă'}[r.goal];
+ const cr=Math.round(r.budget*(100-T.com)/100);
+ sheet(shd(`<span class="av l sq" style="background:${PAL[hash(r.name)%6]}">${esc(r.name[0].toUpperCase())}</span>`,esc(r.name),`${esc(r.person)} · ${esc(r.contact)} · ${ago(r.t)}`,bd(REQST[r.st])+(r.src==='app'?bd(['din aplicație','y']):''))+
+ `<div class="bigm d">${mdl(r.budget)}<small>buget campanie · ${esc(r.dom.join(', '))}</small></div>
+ <div class="brief dark"><div class="row"><b>CE</b><span>${esc(g[1])}: ${e.r} reels cu ${e.n} creatori, ~${fmt(e.v)} vizualizări.</span></div><div class="row"><b>CINE</b><span>Public ${esc(r.age.join(', '))}: ${esc(r.aud.join(', ').toLowerCase())}.</span></div><div class="row"><b>DE CE</b><span>Pentru ca brandul ${esc(why)}.</span></div><div class="row"><b>AIDA</b><span>Hook în 2 secunde · povestea creatorului · produsul de aproape · cod promo.</span></div></div>
+ <div class="lbl">Creatori din casă potriviți${op?' · atinge ca să alegi':''}</div><div class="match">${M.slice(0,5).map(x=>`<button class="cr dk ${r.pick.includes(x.h)?'on':''}" data-t="pick" data-v="${esc(x.h)}" ${op?'':'disabled'}>${av(x.h,x.c)}<span><b>@${esc(x.h)}</b><small>${esc(x.n)} · ${fmt(x.f)}${busy(x.h)?' · în campanie':''}</small></span><span class="pc">${x.s}%</span></button>`).join('')}</div>
+ <div class="lbl">Cum se împarte bugetul</div><div class="split"><i style="width:${100-T.com}%;background:var(--y)"></i><i style="width:${T.com}%;background:var(--w)"></i></div><div class="leg"><span><i style="background:var(--y)"></i>Creatori: ${mdl(cr)}</span><span><i style="background:var(--w)"></i>ARSENI ${T.com}%: ${mdl(r.budget-cr)}</span></div>
+ <div class="sact">${op?`<button class="go" data-t="racc" ${r.pick.length?'':'disabled'}>${star('','width:20px;fill:var(--k)')} Acceptă și fă contractul</button><div class="two"><button class="ghost" data-t="offer">${r.st==='oferta'?'Retrimite oferta':'Trimite oferta'}</button><button class="ghost no" data-t="rref">Refuză</button></div>`
+  :r.st==='acc'?`<button class="go" data-t="gotoctr" data-v="${esc(r.ctr||'')}">Deschide contractul</button><button class="ghost" data-t="gotocamp" data-v="${esc(r.camp||'')}">Vezi campania</button>`:`<p class="note">Cererea a fost refuzată, iar brandul a primit un răspuns politicos.</p><button class="ghost" data-t="close">Gata</button>`}</div>`,stay)}
+
+function ctrDoc(c){const D=t=>dstr(t),A='<b>ARSENI</b>, casa creatorilor de conținut, Chișinău, Republica Moldova';let body;
+ if(c.type==='mgmt'){body=`<h2>Contract de management</h2><p class="pm">Nr. ${esc(c.id)} · Chișinău · ${D(c.start)}</p>
+ <h4>1. Părțile</h4><p>${A} („Casa”) și <b>${esc(c.cname||'')} (@${esc(c.creator)})</b>, creator de conținut („Creatorul”).</p>
+ <h4>2. Obiectul</h4><p>Casa îl reprezintă pe Creator în relația cu brandurile: caută și negociază colaborări, pregătește contractele și brief-urile, planifică publicările și, la cerere, asigură producția prin ARSENI Studio și cursuri prin ARSENI Academy.</p>
+ <h4>3. Durata</h4><p>3 luni de probă, de la ${D(c.start)} până la ${D(c.start+90*DY)}. Dacă nicio parte nu renunță cu 30 de zile înainte, contractul se prelungește pe 12 luni.</p>
+ <h4>4. Comisionul</h4><p>Casa reține <b>${+c.com||0}%</b> din onorariul fiecărei colaborări aduse sau negociate de Casă. Creatorul nu plătește taxe fixe. Restul de ${100-(+c.com||0)}% ajunge la Creator în 10 zile lucrătoare de la încasarea plății de la brand.</p>
+ <h4>5. Codul de etică ARSENI</h4><p>Creatorul marchează la vedere orice reclamă („#reclamă”), conform Legii nr. 62/2022 cu privire la publicitate, nu publică conținut care umilește oameni și verifică informațiile înainte să le posteze.</p>
+ <h4>6. Drepturile asupra conținutului</h4><p>Creatorul păstrează drepturile de autor. Brandurile primesc doar dreptul de folosire scris în fiecare contract de colaborare.</p>
+ <h4>7. Confidențialitate</h4><p>Prețurile, contractele și datele brandurilor rămân confidențiale.</p>
+ <h4>8. Încetarea</h4><p>În perioada de probă, oricare parte poate renunța cu 7 zile înainte. După probă, cu 30 de zile înainte.</p>`}
+ else{body=`<h2>Contract de colaborare</h2><p class="pm">Nr. ${esc(c.id)} · Chișinău · ${D(c.t)}</p>
+ <h4>1. Părțile</h4><p><b>${esc(c.brand)}</b>, reprezentat de ${esc(c.person||'')} („Clientul”), și ${A} („Agenția”).</p>
+ <h4>2. Obiectul</h4><p>Agenția realizează o campanie cu creatorii ${(c.creators||[]).map(h=>'@'+esc(h)).join(', ')}: <b>${+c.deliv||0} reels</b>, după brief-ul aprobat de Client.</p>
+ <h4>3. Termene</h4><p>Publicarea are loc între ${D(c.start)} și ${D(c.end)}. Clientul aprobă scriptul înainte de filmare și are o rundă de modificări inclusă.</p>
+ <h4>4. Onorariul</h4><p><b>${mdl(+c.sum||0)}</b>: 50% avans la semnare și 50% după publicare, în 5 zile lucrătoare de la factură. Prețul reflectă valoarea creată, nu orele lucrate.</p>
+ <h4>5. Marcarea publicității</h4><p>Fiecare material este marcat la vedere ca publicitate („#reclamă”), conform Legii nr. 62/2022 cu privire la publicitate.</p>
+ <h4>6. Folosirea materialelor</h4><p>Clientul poate folosi materialele pe canalele proprii timp de ${+c.rights||0} luni. Promovarea plătită cu fața creatorului se face doar cu acordul lui scris.</p>
+ <h4>7. Raportare</h4><p>Agenția trimite rapoarte la 7 și la 30 de zile după publicare: vizualizări, implicare și coduri promo folosite.</p>
+ <h4>8. Etica</h4><p>Agenția poate refuza mesaje care contrazic Codul de etică ARSENI: ură, umilire, informații false.</p>
+ <h4>9. Încetarea</h4><p>Oricare parte poate renunța în scris cu 15 zile înainte. Munca făcută până atunci se plătește.</p>`}
+ const other=c.st==='semnat'?(c.sig?`<img src="${c.sig}" alt="Semnătura">`:`<span class="sgn">${esc(c.by||'')}</span>`):'';
+ return `<div class="phd"><svg viewBox="0 0 770 126" class="pwm" role="img" aria-label="ARSENI"><use href="#wm"/></svg>${c.st==='semnat'?'<span class="stampd">Semnat</span>':star('','width:22px;fill:#121212')}</div>${body}
+ <div class="sig"><div><small>Pentru ARSENI</small>${c.st!=='draft'?'<span class="sgn">Sorin Hodoroja</span>':''}</div><div><small>${c.type==='mgmt'?'Creatorul':'Clientul'}${c.st==='semnat'&&c.by?' · '+esc(c.by):''}</small>${other}</div></div>
+ ${c.st==='semnat'?`<p class="pm" style="margin-top:12px">Semnat pe ${D(c.signed)}.</p>`:''}`}
+function ctrForm(c){const f=(k,l,v,t='number')=>`<label>${l}<input type="${t}" data-ti="c.${k}" value="${esc(v)}" inputmode="${t==='number'?'numeric':'text'}"></label>`;
+ return `<div class="form">${c.type==='mgmt'?f('com','Comision ARSENI (%)',c.com)+f('start','Începe pe',iso(c.start),'date')
+  :f('sum','Onorariu (MDL)',c.sum)+f('deliv','Livrabile (reels)',c.deliv)+f('rights','Folosire (luni)',c.rights)+f('end','Publicare până la',iso(c.end),'date')}</div>`}
+function sCtr(id,stay){const c=T.ctr.find(x=>x.id===id);if(!c)return closeSheet();const ed=c.st==='draft';
+ sheet(shd(`<span class="av l sq doc">${ic('doc',26)}</span>`,esc(c.id),esc(c.title),bd(CTRST[c.st]))+(ed?ctrForm(c):'')+
+ `<div class="paper" id="paper">${ctrDoc(c)}</div>
+ ${c.st==='trimis'?`<div class="lbl">Semnătura ${c.type==='mgmt'?'creatorului':'clientului'}, cu degetul</div><canvas class="pad" id="pad" aria-label="Chenar pentru semnătură"></canvas><div class="two"><input class="tin" data-ti="by" placeholder="Numele celui care semnează" value="${esc(c.byDraft||'')}" aria-label="Numele"><button class="ghost" data-t="padclr" style="margin:0">Șterge</button></div>`:''}
+ <div class="sact ${c.st==='trimis'?'nost':''}">${ed?`<button class="go" data-t="send">Trimite la semnat →</button>`:c.st==='trimis'?`<button class="go" data-t="sign">Semnează contractul ✱</button>`:`<button class="go" data-t="print">Printează sau salvează PDF</button>`}
+ <div class="two"><button class="ghost" data-t="ctxt">Copiază textul</button>${c.st!=='semnat'?`<button class="ghost" data-t="print">PDF</button>`:`<button class="ghost" data-t="close">Gata</button>`}</div><p class="note" style="margin:0">Model orientativ. Înainte de folosire reală, îl verifică un jurist.</p></div>`,stay);
+ if(c.st==='trimis')requestAnimationFrame(padInit)}
+function padInit(){const cv=$('#pad');if(!cv)return;const r=cv.getBoundingClientRect(),dp=window.devicePixelRatio||1;cv.width=Math.max(1,r.width*dp);cv.height=Math.max(1,r.height*dp);
+ const x=cv.getContext('2d');x.scale(dp,dp);x.lineWidth=2.6;x.lineCap='round';x.lineJoin='round';x.strokeStyle=x.fillStyle='#121212';padDirty=false;let dn=false,lx=0,ly=0;
+ const P=e=>{const b=cv.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+ cv.onpointerdown=e=>{dn=true;[lx,ly]=P(e);try{cv.setPointerCapture(e.pointerId)}catch(_){}x.beginPath();x.arc(lx,ly,1.3,0,7);x.fill();padDirty=true};
+ cv.onpointermove=e=>{if(!dn)return;const[nx,ny]=P(e);x.beginPath();x.moveTo(lx,ly);x.lineTo(nx,ny);x.stroke();lx=nx;ly=ny};
+ cv.onpointerup=cv.onpointercancel=()=>{dn=false}}
+
+function sCamp(id,stay){const c=T.camp.find(x=>x.id===id);if(!c)return closeSheet();const nx=c.stage<5?STG[c.stage+1]:null;
+ sheet(shd(`<span class="av l sq" style="background:${PAL[hash(c.brand)%6]}">${esc(c.brand[0])}</span>`,esc(c.brand),`${esc(c.id)} · ${c.deliv} reels · ${c.stage>=5?'încheiată':'termen '+due(c.due)}`,bd([STG[c.stage],c.stage>=5?'ok':'y']))+
+ `<div class="stepper">${STG.map((s,i)=>`<div class="${i<c.stage||c.stage===5?'done':i===c.stage?'now':''}"><i>${i<c.stage||c.stage===5?'✓':i+1}</i><span>${s}</span></div>`).join('')}</div>
+ <div class="lbl">Creatorii</div><div class="match">${c.creators.map(h=>{const r=rost(h)||{n:'',f:0};return `<button class="cr dk" data-t="open" data-v="ros:${esc(h)}">${av(h,r.c)}<span><b>@${esc(h)}</b><small>${esc(r.n)} · ${fmt(r.f)}</small></span><span class="pc">${Math.ceil(c.deliv/c.creators.length)} reels</span></button>`}).join('')}</div>
+ <div class="lbl">Etica, înainte de publicare</div><div class="opts"><button class="opt ${c.ad?'on':''}" id="adbtn" data-t="ad" ${c.stage>=4?'disabled':''}><span class="ic">#</span><span><b>#reclamă marcată pe fiecare clip</b><small>Legea nr. 62/2022. Fără ea, nu publicăm.</small></span><span class="tk">✓</span></button></div>
+ ${c.rep?`<div class="lbl">Raport la 30 de zile</div><div class="facts"><div><b>${fmt(c.rep.v)}</b><small>vizualizări</small></div><div><b>${String(c.rep.er).replace('.',',')}%</b><small>implicare</small></div><div><b>${c.rep.c}</b><small>coduri promo folosite</small></div><div><b>${fmt(Math.round(c.rep.v/c.deliv))}</b><small>vizualizări pe clip</small></div></div>`:''}
+ <div class="sact">${nx?`<button class="go" data-t="adv">Următorul pas: ${nx} →</button>`:`<button class="go" data-t="rcopy">Copiază raportul pentru brand</button>`}${c.stage>0&&c.stage<5?`<button class="ghost" data-t="back1">← Înapoi la ${STG[c.stage-1]}</button>`:''}</div>`,stay)}
+
+function sPay(id,stay){const p=T.pay.find(x=>x.id===id);if(!p)return closeSheet();const ar=Math.round(p.sum*T.com/100);
+ sheet(shd(`<span class="av l sq doc">${ic('coin',26)}</span>`,esc(p.id),`${esc(p.brand)}${p.note?' · '+esc(p.note):''}`,bd(PAYST[p.st]))+
+ `<div class="bigm d">${mdl(p.sum)}<small>${p.st==='platit'?'plătit pe '+dstr(p.paid):'scadent pe '+dstr(p.due)+' · '+due(p.due)}</small></div>
+ <div class="split"><i style="width:${100-T.com}%;background:var(--y)"></i><i style="width:${T.com}%;background:var(--w)"></i></div><div class="leg"><span><i style="background:var(--y)"></i>Creatori: ${mdl(p.sum-ar)}</span><span><i style="background:var(--w)"></i>ARSENI: ${mdl(ar)}</span></div>
+ <div class="sact">${p.st!=='platit'?`<button class="go" data-t="paid">Marchează plătit ✓</button><button class="ghost" data-t="remind">Copiază un memento politicos</button>`:`<button class="ghost" data-t="close">Gata</button>`}</div>`,stay)}
+
+function sNew(_,stay){const L=nc.type==='mgmt'?T.roster.map(r=>r.h):T.req.filter(r=>r.st!=='ref').map(r=>r.name);if(!L.includes(nc.who))nc.who=L[0]||'';
+ sheet(shd(`<span class="av l sq doc">${ic('doc',26)}</span>`,'Contract nou','Din modelele ARSENI, gata de completat','')+
+ `<div class="seg" style="margin-top:16px"><button class="${nc.type==='mgmt'?'on':''}" data-t="nctype" data-v="mgmt">Management creator</button><button class="${nc.type==='colab'?'on':''}" data-t="nctype" data-v="colab">Colaborare brand</button></div>
+ <div class="lbl">${nc.type==='mgmt'?'Creatorul':'Brandul'}</div><div class="chips">${L.map(x=>`<button class="chip ${nc.who===x?'on':''}" data-t="ncwho" data-v="${esc(x)}">${nc.type==='mgmt'?'@':''}${esc(x)}</button>`).join('')}</div>
+ <p class="note">${nc.type==='mgmt'?'3 luni de probă, comisionul casei din Setări, Codul de etică inclus.':'Onorariul, creatorii și livrabilele se iau din brief-ul brandului.'}</p>
+ <div class="sact"><button class="go" data-t="nccreate" ${nc.who?'':'disabled'}>Generează ciorna ✱</button></div>`,stay)}
+
+function createMgmt(h,cname){const c={id:nid('C-'),type:'mgmt',title:'Management · @'+h,creator:h,cname,com:T.com,start:now(),st:'draft',t:now()};T.ctr.unshift(c);return c}
+function createColab(r){const e=estim(r.budget),c={id:nid('C-'),type:'colab',title:'Colaborare · '+r.name,brand:r.name,person:r.person,creators:(r.pick&&r.pick.length?r.pick:matchR(r).slice(0,Math.min(3,e.n)).map(x=>x.h)).slice(),sum:r.budget,deliv:e.r,rights:6,start:now()+3*DY,end:now()+33*DY,st:'draft',t:now()};T.ctr.unshift(c);return c}
+async function copyTxt(txt,msg){try{await navigator.clipboard.writeText(txt);toast(msg||'Copiat ✱')}catch(e){const sp=$('#sheet .sp');if(sp){sp.querySelectorAll('textarea.cp').forEach(x=>x.remove());const ta=document.createElement('textarea');ta.className='cp';ta.value=txt;ta.readOnly=true;(sp.querySelector('.sact')||sp).prepend(ta);ta.select()}toast('Selectează textul și copiază-l')}}
+function shake(el){if(!el)return;el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake')}
+const upd=top=>{tsave();if(cur)topen(cur[0],cur[1],true);trender(true);if(top===1){const s=$('#sheet .sp');s&&s.scrollTo({top:0,behavior:'smooth'})}};
+
+document.addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b||b.disabled)return;const k=b.dataset.t,v=b.dataset.v;
+ if(!app.contains(b))buzz();
+ const C=cur&&cur[1];const A=()=>T.apps.find(x=>x.id===C),R=()=>T.req.find(x=>x.id===C),K=()=>T.ctr.find(x=>x.id===C),P=()=>T.camp.find(x=>x.id===C),F=()=>T.pay.find(x=>x.id===C);
+ switch(k){
+ case 'team':tenter(1);break;
+ case 'me':{const fromGate=!!document.querySelector('.scr.tgate:not(.out)');T.me=+v;tsave();if(fromGate)team(1);else{trender(true);toast('Bună, '+who()+' ✱')}break}
+ case 'nav':closeSheet();if(v!==tv){tv=v;tf='toate';tq=''}if(b.dataset.seg){tseg=b.dataset.seg;tf='toate'}trender();break;
+ case 'seg':tseg=v;tf='toate';trender(true);break;
+ case 'f':tf=v;trender(true);break;
+ case 'open':{const i=v.indexOf(':');topen(v.slice(0,i),v.slice(i+1));break}
+ case 'close':closeSheet();break;
+ case 'exit':closeSheet();home(-1);break;
+ case 'chk':{const a=A();a.chk=a.chk||{};a.chk[v]=!a.chk[v];if(a.st==='nou'){a.st='verif';addLog(`@${a.h} a intrat în verificare`)}upd();break}
+ case 'accept':{const a=A();a.st='acc';a.dec=now();if(!rost(a.h))T.roster.unshift({h:a.h,n:a.niche[0],f:a.f,c:PAL[hash(a.h)%6],tags:NT[a.niche[0]]||['Evenimente'],since:now(),camp:0,earned:0});
+  const c=createMgmt(a.h,(a.name||a.h).split(' ')[0]);a.ctr=c.id;addLog(`@${a.h} a intrat în casă. Contractul ${c.id} e gata`);confetti();toast(`@${a.h} e în casă ✱`);upd(1);break}
+ case 'info':{const a=A();a.st='info';addLog(`Am cerut detalii de la @${a.h}`);upd();copyTxt(msgFor(a),'Mesajul e copiat ✱');break}
+ case 'rej':rej=true;upd();setTimeout(()=>{const s=$('#sheet .sp');s&&s.scrollTo({top:s.scrollHeight,behavior:'smooth'})},30);break;
+ case 'rejx':rej=false;upd();break;
+ case 'rejr':{const a=A(),r=REASON[+v];a.st='resp';a.reason=r[1];a.reasonL=r[0];rej=false;addLog(`@${a.h}: nu acum (${r[0].toLowerCase()})`);upd(1);copyTxt(msgFor(a),'Răspunsul politicos e copiat');break}
+ case 'msg':copyTxt(msgFor(A()),'Mesajul e copiat ✱');break;
+ case 'mkmgmt':{const c=createMgmt(v,cap(v.split(/[._]/)[0]));addLog(`Ciornă nouă: ${c.title}`);tsave();trender(true);topen('ctr',c.id,true);break}
+ case 'pick':{const r=R(),i=r.pick.indexOf(v);if(i>=0)r.pick.splice(i,1);else if(r.pick.length<6)r.pick.push(v);if(r.st==='nou')r.st='disc';upd();break}
+ case 'offer':{const r=R(),e=estim(r.budget);r.st='oferta';addLog(`Ofertă trimisă către ${r.name}`);upd();
+  copyTxt(`Bună, ${r.person.split(',')[0]}! Pentru ${r.name} propunem ${e.r} reels cu ${r.pick.map(h=>'@'+h).join(', ')}, aproximativ ${fmt(e.v)} vizualizări. Investiția: ${mdl(r.budget)}. Include reclama marcată corect, o rundă de modificări și rapoarte la 7 și 30 de zile. Echipa ARSENI ✱`,'Oferta e copiată, trimite-o brandului');break}
+ case 'racc':{const r=R(),c=createColab(r),kk={id:nid('K-'),brand:r.name,creators:c.creators.slice(),stage:0,due:c.end,deliv:c.deliv,ad:false};T.camp.unshift(kk);r.st='acc';r.ctr=c.id;r.camp=kk.id;
+  addLog(`${r.name}: cerere acceptată, contractul ${c.id} și campania ${kk.id}`);confetti();toast('Contract și campanie create ✱');upd(1);break}
+ case 'rref':{const r=R();r.st='ref';addLog(`Cererea ${r.name} a fost refuzată`);upd();copyTxt(`Bună, ${r.person.split(',')[0]}! Mulțumim pentru încredere. Acum nu putem prelua campania pentru ${r.name}: nu avem creatori potriviți liberi în perioada asta. Revenim cu drag când se schimbă ceva. Echipa ARSENI ✱`,'Răspunsul politicos e copiat');break}
+ case 'gotoctr':{const id=v||((T.ctr.find(c=>cur&&c.brand===(R()||{}).name)||{}).id);id?topen('ctr',id,true):toast('Contractul nu e aici');break}
+ case 'gotocamp':{v?topen('camp',v,true):toast('Campania nu e aici');break}
+ case 'send':{const c=K();c.st='trimis';c.sent=now();addLog(`${c.title}: trimis la semnat`);upd();copyTxt(`Bună! Contractul ${c.id} (${c.title}) e gata de semnat. Îl citești și îl semnezi direct din link. Echipa ARSENI ✱`,'Trimis. Mesajul pentru semnare e copiat');break}
+ case 'padclr':padInit();break;
+ case 'sign':{const c=K(),pad=$('#pad'),nm=(c.byDraft||'').trim();
+  if(!padDirty){toast('Semnează mai întâi în chenarul alb');shake(pad);break}
+  if(nm.length<2){toast('Scrie numele celui care semnează');shake($('#sheet [data-ti="by"]'));break}
+  c.sig=pad.toDataURL('image/png');c.st='semnat';c.signed=now();c.by=nm;delete c.byDraft;
+  if(c.type==='colab'&&!T.pay.some(p=>p.ctr===c.id)){const tot=+c.sum||0,half=Math.round(tot/2);T.pay.unshift({id:nid('F-'),brand:c.brand,sum:tot-half,st:'asteapta',due:c.end+5*DY,note:'Final 50%',ctr:c.id});T.pay.unshift({id:nid('F-'),brand:c.brand,sum:half,st:'asteapta',due:now()+5*DY,note:'Avans 50%',ctr:c.id})}
+  addLog(`${c.title}: semnat de ${nm}`);confetti();toast('Contract semnat ✱');upd();setTimeout(()=>{const p=$('#paper');p&&p.scrollIntoView({behavior:'smooth',block:'start'})},60);break}
+ case 'ctxt':{const p=$('#paper');copyTxt(p?p.innerText:'','Textul contractului e copiat');break}
+ case 'print':{const c=K();$('#print').innerHTML=`<div class="paper">${ctrDoc(c)}</div>`;document.body.classList.add('printing');try{window.print()}catch(_){}setTimeout(()=>document.body.classList.remove('printing'),800);break}
+ case 'ad':{const c=P();c.ad=!c.ad;if(c.ad)addLog(`${c.brand}: #reclamă confirmată pe toate clipurile`);upd();break}
+ case 'adv':{const c=P();if(c.stage+1===4&&!c.ad){toast('Mai întâi bifează #reclamă ✱');shake($('#adbtn'));break}
+  c.stage++;if(c.stage===5&&!c.rep)c.rep={v:c.deliv*(18000+hash(c.id)%24000),er:+(4+hash(c.brand)%40/10).toFixed(1),c:40+hash(c.id+c.brand)%300};
+  addLog(`${c.brand}: ${STG[c.stage].toLowerCase()}`);if(c.stage>=4)confetti();toast(`${STG[c.stage]} ✓`);upd();break}
+ case 'back1':{const c=P();c.stage=Math.max(0,c.stage-1);upd();break}
+ case 'rcopy':{const c=P(),r=c.rep;copyTxt(`Raport ARSENI · ${c.brand}\n${fmt(r.v)} vizualizări · ${String(r.er).replace('.',',')}% implicare · ${r.c} coduri promo folosite\n${c.deliv} reels cu ${c.creators.map(h=>'@'+h).join(', ')}, toate marcate #reclamă.\nMulțumim! Echipa ARSENI ✱`,'Raportul e copiat ✱');break}
+ case 'paid':{const p=F();p.st='platit';p.paid=now();const c=T.ctr.find(x=>x.id===p.ctr);
+  if(c&&c.creators&&c.creators.length){const each=Math.round(p.sum*(100-T.com)/100/c.creators.length);c.creators.forEach(h=>{const r=rost(h);if(r)r.earned+=each})}
+  addLog(`${p.brand} a plătit ${mdl(p.sum)} (${p.id})`);confetti();toast('Încasat ✱');upd();break}
+ case 'remind':{const p=F();copyTxt(`Bună ziua! Vă reamintim de factura ${p.id}${p.note?' ('+p.note.toLowerCase()+')':''}, ${mdl(p.sum)}, cu scadența pe ${dstr(p.due)}. Mulțumim! Echipa ARSENI ✱`,'Memento copiat');break}
+ case 'newctr':nc={type:'mgmt',who:''};topen('new','');break;
+ case 'nctype':nc.type=v;nc.who='';sNew('',true);break;
+ case 'ncwho':nc.who=v;sNew('',true);break;
+ case 'nccreate':{let c;if(nc.type==='mgmt')c=createMgmt(nc.who,cap(nc.who.split(/[._]/)[0]));else{const r=T.req.find(x=>x.name===nc.who);if(!r)break;c=createColab(r)}
+  addLog(`Ciornă nouă: ${c.title}`);tsave();trender(true);topen('ctr',c.id,true);toast('Ciorna e gata ✱');break}
+ case 'export':copyTxt(JSON.stringify(T,null,1),'Datele sunt copiate');break;
+ case 'reset':{if(!b.dataset.armed){b.dataset.armed='1';b.textContent='Sigur? Atinge din nou';b.classList.add('no');break}const me=T.me;T=seed();T.me=me;tsave();tv='set';trender(true);toast('Datele demo sunt resetate');break}
+ }});
+document.addEventListener('input',e=>{const t=e.target;
+ if(t.dataset.ti){const k=t.dataset.ti,v=t.value;
+  if(k==='q'){tq=v;const L=$('#tl');if(L)L.innerHTML=tv==='br'?listBr():listCre();return}
+  if(k==='note'&&cur){const a=T.apps.find(x=>x.id===cur[1]);if(a){a.note=v;tsave()}return}
+  if(k==='by'&&cur){const c=T.ctr.find(x=>x.id===cur[1]);if(c){c.byDraft=v;tsave()}return}
+  if(k.startsWith('c.')&&cur){const c=T.ctr.find(x=>x.id===cur[1]);if(!c)return;const f=k.slice(2);
+   if(f==='start'||f==='end'){if(v)c[f]=new Date(v+'T12:00:00').getTime()}else c[f]=Math.max(0,Math.min(f==='com'?50:1e9,+v||0));
+   tsave();const p=$('#paper');if(p)p.innerHTML=ctrDoc(c);return}}
+ if(t.dataset.tr==='com'){T.com=+t.value;t.style.setProperty('--p',(T.com-10)/20*100+'%');$('#cv').textContent=T.com+'%';tsave()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+window.addEventListener('afterprint',()=>document.body.classList.remove('printing'));
 
 /* ---------- events ---------- */
 app.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;buzz();
@@ -333,7 +925,7 @@ app.addEventListener('input',e=>{const t=e.target;
   else{S.b.budget=v;const b=budget(v);$('#bv').innerHTML=esc(mdl(b))+'<small>buget campanie</small>';$('#ev').innerHTML=estHTML(estim(b))}
   if(v%10===0)buzz()}});
 app.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT'){const b=app.querySelector('.scr:not(.out) [data-next]');if(b&&!b.disabled)b.click()}});
-const start=location.hash.replace('#','');if(start==='creator'||start==='brand'){role=start;flow(1)}else home(1);
+const start=location.hash.replace('#','');if(start==='creator'||start==='brand'){role=start;flow(1)}else if(start==='echipa')tenter(1);else home(1);
 }
 </script>
 </body>
