@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFF700">
+<title>ARSENI · Aplicația</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: energetic, direct, Gen Z — like a creator's onboarding, not a form.
+IDEA: a collectible creator card / an instant brief, printed by the ARSENI star.
+PICTURE: the spinning ARSENI star; at the end, a tilting holo card you can show off.
+COLOUR and TYPE: #FFF700 yellow, #121212 black, #FAF7F0 warm white; Unbounded Black + Inter.
+LAYOUT: one thumb-sized column, one question per screen, big tap targets, sticky Next.
+*/
+:root{--y:#FFF700;--y2:#C7BF00;--k:#121212;--k2:#1E1E1E;--k3:#2A2A2A;--w:#FAF7F0;--g:#A8A49C;--g2:#6E6A63;
+--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);color-scheme:dark}
+*{box-sizing:border-box;min-width:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{margin:0;background:var(--k);color:var(--w);font:16px/1.5 Inter,system-ui,-apple-system,sans-serif;overflow-x:clip}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+.d{font-family:Unbounded,Inter,sans-serif;font-weight:900;letter-spacing:-.01em;line-height:1.05;text-wrap:balance}
+#app{min-height:100dvh;max-width:520px;margin:0 auto;position:relative;overflow:hidden}
+.scr{position:absolute;inset:0;display:flex;flex-direction:column;padding:calc(var(--sat) + 18px) 20px calc(var(--sab) + 20px);animation:in .45s cubic-bezier(.2,.9,.2,1) both;overflow-y:auto}
+.scr.out{animation:out .25s ease both;pointer-events:none}
+@keyframes in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes out{to{opacity:0;transform:translateX(-24px)}}
+.back .scr{animation-name:inb}@keyframes inb{from{opacity:0;transform:translateX(-28px)}}
+/* home */
+.home{background:var(--y);color:var(--k);padding-bottom:calc(var(--sab) + 16px)}
+.home .top{display:flex;justify-content:space-between;align-items:center}
+.wm{height:22px;fill:var(--k)}
+.pill{font:600 13px Inter;padding:7px 12px;border-radius:99px;background:var(--k);color:var(--y)}
+.hero{flex:1;display:grid;place-items:center;min-height:220px;position:relative}
+.star{width:min(52vw,250px);fill:var(--k);animation:spin 6s cubic-bezier(.7,0,.2,1) infinite;filter:drop-shadow(0 14px 0 rgba(0,0,0,.08))}
+@keyframes spin{0%,18%{transform:rotate(0) scale(1)}30%{transform:rotate(-100deg) scale(.9)}40%,58%{transform:rotate(-72deg) scale(1)}70%{transform:rotate(-170deg) scale(.9)}80%,100%{transform:rotate(-144deg) scale(1)}}
+.marq{overflow:hidden;margin:0 -20px;border-block:2px solid var(--k);padding:8px 0;white-space:nowrap}
+.marq div{display:inline-block;animation:mq 16s linear infinite;font:900 15px Unbounded,sans-serif}
+@keyframes mq{to{transform:translateX(-50%)}}
+.home h1{font-size:clamp(34px,10vw,46px);margin:18px 0 6px}
+.home p.sub{margin:0 0 18px;font-weight:500}
+.roles{display:grid;gap:12px}
+.role{display:flex;align-items:center;gap:14px;text-align:left;padding:18px;border-radius:24px;min-height:84px;transition:transform .15s}
+.role:active{transform:scale(.97)}
+.role.c{background:var(--k);color:var(--w)}.role.b{background:var(--w);color:var(--k)}
+.role .ic{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center}
+.role.c .ic{background:var(--y)}.role.b .ic{background:var(--k)}
+.role b{display:block;font:900 20px Unbounded,sans-serif}
+.role span{font-size:14px;opacity:.75}
+.role .ar{margin-left:auto;font-size:24px}
+.fine{font-size:13px;color:var(--g2);text-align:center;margin-top:14px}
+/* flow */
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.bk{width:44px;height:44px;border-radius:14px;background:var(--k3);display:grid;place-items:center;font-size:20px;flex:none}
+.prog{flex:1;height:6px;border-radius:9px;background:var(--k3);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--y);border-radius:9px;transition:width .5s cubic-bezier(.2,.9,.2,1)}
+.cnt{font:600 13px Inter;color:var(--g);flex:none}
+.q{font-size:clamp(28px,8vw,36px);margin:4px 0 8px}
+.hint{color:var(--g);margin:0 0 20px}
+.field{display:flex;align-items:center;background:var(--k2);border:2px solid var(--k3);border-radius:18px;padding:0 16px;min-height:60px;margin-bottom:12px;transition:border-color .2s}
+.field:focus-within{border-color:var(--y)}
+.field span{color:var(--y);font:900 20px Unbounded,sans-serif;margin-right:4px}
+.field input{flex:1;border:0;background:none;outline:0;font-size:18px;font-weight:600;height:56px}
+.lbl{font:600 13px Inter;color:var(--g);margin:14px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:10px 16px;border-radius:99px;background:var(--k2);border:2px solid var(--k3);font-weight:600;font-size:15px;transition:all .15s}
+.chip.on{background:var(--y);border-color:var(--y);color:var(--k)}
+.chip:active{transform:scale(.95)}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:14px;align-items:center;text-align:left;padding:16px;border-radius:20px;background:var(--k2);border:2px solid var(--k3);min-height:72px;transition:all .15s}
+.opt .ic{flex:none;width:44px;height:44px;border-radius:14px;background:var(--k3);display:grid;place-items:center;font:900 18px Unbounded,sans-serif;color:var(--y)}
+.opt b{display:block;font-size:16px}.opt small{color:var(--g);font-size:14px}
+.opt .tk{margin-left:auto;flex:none;width:26px;height:26px;border-radius:9px;border:2px solid var(--g2);display:grid;place-items:center;font-size:15px;color:transparent}
+.opt.on{border-color:var(--y)}.opt.on .tk{background:var(--y);border-color:var(--y);color:var(--k)}
+.opt.on .ic{background:var(--y);color:var(--k)}
+.big{font-size:clamp(56px,18vw,84px);color:var(--y);margin:18px 0 0;text-align:center;white-space:nowrap}
+#bv{font-size:clamp(34px,11vw,56px)}
+.big small{display:block;font:600 15px Inter;color:var(--g);margin-top:8px;letter-spacing:0}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:none;margin:22px 0 6px}
+input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:9px;background:linear-gradient(90deg,var(--y) var(--p,30%),var(--k3) var(--p,30%))}
+input[type=range]::-moz-range-track{height:10px;border-radius:9px;background:var(--k3)}
+input[type=range]::-moz-range-progress{height:10px;border-radius:9px;background:var(--y)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:34px;height:34px;border-radius:50%;background:var(--y);border:5px solid var(--k);margin-top:-12px;box-shadow:0 0 0 2px var(--y)}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--y);border:5px solid var(--k)}
+.ticks{display:flex;justify-content:space-between;color:var(--g);font-size:13px}
+.tier{margin-top:18px;padding:16px;border-radius:18px;background:var(--k2);display:flex;gap:12px;align-items:center}
+.tier b{color:var(--y)}
+.grow{flex:1}
+.next{position:sticky;bottom:0;margin-top:20px;padding-top:12px;background:linear-gradient(transparent,var(--k) 30%)}
+.go{width:100%;min-height:60px;border-radius:20px;background:var(--y);color:var(--k);font:900 17px Unbounded,sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s,opacity .2s}
+.go:disabled{opacity:.35}
+.go:active:not(:disabled){transform:scale(.97)}
+.ghost{width:100%;min-height:52px;border-radius:18px;background:var(--k2);font-weight:600;margin-top:10px}
+/* brand theme */
+.brand{background:var(--w);color:var(--k)}
+.brand .bk,.brand .prog{background:#E4DFD3}.brand .cnt,.brand .hint,.brand .lbl,.brand .opt small,.brand .ticks{color:var(--g2)}
+.brand .prog i,.brand .go{background:var(--k);color:var(--y)}
+.brand .field,.brand .chip,.brand .opt,.brand .tier{background:#fff;border-color:#E4DFD3}
+.brand .field:focus-within{border-color:var(--k)}.brand .field span{color:var(--k)}
+.brand .chip.on{background:var(--k);border-color:var(--k);color:var(--y)}
+.brand .opt .ic{background:#F1ECE0;color:var(--k)}.brand .opt.on{border-color:var(--k)}.brand .opt.on .ic,.brand .opt.on .tk{background:var(--k);color:var(--y);border-color:var(--k)}
+.brand .big{color:var(--k)}.brand .tier b{color:var(--k)}
+.brand .next{background:linear-gradient(transparent,var(--w) 30%)}.brand .ghost{background:#E4DFD3}
+.brand input[type=range]::-webkit-slider-runnable-track{background:linear-gradient(90deg,var(--k) var(--p,30%),#E4DFD3 var(--p,30%))}
+.brand input[type=range]::-webkit-slider-thumb{background:var(--y);border-color:var(--k);box-shadow:0 0 0 2px var(--k)}
+.brand input[type=range]::-moz-range-progress{background:var(--k)}
+/* result */
+.res{text-align:center}
+.res .q{margin-top:6px}
+.stage{perspective:900px;margin:10px auto 18px;width:min(100%,340px)}
+.card{position:relative;aspect-ratio:5/7;border-radius:26px;background:var(--y);color:var(--k);padding:22px;text-align:left;transform-style:preserve-3d;transition:transform .12s ease-out;box-shadow:0 30px 60px -20px rgba(255,247,0,.35);overflow:hidden;animation:pop .7s cubic-bezier(.2,1.4,.3,1) both}
+@keyframes pop{from{transform:scale(.6) rotate(-8deg);opacity:0}}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,transparent 60%);transform:translateX(var(--sh,-60%));transition:transform .12s;pointer-events:none;mix-blend-mode:soft-light}
+.card .cs{position:absolute;right:-48px;bottom:-40px;width:230px;fill:var(--k);opacity:.95;animation:spin 6s cubic-bezier(.7,0,.2,1) infinite}
+.card .id{display:flex;justify-content:space-between;font:700 12px Inter}
+.card h3{font-size:26px;margin:26px 0 4px;word-break:break-word}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.card .tags span{font:600 12px Inter;padding:5px 9px;border-radius:99px;background:var(--k);color:var(--y)}
+.card .aud{font-size:14px;max-width:72%}
+.card .aud b{display:block;font:900 15px Unbounded,sans-serif;margin-bottom:2px}
+.card .stamp{display:inline-block;margin-top:14px;font:900 13px Unbounded,sans-serif;padding:6px 10px;border:3px solid var(--k);border-radius:10px;transform:rotate(-4deg);text-transform:uppercase}
+.card h3{margin-top:12px!important}
+.card .score{position:absolute;left:22px;bottom:20px;font:900 40px Unbounded,sans-serif;line-height:1}
+.card .score small{display:block;font:600 12px Inter}
+.steps{text-align:left;display:grid;gap:10px;margin:6px 0 8px}
+.steps div{display:flex;gap:12px;align-items:center;padding:14px;border-radius:16px;background:var(--k2)}
+.steps i{flex:none;width:34px;height:34px;border-radius:11px;background:var(--y);color:var(--k);display:grid;place-items:center;font:900 14px Unbounded,sans-serif;font-style:normal}
+.brief{text-align:left;background:#fff;border:2px solid #E4DFD3;border-radius:24px;padding:20px;animation:pop .7s cubic-bezier(.2,1.4,.3,1) both}
+.brief .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.brief .row{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:10px 0;border-top:1px solid #EEE8DC}
+.brief .row b{font:900 13px Unbounded,sans-serif}
+.est{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+.est div{background:var(--k);color:var(--y);border-radius:16px;padding:12px 8px;text-align:center}
+.est b{display:block;font:900 clamp(16px,5vw,20px) Unbounded,sans-serif;white-space:nowrap}
+.est small{font-size:12px;color:var(--w)}
+.match{display:grid;gap:8px;text-align:left}
+.cr{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:#fff;border:2px solid #E4DFD3}
+.av{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:900 15px Unbounded,sans-serif;color:var(--k)}
+.cr .pc{margin-left:auto;font:900 16px Unbounded,sans-serif}
+.cr small{display:block;color:var(--g2);font-size:13px}
+.note{font-size:13px;color:var(--g);margin:8px 0 0}
+.brand .note{color:var(--g2)}
+.toast{position:fixed;left:50%;bottom:calc(var(--sab) + 24px);transform:translate(-50%,120px);background:var(--y);color:var(--k);font-weight:700;padding:12px 18px;border-radius:99px;transition:transform .3s;z-index:9}
+.toast.on{transform:translate(-50%,0)}
+.cf{position:fixed;top:-40px;width:22px;fill:var(--y);z-index:8;animation:fall var(--t) cubic-bezier(.3,.1,.6,1) forwards;pointer-events:none}
+@keyframes fall{to{transform:translate(var(--x),110vh) rotate(var(--r))}}
+textarea.cp{width:100%;min-height:140px;margin-top:10px;border-radius:14px;padding:12px;font:14px/1.5 Inter;background:#fff;color:var(--k);border:2px solid #E4DFD3}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (min-width:521px){body{background:#0b0b0b}#app{box-shadow:0 0 0 1px #222}}
+</style>
+</head>
+<body>
+<div id="app" aria-live="polite"></div>
+<div class="toast" id="toast" role="status"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="st" viewBox="0 0 339 350"><path d="M230.811 36L221.953 126.782L338.57 78.2998L333.38 178.82L244.312 198.447L326.46 294.38L229.25 320.51L183.058 241.859L117.21 349.63L62.3203 265.25L122.841 197.017L0 167.69L63.2803 89.4199L146.881 125.898L136.811 0L230.811 36Z"/></symbol>
+<symbol id="wm" viewBox="0 0 770 126"><path d="M38.56 102.72V69.92H120.32V102.72H38.56ZM107.68 2.88L160.32 122.88H116.32L74.88 21.12H85.44L44 122.88H0L52.64 2.88H107.68Z"/><path d="M196.335 54.24H236.655C240.708 54.24 243.855 53.28 246.095 51.36C248.335 49.44 249.455 46.667 249.455 43.04C249.455 39.413 248.335 36.64 246.095 34.72C243.855 32.8 240.708 31.84 236.655 31.84H190.575L209.135 13.28V122.88H167.855V2.88H243.055C252.655 2.88 261.028 4.587 268.175 8C275.428 11.307 281.028 15.947 284.975 21.92C289.028 27.893 291.055 34.933 291.055 43.04C291.055 50.933 289.028 57.92 284.975 64C281.028 69.973 275.428 74.613 268.175 77.92C261.028 81.227 252.655 82.88 243.055 82.88H196.335V54.24ZM210.415 66.72H256.015L295.855 122.88H248.655L210.415 66.72Z"/><path d="M301.474 83.36H343.394C343.82 85.707 345.047 87.733 347.074 89.44C349.1 91.04 351.874 92.32 355.394 93.28C358.914 94.133 363.127 94.56 368.034 94.56C374.434 94.56 379.394 93.92 382.914 92.64C386.54 91.36 388.354 89.28 388.354 86.4C388.354 84.48 387.34 82.88 385.314 81.6C383.287 80.213 379.127 79.307 372.834 78.88L352.994 77.6C334.967 76.427 321.954 72.587 313.954 66.08C305.954 59.573 301.954 50.987 301.954 40.32C301.954 31.36 304.514 23.893 309.634 17.92C314.754 11.947 321.9 7.467 331.074 4.48C340.354 1.493 351.18 0 363.554 0C375.607 0 386.274 1.707 395.554 5.12C404.94 8.427 412.354 13.12 417.794 19.2C423.34 25.28 426.38 32.373 426.914 40.48H384.994C384.674 38.56 383.607 36.907 381.794 35.52C380.087 34.133 377.634 33.067 374.434 32.32C371.234 31.573 367.34 31.2 362.754 31.2C356.887 31.2 352.247 31.787 348.834 32.96C345.527 34.133 343.874 36.053 343.874 38.72C343.874 40.533 344.834 42.08 346.754 43.36C348.78 44.64 352.62 45.493 358.274 45.92L380.674 47.36C392.407 48.107 401.9 49.867 409.154 52.64C416.407 55.307 421.687 59.04 424.994 63.84C428.407 68.64 430.114 74.56 430.114 81.6C430.114 90.453 427.5 98.187 422.274 104.8C417.047 111.413 409.687 116.587 400.194 120.32C390.807 123.947 379.82 125.76 367.234 125.76C354.22 125.76 342.807 124 332.994 120.48C323.18 116.96 315.5 112 309.954 105.6C304.514 99.2 301.687 91.787 301.474 83.36Z"/><path d="M549.351 48.64V77.12H458.951V48.64H549.351ZM487.271 62.88L479.911 107.52L464.231 90.24H555.271V122.88H439.111L447.911 62.88L439.111 2.88H554.471V35.52H464.231L479.911 18.24L487.271 62.88Z"/><path d="M681.755 92.8L670.555 95.52V2.88H710.555V122.88H658.875L599.355 30.4L610.555 27.68V122.88H570.555V2.88H623.835L681.755 92.8Z"/><path d="M728.174 2.88H769.454V122.88H728.174V2.88Z"/></symbol>
+</svg>
+<script>
+{
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const star=(cls='',style='')=>`<svg class="${cls}" style="${style}" viewBox="0 0 339 350" aria-hidden="true"><use href="#st"/></svg>`;
+const buzz=()=>{try{navigator.vibrate&&navigator.vibrate(12)}catch(e){}};
+const fmt=n=>n>=1e6?(n/1e6).toFixed(1).replace('.0','')+'M':n>=1e4?Math.round(n/1e3)+'K':n>=1e3?(n/1e3).toFixed(1).replace('.0','')+'K':String(n);
+const mdl=n=>n.toLocaleString('ro-RO').replace(/ /g,'.')+' MDL';
+const hash=s=>{let h=7;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h};
+let saved={};try{saved=JSON.parse(localStorage.getItem('arseni')||'{}')}catch(e){}
+const store=()=>{try{localStorage.setItem('arseni',JSON.stringify(S))}catch(e){}};
+const S=Object.assign({c:{handle:'',plat:[],niche:[],f:42,need:[],eth:[],name:'',contact:''},b:{name:'',dom:[],goal:'',age:[],aud:[],budget:35,eth:['ad','safe','rep'],person:'',contact:''}},saved);
+let role=null,step=0;
+
+/* ---------- data ---------- */
+const PLAT=['TikTok','Instagram','YouTube','Facebook'];
+const NICHE=['Umor','Educație','Lifestyle','Food','Tech','Cultură locală','Muzică','Sport','Beauty','Gaming'];
+const NEED=[['M','Management și contracte','Negociem corect, tu creezi.'],['▶','Filmare și montaj','Echipa ARSENI Studio, la tine.'],['✱','Branding personal','Stil, ton, strategie de conținut.'],['A','ARSENI Academy','Etică online, legislație, meserie.']];
+const ETH=[['ad','Marchez orice reclamă','#reclamă, mereu, la vedere.'],['hate','Fără ură și umilire','Umor da, batjocură nu.'],['check','Verific înainte să public','Fără fake news în feed.']];
+const AUD={
+ 'Umor':['Cel care vrea doar să râdă','Tu îi dai poanta și strecori un mesaj care rămâne.'],
+ 'Educație':['Cel care vrea să învețe','Tu explici simplu ce alții complică.'],
+ 'Tech':['Cel care vrea să învețe','Tu transformi tehnologia în ceva clar.'],
+ 'Lifestyle':['Cel care se compară mereu','Tu arăți viața reală, fără filtre false.'],
+ 'Beauty':['Cel care se compară mereu','Tu arăți frumusețea fără presiune.'],
+ 'Sport':['Cel care caută motivație','Tu îl ridici de pe canapea.'],
+ 'Cultură locală':['Cel care crede că afară e mai bine','Tu îi arăți ce are Moldova.'],
+ 'Muzică':['Cel care crede că afară e mai bine','Tu demonstrezi că talentul e aici.'],
+ 'Food':['Cel care caută o pauză','Tu îi dai o pauză care lasă ceva bun.'],
+ 'Gaming':['Cel care caută o pauză','Tu faci comunitate, nu doar scroll.']};
+const DOM=['HoReCa','Retail','Telecom','Bănci','Educație','Evenimente','Tech','ONG'];
+const GOAL=[['L','Lansăm ceva nou','Un produs, un local, un serviciu.'],['C','Vrem mai mulți clienți','Vânzări, rezervări, coduri promo.'],['I','Vrem încredere','Imaginea brandului la tineri.'],['E','Căutăm oameni','Angajări, voluntari, studenți.']];
+const AGE=['16–18','18–24','25–34','35+'];
+const DEMO=[
+ {h:'@tudor.rade',n:'Umor',f:'74K',c:'#FFF700',tags:['HoReCa','Retail','Telecom','Evenimente']},
+ {h:'@ana.filmeaza',n:'Lifestyle',f:'35K',c:'#F3E28B',tags:['HoReCa','Retail','Evenimente','Beauty']},
+ {h:'@radu.explica',n:'Educație',f:'18K',c:'#D9D3C3',tags:['Educație','Bănci','Tech','ONG']},
+ {h:'@mihaela.gusta',n:'Food',f:'52K',c:'#FFE95C',tags:['HoReCa','Retail','Evenimente']},
+ {h:'@dan.tech',n:'Tech',f:'27K',c:'#E9E4D7',tags:['Tech','Telecom','Bănci','Educație']},
+ {h:'@ioana.local',n:'Cultură locală',f:'12K',c:'#FFF7A8',tags:['ONG','Evenimente','HoReCa','Educație']}];
+
+/* ---------- helpers ---------- */
+const chips=(arr,sel,key,max)=>`<div class="chips">${arr.map(v=>`<button class="chip ${sel.includes(v)?'on':''}" data-k="${key}" data-v="${esc(v)}" data-max="${max||0}" aria-pressed="${sel.includes(v)}">${esc(v)}</button>`).join('')}</div>`;
+const opts=(arr,sel,key,single)=>`<div class="opts">${arr.map(([v,t,s])=>`<button class="opt ${(single?sel===v:sel.includes(v))?'on':''}" data-k="${key}" data-v="${esc(v)}" data-single="${single?1:0}"><span class="ic">${esc(v.length===1?v:'✓')}</span><span><b>${esc(t)}</b><small>${esc(s)}</small></span><span class="tk">✓</span></button>`).join('')}</div>`;
+const field=(key,ph,pre,type='text',val='')=>`<label class="field">${pre?`<span>${pre}</span>`:''}<input data-in="${key}" type="${type}" placeholder="${esc(ph)}" value="${esc(val)}" autocomplete="off" autocapitalize="off" enterkeyhint="next"></label>`;
+const followers=v=>{const f=100*Math.pow(10,v/25),q=f<1e3?10:f<1e4?100:f<1e5?1000:10000;return Math.round(f/q)*q};
+const tierOf=f=>f<1000?['Început','Intri prin ARSENI Academy.']:f<10000?['În ascensiune','Exact unde te vrem: înainte să explodezi.']:f<100000?['Micro-creator','Ai audiență. Noi aducem structura.']:['Creator mare','Management complet, contracte anuale.'];
+const budget=v=>Math.round((5000+Math.pow(v/100,2)*195000)/1000)*1000;
+
+/* ---------- flows ---------- */
+const C={
+ total:5,
+ steps:[
+  ()=>({q:'Cum te găsim?',h:'Aplici fără cont și fără parolă. Echipa ARSENI îți verifică profilul.',body:field('handle','numele.tau','@','text',S.c.handle)+`<div class="lbl">Unde postezi?</div>`+chips(PLAT,S.c.plat,'plat'),ok:()=>S.c.handle.trim().length>1&&S.c.plat.length>0}),
+  ()=>({q:'Ce creezi?',h:'Alege până la 3. Din asta aflăm pentru cine creezi.',body:chips(NICHE,S.c.niche,'niche',3),ok:()=>S.c.niche.length>0}),
+  ()=>{const f=followers(S.c.f),t=tierOf(f);return{q:'Câți te urmăresc?',h:'Pe platforma principală. Aproximativ e ok.',body:`<div class="big d" id="fv">${fmt(f)}<small>urmăritori</small></div><input type="range" min="0" max="100" value="${S.c.f}" data-range="f" aria-label="Urmăritori" style="--p:${S.c.f}%"><div class="ticks"><span>100</span><span>10K</span><span>1M</span></div><div class="tier">${star('', 'width:34px;fill:var(--y);flex:none')}<span id="tv"><b>${t[0]}</b><br>${t[1]}</span></div>`,ok:()=>true}},
+  ()=>({q:'De ce ai nevoie?',h:'Bifează tot ce te-ar ajuta. Pachetul 360° le are pe toate.',body:opts(NEED,S.c.need,'need'),ok:()=>S.c.need.length>0}),
+  ()=>({q:'Codul de etică.',h:'Ultimul pas. Promisiunea pe care o face fiecare creator ARSENI.',body:opts(ETH,S.c.eth,'eth')+`<div class="lbl">Cum îți spunem pe nume și cum te contactăm?</div>`+field('name','Numele tău','','text',S.c.name)+field('contact','Telefon sau e-mail','','text',S.c.contact),ok:()=>S.c.eth.length===3&&S.c.name.trim()&&S.c.contact.trim().length>4,cta:'Trimite aplicația ✱'})
+ ]};
+const B={
+ total:5,
+ steps:[
+  ()=>({q:'Cum se numește brandul?',h:'Fără cont, fără parolă. Un brief în 60 de secunde.',body:field('bname','Ex: Cafeneaua Sens','','text',S.b.name)+`<div class="lbl">Domeniul</div>`+chips(DOM,S.b.dom,'dom',2),ok:()=>S.b.name.trim().length>1&&S.b.dom.length>0}),
+  ()=>({q:'Ce vrei să obții?',h:'Alege obiectivul principal.',body:opts(GOAL,S.b.goal,'goal',true),ok:()=>!!S.b.goal}),
+  ()=>({q:'Pe cine vrei să atingi?',h:'Vârsta și felul de om. Noi alegem creatorul potrivit.',body:`<div class="lbl">Vârsta</div>`+chips(AGE,S.b.age,'age')+`<div class="lbl">Felul de om</div>`+chips(['Vrea doar să râdă','Vrea să învețe','Se compară mereu','Crede că afară e mai bine','Caută o pauză'],S.b.aud,'aud',2),ok:()=>S.b.age.length&&S.b.aud.length}),
+  ()=>{const b=budget(S.b.budget),e=estim(b);return{q:'Ce buget ai?',h:'Pe campanie. Prețul vine din valoarea creată.',body:`<div class="big d" id="bv">${mdl(b)}<small>buget campanie</small></div><input type="range" min="0" max="100" value="${S.b.budget}" data-range="budget" aria-label="Buget" style="--p:${S.b.budget}%"><div class="ticks"><span>5.000</span><span>200.000 MDL</span></div><div class="est" id="ev">${estHTML(e)}</div><p class="note">Estimare orientativă, o confirmăm în brief.</p>`,ok:()=>true}},
+  ()=>({q:'Garanția ARSENI.',h:'Incluse în orice campanie. Și cum te contactăm.',body:opts([['ad','Reclamă marcată corect','Conform Legii nr. 62/2022.'],['safe','Creatori fără scandal','Verificați, cu Codul de etică semnat.'],['rep','Raport la 7 și 30 de zile','Cifre reale, pentru șeful tău.']],S.b.eth,'beth')+`<div class="lbl">Persoana de contact</div>`+field('person','Nume și funcție','','text',S.b.person)+field('bcontact','Telefon sau e-mail','','text',S.b.contact),ok:()=>S.b.person.trim()&&S.b.contact.trim().length>4,cta:'Generează brief-ul ✱'})
+ ]};
+function estim(b){const n=Math.max(1,Math.min(12,Math.round(b/9000)));return{n,r:n*2,v:Math.round(b*11/1000)*1000}}
+function estHTML(e){return `<div><b>${e.n}</b><small>creatori</small></div><div><b>${e.r}</b><small>reels</small></div><div><b>${fmt(e.v)}</b><small>vizualizări</small></div>`}
+
+/* ---------- render ---------- */
+function go(html,cls,dir){const old=app.querySelector('.scr');app.classList.toggle('back',dir<0);
+ if(old){old.classList.add('out');setTimeout(()=>old.remove(),250)}
+ const d=document.createElement('section');d.className='scr '+(cls||'');d.innerHTML=html;app.appendChild(d);d.scrollTop=0;
+ document.body.style.background=cls&&cls.includes('home')?'#FFF700':cls&&cls.includes('brand')?'#FAF7F0':'#121212';
+ return d}
+function home(dir){role=null;step=0;try{history.replaceState(null,'',location.pathname)}catch(e){}
+ const words='CREATORI ✱ ETICĂ ONLINE ✱ PRODUCȚIE ✱ BRANDURI ✱ ACADEMY ✱ ';
+ go(`<div class="top"><svg class="wm" viewBox="0 0 770 126" role="img" aria-label="ARSENI"><use href="#wm"/></svg><span class="pill">Prototip</span></div>
+ <div class="hero">${star('star')}</div>
+ <div class="marq" aria-hidden="true"><div>${words.repeat(4)}</div></div>
+ <h1 class="d">Conținut cu sens, din Moldova.</h1>
+ <p class="sub">Agenția care alege creatorii buni și îi pune lângă brandurile potrivite. Alege cine ești, durează un minut.</p>
+ <div class="roles">
+  <button class="role c" data-go="creator"><span class="ic">${star('','width:30px;fill:var(--k)')}</span><span><b>Sunt creator</b><span>Aplic, casa mă verifică</span></span><span class="ar">→</span></button>
+  <button class="role b" data-go="brand"><span class="ic">${star('','width:30px;fill:var(--y)')}</span><span><b>Sunt brand</b><span>Primesc un brief instant</span></span><span class="ar">→</span></button>
+ </div>
+ <p class="fine">Fără cont și fără parolă. Prototip: datele rămân pe telefonul tău.</p>`,'home',dir)}
+function flow(dir){const F=role==='creator'?C:B,st=F.steps[step](),brand=role==='brand';
+ const d=go(`<div class="bar"><button class="bk" data-back aria-label="Înapoi">←</button><div class="prog"><i style="width:${(step+1)/F.total*100}%"></i></div><span class="cnt">${step+1}/${F.total}</span></div>
+ <h2 class="q d">${st.q}</h2><p class="hint">${st.h}</p>
+ <div class="grow">${st.body}</div>
+ <div class="next"><button class="go" data-next ${st.ok()?'':'disabled'}>${st.cta||'Mai departe →'}</button></div>`,brand?'brand':'',dir);
+ d._ok=st.ok;try{history.replaceState(null,'',location.pathname+'#'+role)}catch(e){}}
+function refreshOk(){const d=app.querySelector('.scr:not(.out)');const b=d&&d.querySelector('[data-next]');if(b&&d._ok)b.disabled=!d._ok()}
+
+function resultCreator(){const c=S.c,f=followers(c.f),t=tierOf(f),a=AUD[c.niche[0]]||AUD['Lifestyle'];
+ const h=hash(c.handle+c.niche.join()),id=String(h%9000+1000);
+ const d=go(`<div class="res"><div class="bar"><button class="bk" data-home aria-label="Acasă">←</button><div class="prog"><i style="width:100%"></i></div><span class="cnt">Trimis</span></div>
+ <h2 class="q d">Aplicația ta a ajuns la casă, ${esc(c.name.split(' ')[0])}.</h2><p class="hint">ARSENI alege cine intră. Echipa îți verifică profilul și îți răspunde în 48 de ore.</p>
+ <div class="stage"><div class="card" id="card">${star('cs')}
+  <div class="id"><span>APLICAȚIE ARSENI</span><span>#${id}</span></div>
+  <div class="stamp">În verificare</div>
+  <h3 class="d">@${esc(c.handle.replace(/^@/,''))}</h3>
+  <div class="tags">${c.niche.map(n=>`<span>${esc(n)}</span>`).join('')}<span>${esc(fmt(f))}</span></div>
+  <div class="aud"><b>Publicul tău</b>${esc(a[0])}. ${esc(a[1])}</div>
+  <div class="score">48 h<small>până la răspunsul casei</small></div>
+ </div></div>
+ <div class="lbl" style="text-align:left">Ce verificăm</div>
+ <div class="steps"><div><i>1</i><span><b>Conținutul</b><br><small style="color:var(--g)">Ultimele postări, stilul, ce lași în urmă.</small></span></div><div><i>2</i><span><b>Etica</b><br><small style="color:var(--g)">Reclame marcate, fără ură, fără fake news.</small></span></div><div><i>3</i><span><b>Publicul</b><br><small style="color:var(--g)">${esc(t[0])}: cine te urmărește și cât de implicat e.</small></span></div></div>
+ <div class="lbl" style="text-align:left">Dacă ești selectat</div>
+ <div class="steps"><div><i>✱</i><span><b>Întâlnire 1:1 cu echipa</b><br><small style="color:var(--g)">Apoi 3 luni de probă, fără contract pe viață.</small></span></div></div>
+ <button class="go" data-copy="c">Copiază aplicația</button><button class="ghost" data-go="brand">Am și un brand →</button><button class="ghost" data-home>Înapoi la început</button>
+ <p class="note">Prototip ARSENI. Răspunsul vine pe ${esc(c.contact)} la lansare.</p></div>`,'',1);
+ tilt(d.querySelector('#card'));confetti()}
+function resultBrand(){const b=S.b,bud=budget(b.budget),e=estim(bud),g=GOAL.find(x=>x[0]===b.goal)||GOAL[0];
+ const AN={'Vrea doar să râdă':['Umor'],'Vrea să învețe':['Educație','Tech'],'Se compară mereu':['Lifestyle','Beauty'],'Crede că afară e mai bine':['Cultură locală','Muzică'],'Caută o pauză':['Food','Gaming']};const want=b.aud.flatMap(a=>AN[a]||[]);
+ const picks=DEMO.map(x=>({...x,s:Math.min(97,58+x.tags.filter(t=>b.dom.includes(t)).length*12+(want.includes(x.n)?18:0)+hash(x.h+b.name)%9)})).sort((a,c)=>c.s-a.s).slice(0,3);
+ const why={L:'să se afle de lansare exact la publicul care contează',C:'să vină clienți noi, măsurați prin cod promo',I:'să crească încrederea tinerilor în brand',E:'să găsească oamenii potriviți pentru echipă'}[b.goal];
+ const d=go(`<div class="res"><div class="bar"><button class="bk" data-home aria-label="Acasă">←</button><div class="prog"><i style="width:100%"></i></div><span class="cnt">Gata</span></div>
+ <h2 class="q d">Brief-ul tău e gata.</h2><p class="hint">Îl citim în 24 de ore și revenim pe ${esc(b.contact)}.</p>
+ <div class="brief" id="brief"><div class="hd"><b class="d" style="font-size:20px">${esc(b.name)}</b>${star('','width:30px;fill:var(--k)')}</div>
+  <div class="row"><b>CE</b><span>${esc(g[1])}: ${e.r} reels cu ${e.n} creatori, ~${fmt(e.v)} vizualizări.</span></div>
+  <div class="row"><b>CINE</b><span>${esc(b.name)}, creatori ARSENI, public ${esc(b.age.join(', '))}: ${esc(b.aud.join(', ').toLowerCase())}.</span></div>
+  <div class="row"><b>DE CE</b><span>Pentru ca brandul ${esc(why)}.</span></div>
+  <div class="row"><b>AIDA</b><span>Hook în 2 secunde · povestea creatorului · produsul de aproape · cod promo.</span></div>
+  <div class="est">${estHTML(e)}</div>
+  <div class="row"><b>BUGET</b><span>${mdl(bud)} · reclamă marcată · raport la 7 și 30 de zile</span></div>
+ </div>
+ <div class="lbl" style="text-align:left;margin-top:20px">Creatori potriviți</div>
+ <div class="match">${picks.map(x=>`<div class="cr"><span class="av" style="background:${x.c}">${esc(x.h[1].toUpperCase())}</span><span><b>${esc(x.h)}</b><small>${esc(x.n)} · ${esc(x.f)} urmăritori</small></span><span class="pc">${x.s}%</span></div>`).join('')}</div>
+ <p class="note">Profiluri demo, pentru prototip.</p>
+ <button class="go" data-copy="b" style="margin-top:16px">Copiază brief-ul</button><button class="ghost" data-go="creator">Sunt și creator →</button><button class="ghost" data-home>Înapoi la început</button></div>`,'brand',1);
+ d._brief=`BRIEF ARSENI · ${b.name}\nCE: ${g[1]}: ${e.r} reels cu ${e.n} creatori, ~${fmt(e.v)} vizualizări.\nCINE: ${b.name}, creatori ARSENI, public ${b.age.join(', ')}: ${b.aud.join(', ').toLowerCase()}.\nDE CE: Pentru ca brandul ${why}.\nAIDA: hook în 2 secunde · povestea creatorului · produsul de aproape · cod promo.\nBUGET: ${mdl(bud)}\nCREATORI: ${picks.map(p=>p.h+' '+p.s+'%').join(', ')}\nContact: ${b.person}, ${b.contact}`;
+ confetti()}
+
+/* ---------- effects ---------- */
+function tilt(el){if(!el)return;const set=(x,y)=>{el.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg)`;el.style.setProperty('--sh',(x*60)+'%')};
+ const mv=e=>{const r=el.getBoundingClientRect(),p=e.touches?e.touches[0]:e;set((p.clientX-r.left)/r.width-.5,(p.clientY-r.top)/r.height-.5)};
+ el.addEventListener('pointermove',mv);el.addEventListener('touchmove',mv,{passive:true});el.addEventListener('pointerleave',()=>set(0,0));
+ try{window.addEventListener('deviceorientation',e=>{if(e.gamma==null)return;set(Math.max(-.5,Math.min(.5,e.gamma/60)),Math.max(-.5,Math.min(.5,(e.beta-45)/60)))})}catch(e){}}
+function confetti(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<26;i++){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox','0 0 339 350');s.setAttribute('class','cf');s.innerHTML='<use href="#st"/>';
+ s.style.left=Math.random()*100+'vw';s.style.setProperty('--x',(Math.random()*120-60)+'px');s.style.setProperty('--r',(Math.random()*720-360)+'deg');s.style.setProperty('--t',(1.4+Math.random()*1.4)+'s');s.style.width=(12+Math.random()*20)+'px';
+ if(role==='brand'&&i%2)s.style.fill='#121212';document.body.appendChild(s);setTimeout(()=>s.remove(),3200)}}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1800)}
+async function copy(kind){const d=app.querySelector('.scr:not(.out)');const c=S.c;
+ const txt=kind==='b'?d._brief:`Aplicație ARSENI (în verificare) · @${c.handle.replace(/^@/,'')} · ${c.niche.join(', ')} · ${fmt(followers(c.f))} urmăritori · ${c.plat.join(', ')}`;
+ try{await navigator.clipboard.writeText(txt);toast('Copiat ✱')}catch(e){if(!d.querySelector('textarea')){const t=document.createElement('textarea');t.className='cp';t.value=txt;t.readOnly=true;d.querySelector('.res').appendChild(t);t.select()}toast('Selectează și copiază')}}
+
+/* ---------- events ---------- */
+app.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;buzz();
+ if(t.dataset.go){role=t.dataset.go;step=0;flow(1);return}
+ if(t.hasAttribute('data-home')){home(-1);return}
+ if(t.hasAttribute('data-back')){if(step===0)home(-1);else{step--;flow(-1)}return}
+ if(t.hasAttribute('data-next')){if(t.disabled)return;store();const F=role==='creator'?C:B;if(step<F.total-1){step++;flow(1)}else role==='creator'?resultCreator():resultBrand();return}
+ if(t.dataset.copy){copy(t.dataset.copy);return}
+ const k=t.dataset.k;if(!k)return;const v=t.dataset.v;
+ const map={plat:S.c.plat,niche:S.c.niche,need:S.c.need,eth:S.c.eth,dom:S.b.dom,age:S.b.age,aud:S.b.aud,beth:S.b.eth};
+ if(k==='goal'){S.b.goal=v;t.parentNode.querySelectorAll('.opt').forEach(o=>o.classList.toggle('on',o===t))}
+ else{const arr=map[k],max=+t.dataset.max,i=arr.indexOf(v);
+  if(i>=0)arr.splice(i,1);else{if(max&&arr.length>=max){const first=arr.shift();const fb=t.parentNode.querySelector(`[data-v="${CSS.escape(first)}"]`);fb&&fb.classList.remove('on')}arr.push(v)}
+  t.classList.toggle('on',arr.includes(v));t.setAttribute('aria-pressed',arr.includes(v))}
+ refreshOk()});
+app.addEventListener('input',e=>{const t=e.target;
+ if(t.dataset.in){const m={handle:v=>S.c.handle=v.replace(/\s/g,''),name:v=>S.c.name=v,contact:v=>S.c.contact=v,bname:v=>S.b.name=v,person:v=>S.b.person=v,bcontact:v=>S.b.contact=v};m[t.dataset.in](t.value);refreshOk();return}
+ if(t.dataset.range){const v=+t.value;t.style.setProperty('--p',v+'%');
+  if(t.dataset.range==='f'){S.c.f=v;const f=followers(v),tr=tierOf(f);$('#fv').innerHTML=esc(fmt(f))+'<small>urmăritori</small>';$('#tv').innerHTML='<b>'+esc(tr[0])+'</b><br>'+esc(tr[1])}
+  else{S.b.budget=v;const b=budget(v);$('#bv').innerHTML=esc(mdl(b))+'<small>buget campanie</small>';$('#ev').innerHTML=estHTML(estim(b))}
+  if(v%10===0)buzz()}});
+app.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT'){const b=app.querySelector('.scr:not(.out) [data-next]');if(b&&!b.disabled)b.click()}});
+const start=location.hash.replace('#','');if(start==='creator'||start==='brand'){role=start;flow(1)}else home(1);
+}
+</script>
+</body>
+</html>
